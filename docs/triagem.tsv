@@ -1,0 +1,558 @@
+ECC	skill	accessibility	nao	Design,
+ECC	skill	agent-architecture-audit	nao	Full-stack diagnostic for agent and LLM applications. Audits the 12-layer agent stack for wrapper regression, memory pollution, tool discipline failures, hidden repair lo
+ECC	skill	agent-eval	nao	Head-to-head comparison of coding agents (Claude Code, Aider, Codex, etc.) on custom tasks with pass rate, cost, time, and consistency metrics. Use when choosing between 
+ECC	skill	agent-harness-construction	nao	Design and optimize AI agent action spaces, tool definitions, and observation formatting for higher completion rates. Use when defining or revising an agent's tool set, a
+ECC	skill	agent-introspection-debugging	nao	Structured self-debugging workflow for AI agent failures using capture, diagnosis, contained recovery, and introspection reports. Use when an agent run fails and you need
+ECC	skill	agent-payment-x402	nao	Add x402 payment execution to AI agents with per-task budgets, spending controls, and non-custodial wallets. Supports Base through agentwallet-sdk, X Layer through OKX Pa
+ECC	skill	agent-runtime-gateway-smoke-test	nao	Verify a local agent API, temporary gateway tunnel, and remote sandbox callback with a tool-free task, then restore the original app connection.
+ECC	skill	agent-security-hardening	nao	Security hardening guidance for AI agent frameworks that process untrusted content, invoke tools, write workspace files, manage runtime identifiers, or handle credentials
+ECC	skill	agent-self-evaluation	nao	Use after completing any non-trivial task. The agent self-rates its output on 5 axes — accuracy, completeness, clarity, actionability, conciseness — with concrete evi
+ECC	skill	agent-sort	nao	Build an evidence-backed ECC install plan for a specific repo by sorting skills, commands, rules, hooks, and extras into DAILY vs LIBRARY buckets using parallel repo-awar
+ECC	skill	agentic-engineering	nao	Operate as an agentic engineer using eval-first execution, decomposition, and cost-aware model routing. Use when planning or executing engineering work that agents will c
+ECC	skill	agentic-os	nao	Build persistent multi-agent operating systems on Claude Code. Covers kernel architecture, specialist agents, slash commands, file-based memory, scheduled automation, and
+ECC	skill	ai-first-engineering	nao	Engineering operating model for teams where AI agents generate a large share of implementation output. Use when setting team process, review gates, or ownership rules for
+ECC	skill	ai-regression-testing	nao	Regression testing strategies for AI-assisted development. Sandbox-mode API testing without database dependencies, automated bug-check workflows, and patterns to catch AI
+ECC	skill	android-clean-architecture	nao	Clean Architecture patterns for Android and Kotlin Multiplatform projects — module structure, dependency rules, UseCases, Repositories, and data layer patterns. Use whe
+ECC	skill	angular-developer	nao	Generates Angular code and provides architectural guidance. Trigger when creating projects, components, or services, or for best practices on reactivity (signals, linkedS
+ECC	skill	api-connector-builder	nao	Build a new API connector or provider by matching the target repo's existing integration pattern exactly. Use when adding one more integration without inventing a second 
+ECC	skill	api-design	talvez	REST API design patterns including resource naming, status codes, pagination, filtering, error responses, versioning, and rate limiting for production APIs. Use when desi
+ECC	skill	architecture-decision-records	ideia	Capture architectural decisions as numbered ADR markdown files in docs/adr/ with context, alternatives considered, consequences, and an index README. Use when the user sa
+ECC	skill	article-writing	nao	Write articles, guides, blog posts, tutorials, newsletter issues, and other long-form content in a distinctive voice derived from supplied examples or brand guidance. Use
+ECC	skill	automation-audit-ops	nao	Evidence-first automation inventory and overlap audit workflow for ECC. Use when the user wants to know which jobs, hooks, connectors, MCP servers, or wrappers are live, 
+ECC	skill	autonomous-agent-harness	nao	Transform Claude Code into a fully autonomous agent system with persistent memory, scheduled operations, computer use, and task queuing. Replaces standalone agent framewo
+ECC	skill	autonomous-loops	nao	Patterns and architectures for autonomous Claude Code loops — from simple sequential pipelines to RFC-driven multi-agent DAG systems. Retained for compatibility only: w
+ECC	skill	backend-patterns	nao	Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes. Use when building or review
+ECC	skill	benchmark-methodology	nao	Score a scoped competitor set into comparable profile cards: nine weighted dimensions (positioning, voice, visual craft, offer packaging, evidence, enterprise-readiness, 
+ECC	skill	benchmark-optimization-loop	nao	Convert 'make it faster' requests into a bounded measured optimization loop — baseline first, generate one-hypothesis variants, benchmark each against a correctness gat
+ECC	skill	benchmark	nao	Measure performance baselines and detect regressions across browser Core Web Vitals (LCP, INP, CLS, page weight), API endpoint latency percentiles, and build/test feedbac
+ECC	skill	bengali-nlp	nao	Bengali (Bangla) text processing patterns including Unicode normalization, script detection, tokenization, conjunct handling, and Bangla-specific NLP best practices for A
+ECC	skill	blender-motion-state-inspection	nao	Use this skill when inspecting Blender characters, rigs, poses, animation retargeting, ground contact, facing direction, or model-vs-motion alignment where screenshots al
+ECC	skill	blueprint	nao	Turn a one-line objective into a step-by-step construction plan for multi-session, multi-agent engineering projects: one-PR-sized steps with self-contained context briefs
+ECC	skill	brand-discovery	nao	Run a structured, resumable multi-session brand identity interview across 8 modules (purpose, positioning, audience, personality, voice, narrative, founder tension) using
+ECC	skill	brand-voice	nao	Build a source-derived writing style profile from real posts, essays, launch notes, docs, or site copy, then reuse that profile across content, outreach, and social workf
+ECC	skill	brownfield-retrospective	nao	Run the ECC engineering process retroactively against an existing project slice. Audit current state, reconstruct past decisions, produce a four-axis gap register (thinki
+ECC	skill	browser-qa	talvez	Run automated post-deploy UI verification with a browser automation MCP (claude-in-chrome, Playwright, or Puppeteer): console-error and Core Web Vitals smoke checks, form
+ECC	skill	bun-runtime	nao	Bun as runtime, package manager, bundler, and test runner. When to choose Bun vs Node, migration notes, and Vercel support.
+ECC	skill	canary-watch	talvez	Use this skill to monitor and verify a deployed URL after releases — checks HTTP endpoints, SSE streams, static assets, console errors, and performance regressions afte
+ECC	skill	carrier-relationship-management	nao	Manage truckload, LTL, and intermodal carrier portfolios: sourcing and FMCSA vetting, freight rate and fuel-surcharge negotiation, RFPs and routing guides, carrier scorec
+ECC	skill	change-impact	sim	Perform evidence-backed impact analysis before changing code, data, interfaces, or governance documents, then compare the planned impact with the actual diff after implem
+ECC	skill	cisco-ios-patterns	nao	Cisco IOS and IOS-XE review patterns for show commands, config hierarchy, wildcard masks, ACL placement, interface hygiene, and safe change-window verification. Use when 
+ECC	skill	ck	nao	Persistent per-project memory for Claude Code (Context Keeper) driven by deterministic Node.js /ck commands: init, save, resume, info, list, forget, and v1-to-v2 migrate,
+ECC	skill	claude-devfleet	nao	Orchestrate multi-agent coding tasks via Claude DevFleet — plan projects, dispatch parallel agents in isolated worktrees, monitor progress, and read structured reports.
+ECC	skill	click-path-audit	nao	Trace every user-facing button/touchpoint through its full state change sequence to find bugs where functions individually work but cancel each other out, produce wrong f
+ECC	skill	clickhouse-io	nao	ClickHouse database patterns, query optimization, analytics, and data engineering best practices for high-performance analytical workloads. Use when writing ClickHouse sc
+ECC	skill	code-tour	nao	Create CodeTour `.tour` files — persona-targeted, step-by-step walkthroughs with real file and line anchors. Use for onboarding tours, architecture walkthroughs, PR tou
+ECC	skill	codebase-onboarding	nao	Analyze an unfamiliar codebase and generate a structured onboarding guide with architecture map, key entry points, conventions, and a starter CLAUDE.md. Use when joining 
+ECC	skill	codehealth-mcp	nao	Real-time structural Code Health via CodeScene MCP — review before edits, verify score deltas after changes, gate commits and PRs. Use when reviewing code quality, refa
+ECC	skill	coding-standards	nao	Baseline cross-project coding conventions for naming, readability, immutability, and code-quality review. Use detailed frontend or backend skills for framework-specific p
+ECC	skill	competitive-platform-analysis	nao	Use when scoping a competitive landscape — identifying, categorising, and score-filtering a competitor set before any benchmarking begins. Decides who counts as a compe
+ECC	skill	competitive-report-structure	nao	Assemble scored competitor profile cards (from benchmark-methodology) into a decision-grade competitive report with landscape map, competitor tiers, benchmarking matrix, 
+ECC	skill	compose-multiplatform-patterns	nao	Compose Multiplatform and Jetpack Compose patterns for KMP projects — state management, navigation, theming, performance, and platform-specific UI. Use when building Co
+ECC	skill	config-gc	nao	Garbage collection for your Claude Code configuration. Periodically scans ~/.claude (skills, memory, hooks, permissions, MCP servers, caches) for redundant, stale, orphan
+ECC	skill	configure-ecc	nao	Run the conversational ECC setup wizard inside the current harness: inventory the install, collect scope (user/project/local) and hook mode (off/minimal/standard/strict) 
+ECC	skill	connections-optimizer	nao	Reorganize the user's X and LinkedIn network with review-first pruning, add/follow recommendations, and channel-specific warm outreach drafted in the user's real voice. U
+ECC	skill	content-engine	nao	Create platform-native content systems for X, LinkedIn, TikTok, YouTube, newsletters, and repurposed multi-platform campaigns. Use when the user wants social posts, threa
+ECC	skill	content-hash-cache-pattern	nao	Cache expensive file processing results using SHA-256 content hashes — path-independent, auto-invalidating, with service layer separation. Use when repeated file proces
+ECC	skill	context-and-decisions	nao	Govern stable domain context with a narrowly scoped CONTEXT.md when needed, and route hard-to-reverse decisions to ECC's existing architecture-decision-records skill. Use
+ECC	skill	context-budget	nao	Routes live context checks to the native Codex or Claude Code meter without scanning files, and performs a bounded static component audit only when explicitly requested. 
+ECC	skill	continuous-agent-loop	nao	Patterns for continuous autonomous agent loops with quality gates, evals, and recovery controls. Use when running an agent loop that must self-check, gate on evals, and r
+ECC	skill	continuous-learning-v2	nao	Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into skills/commands/agents. v2.1 adds
+ECC	skill	continuous-learning	nao	[DEPRECATED - use continuous-learning-v2] Legacy v1 stop-hook skill extractor. v2 is a strict superset with instinct-based, project-scoped, hook-reliable learning. Do not
+ECC	skill	contract-first	sim	Coordinate frontend/backend or service-to-service work through one authoritative machine-checkable contract (OpenAPI, AsyncAPI, Protocol Buffers, or JSON Schema), with ge
+ECC	skill	conventional-commit-review	nao	Reviews staged changes and drafts a Conventional Commits-compliant commit message with the right type, scope, and length. Use before committing, or when the user asks to 
+ECC	skill	cost-aware-llm-pipeline	nao	Cost optimization patterns for LLM API usage — model routing by task complexity, budget tracking, retry logic, and prompt caching. Use when LLM spend needs to come down
+ECC	skill	cost-tracking	nao	Track and report Claude Code token usage, spending, and budgets from the local ECC cost-tracker metrics log. Use when the user asks about costs, spending, usage, tokens, 
+ECC	skill	council-multi-model	nao	Add one optional external Codex critique after the existing council has produced a decision draft. Use when an ambiguous, high-consequence decision would benefit from a s
+ECC	skill	council	nao	Convene a four-voice council for ambiguous decisions, tradeoffs, and go/no-go calls. Use when multiple valid paths exist and you need structured disagreement before choos
+ECC	skill	counterparty-channel-discipline	nao	Per-channel strict prompts, mention gating, silent observation, and a communication autonomy policy for agents that sit in shared channels with external counterparties. U
+ECC	skill	cpp-coding-standards	nao	C++ coding standards based on the C++ Core Guidelines (isocpp.github.io). Use when writing, reviewing, or refactoring C++ code to enforce modern, safe, and idiomatic prac
+ECC	skill	cpp-testing	nao	Use only when writing/updating/fixing C++ tests, configuring GoogleTest/CTest, diagnosing failing or flaky tests, or adding coverage/sanitizers.
+ECC	skill	crosspost	nao	Multi-platform content distribution across X, LinkedIn, Threads, and Bluesky. Adapts content per platform using content-engine patterns. Never posts identical content cro
+ECC	skill	csharp-testing	nao	C# and .NET testing patterns with xUnit, FluentAssertions, mocking, integration tests, and test organization best practices. Use when writing or reviewing xUnit tests, mo
+ECC	skill	customer-billing-ops	nao	Operate customer billing workflows such as subscriptions, refunds, churn triage, billing-portal recovery, and plan analysis using connected billing tools like Stripe. Use
+ECC	skill	customs-trade-compliance	nao	Codified customs and trade compliance expertise — HS/HTS tariff classification with GRI rules, commercial invoices and entry documentation, Incoterms 2020, FTA qualific
+ECC	skill	dart-flutter-patterns	nao	Production-ready Dart and Flutter patterns covering null safety, immutable state with Freezed, async composition, widget architecture, state management (BLoC, Riverpod, P
+ECC	skill	dashboard-builder	nao	Build monitoring dashboards that answer real operator questions for Grafana, SigNoz, and similar platforms. Use when turning metrics into a working dashboard instead of a
+ECC	skill	data-scraper-agent	nao	Build a fully automated AI-powered data collection agent for any public source — job boards, prices, news, GitHub, sports, anything. Runs on a schedule, enriches data w
+ECC	skill	data-throughput-accelerator	nao	Diagnose and accelerate large data movement — ingestion, backfill, export, ETL, warehouse loading, manifest catch-up, and table synchronization — by isolating the tru
+ECC	skill	database-migrations	sim	Safe, reversible database migration patterns: forward-only production changes, expand-contract zero-downtime renames, concurrent indexes, batched backfills, and per-tool 
+ECC	skill	deep-research	nao	Produce cited research reports from multiple web sources using firecrawl and exa MCP tools — plan sub-questions, search and deep-read sources, then synthesize findings 
+ECC	skill	deepseek-harness-setup	nao	Install and operate Everything Claude Code (ECC) on the DeepSeek Harness (DSH): native skill roots (~/.dsh/skills, .agents/skills), the @deepseek-ai/dsh-hooks-claude-code
+ECC	skill	defi-amm-security	nao	Security checklist for Solidity AMM contracts, liquidity pools, and swap flows. Covers reentrancy, CEI ordering, donation or inflation attacks, oracle manipulation, slipp
+ECC	skill	delivery-gate	nao	Stop hook that blocks Claude from finishing until quality checks pass. Detects rationalization patterns (surface text heuristics), stale learning logs (filesystem mtime),
+ECC	skill	deployment-patterns	nao	Deployment workflows, CI/CD pipeline patterns, Docker containerization, health checks, rollback strategies, and production readiness checklists for web applications. Use 
+ECC	skill	design-system	nao	Generate a design system from an existing codebase or audit one for visual consistency: extract tokens (colors, typography, spacing, shadows) into design-tokens.json and 
+ECC	skill	dev-team	nao	Simulate a collaborative dev team session where multiple role-based personas (PM, Architect, Developer, QA) respond to the same problem together in one session. Use when 
+ECC	skill	django-celery	nao	Django + Celery async task patterns — configuration, task design, beat scheduling, retries, canvas workflows, monitoring, and testing. Use when adding background jobs, 
+ECC	skill	django-patterns	nao	Django architecture patterns, REST API design with DRF, ORM best practices, caching, signals, middleware, and production-grade Django apps. Use when building or reviewing
+ECC	skill	django-security	nao	Django security best practices, authentication, authorization, CSRF protection, SQL injection prevention, XSS prevention, and secure deployment configurations. Use when r
+ECC	skill	django-tdd	nao	Django testing strategies with pytest-django, TDD methodology, factory_boy, mocking, coverage, and testing Django REST Framework APIs. Use when writing Django or DRF test
+ECC	skill	django-verification	nao	Run the full Django verification loop — environment check, mypy/ruff/black linting, migration safety, pytest with coverage targets, pip-audit and bandit security scans,
+ECC	skill	dmux-workflows	nao	Multi-agent orchestration using dmux (tmux pane manager for AI agents). Patterns for parallel agent workflows across Claude Code, Codex, OpenCode, and other harnesses. Us
+ECC	skill	docker-patterns	nao	Docker and Docker Compose patterns for local development, hardened CLI installer harnesses, container security, networking, volumes, and multi-service orchestration. Use 
+ECC	skill	docs-governance	nao	Route broad documentation-governance requests to existing ECC skills and run an opt-in, read-only audit of mapped documentation roles, links, ADR indexes, and evidence re
+ECC	skill	documentation-lookup	nao	Use up-to-date library and framework docs via Context7 MCP instead of training data. Activates for setup questions, API references, code examples, or when the user names 
+ECC	skill	dotnet-patterns	nao	Idiomatic C# and .NET patterns, conventions, dependency injection, async/await, and best practices for building robust, maintainable .NET applications. Use when writing o
+ECC	skill	dynamic-workflow-mode	nao	Design task-local harnesses, eval gates, and reusable skill extraction for Claude dynamic workflow mode and other adaptive agent harnesses. Use when building a task-local
+ECC	skill	e2e-testing	nao	Playwright E2E testing patterns, Page Object Model, configuration, CI/CD integration, artifact management, and flaky test strategies. Use when writing Playwright tests, s
+ECC	skill	ecc-guide	nao	Answer questions about ECC by reading the live repo surface — agents, skills, commands, hooks, rules, install profiles, and docs — instead of memory. Use when the use
+ECC	skill	ecc-recipes	nao	Map a described workflow to the right ECC command group with run-order and stop condition, or browse all command-group recipe families read live from the commands directo
+ECC	skill	ecc-tools-cost-audit	nao	Evidence-first ECC Tools burn and billing audit workflow. Use when investigating runaway PR creation, quota bypass, premium-model leakage, duplicate jobs, or GitHub App c
+ECC	skill	email-ops	nao	Evidence-first mailbox triage, drafting, send verification, and sent-mail-safe follow-up workflow for ECC. Use when the user wants to organize email, draft or send throug
+ECC	skill	energy-procurement	nao	Procure electricity and natural gas for commercial and industrial facilities: tariff and rate-schedule optimization, demand-charge mitigation, supplier RFPs, fixed/index/
+ECC	skill	enterprise-agent-ops	nao	Operational controls for long-lived or cloud-hosted agent systems — runtime lifecycle (start, pause, stop, restart), observability (logs, metrics, traces), least-privil
+ECC	skill	error-handling	talvez	Patterns for robust error handling across TypeScript, Python, and Go. Covers typed errors, error boundaries, retries, circuit breakers, and user-facing error messages. Us
+ECC	skill	esign-field-placement	nao	Deterministic method for placing signature, date, and text fields in a web e-signature composer through a browser automation session, using a fixed signature page, numeri
+ECC	skill	eval-harness	nao	Eval-driven development (EDD) framework for AI coding sessions — define capability and regression evals before coding, grade with code-based, model-based, rule, or huma
+ECC	skill	evm-token-decimals	nao	Prevent silent decimal mismatch bugs across EVM chains. Covers runtime decimal lookup, chain-aware caching, bridged-token precision drift, and safe normalization for bots
+ECC	skill	exa-search	nao	Neural search via Exa MCP for web, code, and company research. Use when the user needs web search, code examples, company intel, people lookup, or AI-powered deep researc
+ECC	skill	fal-ai-media	nao	Unified media generation via fal.ai MCP — image, video, and audio. Covers text-to-image (Nano Banana), text/image-to-video (Seedance, Kling, Veo 3), text-to-speech (CSM
+ECC	skill	fastapi-patterns	nao	FastAPI best practices covering project structure, Pydantic v2 schemas, dependency injection, async handlers, authentication, authorization, transactional service layers,
+ECC	skill	finance-billing-ops	nao	Evidence-first revenue, pricing, refunds, team-billing, and billing-model truth workflow for ECC. Use when the user wants a sales snapshot, pricing comparison, duplicate-
+ECC	skill	flox-environments	nao	Create reproducible, cross-platform (macOS/Linux) development environments with Flox, a declarative Nix-based environment manager. Use when setting up project toolchains,
+ECC	skill	flutter-dart-code-review	nao	Library-agnostic Flutter/Dart code review checklist covering widget best practices, state management patterns (BLoC, Riverpod, Provider, GetX, MobX, Signals), Dart idioms
+ECC	skill	foundation-models-on-device	nao	Apple FoundationModels framework for on-device LLM — text generation, guided generation with @Generable, tool calling, and snapshot streaming in iOS 26+. Use when addin
+ECC	skill	frontend-a11y	talvez	Accessibility patterns for React and Next.js — semantic HTML, ARIA attributes, form labeling, keyboard navigation, focus management, and screen reader support. Use when
+ECC	skill	frontend-design-direction	nao	Set an ECC-specific frontend design direction for production UI work. Use when building or improving websites, dashboards, applications, components, landing pages, visual
+ECC	skill	frontend-patterns	nao	Frontend development patterns for React, Next.js, state management, performance optimization, and UI best practices. Use when building or reviewing React or Next.js compo
+ECC	skill	frontend-slides	nao	Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to 
+ECC	skill	fsharp-testing	nao	F# testing patterns with xUnit, FsUnit, Unquote, FsCheck property-based testing, integration tests, and test organization best practices. Use when writing F# tests with x
+ECC	skill	gan-style-harness	nao	GAN-inspired Generator-Evaluator agent harness for building high-quality applications autonomously. Based on Anthropic's March 2026 harness design paper. Use when a featu
+ECC	skill	gateguard	ideia	PreToolUse fact-forcing gate that denies the first Edit/Write/Bash (including MultiEdit and NotebookEdit) attempt until the agent presents concrete facts (importers, data
+ECC	skill	generating-python-installer	nao	Commercial-grade Python installer expert for Windows: Nuitka extreme compilation, dist slimming, DLL footprint analysis, and Inno Setup packaging to ship the smallest, fa
+ECC	skill	git-workflow	nao	Git workflow patterns including branching strategies, commit conventions, keeping history clean and readable, tidying local commits before merging, merge vs rebase, confl
+ECC	skill	github-ops	nao	GitHub repository operations, automation, and management. Issue triage, PR management, CI/CD operations, release management, and security monitoring using the gh CLI. Use
+ECC	skill	golang-patterns	nao	Idiomatic Go patterns, best practices, and conventions for building robust, efficient, and maintainable Go applications. Use when writing or reviewing Go code and idiomat
+ECC	skill	golang-testing	talvez	Go testing patterns including table-driven tests, subtests, benchmarks, fuzzing, and test coverage. Follows TDD methodology with idiomatic Go practices. Use when writing 
+ECC	skill	google-workspace-ops	nao	Operate across Google Drive, Docs, Sheets, and Slides as one workflow surface for plans, trackers, decks, and shared documents. Use when the user needs to find, summarize
+ECC	skill	growth-log	nao	Write growth log entries that extract reusable patterns from completed work — root cause, transferable rule, and a recognizable signal — instead of diary-style event 
+ECC	skill	healthcare-cdss-patterns	nao	Clinical Decision Support System (CDSS) development patterns. Drug interaction checking, dose validation, clinical scoring (NEWS2, qSOFA), alert severity classification, 
+ECC	skill	healthcare-emr-patterns	nao	EMR/EHR development patterns for healthcare applications. Clinical safety, encounter workflows, prescription generation, clinical decision support integration, and access
+ECC	skill	healthcare-eval-harness	nao	Patient safety evaluation harness for healthcare application deployments. Automated test suites for CDSS accuracy, PHI exposure, clinical workflow integrity, and integrat
+ECC	skill	healthcare-phi-compliance	nao	Protected Health Information (PHI) and PII compliance patterns for healthcare applications: data classification, row-level access control, tamper-proof audit trails, sche
+ECC	skill	hermes-imports	nao	Convert local Hermes operator workflows into sanitized ECC skills and release-pack artifacts. Use when preparing a Hermes workflow for public ECC reuse without leaking pr
+ECC	skill	hexagonal-architecture	nao	Design, implement, and refactor Ports & Adapters systems with clear domain boundaries, dependency inversion, and testable use-case orchestration across TypeScript, Java, 
+ECC	skill	hipaa-compliance	nao	HIPAA-specific entrypoint for healthcare privacy and security work. Use when a task is explicitly framed around HIPAA, PHI handling, covered entities, BAAs, breach postur
+ECC	skill	homelab-network-readiness	nao	Readiness checklist for homelab VLAN segmentation, local DNS filtering (Pi-hole, AdGuard Home), and WireGuard-style remote access. Use when planning or reviewing home net
+ECC	skill	homelab-network-setup	nao	Practical home and homelab network planning for gateways, switches, access points, IP ranges, DHCP reservations, DNS, cabling, and common beginner mistakes. Use when plan
+ECC	skill	homelab-pihole-dns	nao	Pi-hole installation, blocklist management, DNS-over-HTTPS setup, DHCP integration, local DNS records, and troubleshooting broken DNS resolution on a home network. Use wh
+ECC	skill	homelab-vlan-segmentation	nao	Segmenting home networks into VLANs for IoT, guest, trusted, and server traffic using UniFi, pfSense/OPNsense, and MikroTik — including switch trunk config, firewall ru
+ECC	skill	homelab-wireguard-vpn	nao	WireGuard VPN server setup, peer configuration, key generation, split tunneling vs full tunnel routing, and remote access to a home network from mobile and laptop clients
+ECC	skill	hookify-rules	nao	Create and configure hookify rules — markdown files with YAML frontmatter that match bash, file, prompt, or stop events by regex or conditions and show warn/block messa
+ECC	skill	i18n-sync	nao	Translate and synchronize application JSON locale files using source-key usage, project terminology, and focused validation. Use when adding keys or languages, updating s
+ECC	skill	inherit-legacy-style	ideia	Prevent AI style drift on legacy projects by scanning the codebase for implicit conventions, resolving conflicts with the operator one at a time, and writing an enforceab
+ECC	skill	intent-driven-development	sim	Turn ambiguous or high-impact product and engineering changes into scoped, verifiable acceptance criteria before or alongside implementation. Use when a user asks to clar
+ECC	skill	inventory-demand-planning	nao	Codified demand planning expertise for multi-location retailers: demand forecasting method selection, ABC/XYZ segmentation, safety stock and reorder-point optimization, p
+ECC	skill	investor-materials	nao	Create and update pitch decks, one-pagers, investor memos, accelerator applications, financial models, and fundraising materials. Use when the user needs investor-facing 
+ECC	skill	investor-outreach	nao	Draft cold emails, warm intro blurbs, follow-ups, update emails, and investor communications for fundraising. Use when the user wants outreach to angels, VCs, strategic i
+ECC	skill	ios-icon-gen	nao	Generate iOS app icons as PNG imagesets for Xcode asset catalogs from SF Symbols (5000+ Apple-native) or Iconify API (275k+ open source icons from 200+ collections). Use 
+ECC	skill	issue-review	nao	Review a GitHub issue the way /code-review reviews a PR. Fetches the issue with the gh CLI, checks the report against the current codebase, searches for duplicates and pr
+ECC	skill	iterative-retrieval	sim	Pattern for progressively refining context retrieval to solve the subagent context problem. Use when a subagent lacks the context it needs and retrieval must be refined a
+ECC	skill	ito-baskets	nao	Read-only Itô basket and prediction-market data skill. Index the live basket catalog, compare a basket against user-supplied research or a watchlist, build a source-grou
+ECC	skill	ito-compute	nao	Query live GPU inventory, submit an authenticated Itô fixed-rate RFQ, inspect RFQ or procurement status, revoke device credentials, and run explicitly gated node qualifi
+ECC	skill	ito-inference	nao	Inspect the availability of model serving on a completed Itô compute booking and, when the canonical backend becomes available, hand off an explicitly confirmed serving 
+ECC	skill	ito-training	nao	Inspect the availability of ML training on a completed Itô compute booking and, when the canonical backend becomes available, hand off an explicitly confirmed training m
+ECC	skill	java-coding-standards	nao	Java coding standards for Spring Boot and Quarkus services: naming, immutability, Optional usage, streams, exceptions, generics, CDI, reactive patterns, and project layou
+ECC	skill	jira-integration	ideia	Use this skill when retrieving Jira tickets, analyzing requirements, updating ticket status, adding comments, or transitioning issues. Provides Jira API patterns via MCP 
+ECC	skill	jpa-patterns	nao	JPA/Hibernate patterns for entity design, relationships, query optimization, transactions, auditing, indexing, pagination, and pooling in Spring Boot. Use when designing 
+ECC	skill	knowledge-ops	nao	Knowledge base management, ingestion, sync, and retrieval across multiple storage layers (local files, MCP memory, vector stores, Git repos). Use when the user wants to s
+ECC	skill	kotlin-coroutines-flows	nao	Kotlin Coroutines and Flow patterns for Android and KMP — structured concurrency, Flow operators, StateFlow, error handling, and testing. Use when writing coroutines or
+ECC	skill	kotlin-exposed-patterns	nao	JetBrains Exposed ORM patterns including DSL queries, DAO pattern, transactions, HikariCP connection pooling, Flyway migrations, and repository pattern. Use when working 
+ECC	skill	kotlin-ktor-patterns	nao	Ktor server patterns including routing DSL, plugins, authentication, Koin DI, kotlinx.serialization, WebSockets, and testApplication testing. Use when building a Ktor ser
+ECC	skill	kotlin-patterns	nao	Idiomatic Kotlin patterns, best practices, and conventions for building robust, efficient, and maintainable Kotlin applications with coroutines, null safety, and DSL buil
+ECC	skill	kotlin-testing	nao	Kotlin testing patterns with Kotest, MockK, coroutine testing, property-based testing, and Kover coverage. Follows TDD methodology with idiomatic Kotlin practices. Use wh
+ECC	skill	kubernetes-patterns	nao	Kubernetes workload patterns, resource management, RBAC, probes, autoscaling, ConfigMap/Secret handling, and kubectl debugging for production-grade deployments. Use when 
+ECC	skill	laravel-patterns	nao	Laravel architecture patterns, routing/controllers, Eloquent ORM, service layers, queues, events, caching, and API resources for production apps. Use when building or rev
+ECC	skill	laravel-plugin-discovery	nao	Discover and evaluate Laravel packages via LaraPlugins.io MCP. Use when the user wants to find plugins, check package health, or assess Laravel/PHP compatibility.
+ECC	skill	laravel-security	nao	Laravel security best practices — authentication, authorization, Eloquent safety, CSRF, XSS prevention, API security, and secure deployment configurations. Use when rev
+ECC	skill	laravel-tdd	nao	Laravel testing strategies with PHPUnit, Pest, model factories, HTTP tests, Sanctum authentication testing, mocking, and coverage. Use when writing Laravel tests with PHP
+ECC	skill	laravel-verification	nao	Verification loop for Laravel projects: env checks, linting, static analysis, tests with coverage, security scans, and deployment readiness. Use when verifying a Laravel 
+ECC	skill	latency-critical-systems	nao	Optimize and verify latency-sensitive systems — realtime dashboards, market data feeds, streaming agents, execution gateways, queues, and caches — by tracking p50/p95
+ECC	skill	lead-intelligence	nao	AI-native lead intelligence and outreach pipeline. Replaces Apollo, Clay, and ZoomInfo with agent-powered signal scoring, mutual ranking, warm path discovery, source-deri
+ECC	skill	liquid-glass-design	nao	iOS 26 Liquid Glass design system — dynamic glass material with blur, reflection, and interactive morphing for SwiftUI, UIKit, and WidgetKit. Use when building iOS 26 L
+ECC	skill	living-docs-governance	nao	Keep a long-lived project's documentation from rotting by assigning existing project docs clear constitution, map, status, and history roles, then wiring the active agent
+ECC	skill	llm-trading-agent-security	nao	Security patterns for autonomous trading agents with wallet or transaction authority. Covers prompt injection, spend limits, pre-send simulation, circuit breakers, MEV pr
+ECC	skill	logistics-exception-management	nao	Codified freight-exception handling expertise for shipment delays, damages, losses, shortages, and carrier disputes, with escalation protocols, carrier-specific behaviors
+ECC	skill	loop-design-check	nao	Design a goal-oriented agent loop or review one for failure modes: spinning, Goodhart-gaming the verifier, or running a wrong answer to completion. Covers machine-decidab
+ECC	skill	mailtrap-email-integration	nao	Guides agents through integrating transactional email sending via Mailtrap's Email API, including sandbox testing, domain verification, and API authentication. Use when i
+ECC	skill	make-interfaces-feel-better	nao	Apply concrete design-engineering details that make interfaces feel polished. Use when reviewing or improving UI spacing, typography, borders, shadows, motion, hit areas,
+ECC	skill	manim-video	nao	Build reusable Manim explainers for technical concepts, graphs, system diagrams, and product walkthroughs, then hand off to the wider ECC video stack if needed. Use when 
+ECC	skill	market-research	nao	Conduct market research, competitive analysis, investor due diligence, and industry intelligence with source attribution and decision-oriented summaries. Use when the use
+ECC	skill	marketing-campaign	nao	End-to-end marketing campaign planning and execution. Covers audience research, positioning, campaign angle definition, landing page copy, email sequences, social posts, 
+ECC	skill	master-agreement-generator	nao	Generate review drafts of counterparty master agreements from one template plus a JSON spec, with role-selected clauses and a Schedule A workflow limited to the executed 
+ECC	skill	mcp-dependency-review	nao	Statically review MCP configuration for mutable package references before approval or CI, without executing discovered MCP servers. Use when reviewing .mcp.json, Cursor, 
+ECC	skill	mcp-server-patterns	nao	Build MCP servers with Node/TypeScript SDK — tools, resources, prompts, Zod validation, stdio vs Streamable HTTP. Use Context7 or official MCP docs for latest API. Use 
+ECC	skill	messages-ops	nao	Evidence-first live messaging workflow for ECC. Use when the user wants to read texts or DMs, recover a recent one-time code, inspect a thread before replying, or prove w
+ECC	skill	ml-adoption-playbook	nao	End-to-end methodology for AI agents and software engineers to add machine learning algorithms to existing non-ML codebases. Covers problem framing, data readiness, archi
+ECC	skill	mle-workflow	nao	Production machine-learning engineering workflow for data contracts, reproducible training, model evaluation, deployment, monitoring, and rollback. Use when building, rev
+ECC	skill	module-governance	nao	Establish or maintain a business module's local agent instructions, domain-context links, and interface ownership when implementing a new module or changing its responsib
+ECC	skill	module-regression	nao	Govern cross-module regression in large repositories with a REGRESSION.md ledger that records each module's downstream consumers and executable acceptance command. After 
+ECC	skill	motion-advanced	nao	Advanced motion patterns for React / Next.js — drag & drop, gestures, text animations, SVG path drawing, custom hooks, imperative sequences (useAnimate), loaders, and t
+ECC	skill	motion-foundations	nao	Motion tokens, spring presets, performance rules, device adaptation, accessibility enforcement, and SSR safety for React / Next.js using motion/react. Foundation layer �
+ECC	skill	motion-patterns	nao	Production-ready animation patterns for React / Next.js — button, modal, toast, stagger, page transitions, exit animations, scroll, and layout — built on motion-found
+ECC	skill	mybatis-patterns	nao	MyBatis and MyBatis-Spring patterns for mapper design, XML and annotation SQL, result mapping, dynamic SQL safety, transactions, batching, pagination, and query performan
+ECC	skill	mysql-patterns	nao	MySQL and MariaDB schema, query, indexing, transaction, replication, and connection-pool patterns for production backends. Use when designing MySQL or MariaDB schemas and
+ECC	skill	nanoclaw-repl	nao	Operate and extend NanoClaw, ECC's zero-dependency session-aware REPL, with persistent markdown-backed sessions and slash commands for model switching, skill loading, ses
+ECC	skill	nasiko-control-plane	nao	Manage the experimental Nasiko CLI lifecycle through ECC — read-only status checks, consent-gated install of the pinned qualified version with dry-run preview, and owne
+ECC	skill	nestjs-patterns	nao	NestJS architecture patterns for modules, controllers, providers, DTO validation, guards, interceptors, config, and production-grade TypeScript backends. Use when buildin
+ECC	skill	netmiko-ssh-automation	nao	Safe Python Netmiko patterns for read-only collection, bounded batch SSH, TextFSM parsing, guarded config changes, timeouts, and network automation error handling. Use wh
+ECC	skill	network-bgp-diagnostics	nao	Diagnostics-only BGP troubleshooting patterns for neighbor state, route exchange, prefix policy, AS path inspection, and safe evidence collection. Use when a BGP neighbor
+ECC	skill	network-config-validation	nao	Pre-deployment checks for router and switch configuration, including dangerous commands, duplicate addresses, subnet overlaps, stale references, management-plane risk, an
+ECC	skill	network-interface-health	nao	Diagnose interface errors, drops, CRCs, duplex mismatches, flapping, speed negotiation issues, and counter trends on routers, switches, and Linux hosts. Use when an inter
+ECC	skill	nextjs-turbopack	nao	Next.js 16+ and Turbopack guidance — incremental Rust bundling, file-system caching, faster dev startup and HMR, Turbopack vs webpack tradeoffs, and the middleware.ts t
+ECC	skill	nodejs-keccak256	nao	Prevent Ethereum hashing bugs in JavaScript and TypeScript. Node's sha3-256 is NIST SHA3, not Ethereum Keccak-256, and silently breaks selectors, signatures, storage slot
+ECC	skill	nutrient-document-processing	nao	Process, convert, OCR, extract, redact, sign, and fill documents using the Nutrient DWS API. Works with PDFs, DOCX, XLSX, PPTX, HTML, and images. Use when converting, OCR
+ECC	skill	nuxt4-patterns	nao	Nuxt 4 app patterns for hydration safety, performance, route rules, lazy loading, and SSR-safe data fetching with useFetch and useAsyncData. Use when building or reviewin
+ECC	skill	openclaw-persona-forge	nao	为 OpenClaw AI Agent 锻造完整的龙虾灵魂方案。根据用户偏好或随机抽卡， 输出身份定位、灵魂描述(SOUL.md)、角色化底线规则、名字
+ECC	skill	opensource-pipeline	sim	Open-source pipeline: fork, sanitize, and package private projects for safe public release. Chains 3 agents (forker, sanitizer, packager). Triggers: '/opensource', 'open 
+ECC	skill	operator-approval-loop	nao	Operator approval contract with internal filing notices for agent-drafted outbound messages, hashed drafts, epoch-keyed decisions, durable delivery claims and receipts, a
+ECC	skill	orch-add-feature	nao	Orchestrate building a brand-new feature end to end — research, plan, TDD implementation, review, and gated commit — by delegating each phase to the matching ECC agen
+ECC	skill	orch-build-mvp	nao	Orchestrate bootstrapping a working MVP from a design or spec document — ingest the SDD/PRD, plan thin vertical slices, scaffold the first end-to-end slice, then drive 
+ECC	skill	orch-change-feature	nao	Orchestrate altering an existing, working feature to new desired behavior — update its tests to the new spec, change the implementation to match, review, and gated comm
+ECC	skill	orch-fix-defect	nao	Orchestrate fixing a bug — reproduce it as a failing regression test, fix to green, review, and gated commit — by delegating each phase to the matching ECC agent. Use
+ECC	skill	orch-pipeline	nao	Shared orchestration engine behind the orch-* skill family — the gated Research-Plan-TDD-Review-Commit pipeline, size classifier, agent and command map, and two human g
+ECC	skill	orch-refine-code	nao	Orchestrate a behavior-preserving refactor — confirm tests are green, restructure without changing behavior, keep tests green, review, and gated commit. Use when the st
+ECC	skill	osint-investigation	nao	Sparse-clue OSINT investigation methodology for extracting overlooked leads, connecting fragmented evidence, and testing explanations across sources. Use for multi-step C
+ECC	skill	parallel-execution-optimizer	nao	Speed up a task by turning it into a dependency graph of parallel lanes with a lane matrix, batched reads and checks, write surfaces isolated by file, worktree, branch, o
+ECC	skill	perl-patterns	nao	Modern Perl 5.36+ idioms, best practices, and conventions for building robust, maintainable Perl applications. Use when writing or reviewing modern Perl 5.36+ code.
+ECC	skill	perl-security	nao	Comprehensive Perl security covering taint mode, input validation, safe process execution, DBI parameterized queries, web security (XSS/SQLi/CSRF), and perlcritic securit
+ECC	skill	perl-testing	nao	Perl testing patterns using Test2::V0, Test::More, prove runner, mocking, coverage with Devel::Cover, and TDD methodology. Use when writing Perl tests with Test2::V0 or T
+ECC	skill	plan-canvas	nao	Open plans and HTML artifacts in a local browser canvas where the human annotates elements, chats, and approves or requests changes without leaving the page. Use when pre
+ECC	skill	plan-orchestrate	nao	Read a plan document, decompose it into steps, classify each step, and emit the ready-to-paste ECC slash command for that step, carrying the step identifier and scope in 
+ECC	skill	plankton-code-quality	nao	Write-time code quality enforcement using Plankton — auto-formatting, linting, and Claude-powered fixes on every file edit via hooks. Use when setting up write-time for
+ECC	skill	postgres-patterns	talvez	PostgreSQL database patterns for query optimization, schema design, indexing, and security. Based on Supabase best practices. Use when designing PostgreSQL schemas, index
+ECC	skill	prediction-market-oracle-research	nao	Research prediction markets as data sources or oracle signals for products, agents, dashboards, and corporate decision intelligence. Use for source-grounded analysis of m
+ECC	skill	prediction-market-risk-review	nao	Review prediction-market, basket, oracle, and trading-agent workflows for compliance, safety, data-quality, privacy, and execution risk. Use before any workflow handles v
+ECC	skill	prisma-patterns	nao	Prisma ORM patterns for TypeScript backends — schema design, query optimization, transactions, pagination, and critical traps like updateMany returning count not record
+ECC	skill	product-capability	ideia	Translate PRD intent, roadmap asks, or product discussions into an implementation-ready capability plan that exposes constraints, invariants, interfaces, and unresolved d
+ECC	skill	product-lens	nao	Validate the why before building through four product diagnostics — a YC-style product diagnostic that produces PRODUCT-BRIEF.md with a go/no-go recommendation, a found
+ECC	skill	production-audit	nao	Local-evidence production readiness audit for shipped apps, pre-launch reviews, post-merge checks, and what breaks in prod? questions without sending repo data to an exte
+ECC	skill	production-scheduling	nao	Codified expertise for production scheduling, job sequencing, line balancing, changeover optimization, and bottleneck resolution in discrete and batch manufacturing. Info
+ECC	skill	project-flow-ops	nao	Operate execution flow across GitHub and Linear by triaging issues and pull requests, linking active work, and keeping GitHub public-facing while Linear remains the inter
+ECC	skill	prompt-caching-strategy	nao	Optimize LLM prompt caching hit rate to reduce API costs and improve latency.
+ECC	skill	prompt-optimizer	nao	Analyze draft prompts, detect intent and missing context, match ECC commands, skills, and agents, and output a ready-to-paste optimized prompt with diagnosis and rational
+ECC	skill	python-patterns	nao	Pythonic idioms, PEP 8 standards, type hints, and best practices for building robust, efficient, and maintainable Python applications. Use when writing or reviewing Pytho
+ECC	skill	python-testing	nao	Python testing strategies using pytest, TDD methodology, fixtures, mocking, parametrization, and coverage requirements. Use when writing pytest tests — fixtures, mocks,
+ECC	skill	pytorch-patterns	nao	PyTorch deep learning patterns and best practices for building robust, efficient, and reproducible training pipelines, model architectures, and data loading. Use when wri
+ECC	skill	quality-nonconformance	nao	Quality control and non-conformance management for regulated manufacturing (FDA 21 CFR 820, IATF 16949, AS9100): NCR lifecycle and disposition, 5-Why/Ishikawa/fault-tree/
+ECC	skill	quarkus-patterns	nao	Quarkus 3.x LTS architecture patterns with Camel for messaging, RESTful API design, CDI services, data access with Panache, and async processing. Use for Java Quarkus bac
+ECC	skill	quarkus-security	nao	Quarkus security implementation patterns: JWT and OIDC authentication, @RolesAllowed RBAC and SecurityIdentity checks, Bean Validation and custom validators, parameterize
+ECC	skill	quarkus-tdd	nao	Test-driven development for Quarkus 3.x LTS using JUnit 5, Mockito, REST Assured, Camel testing, and JaCoCo. Use when adding features, fixing bugs, or refactoring event-d
+ECC	skill	quarkus-verification	nao	Verification loop for Quarkus projects: build, static analysis (Checkstyle, PMD, SpotBugs), tests with JaCoCo coverage, OWASP dependency and container security scans, Gra
+ECC	skill	rails-patterns	nao	Ruby on Rails framework patterns for Rails 7.1+ and 8.x apps. Covers the directory contract, skinny controllers with service objects, form objects, query objects, idiomat
+ECC	skill	ralphinho-rfc-pipeline	ideia	Split an RFC into a multi-agent execution DAG — decompose into work units with dependencies and acceptance tests, run research, plan, implement, test, and review per un
+ECC	skill	react-native-patterns	nao	React Native and Expo app patterns — Expo Router navigation, state separation (server/client/route/form), TanStack Query data fetching with Zod, performant lists, Nativ
+ECC	skill	react-patterns	nao	React 18/19 patterns including hooks discipline, server/client component boundaries, Suspense + error boundaries, form actions, data fetching, state management decision t
+ECC	skill	react-performance	nao	React and Next.js performance optimization patterns adapted from Vercel Engineering's React Best Practices (https://github.com/vercel-labs/agent-skills). Organizes 70+ ru
+ECC	skill	react-testing	talvez	React component testing with React Testing Library, Vitest/Jest, MSW for network mocking, accessibility assertions with axe, and the decision boundary between component t
+ECC	skill	recsys-pipeline-architect	nao	Design composable recommendation, ranking, and feed pipelines using the six-stage Source→Hydrator→Filter→Scorer→Selector→SideEffect framework popularized by xAI
+ECC	skill	recursive-decision-ledger	nao	Run repeated rollouts (Prime Gauss style recursive prompting) while keeping an append-only decision ledger of trials, marks, coherence checks, and promotion gates, so rec
+ECC	skill	redis-patterns	talvez	Redis data structure patterns, caching strategies, distributed locks, rate limiting, pub/sub, and connection management for production applications. Use when adding cachi
+ECC	skill	regex-vs-llm-structured-text	nao	Decision framework for parsing structured text (quizzes, forms, invoices, receipts, tables) with a hybrid regex-first pipeline — regex extraction handles 95%+ cheaply, 
+ECC	skill	remotion-video-creation	nao	Best practices for Remotion - Video creation in React. 29 domain-specific rules covering 3D, animations, audio, captions, charts, transitions, and more. Use when building
+ECC	skill	repo-scan	nao	Bootstrap pointer that installs the external repo-scan skill from a pinned, reviewable commit. Use when repo-scan must be installed before running its cross-stack source-
+ECC	skill	research-ops	nao	Evidence-first current-state research workflow for ECC. Use when the user wants fresh facts, comparisons, enrichment, or a recommendation built from current public eviden
+ECC	skill	returns-reverse-logistics	nao	Codified expertise for returns authorization, receipt and inspection, disposition decisions, refund processing, fraud detection, and warranty claims management. Informed 
+ECC	skill	rules-distill	nao	Scan skills to extract cross-cutting principles and distill them into rules — append, revise, or create new rule files. Use when the same principle keeps recurring acro
+ECC	skill	rust-patterns	nao	Idiomatic Rust patterns, ownership, error handling, traits, concurrency, and best practices for building safe, performant applications. Use when writing or reviewing Rust
+ECC	skill	rust-testing	nao	Rust testing patterns including unit tests, integration tests, async testing, property-based testing, mocking, and coverage. Follows TDD methodology. Use when writing Rus
+ECC	skill	safety-guard	ideia	Guard against destructive operations with three modes: Careful intercepts dangerous commands (rm -rf, git push --force, DROP TABLE) for confirmation, Freeze locks writes 
+ECC	skill	santa-method	ideia	Multi-agent adversarial verification: two independent reviewers with the same rubric must both pass before output ships, with a fix-and-re-review convergence loop and hum
+ECC	skill	scientific-db-pubmed-database	nao	Direct PubMed and NCBI E-utilities search workflows for biomedical literature, MeSH queries, PMID lookup, citation retrieval, and API-backed literature monitoring. Use wh
+ECC	skill	scientific-db-uspto-database	nao	USPTO patent and trademark data workflow for official record lookup, PatentSearch queries, TSDR checks, assignment data, and reproducible IP research logs. Use when a tas
+ECC	skill	scientific-pkg-gget	nao	gget CLI and Python workflow for quick genomic database queries, sequence lookup, BLAST-style searches, enrichment checks, and reproducible bioinformatics evidence logs. 
+ECC	skill	scientific-thinking-literature-review	nao	Systematic literature-review workflow for academic, biomedical, technical, and scientific topics, including search planning, source screening, synthesis, citation checks,
+ECC	skill	scientific-thinking-scholar-evaluation	nao	Structured scholarly-work evaluation for papers, proposals, literature reviews, methods sections, evidence quality, citation support, and research-writing feedback. Use w
+ECC	skill	search-first	ideia	Research-before-coding workflow: search npm/PyPI, MCP servers, skills, and GitHub for existing tools before writing custom code, then adopt, extend, or build. Launches th
+ECC	skill	security-bounty-hunter	nao	Hunt for exploitable, bounty-worthy security issues in repositories. Focuses on remotely reachable vulnerabilities that qualify for real reports instead of noisy local-on
+ECC	skill	security-review	talvez	Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides compreh
+ECC	skill	security-scan	nao	Scan your Claude Code configuration (.claude/ directory) for security vulnerabilities, misconfigurations, and injection risks using AgentShield. Checks CLAUDE.md, setting
+ECC	skill	seo	nao	Audit, plan, and implement SEO improvements across technical SEO, on-page optimization, structured data, Core Web Vitals, and content strategy. Use when the user wants be
+ECC	skill	skill-comply	ideia	Visualize whether skills, rules, and agent definitions are actually followed — auto-generates scenarios at 3 prompt strictness levels, runs agents, classifies behaviora
+ECC	skill	skill-host-compat	nao	Lint ECC skills for Codex/Cursor-safe frontmatter and Claude-only substitutions before a skill PR.
+ECC	skill	skill-scout	nao	Search existing local, marketplace, GitHub, and web skill sources before creating a new skill. Use when the user wants to create, build, fork, or find a skill for a workf
+ECC	skill	skill-stocktake	ideia	Use when auditing Claude skills and commands for quality. Supports Quick Scan (changed skills only) and Full Stocktake modes with sequential subagent batch evaluation.
+ECC	skill	social-graph-ranker	nao	Weighted social-graph ranking for warm intro discovery, bridge scoring, and network gap analysis across X and LinkedIn. Use when the user wants the reusable graph-ranking
+ECC	skill	social-publisher	nao	Agent-driven scheduling and publishing of social media posts across 13 platforms via SocialClaw. Use when the user wants to publish to X, LinkedIn, Instagram, Facebook Pa
+ECC	skill	springboot-patterns	nao	Spring Boot architecture patterns, REST API design, layered services, data access, caching, async processing, and logging. Use for Java Spring Boot backend work. Use when
+ECC	skill	springboot-security	nao	Spring Security best practices for authn/authz, validation, CSRF, secrets, headers, rate limiting, and dependency security in Java Spring Boot services. Use when reviewin
+ECC	skill	springboot-tdd	nao	Test-driven development for Spring Boot using JUnit 5, Mockito, MockMvc, Testcontainers, and JaCoCo. Use when adding features, fixing bugs, or refactoring.
+ECC	skill	springboot-verification	nao	Run the full Spring Boot verification loop — Maven or Gradle build, SpotBugs, PMD, and Checkstyle static analysis, unit and Testcontainers integration tests with JaCoCo
+ECC	skill	story-lifecycle	ideia	Manage a file-based epic → story → sprint development loop without requiring an external project management tool. Creates and tracks epics, breaks them into user stor
+ECC	skill	strategic-compact	ideia	Suggests manual context compaction at logical intervals to preserve context through task phases rather than arbitrary auto-compaction. Use when a session is approaching a
+ECC	skill	swift-actor-persistence	nao	Thread-safe data persistence in Swift using actors — in-memory cache with file-backed storage, eliminating data races by design. Use when persisting data in Swift and a
+ECC	skill	swift-concurrency-6-2	nao	Swift 6.2 Approachable Concurrency — single-threaded by default, @concurrent for explicit background offloading, isolated conformances for main actor types. Use when ad
+ECC	skill	swift-protocol-di-testing	nao	Protocol-based dependency injection for testable Swift code — mock file system, network, and external APIs using focused protocols and Swift Testing. Use when Swift cod
+ECC	skill	swiftui-patterns	nao	SwiftUI architecture patterns, state management with @Observable, view composition, navigation, performance optimization, and modern iOS/macOS UI best practices. Use when
+ECC	skill	taste-application	nao	Generate new video against a distilled style pack and cut it into a finished piece - plan takes from the reference's cut rhythm, generate on fal, grade with the pack's me
+ECC	skill	taste-distillation	nao	Measure a set of reference videos into a reusable style pack - colour grade as a 3D LUT, cut rhythm as a shot-length distribution, hero stills, screen-blend overlay plate
+ECC	skill	taste	nao	Creative-direction layer for music videos and short-form edits in the angelcore / cloud-trance / hyperpop family — a named-genre aesthetic vocabulary, mood + color + li
+ECC	skill	tasteforge-video	nao	Use for file-driven multimodal image, video, and 3D-asset discovery; taste interviews; distill or apply workflows; style-pack validation; editable EDL/FCPXML export; prov
+ECC	skill	tdd-workflow	nao	Test-driven development workflow: write a failing test first, watch it fail, implement the smallest change to green, then refactor with 80%+ coverage across unit, integra
+ECC	skill	team-agent-orchestration	nao	Run team-based orchestration for agent squads: work items with owners and scope, agent Kanban state, branch isolation, control pane visibility, and merge gates. Use when 
+ECC	skill	team-builder	nao	Interactive picker that discovers available agent personas via the claude agents command and agents/ markdown globs, groups them into domains, has the user select up to f
+ECC	skill	terminal-opener	nao	Open an executable and its argument array in a visible terminal window through a reusable, shell-free launch plan with dry-run, JSON, capability detection, detached fallb
+ECC	skill	terminal-ops	nao	Evidence-first repo execution workflow for ECC. Use when the user wants a command run, a repo checked, a CI failure debugged, or a narrow fix pushed with exact proof of w
+ECC	skill	test-collaboration	nao	Inventory and govern a project's test assets. Connect requirements, business rules, risks, bugs, and cross-boundary contracts to stable TEST-IDs and executable evidence i
+ECC	skill	tinystruct-patterns	nao	Expert guidance for developing with the tinystruct Java framework. Use when working on the tinystruct codebase or any project built on tinystruct — including generating
+ECC	skill	token-budget-advisor	nao	Offer a choice of response depth (25%/50%/75%/100%) with token estimates before answering, then answer at that level. Use when the user asks to control response length or
+ECC	skill	token-card	nao	Render a token-usage stat card from local Claude Code, Codex, Gemini CLI, and OpenCode session logs and commit it into the repository as a file. Use when someone wants a 
+ECC	skill	typescript-patterns	nao	TypeScript patterns for strict, type-safe, maintainable code in modern TypeScript and JavaScript applications. Covers strict compiler configuration, type design, narrowin
+ECC	skill	ui-demo	nao	Record polished UI demo videos using Playwright. Use when the user asks to create a demo, walkthrough, screen recording, or tutorial video of a web application. Produces 
+ECC	skill	ui-to-vue	nao	Use when the user has UI screenshots or design exports that need batch conversion into Vue 3 components, especially with Vant, Element Plus, or Ant Design Vue.
+ECC	skill	uncloud	nao	Use when managing an Uncloud cluster — deploying services, configuring Caddy ingress, adding static proxy routes for non-cluster devices, publishing ports, scaling, ins
+ECC	skill	unified-memory	nao	Share durable, inspectable context and handoffs between Claude, Codex, Hermes, Cursor, OpenCode, and other agents through the local ECC Memory Vault. Use when an agent mu
+ECC	skill	unified-notifications-ops	nao	Operate notifications as one ECC-native workflow across GitHub, Linear, desktop alerts, hooks, and connected communication surfaces. Use when the real problem is alert ro
+ECC	skill	verification-loop	nao	Run a six-phase verification of a Claude Code session's work — build, type check, lint, tests with coverage, security grep, and diff review — then produce a PASS/FAIL
+ECC	skill	video-editing	nao	AI-assisted video editing workflows for cutting, structuring, and augmenting real footage. Covers the full pipeline from raw capture through FFmpeg, Remotion, ElevenLabs,
+ECC	skill	videodb	nao	Ingest, index, search, edit, and monitor video and audio with the VideoDB Python SDK — upload from files, URLs, or RTSP feeds, build spoken and scene indexes with times
+ECC	skill	visa-doc-translate	nao	Translate visa document images (bank deposit, employment, income, and retirement certificates; HEIC, PNG, or JPG) into English via OCR and produce a bilingual PDF pairing
+ECC	skill	vite-patterns	nao	Vite build tool patterns including config, plugins, HMR, env variables, proxy setup, SSR, library mode, dependency pre-bundling, and build optimization. Activate when wor
+ECC	skill	vue-patterns	nao	Vue.js 3 Composition API patterns, component architecture, reactivity best practices, Pinia state management, Vue Router navigation, and Nuxt SSR patterns. Activates for 
+ECC	skill	windows-desktop-e2e	nao	E2E testing for Windows native desktop apps (WPF, WinForms, Win32/MFC, Qt) using pywinauto and Windows UI Automation. Use when writing E2E tests for a Windows native desk
+ECC	skill	workspace-surface-audit	nao	Audit the active repo, MCP servers, plugins, connectors, env surfaces, and harness setup, then recommend the highest-value ECC-native skills, hooks, agents, and operator 
+ECC	skill	x-api	nao	X/Twitter API integration for posting tweets, threads, reading timelines, search, and analytics. Covers OAuth auth patterns, rate limits, and platform-native content post
+ECC	agent	a11y-architect	nao	Accessibility Architect specializing in WCAG 2.2 compliance for Web and Native platforms. Use PROACTIVELY when designing UI components, establishing design systems, or au
+ECC	agent	agent-evaluator	nao	Evaluates agent output against 5-axis quality rubric (accuracy, completeness, clarity, actionability, conciseness). Use after any non-trivial task when the user wants a q
+ECC	agent	architect	nao	Software architecture specialist for system design, scalability, and technical decision-making. Use PROACTIVELY when planning new features, refactoring large systems, or 
+ECC	agent	bengali-reviewer	nao	Reviews code handling Bengali (Bangla) text for Unicode correctness, proper normalization, script-aware processing, and internationalization best practices. Use when code
+ECC	agent	build-error-resolver	nao	Build and TypeScript error resolution specialist. Use PROACTIVELY when build fails or type errors occur. Fixes build/type errors only with minimal diffs, no architectural
+ECC	agent	chief-of-staff	nao	Personal communication chief of staff that triages email, Slack, LINE, and Messenger. Classifies messages into 4 tiers (skip/info_only/meeting_info/action_required), gene
+ECC	agent	code-architect	nao	Designs feature architectures by analyzing existing codebase patterns and conventions, then providing implementation blueprints with concrete files, interfaces, data flow
+ECC	agent	code-explorer	sim	Deeply analyzes existing codebase features by tracing execution paths, mapping architecture layers, and documenting dependencies to inform new development.
+ECC	agent	code-reviewer	nao	Expert code review specialist. Proactively reviews code for quality, security, and maintainability. Use immediately after writing or modifying code. MUST BE USED for all 
+ECC	agent	code-simplifier	nao	Simplifies and refines code for clarity, consistency, and maintainability while preserving behavior. Focus on recently modified code unless instructed otherwise.
+ECC	agent	comment-analyzer	nao	Analyze code comments for accuracy, completeness, maintainability, and comment rot risk.
+ECC	agent	commit-reviewer	talvez	Reviews a staged diff and drafts a Conventional Commits-compliant message matching the repository's actual history norms. Use before committing, or when asked to write or
+ECC	agent	conversation-analyzer	nao	Use this agent when analyzing conversation transcripts to find behaviors worth preventing with hooks. Triggered by /hookify without arguments.
+ECC	agent	cpp-build-resolver	nao	C++ build, CMake, and compilation error resolution specialist. Fixes build errors, linker issues, and template errors with minimal changes. Use when C++ builds fail.
+ECC	agent	cpp-reviewer	nao	Expert C++ code reviewer specializing in memory safety, modern C++ idioms, concurrency, and performance. Use for all C++ code changes. MUST BE USED for C++ projects.
+ECC	agent	csharp-reviewer	nao	Expert C# code reviewer specializing in .NET conventions, async patterns, security, nullable reference types, and performance. Use for all C# code changes. MUST BE USED f
+ECC	agent	dart-build-resolver	nao	Dart/Flutter build, analysis, and dependency error resolution specialist. Fixes `dart analyze` errors, Flutter compilation failures, pub dependency conflicts, and build_r
+ECC	agent	database-reviewer	sim	PostgreSQL database specialist for query optimization, schema design, security, and performance. Use PROACTIVELY when writing SQL, creating migrations, designing schemas,
+ECC	agent	django-build-resolver	nao	Django/Python build, migration, and dependency error resolution specialist. Fixes pip/Poetry errors, migration conflicts, import errors, Django configuration issues, and 
+ECC	agent	django-reviewer	nao	Expert Django code reviewer specializing in ORM correctness, DRF patterns, migration safety, security misconfigurations, and production-grade Django practices. Use for al
+ECC	agent	doc-updater	nao	Documentation and codemap specialist. Use PROACTIVELY for updating codemaps and documentation. Generates docs/CODEMAPS/*, updates READMEs and guides. Backs the /update-co
+ECC	agent	docs-lookup	nao	When the user asks how to use a library, framework, or API or needs up-to-date code examples, use Context7 MCP to fetch current documentation and return answers with exam
+ECC	agent	e2e-runner	nao	End-to-end testing specialist using Vercel Agent Browser (preferred) with Playwright fallback. Use PROACTIVELY for generating, maintaining, and running E2E tests. Manages
+ECC	agent	fastapi-reviewer	nao	Reviews FastAPI applications for async correctness, dependency injection, Pydantic schemas, security, OpenAPI quality, testing, and production readiness.
+ECC	agent	flutter-reviewer	nao	Flutter and Dart code reviewer. Reviews Flutter code for widget best practices, state management patterns, Dart idioms, performance pitfalls, accessibility, and clean arc
+ECC	agent	fsharp-reviewer	nao	Expert F# code reviewer specializing in functional idioms, type safety, pattern matching, computation expressions, and performance. Use for all F# code changes. MUST BE U
+ECC	agent	gan-evaluator	nao	GAN Harness — Evaluator agent. Tests the live running application via Playwright, scores against rubric, and provides actionable feedback to the Generator.
+ECC	agent	gan-generator	nao	GAN Harness — Generator agent. Implements features according to the spec, reads evaluator feedback, and iterates until quality threshold is met.
+ECC	agent	gan-planner	nao	GAN Harness — Planner agent. Expands a one-line prompt into a full product specification with features, sprints, evaluation criteria, and design direction.
+ECC	agent	go-build-resolver	sim	Go build, vet, and compilation error resolution specialist. Fixes build errors, go vet issues, and linter warnings with minimal changes. Use when Go builds fail.
+ECC	agent	go-reviewer	sim	Expert Go code reviewer specializing in idiomatic Go, concurrency patterns, error handling, and performance. Use for all Go code changes. MUST BE USED for Go projects.
+ECC	agent	harmonyos-app-resolver	nao	HarmonyOS application development expert specializing in ArkTS and ArkUI. Reviews code for V2 state management compliance, Navigation routing patterns, API usage, and per
+ECC	agent	harness-optimizer	nao	Improve local agent-harness configuration reliability and cost using eval-driven grading (pass@k/pass^k) derived from the eval-harness skill.
+ECC	agent	healthcare-reviewer	nao	Reviews healthcare application code for clinical safety, CDSS accuracy, PHI compliance, and medical data integrity. Specialized for EMR/EHR, clinical decision support, an
+ECC	agent	homelab-architect	nao	Designs home and small-lab network plans from hardware inventory, goals, and operator experience level, with safe staged changes and rollback guidance.
+ECC	agent	java-build-resolver	nao	Java/Maven/Gradle build, compilation, and dependency error resolution specialist. Automatically detects Spring Boot or Quarkus and applies framework-specific fixes. Fixes
+ECC	agent	java-reviewer	nao	Expert Java code reviewer for Spring Boot and Quarkus projects. Automatically detects the framework and applies the appropriate review rules. Covers layered architecture,
+ECC	agent	kotlin-build-resolver	nao	Kotlin/Gradle build, compilation, and dependency error resolution specialist. Fixes build errors, Kotlin compiler errors, and Gradle issues with minimal changes. Use when
+ECC	agent	kotlin-reviewer	nao	Kotlin and Android/KMP code reviewer. Reviews Kotlin code for idiomatic patterns, coroutine safety, Compose best practices, clean architecture violations, and common Andr
+ECC	agent	loop-operator	nao	Operate autonomous agent loops, monitor progress, and intervene safely when loops stall.
+ECC	agent	marketing-agent	nao	Marketing strategist and copywriter for campaign planning, audience research, positioning, copy creation, and content review. Covers landing pages, email sequences, socia
+ECC	agent	mle-reviewer	nao	Production machine-learning engineering reviewer for data contracts, feature pipelines, training reproducibility, offline/online evaluation, model serving, monitoring, an
+ECC	agent	network-architect	nao	Designs enterprise or multi-site network architecture from requirements, using existing network skills for focused routing, validation, automation, and troubleshooting de
+ECC	agent	network-config-reviewer	nao	Reviews router and switch configurations for security, correctness, stale references, risky change-window commands, and missing operational guardrails.
+ECC	agent	network-troubleshooter	nao	Diagnoses network connectivity, routing, DNS, interface, and policy symptoms with a read-only OSI-layer workflow and evidence-backed root cause summary.
+ECC	agent	opensource-forker	sim	Fork any project for open-sourcing. Copies files, strips secrets and credentials (20+ patterns), replaces internal references with placeholders, generates .env.example, a
+ECC	agent	opensource-packager	sim	Generate complete open-source packaging for a sanitized project. Produces CLAUDE.md, setup.sh, README.md, LICENSE, CONTRIBUTING.md, and GitHub issue templates. Makes any 
+ECC	agent	opensource-sanitizer	sim	Verify an open-source fork is fully sanitized before release. Scans for leaked secrets, PII, internal references, and dangerous files using 20+ regex patterns. Generates 
+ECC	agent	performance-optimizer	nao	Performance analysis and optimization specialist. Use PROACTIVELY for identifying bottlenecks, optimizing slow code, reducing bundle sizes, and improving runtime performa
+ECC	agent	php-reviewer	nao	Expert PHP code reviewer specializing in PSR-12 compliance, PHP type system, Eloquent ORM patterns, security, and performance. Use for all PHP code changes. MUST BE USED 
+ECC	agent	planner	nao	Expert planning specialist for complex features and refactoring. Use PROACTIVELY when users request feature implementation, architectural changes, or complex refactoring.
+ECC	agent	pr-test-analyzer	sim	Review pull request test coverage quality and completeness, with emphasis on behavioral coverage and real bug prevention.
+ECC	agent	python-reviewer	nao	Expert Python code reviewer specializing in PEP 8 compliance, Pythonic idioms, type hints, security, and performance. Use for all Python code changes. MUST BE USED for Py
+ECC	agent	pytorch-build-resolver	nao	PyTorch runtime, CUDA, and training error resolution specialist. Fixes tensor shape mismatches, device errors, gradient issues, DataLoader problems, and mixed precision f
+ECC	agent	rag-pipeline-reviewer	nao	Reviews RAG (Retrieval-Augmented Generation) pipelines for retrieval quality, chunking strategy, embedding choices, and evaluation coverage. Invoke when the user builds, 
+ECC	agent	react-build-resolver	sim	Diagnose and fix React build failures across Vite, webpack, Next.js, CRA, Parcel, esbuild, and Bun. Handles JSX/TSX compile errors, hydration mismatches, server/client co
+ECC	agent	react-reviewer	sim	Expert React/JSX code reviewer specializing in hook correctness, render performance, server/client component boundaries, accessibility, and React-specific security. Use f
+ECC	agent	refactor-cleaner	nao	Dead code cleanup and consolidation specialist. Use PROACTIVELY for removing unused code, duplicates, and refactoring. Runs analysis tools (knip, depcheck, ts-prune) to i
+ECC	agent	ruby-reviewer	nao	Expert Ruby and Rails code reviewer specializing in idiomatic Ruby, Active Record query safety, Rails security defaults, and RSpec/Minitest quality. Use for all Ruby code
+ECC	agent	rust-build-resolver	nao	Rust build, compilation, and dependency error resolution specialist. Fixes cargo build errors, borrow checker issues, and Cargo.toml problems with minimal changes. Use wh
+ECC	agent	rust-reviewer	nao	Expert Rust code reviewer specializing in ownership, lifetimes, error handling, unsafe usage, and idiomatic patterns. Use for all Rust code changes. MUST BE USED for Rust
+ECC	agent	security-reviewer	nao	Security vulnerability detection and remediation specialist. Use PROACTIVELY after writing code that handles user input, authentication, API endpoints, or sensitive data.
+ECC	agent	seo-specialist	nao	SEO specialist for technical SEO audits, on-page optimization, structured data, Core Web Vitals, and content/keyword mapping. Use for site audits, meta tag reviews, schem
+ECC	agent	silent-failure-hunter	sim	Review code for silent failures, swallowed errors, bad fallbacks, and missing error propagation.
+ECC	agent	spec-miner	nao	Extracts behavioral specs from existing codebases for OpenSpec. Produces flat Requirement and Invariant blocks with structured metadata (entities, enforced, id, test anch
+ECC	agent	swift-build-resolver	nao	Swift/Xcode build, compilation, and dependency error resolution specialist. Fixes swift build errors, Xcode build failures, SPM dependency issues, and code signing proble
+ECC	agent	swift-reviewer	nao	Expert Swift code reviewer specializing in protocol-oriented design, value semantics, ARC memory management, Swift Concurrency, and idiomatic patterns. Use for all Swift 
+ECC	agent	tdd-guide	nao	Test-Driven Development specialist enforcing write-tests-first methodology. Use PROACTIVELY when writing new features, fixing bugs, or refactoring code. Ensures 80%+ test
+ECC	agent	type-design-analyzer	talvez	Analyze type design for encapsulation, invariant expression, usefulness, and enforcement.
+ECC	agent	typescript-reviewer	sim	Expert TypeScript/JavaScript code reviewer specializing in type safety, async correctness, Node/web security, and idiomatic patterns. Use for all TypeScript and JavaScrip
+ECC	agent	vue-reviewer	nao	Expert Vue.js code reviewer specializing in Composition API correctness, reactivity pitfalls, component architecture, template security, and Vue-specific performance. Use
+ECC	command	aside	nao	Answer a quick side question without interrupting or losing context from the current task. Resume work automatically after answering.
+ECC	command	astra-review	nao	Send Claude-written code to GPT-6-Astra (ChatGPT, via Codex CLI) for an independent cross-provider review, then fix what it finds.
+ECC	command	auto-update	nao	Pull the latest ECC repo changes and reinstall the current managed targets.
+ECC	command	build-fix	nao	Detect the project build system and incrementally fix build/type errors with minimal safe changes.
+ECC	command	checkpoint	nao	Create, verify, or list workflow checkpoints after running verification checks.
+ECC	command	code-review	nao	Code review — local uncommitted changes or GitHub PR (pass PR number/URL for PR mode). Use for a step-by-step PRP-style checklist review; for a multi-agent pass use /re
+ECC	command	cost-report	nao	Generate a local Claude Code cost report from the ECC cost-tracker metrics log. Use for a terminal summary or CSV export of tracked spend; the cost-tracking skill covers 
+ECC	command	cpp-build	nao	Fix C++ build errors, CMake issues, and linker problems incrementally. Invokes the cpp-build-resolver agent for minimal, surgical fixes.
+ECC	command	cpp-review	nao	Comprehensive C++ code review for memory safety, modern C++ idioms, concurrency, and security. Invokes the cpp-reviewer agent.
+ECC	command	cpp-test	nao	Enforce TDD workflow for C++. Write GoogleTest tests first, then implement. Verify coverage with gcov/lcov.
+ECC	command	ecc-guide	nao	Navigate ECC's current agents, skills, commands, hooks, install profiles, and docs from the live repository surface. This is the slash-command entrypoint for that navigat
+ECC	command	epic-claim	nao	Claim an epic issue, stamp coordination state, and sync local ownership.
+ECC	command	epic-decompose	ideia	Break an epic into task children without creating task branches.
+ECC	command	epic-publish	nao	Publish a validated epic update back to the issue and local cache.
+ECC	command	epic-review	nao	Mark epic review requested, approved, or changes requested.
+ECC	command	epic-sync	nao	Sync epic issue bodies, labels, and local coordination snapshots from GitHub.
+ECC	command	epic-unblock	nao	Sweep blocked epic issues and reopen anything whose dependencies are closed.
+ECC	command	epic-validate	nao	Validate epic readiness, dependencies, and coordination policy.
+ECC	command	evolve	nao	Analyze instincts and suggest or generate evolved structures
+ECC	command	fastapi-review	nao	Review a FastAPI application for architecture, async correctness, dependency injection, Pydantic schemas, security, performance, and testability.
+ECC	command	feature-dev	nao	Guided feature development with codebase understanding and architecture focus
+ECC	command	flutter-build	nao	Fix Dart analyzer errors and Flutter build failures incrementally. Invokes the dart-build-resolver agent for minimal, surgical fixes.
+ECC	command	flutter-review	nao	Review Flutter/Dart code for idiomatic patterns, widget best practices, state management, performance, accessibility, and security. Invokes the flutter-reviewer agent.
+ECC	command	flutter-test	nao	Run Flutter/Dart tests, report failures, and incrementally fix test issues. Covers unit, widget, golden, and integration tests.
+ECC	command	gan-build	nao	Run a generator/evaluator build loop for implementation tasks with bounded iterations and scoring.
+ECC	command	gan-design	nao	Run a generator/evaluator design loop for frontend or visual work with bounded iterations and scoring.
+ECC	command	go-build	nao	Fix Go build errors, go vet warnings, and linter issues incrementally. Invokes the go-build-resolver agent for minimal, surgical fixes.
+ECC	command	go-review	nao	Comprehensive Go code review for idiomatic patterns, concurrency safety, error handling, and security. Invokes the go-reviewer agent.
+ECC	command	go-test	nao	Enforce TDD workflow for Go. Write table-driven tests first, then implement. Verify 80%+ coverage with go test -cover.
+ECC	command	gradle-build	nao	Fix Gradle build errors for Android and KMP projects
+ECC	command	harness-audit	nao	Run a deterministic repository harness audit and return a prioritized scorecard. Use for a deterministic overall repo-readiness scorecard; for a security-specific audit u
+ECC	command	hookify-configure	nao	Enable or disable hookify rules interactively
+ECC	command	hookify-help	nao	Get help with the hookify system
+ECC	command	hookify-list	nao	List all configured hookify rules
+ECC	command	hookify	nao	Create hooks to prevent unwanted behaviors from conversation analysis or explicit instructions. Use to generate a new hook rule file from conversation analysis or a descr
+ECC	command	instinct-export	nao	Export instincts from project/global scope to a file
+ECC	command	instinct-import	nao	Import instincts from file or URL into project/global scope
+ECC	command	instinct-status	nao	Show learned instincts (project + global) with confidence
+ECC	command	issue-review	nao	Review a GitHub issue the way /code-review reviews a PR — verify the report against the codebase, find duplicates and prior fixes, score completeness, assign severity, 
+ECC	command	jira	nao	Retrieve a Jira ticket, analyze requirements, update status, or add comments. Uses the jira-integration skill and MCP or REST API.
+ECC	command	kotlin-build	nao	Fix Kotlin/Gradle build errors, compiler warnings, and dependency issues incrementally. Invokes the kotlin-build-resolver agent for minimal, surgical fixes.
+ECC	command	kotlin-review	nao	Comprehensive Kotlin code review for idiomatic patterns, null safety, coroutine safety, and security. Invokes the kotlin-reviewer agent.
+ECC	command	kotlin-test	nao	Enforce TDD workflow for Kotlin. Write Kotest tests first, then implement. Verify 80%+ coverage with Kover.
+ECC	command	learn-eval	nao	Extract reusable patterns from the session, self-evaluate quality before saving, and determine the right save location (Global vs Project).
+ECC	command	learn	nao	Extract reusable patterns from the current session and save them as candidate skills or guidance. Use to review a session on demand and persist an approved skill file; co
+ECC	command	loop-start	nao	Prepare a managed autonomous loop pattern with safety defaults and explicit stop conditions, then print the commands to launch and monitor it. Use to set up sequential, c
+ECC	command	loop-status	nao	Inspect active loop state, progress, failure signals, and recommended intervention.
+ECC	command	marketing-campaign	nao	Plan and execute a full marketing campaign. Accepts a product brief and returns positioning, landing page copy, email sequence, social posts, ad variants, video scripts, 
+ECC	command	model-route	nao	Recommend the best model tier for the current task based on complexity, risk, and budget.
+ECC	command	multi-backend	nao	Run a backend-focused multi-model workflow for APIs, algorithms, data, and business logic.
+ECC	command	multi-execute	nao	Execute a multi-model implementation plan while preserving Claude as the only filesystem writer.
+ECC	command	multi-frontend	nao	Run a frontend-focused multi-model workflow for components, layouts, animation, and UI polish.
+ECC	command	multi-plan	nao	Create a multi-model (Codex + Antigravity) implementation plan without modifying production code. Requires the external ccg-workflow runtime, not part of the base ECC ins
+ECC	command	multi-workflow	nao	Run a full multi-model development workflow with research, planning, execution, optimization, and review.
+ECC	command	orch-add-feature	nao	Orchestrate building a brand-new feature end to end — research, plan, TDD, review, gated commit. Wrapper that kicks off the orch-add-feature skill.
+ECC	command	orch-build-mvp	nao	Orchestrate bootstrapping a working MVP from a design/spec doc — ingest, slice, scaffold, TDD, review, gated commit (reuses the GAN harness). Wrapper for the orch-build
+ECC	command	orch-change-feature	nao	Orchestrate altering an existing, working feature to new desired behavior — update tests to the new spec, change impl, review, gated commit. Wrapper for the orch-change
+ECC	command	orch-fix-defect	nao	Orchestrate fixing a bug — reproduce it as a failing regression test, fix to green, review, gated commit. Wrapper for the orch-fix-defect skill.
+ECC	command	orch-refine-code	nao	Orchestrate a behavior-preserving refactor — confirm tests green, restructure without changing behavior, keep green, review, gated commit. Wrapper for the orch-refine-c
+ECC	command	orch-review	nao	Run the orch-review native Workflow over a diff (local changes or a GitHub PR) and report blocking vs advisory findings. Surface for the orch-review workflow. Use for a n
+ECC	command	plan-canvas	nao	Open a plan or HTML artifact in the browser Plan Canvas for annotate-and-approve review. This is a thin slash-command entrypoint over the plan-canvas skill, which covers 
+ECC	command	plan-prd	nao	Generate a lean, problem-first PRD and hand off to /plan for implementation planning.
+ECC	command	plan	nao	Restate requirements, assess risks, and create step-by-step implementation plan. WAIT for user CONFIRM before touching any code. Use for a single-model inline or PRD-driv
+ECC	command	pm2	nao	Analyze a project and generate PM2 service commands for detected frontend, backend, or database services.
+ECC	command	pr	nao	Create a GitHub PR from current branch with unpushed commits — discovers templates, analyzes changes, pushes
+ECC	command	project-init	nao	Detect a project's stack and produce a dry-run ECC onboarding plan using the repository's install manifests and stack mappings. Use to onboard ECC into a target project v
+ECC	command	projects	nao	List known projects and their instinct statistics
+ECC	command	promote	nao	Promote project-scoped instincts to global scope
+ECC	command	prp-commit	nao	Quick commit with natural language file targeting — describe what to commit in plain English
+ECC	command	prp-implement	nao	Execute an implementation plan with rigorous validation loops
+ECC	command	prp-plan	nao	Create comprehensive feature implementation plan with codebase analysis and pattern extraction
+ECC	command	prp-pr	nao	Alias of /pr for the PRP workflow series. Use when creating a pull request mid-PRP workflow; otherwise use /pr.
+ECC	command	prp-prd	nao	Interactive PRD generator - problem-first, hypothesis-driven product spec with back-and-forth questioning
+ECC	command	prune	nao	Delete pending instincts older than 30 days that were never promoted. Thin CLI wrapper for continuous-learning-v2's instinct-cli.py prune command; use to clean up stale p
+ECC	command	python-review	nao	Comprehensive Python code review for PEP 8 compliance, type hints, security, and Pythonic idioms. Invokes the python-reviewer agent.
+ECC	command	quality-gate	nao	Run the ECC formatter quality gate for a single file and report remediation steps.
+ECC	command	react-build	nao	Fix React build failures (Vite, webpack, Next.js, CRA, Parcel, esbuild, Bun) incrementally — JSX/TSX compile errors, hydration mismatches, server/client component bound
+ECC	command	react-review	nao	Comprehensive React/JSX code review for hook correctness, render performance, server/client component boundaries, accessibility, and React-specific security. Invokes the 
+ECC	command	react-test	nao	Enforce TDD workflow for React. Write React Testing Library tests first (behavior-focused, accessibility-first), then implement components. Detects Vitest or Jest and ver
+ECC	command	refactor-clean	nao	Safely identify and remove dead code with verification after each change.
+ECC	command	resume-session	nao	Load the most recent session file from ~/.claude/session-data/ and resume work with full context from where the last session ended.
+ECC	command	review-pr	ideia	Comprehensive PR review using specialized agents (code-reviewer, comment-analyzer, pr-test-analyzer, silent-failure-hunter, type-design-analyzer, code-simplifier). Use fo
+ECC	command	rust-build	nao	Fix Rust build errors, borrow checker issues, and dependency problems incrementally. Invokes the rust-build-resolver agent for minimal, surgical fixes.
+ECC	command	rust-review	nao	Comprehensive Rust code review for ownership, lifetimes, error handling, unsafe usage, and idiomatic patterns. Invokes the rust-reviewer agent.
+ECC	command	rust-test	nao	Enforce TDD workflow for Rust. Write tests first, then implement. Verify 80%+ coverage with cargo-llvm-cov.
+ECC	command	santa-loop	nao	Adversarial dual-review convergence loop — two independent model reviewers must both approve before code ships. Use for the CLI-driven version of this loop; wraps the s
+ECC	command	save-session	nao	Save current session state to a dated file in ~/.claude/session-data/ so work can be resumed in a future session with full context.
+ECC	command	security-scan	nao	Run AgentShield against agent, hook, MCP, permission, and secret surfaces. This is the slash-command entrypoint for that audit; prefer the security-scan skill for the sam
+ECC	command	sessions	nao	Manage Claude Code session history, aliases, and session metadata.
+ECC	command	setup-pm	nao	Configure your preferred package manager (npm/pnpm/yarn/bun)
+ECC	command	skill-create	nao	Analyze local git history to extract coding patterns and generate SKILL.md files. Local version of the Skill Creator GitHub App. Use to generate new skills from local git
+ECC	command	skill-health	nao	Show skill portfolio health dashboard with charts and analytics. Use for the quantitative usage/success-rate dashboard; for a qualitative compliance or quality audit use 
+ECC	command	skill-host-compat	nao	Lint ECC skills for Codex/Cursor-safe frontmatter and Claude-only substitutions before a skill PR.
+ECC	command	test-coverage	nao	Analyze coverage, identify gaps, and generate missing tests toward the target threshold.
+ECC	command	token-card	nao	Render a token-usage stat card from local agent session logs and commit it to the repo. Invokes the token-card skill.
+ECC	command	update-codemaps	nao	Scan project structure and generate token-lean architecture codemaps.
+ECC	command	update-docs	nao	Sync documentation from source-of-truth files such as scripts, schemas, routes, and exports.
+ECC	command	vue-review	nao	Comprehensive Vue.js code review for Composition API correctness, reactivity, composable patterns, template security, accessibility, and Vue-specific performance. Invokes
+OMC	skill	ai-slop-cleaner	sim	Clean AI-generated code slop with a regression-safe, deletion-first workflow and optional reviewer-only mode
+OMC	skill	ask	nao	Process-first advisor routing for Claude, Codex, Gemini, Antigravity, Grok, or Cursor via `omc ask`, with artifact capture and no raw CLI assembly
+OMC	skill	autopilot	nao	Full autonomous execution from idea to working code
+OMC	skill	autoresearch	nao	Stateful single-mission improvement loop with strict evaluator contract, markdown decision logs, and max-runtime stop behavior
+OMC	skill	cancel	nao	Cancel any active OMC mode (autopilot, ralph, ultrawork, ultraqa, swarm, ultrapilot, pipeline, team)
+OMC	skill	ccg	nao	Claude-Codex-Gemini tri-model orchestration via /ask codex + /ask antigravity (or gemini), then Claude synthesizes results
+OMC	skill	configure-notifications	nao	Configure notification integrations (Telegram, Discord, Slack) via natural language
+OMC	skill	debug	nao	Diagnose the current OMC session or repo state using logs, traces, state, and focused reproduction
+OMC	skill	deep-dive	nao	2-stage pipeline: trace (causal investigation) -> deep-interview (requirements crystallization) with 3-point injection
+OMC	skill	deep-interview	ideia	Socratic deep interview with mathematical ambiguity gating before explicit execution approval
+OMC	skill	deepinit	talvez	Deep codebase initialization with hierarchical AGENTS.md documentation
+OMC	skill	external-context	ideia	Invoke parallel document-specialist agents for external web searches and documentation lookup
+OMC	skill	hud	nao	Configure HUD display options (layout, presets, display elements)
+OMC	skill	learner	nao	Extract a learned skill from the current conversation
+OMC	skill	local-build-reminder	nao	Remind the user to rebuild OMC after editing TypeScript when running from a local fork. Triggered automatically by the AI whenever it notices it (or the user) just change
+OMC	skill	mcp-setup	nao	Configure popular MCP servers for enhanced agent capabilities
+OMC	skill	merge-readiness	ideia	Post-task merge readiness gate with a state-backed explanation report and human explainability quiz
+OMC	skill	omc-doctor	nao	Diagnose and fix oh-my-claudecode installation issues
+OMC	skill	omc-reference	nao	OMC agent catalog, available tools, team pipeline routing, commit protocol, and skills registry. Auto-loads when delegating to agents, using OMC tools, orchestrating team
+OMC	skill	omc-setup	nao	Install or refresh oh-my-claudecode for plugin, npm, and local-dev setups from the canonical setup flow
+OMC	skill	omc-teams	nao	CLI-team runtime for claude, codex, gemini, antigravity, grok, or cursor workers in tmux panes when you need process-based parallel execution
+OMC	skill	plan	nao	Strategic planning with optional interview workflow
+OMC	skill	project-session-manager	nao	Worktree-first dev environment manager for issues, PRs, and features with optional tmux sessions
+OMC	skill	ralph	nao	Self-referential loop until task completion with configurable verification reviewer
+OMC	skill	ralplan	ideia	Consensus planning entrypoint that auto-gates vague ralph/autopilot/team requests before execution
+OMC	skill	release	nao	Generic release assistant — analyzes repo release rules, caches them in .omc/RELEASE_RULE.md, then guides the release
+OMC	skill	remember	sim	Review reusable project knowledge and decide what belongs in project memory, notepad, or durable docs
+OMC	skill	sciomc	nao	Orchestrate parallel scientist agents for comprehensive analysis with AUTO mode
+OMC	skill	self-improve	nao	Autonomous evolutionary code improvement engine with tournament selection
+OMC	skill	setup	nao	Use first for install/update routing — sends setup, doctor, or MCP requests to the correct OMC setup flow
+OMC	skill	skill	nao	Manage local skills - list, add, remove, search, edit, setup wizard
+OMC	skill	skillify	sim	Turn a repeatable workflow from the current session into a reusable OMC skill draft
+OMC	skill	team	nao	N coordinated agents on shared task list using Claude Code implicit agent teams
+OMC	skill	trace	sim	Evidence-driven tracing lane that orchestrates competing tracer hypotheses in Claude built-in team mode
+OMC	skill	ultragoal	nao	Durable multi-goal workflow that persists plan/ledger artifacts under .omc/ultragoal and prints Claude /goal handoff text for the active session
+OMC	skill	ultraqa	nao	QA cycling workflow - test, verify, fix, repeat until goal met
+OMC	skill	ultrawork	nao	Parallel execution engine for high-throughput task completion
+OMC	skill	verify	sim	Verify that a change really works before you claim completion
+OMC	skill	visual-verdict	talvez	Structured visual QA verdict for screenshot-to-reference comparisons
+OMC	skill	wiki	nao	LLM Wiki — persistent markdown knowledge base that compounds across sessions (Karpathy model)
+OMC	skill	writer-memory	nao	Agentic memory system for writers - track characters, relationships, scenes, and themes
+OMC	agent	analyst	sim	Pre-planning consultant for requirements analysis (Opus)
+OMC	agent	architect	sim	Strategic Architecture & Debugging Advisor (Opus, READ-ONLY)
+OMC	agent	code-reviewer	sim	Expert code review specialist with severity-rated feedback, logic defect detection, SOLID principle checks, style, performance, and quality strategy
+OMC	agent	code-simplifier	talvez	Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Focuses on recently modified code unless instructed otherwis
+OMC	agent	critic	sim	Work plan and code review expert — thorough, structured, multi-perspective (Opus)
+OMC	agent	debugger	sim	Root-cause analysis, regression isolation, stack trace analysis, build/compilation error resolution
+OMC	agent	designer	talvez	UI/UX Designer-Developer for stunning interfaces (Sonnet)
+OMC	agent	document-specialist	sim	External Documentation & Reference Specialist
+OMC	agent	executor	sim	Focused task executor for implementation work (Sonnet)
+OMC	agent	explore	sim	Codebase search specialist for finding files and code patterns
+OMC	agent	git-master	talvez	Git expert for atomic commits, rebasing, and history management with style detection
+OMC	agent	planner	sim	Strategic planning consultant with interview workflow (Opus)
+OMC	agent	qa-tester	nao	Interactive CLI testing specialist using tmux for session management
+OMC	agent	scientist	nao	Data analysis and research execution specialist
+OMC	agent	security-reviewer	sim	Security vulnerability detection specialist (OWASP Top 10, secrets, unsafe patterns)
+OMC	agent	test-engineer	sim	Test strategy, integration/e2e coverage, flaky test hardening, TDD workflows
+OMC	agent	tracer	sim	Evidence-driven causal tracing with competing hypotheses, evidence for/against, uncertainty tracking, and next-probe recommendations
+OMC	agent	verifier	sim	Verification strategy, evidence-based completion checks, test adequacy
+OMC	agent	writer	sim	Technical documentation writer for README, API docs, and comments (Haiku)
+SP	skill	brainstorming	sim	You MUST use this before any creative work - creating features, building components, adding functionality, modifying behavior, or planning anything new, in software or ou
+SP	skill	diagnosing-superpowers	nao	Use when a superpowers session went wrong and your human partner wants to know why — repeated work, ignored plans, stumbles, poor results, a skill that didn't fire, it 
+SP	skill	dispatching-parallel-agents	talvez	Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies
+SP	skill	executing-plans	nao	Use when executing an implementation plan in the current session as the implementer yourself — your human partner chose inline execution, or no subagent tool is availab
+SP	skill	finishing-a-development-branch	talvez	Use when implementation is complete, all tests pass, and you need to decide how to integrate the work
+SP	skill	receiving-code-review	sim	Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and 
+SP	skill	requesting-code-review	talvez	Use when completing tasks, implementing major features, or before merging to verify work meets requirements
+SP	skill	subagent-driven-development	ideia	Use when executing implementation plans with independent tasks in the current session
+SP	skill	systematic-debugging	sim	Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes
+SP	skill	test-driven-development	sim	Use when implementing any feature or bugfix, before writing implementation code
+SP	skill	using-git-worktrees	sim	Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an isolated workspace exists via native tool
+SP	skill	using-superpowers	nao	Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions
+SP	skill	verification-before-completion	sim	Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before makin
+SP	skill	writing-plans	sim	Use when you have a spec or requirements for a multi-step task, before touching code
+SP	skill	writing-skills	sim	Use when creating new skills, editing existing skills, or verifying skills work before deployment

@@ -1,0 +1,7 @@
+{
+  "name": "eeh",
+  "version": "0.1.0",
+  "description": "Harness de engenharia do dia a dia: skills, agents e hooks para trabalhar com Claude Code em português do Brasil.",
+  "author": { "name": "Adriano Gonçalves" },
+  "license": "MIT"
+}

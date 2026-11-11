@@ -1,0 +1,593 @@
+{
+  "fontes": {
+    "ecc": {
+      "repo": "https://github.com/affaan-m/everything-claude-code",
+      "licenca": "MIT"
+    },
+    "omc": {
+      "repo": "https://github.com/Yeachan-Heo/oh-my-claudecode",
+      "licenca": "MIT"
+    },
+    "superpowers": {
+      "repo": "https://github.com/obra/superpowers",
+      "licenca": "MIT"
+    }
+  },
+  "pecas": [
+    {
+      "peca": "skills/entender",
+      "origens": [
+        {
+          "fonte": "superpowers",
+          "caminho": "skills/brainstorming/SKILL.md",
+          "versao": "7.0.0"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "skill-bodies/deep-interview/SKILL.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "agents/analyst.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "skills/intent-driven-development/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "skills/planejar",
+      "origens": [
+        {
+          "fonte": "superpowers",
+          "caminho": "skills/writing-plans/SKILL.md",
+          "versao": "7.0.0"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "agents/planner.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "agents/critic.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "agents/architect.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "skills/testar",
+      "origens": [
+        {
+          "fonte": "superpowers",
+          "caminho": "skills/test-driven-development/SKILL.md",
+          "versao": "7.0.0"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "agents/test-engineer.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "skills/golang-testing/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "skills/react-testing/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "agents/pr-test-analyzer.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "skills/verificar",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "skill-bodies/verify/SKILL.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "superpowers",
+          "caminho": "skills/verification-before-completion/SKILL.md",
+          "versao": "7.0.0"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "agents/verifier.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "skills/debugar",
+      "origens": [
+        {
+          "fonte": "superpowers",
+          "caminho": "skills/systematic-debugging/SKILL.md",
+          "versao": "7.0.0"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "skill-bodies/trace/SKILL.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "agents/debugger.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "agents/tracer.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "skills/limpar",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "skill-bodies/ai-slop-cleaner/SKILL.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "agents/code-simplifier.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "skills/git",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/git-master.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "superpowers",
+          "caminho": "skills/using-git-worktrees/SKILL.md",
+          "versao": "7.0.0"
+        },
+        {
+          "fonte": "superpowers",
+          "caminho": "skills/finishing-a-development-branch/SKILL.md",
+          "versao": "7.0.0"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "agents/commit-reviewer.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "skills/explorar",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/explore.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "agents/code-explorer.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "skills/iterative-retrieval/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "skills/search-first/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "skills/review",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/code-reviewer.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "commands/review-pr.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "skills/santa-method/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        },
+        {
+          "fonte": "superpowers",
+          "caminho": "skills/requesting-code-review/SKILL.md",
+          "versao": "7.0.0"
+        },
+        {
+          "fonte": "superpowers",
+          "caminho": "skills/receiving-code-review/SKILL.md",
+          "versao": "7.0.0"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "skill-bodies/merge-readiness/SKILL.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "skills/sql-manual",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "skills/database-migrations/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "skills/api-design",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "skills/api-design/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "skills/error-handling",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "skills/error-handling/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "skills/redis-patterns",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "skills/redis-patterns/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "skills/postgres-patterns",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "skills/postgres-patterns/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "skills/qa-pos-deploy",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "skills/browser-qa/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "skills/canary-watch/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "skills/strategic-compact",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "skills/strategic-compact/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "skills/inherit-legacy-style",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "skills/inherit-legacy-style/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "agents/explorar",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/explore.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "agents/code-explorer.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "agents/architect",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/architect.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/planner",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/planner.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/critic",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/critic.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/implementador-go",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/executor.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/implementador-react",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/executor.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/test-engineer",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/test-engineer.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "agents/pr-test-analyzer.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "agents/code-reviewer",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/code-reviewer.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/reviewer-go",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "agents/go-reviewer.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "agents/reviewer-react",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "agents/react-reviewer.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "agents/reviewer-typescript",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "agents/typescript-reviewer.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "agents/reviewer-database",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "agents/database-reviewer.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "agents/silent-failure-hunter",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "agents/silent-failure-hunter.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "agents/type-design-analyzer",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "agents/type-design-analyzer.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "agents/security-reviewer",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/security-reviewer.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/verifier",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/verifier.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "superpowers",
+          "caminho": "skills/verification-before-completion/SKILL.md",
+          "versao": "7.0.0"
+        }
+      ]
+    },
+    {
+      "peca": "agents/debugger",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/debugger.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/tracer",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/tracer.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/build-fix-go",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "agents/go-build-resolver.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "agents/build-fix-react",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "agents/react-build-resolver.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "agents/document-specialist",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/document-specialist.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/redator-ptbr",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/writer.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/git",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/git-master.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/front-visual",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "agents/designer.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "skill-bodies/visual-verdict/SKILL.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "skills/frontend-a11y/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    }
+  ]
+}

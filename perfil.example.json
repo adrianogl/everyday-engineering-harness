@@ -1,0 +1,17 @@
+{
+  "versao": 1,
+  "atlassian": {
+    "mcp": "atlassian",
+    "site": "",
+    "cloudId": "",
+    "projeto": "",
+    "accountId": "",
+    "transicaoConcluido": ""
+  },
+  "confluence": { "espaco": "", "templateAdr": "" },
+  "figma": { "mcp": "figma" },
+  "repos": [{ "nome": "", "caminho": "", "stack": "go" }],
+  "extensoes": [{ "skill": "", "quando": "atalho" }],
+  "registros": "",
+  "denylist": []
+}

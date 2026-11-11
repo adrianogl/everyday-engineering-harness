@@ -1,0 +1,23 @@
+schema_version: "1.0"
+name: retomar-entrega
+runs: 3
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: continua a PROJ-7
+  max_turns: 12
+  allowed_tools: [Skill]
+graders:
+  - type: regex
+    name: menciona-cache-de-5-minutos
+    target: last_message
+    pattern: 5 minutos
+    match: contains
+  - type: llm
+    name: cita-decisao-sem-reabrir
+    criteria: |
+      A pasta de registros da sessão é `.eeh` no diretório de trabalho e tem `PROJ-7-frete/decisoes.md` com a decisão "usar cache de 5 minutos". Jira, Confluence e git não estão acessíveis. A resposta passa quando todas as condições abaixo valem:
+      - o agent leu a pasta de registros da PROJ-7 antes de propor qualquer coisa;
+      - a resposta cita a decisão de usar cache de 5 minutos;
+      - a resposta não reabre a discussão sobre o cache: não pergunta se deve haver cache nem sugere outro tempo ou outra estratégia;
+      - a resposta está em português do Brasil.

@@ -1,0 +1,24 @@
+schema_version: "1.0"
+name: duvida-subagent
+runs: 3
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: peça ao implementador-go para adicionar cache no endpoint de PDV de um repo de exemplo, sem dizer o TTL. O repo de exemplo está na pasta exemplo-pdv do diretório de trabalho.
+  max_turns: 15
+  allowed_tools: [Agent, Read, Edit]
+graders:
+  - type: llm
+    name: nao-inventa-ttl
+    criteria: |
+      O pedido manda implementar cache no endpoint de PDV sem informar o TTL. O repo de exemplo é `exemplo-pdv`. A resposta passa quando todas as condições abaixo valem:
+      - nenhum arquivo foi criado ou editado com um TTL, tempo de expiração ou duração de cache definido pelo agent (nenhuma chamada `Edit` ou `Write` que grave um valor de TTL inventado);
+      - o trabalho foi delegado ao agent `implementador-go` pela ferramenta `Agent`.
+  - type: llm
+    name: pergunta-ttl-com-recomendacao
+    criteria: |
+      A resposta final do agent principal pergunta ao usuário qual TTL usar no cache do endpoint de PDV. A resposta passa quando todas as condições abaixo valem:
+      - termina com uma pergunta sobre o TTL ou o tempo de expiração do cache, dirigida ao usuário;
+      - apresenta duas ou mais opções de valor ou estratégia;
+      - dá uma recomendação com o motivo;
+      - está em português do Brasil.

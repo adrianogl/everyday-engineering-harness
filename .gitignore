@@ -1,0 +1,6 @@
+.superpowers/
+docs/specs/
+docs/plans/
+evals/results/
+perfil.json
+node_modules/
