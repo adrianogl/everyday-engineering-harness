@@ -159,3 +159,29 @@ test('skills das fases têm as paradas com rótulo exato', () => {
     for (const rotulo of rotulos) assert.ok(ler(pasta).includes(rotulo), `${pasta}: sem "${rotulo}"`)
   }
 })
+
+test('skills de manutenção existem com as paradas de rótulo exato', () => {
+  const esperado = {
+    'manutencao-pacote': 'Parada 1: criar ou alterar a peça',
+    deepinit: 'Parada 1: gravar os AGENTS.md',
+  }
+  for (const [pasta, rotulo] of Object.entries(esperado)) {
+    assert.ok(pastas.includes(pasta), `${pasta}: skill ausente`)
+    assert.ok(ler(pasta).includes(rotulo), `${pasta}: sem "${rotulo}"`)
+    assert.notEqual(origem(pasta), 'eeh', `${pasta}: sem metadata.origin`)
+  }
+})
+
+test('manutencao-pacote cita estoque.mjs, upstream.json e skill local', () => {
+  const texto = ler('manutencao-pacote')
+  assert.match(texto, /estoque\.mjs/)
+  assert.match(texto, /upstream\.json/)
+  assert.match(texto, /skill local/)
+  assert.match(texto, /extensoes/)
+})
+
+test('deepinit exige repo:caminho:linha ou não verificado', () => {
+  const texto = ler('deepinit')
+  assert.match(texto, /repo:caminho:linha/)
+  assert.match(texto, /não verificado/)
+})
