@@ -7,5 +7,6 @@ Este plugin reaproveita ideias e trechos adaptados dos projetos abaixo, todos so
 | Everything Claude Code (ECC) | https://github.com/affaan-m/everything-claude-code | MIT | Copyright (c) 2026 Affaan Mustafa |
 | oh-my-claudecode (OMC) | https://github.com/Yeachan-Heo/oh-my-claudecode | MIT | Copyright (c) 2025 Yeachan Heo |
 | superpowers | https://github.com/obra/superpowers | MIT | Copyright (c) 2025 Jesse Vincent |
+| Dracula Theme (paleta de cores, de Zeno Rocha) | https://draculatheme.com | MIT | — |
 
 A skill `postgres-patterns` parte das práticas publicadas pela equipe do Supabase, distribuídas dentro do ECC sob MIT. As peças derivadas e os arquivos de origem de cada uma estão em `upstream.json`.

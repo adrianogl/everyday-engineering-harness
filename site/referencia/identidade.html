@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>eeh · referência de identidade</title>
+<style>body{margin:0;padding:24px;background:#282a36;color:#f8f8f2;font-family:"Fira Code",monospace}.cards{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}.card[data-choice="vermelho"]{outline:2px solid #50fa7b;border-radius:10px}</style>
+</head>
+<body>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  .v { border-radius:10px; overflow:hidden; padding:20px; font-size:12.5px; line-height:1.65; background:#282a36; color:#f8f8f2; font-family:'Fira Code',monospace }
+  .v .logo { font-size:28px; font-weight:700; letter-spacing:-1px; margin-bottom:2px }
+  .v .logo .g { color:#282a36; background:#50fa7b; padding:0 6px; border-radius:4px; margin-right:2px }
+  .v .tag, .v .dim { color:#6272a4 }
+  .v .tag { font-size:12px; margin-bottom:14px }
+  .v .box { border-radius:6px; padding:12px; margin-bottom:10px; background:#21222c; border:1px solid #44475a }
+  .v .cols { display:grid; grid-template-columns:auto 1fr; column-gap:14px }
+  .v .k { color:#50fa7b } .v .ok { color:#8be9fd } .v .s { color:#f1fa8c } .v .c { color:#8be9fd }
+  .p1 { color:#ffb86c }
+  .p2 { display:inline-block; color:#282a36; background:#ffb86c; padding:0 6px; border-radius:3px; font-weight:600 }
+  .p3 { color:#ff5555 }
+</style>
+
+<h2>D2 sem o rosa: três jeitos de mostrar a parada</h2>
+<p class="subtitle">Marca e comandos em verde, ok em ciano. Só muda a cor da parada.</p>
+
+<div class="cards">
+  <div class="card" data-choice="laranja" onclick="toggleSelect(this)">
+    <div class="card-image"><div class="v">
+      <div class="logo"><span class="g">e</span>eh</div>
+      <div class="tag">everyday engineering harness</div>
+      <div class="box">
+        <div><span class="k">›</span> quebra a ADR da <span class="s">cotação</span></div>
+        <div class="ok">✓ conferente: 1 conflito ADR × Figma</div>
+        <div class="ok">✓ 2 cards: frete-api, frete-web</div>
+        <div class="p1">■ Parada 2: criar cards</div>
+      </div>
+      <div class="box cols">
+        <span class="k">/eeh:adr</span><span class="dim">escreve a ADR</span>
+        <span class="k">/eeh:quebrar</span><span class="dim">um card por repo</span>
+        <span class="k">/eeh:review</span><span class="dim">só bloqueante</span>
+        <span class="c">+ 24 skills · 35 agents</span><span></span>
+      </div>
+    </div></div>
+    <div class="card-body"><h3>Laranja no texto</h3><p>O D2 original. A parada aparece, mas sem gritar.</p></div>
+  </div>
+
+  <div class="card" data-choice="laranja-faixa" onclick="toggleSelect(this)">
+    <div class="card-image"><div class="v">
+      <div class="logo"><span class="g">e</span>eh</div>
+      <div class="tag">everyday engineering harness</div>
+      <div class="box">
+        <div><span class="k">›</span> quebra a ADR da <span class="s">cotação</span></div>
+        <div class="ok">✓ conferente: 1 conflito ADR × Figma</div>
+        <div class="ok">✓ 2 cards: frete-api, frete-web</div>
+        <div><span class="p2">■ Parada 2: criar cards</span></div>
+      </div>
+      <div class="box cols">
+        <span class="k">/eeh:adr</span><span class="dim">escreve a ADR</span>
+        <span class="k">/eeh:quebrar</span><span class="dim">um card por repo</span>
+        <span class="k">/eeh:review</span><span class="dim">só bloqueante</span>
+        <span class="c">+ 24 skills · 35 agents</span><span></span>
+      </div>
+    </div></div>
+    <div class="card-body"><h3>Faixa laranja</h3><p>A mesma faixa do rosa, mas em laranja. Destaca a parada e fica mais quente.</p></div>
+  </div>
+
+  <div class="card" data-choice="vermelho" onclick="toggleSelect(this)">
+    <div class="card-image"><div class="v">
+      <div class="logo"><span class="g">e</span>eh</div>
+      <div class="tag">everyday engineering harness</div>
+      <div class="box">
+        <div><span class="k">›</span> quebra a ADR da <span class="s">cotação</span></div>
+        <div class="ok">✓ conferente: 1 conflito ADR × Figma</div>
+        <div class="ok">✓ 2 cards: frete-api, frete-web</div>
+        <div class="p3">■ Parada 2: criar cards</div>
+      </div>
+      <div class="box cols">
+        <span class="k">/eeh:adr</span><span class="dim">escreve a ADR</span>
+        <span class="k">/eeh:quebrar</span><span class="dim">um card por repo</span>
+        <span class="k">/eeh:review</span><span class="dim">só bloqueante</span>
+        <span class="c">+ 24 skills · 35 agents</span><span></span>
+      </div>
+    </div></div>
+    <div class="card-body"><h3>Vermelho no texto</h3><p>O vermelho do Dracula. Lê como "pare", mas também lembra erro.</p></div>
+  </div>
+</div>
+
+</body>
+</html>

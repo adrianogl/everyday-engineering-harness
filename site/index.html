@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>eeh · Everyday Engineering Harness</title>
+<meta name="description" content="A Claude Code plugin for daily engineering work: ADRs, Jira cards, implementation, reviews and QA, with a stop for your approval before anything leaves your machine.">
+<meta name="theme-color" content="#282a36">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="#topo" aria-label="eeh"><span class="logo"><span class="e">e</span>eh</span></a>
+  <a class="repo" href="https://github.com/adrianogl/everyday-engineering-harness">adrianogl/everyday-engineering-harness</a>
+  <nav class="menu" aria-label="Sections">
+    <a href="#como" data-i18n="nav.como">how it works</a>
+    <a href="#fases" data-i18n="nav.fases">phases</a>
+    <a href="#catalogo" data-i18n="nav.catalogo">catalog</a>
+    <a href="#instalar" data-i18n="nav.instalar">install</a>
+  </nav>
+  <div class="idioma" role="group" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true">EN</button><span class="sep">/</span><button type="button" data-lang="pt" aria-pressed="false">PT</button>
+  </div>
+</header>
+
+<main>
+<section class="topo" id="topo">
+  <div class="topo-texto">
+    <h1 class="titulo"><span data-i18n="topo.titulo">Turns a plain request into ADRs, cards, code, reviews and QA, and</span> <em data-i18n="topo.destaque">stops for your approval.</em></h1>
+    <p class="nome" data-i18n="topo.sub">A Claude Code plugin for daily engineering work.</p>
+  <figure class="terminal" aria-labelledby="legenda-terminal">
+    <div class="terminal-barra"><span data-i18n="terminal.titulo">claude · frete-api</span></div>
+    <div class="terminal-corpo" id="roteiro">
+<!-- terminal-site:inicio -->
+<div class="linha pedido"><span class="sinal">›</span><span class="texto">quebra a ADR da <span class="citado">cotação</span></span></div>
+<div class="linha ok"><span class="sinal">✓</span><span class="texto">conferente: 1 conflito ADR × Figma</span></div>
+<div class="linha ok"><span class="sinal">✓</span><span class="texto">2 cards: frete-api, frete-web</span></div>
+<div class="linha parada"><span class="sinal">■</span><span class="texto">Parada 2: criar cards</span></div>
+<!-- terminal-site:fim -->
+    </div>
+    <figcaption id="legenda-terminal" data-i18n="terminal.legenda">Sample session in Portuguese: the request, two checks and the stop before creating cards.</figcaption>
+  </figure>
+  <p class="acoes">
+    <a class="acao principal" href="#instalar" data-i18n="topo.instalar">install the plugin</a>
+    <a class="acao" href="#catalogo" data-i18n="topo.catalogo">see the full catalog</a>
+  </p>
+  </div>
+  <div class="topo-catalogo">
+<!-- hero-site:inicio -->
+<div class="colunas">
+<section class="coluna" data-tipo="command">
+<h2 class="coluna-topo"><span>Commands</span><b>7</b></h2>
+<ul>
+<li>/eeh:adr</li>
+<li>/eeh:adr-revisar</li>
+<li class="esmaece-1-celular">/eeh:implementar</li>
+<li class="esmaece-2-celular">/eeh:qa</li>
+<li class="fora-celular">/eeh:quebrar</li>
+<li class="fora-celular">/eeh:review</li>
+<li class="fora-celular">/eeh:upstream</li>
+</ul>
+<p class="mais mais-celular">+ 3 <span data-i18n="hero.mais">more</span></p>
+</section>
+<section class="coluna" data-tipo="skill">
+<h2 class="coluna-topo"><span>Skills</span><b>24</b></h2>
+<ul>
+<li>adr</li>
+<li>adr-revisar</li>
+<li class="esmaece-1-celular">api-design</li>
+<li class="esmaece-2-celular">debugar</li>
+<li class="fora-celular">deepinit</li>
+<li class="fora-celular">entender</li>
+<li class="fora-celular">entregas</li>
+<li class="fora-celular esmaece-1-tablet">error-handling</li>
+<li class="fora-celular esmaece-2-tablet">explorar</li>
+<li class="fora-celular fora-tablet">git</li>
+<li class="fora-celular fora-tablet">inherit-legacy-style</li>
+<li class="fora-celular fora-tablet">limpar</li>
+<li class="fora-celular fora-tablet esmaece-1-largo">manutencao-pacote</li>
+<li class="fora-celular fora-tablet esmaece-2-largo">planejar</li>
+</ul>
+<p class="mais mais-celular">+ 20 <span data-i18n="hero.mais">more</span></p>
+<p class="mais mais-tablet">+ 15 <span data-i18n="hero.mais">more</span></p>
+<p class="mais mais-largo">+ 10 <span data-i18n="hero.mais">more</span></p>
+</section>
+<section class="coluna" data-tipo="agent">
+<h2 class="coluna-topo"><span>Agents</span><b>35</b></h2>
+<ul>
+<li>analista-epico</li>
+<li>architect</li>
+<li class="esmaece-1-celular">build-fix-go</li>
+<li class="esmaece-2-celular">build-fix-react</li>
+<li class="fora-celular">code-reviewer</li>
+<li class="fora-celular">conferente</li>
+<li class="fora-celular">critic</li>
+<li class="fora-celular esmaece-1-tablet">debugger</li>
+<li class="fora-celular esmaece-2-tablet">document-specialist</li>
+<li class="fora-celular fora-tablet">explorar</li>
+<li class="fora-celular fora-tablet">extrator-contrato</li>
+<li class="fora-celular fora-tablet">extrator-sql</li>
+<li class="fora-celular fora-tablet esmaece-1-largo">front-visual</li>
+<li class="fora-celular fora-tablet esmaece-2-largo">git</li>
+</ul>
+<p class="mais mais-celular">+ 31 <span data-i18n="hero.mais">more</span></p>
+<p class="mais mais-tablet">+ 26 <span data-i18n="hero.mais">more</span></p>
+<p class="mais mais-largo">+ 21 <span data-i18n="hero.mais">more</span></p>
+</section>
+</div>
+<dl class="tira">
+<div><dt>66</dt><dd data-i18n="hero.pecas">pieces</dd></div>
+<div><dt>10</dt><dd data-i18n="hero.paradas">approval stops</dd></div>
+<div><dt>MIT</dt><dd data-i18n="hero.licenca">license</dd></div>
+</dl>
+<!-- hero-site:fim -->
+  </div>
+</section>
+
+<section class="secao" id="como">
+  <h2><span class="hash">##</span> <span data-i18n="como.titulo">How it works</span></h2>
+  <p class="lead" data-i18n="como.texto">The main session reads your request in natural language and splits the work among small specialist agents. Before it writes anywhere outside your machine (commit, push, PR, Jira, Confluence), it stops and shows what it is about to do. You approve, change or cancel at each stop, and questions it cannot answer go back to you.</p>
+  <figure class="diagrama">
+    <svg viewBox="0 0 440 372" role="img" aria-labelledby="diagrama-titulo">
+      <title id="diagrama-titulo" data-i18n="diagrama.titulo">From request to stop: the main session splits the work among agents and stops before writing outside your machine.</title>
+      <defs>
+        <marker id="seta" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0 0 L8 4 L0 8 z" fill="#6272a4"/>
+        </marker>
+      </defs>
+      <g font-family="Fira Code, ui-monospace, monospace" font-size="14">
+        <rect x="1" y="1" width="186" height="52" rx="6" fill="#21222c" stroke="#44475a"/>
+        <text x="16" y="24" fill="#f8f8f2" fill-opacity="0.72" font-size="11" data-i18n="diagrama.voce">you</text>
+        <text x="16" y="42" fill="#f8f8f2"><tspan fill="#50fa7b">›</tspan> <tspan data-i18n="diagrama.pedido">plain request</tspan></text>
+
+        <path d="M188 27 H250" stroke="#6272a4" marker-end="url(#seta)"/>
+
+        <rect x="253" y="1" width="186" height="52" rx="6" fill="#21222c" stroke="#50fa7b"/>
+        <text x="268" y="24" fill="#f8f8f2" fill-opacity="0.72" font-size="11" data-i18n="diagrama.orquestrador">orchestrator</text>
+        <text x="268" y="42" fill="#50fa7b" data-i18n="diagrama.sessao">main session</text>
+
+        <path d="M346 54 V76 H72 V98" fill="none" stroke="#6272a4" marker-end="url(#seta)"/>
+        <path d="M220 76 V98" stroke="#6272a4" marker-end="url(#seta)"/>
+        <path d="M346 76 V98" stroke="#6272a4" marker-end="url(#seta)"/>
+
+        <rect x="1" y="101" width="134" height="44" rx="6" fill="#21222c" stroke="#44475a"/>
+        <text x="68" y="128" fill="#8be9fd" text-anchor="middle">redator-adr</text>
+        <rect x="153" y="101" width="134" height="44" rx="6" fill="#21222c" stroke="#44475a"/>
+        <text x="220" y="128" fill="#8be9fd" text-anchor="middle">conferente</text>
+        <rect x="305" y="101" width="134" height="44" rx="6" fill="#21222c" stroke="#44475a"/>
+        <text x="372" y="128" fill="#8be9fd" text-anchor="middle">reviewer-go</text>
+        <text x="220" y="170" fill="#f8f8f2" fill-opacity="0.72" font-size="11" text-anchor="middle" data-i18n="diagrama.agents">specialist agents, one job each</text>
+
+        <path d="M220 178 V200" stroke="#6272a4" marker-end="url(#seta)"/>
+
+        <rect x="1" y="203" width="438" height="52" rx="6" fill="#21222c" stroke="#44475a"/>
+        <text x="16" y="226" fill="#f8f8f2" fill-opacity="0.72" font-size="11" data-i18n="diagrama.antes">before commit, push, PR, Jira, Confluence</text>
+        <text x="16" y="244" fill="#ff5555"><tspan>■</tspan> <tspan data-i18n="diagrama.parada">Stop: shows what it is about to do</tspan></text>
+
+        <path d="M220 256 V278" stroke="#6272a4" marker-end="url(#seta)"/>
+
+        <rect x="1" y="281" width="438" height="52" rx="6" fill="#21222c" stroke="#44475a"/>
+        <text x="16" y="304" fill="#f8f8f2" fill-opacity="0.72" font-size="11" data-i18n="diagrama.decide">you decide</text>
+        <text x="16" y="322" fill="#f8f8f2"><tspan fill="#50fa7b" data-i18n="diagrama.aprovar">approve</tspan><tspan fill="#f8f8f2" fill-opacity="0.72"> · </tspan><tspan fill="#f1fa8c" data-i18n="diagrama.mudar">change</tspan><tspan fill="#f8f8f2" fill-opacity="0.72"> · </tspan><tspan fill="#f8f8f2" data-i18n="diagrama.cancelar">cancel</tspan></text>
+
+        <text x="16" y="360" fill="#f8f8f2" fill-opacity="0.72" font-size="11" data-i18n="diagrama.duvidas">open questions come back to you</text>
+      </g>
+    </svg>
+  </figure>
+</section>
+
+<section class="secao" id="fases">
+  <h2><span class="hash">##</span> <span data-i18n="fases.titulo">Phases</span></h2>
+  <p class="lead" data-i18n="fases.texto">One command per phase of a delivery. Each one says where it stops.</p>
+  <ol class="fases">
+    <li class="fase">
+      <code class="cmd">/eeh:adr</code>
+      <p data-i18n="fases.adr">Writes the ADR from your template, contract first. Stops on open questions and before publishing.</p>
+      <code class="exemplo"><span class="sinal">›</span> /eeh:adr PROJ-7</code>
+    </li>
+    <li class="fase">
+      <code class="cmd">/eeh:adr-revisar</code>
+      <p data-i18n="fases.adr-revisar">Handles the open comments on a published ADR. Stops before updating the page.</p>
+      <code class="exemplo"><span class="sinal">›</span> /eeh:adr-revisar PROJ-7</code>
+    </li>
+    <li class="fase">
+      <code class="cmd">/eeh:quebrar</code>
+      <p data-i18n="fases.quebrar">Splits an approved ADR into one Jira card per repo. Stops on conflicts and before creating cards.</p>
+      <code class="exemplo"><span class="sinal">›</span> /eeh:quebrar PROJ-7</code>
+    </li>
+    <li class="fase">
+      <code class="cmd">/eeh:implementar</code>
+      <p data-i18n="fases.implementar">Implements a card in its own worktree with plan, TDD and review. Stops at the plan, the commit and the PR.</p>
+      <code class="exemplo"><span class="sinal">›</span> /eeh:implementar PROJ-8</code>
+    </li>
+    <li class="fase">
+      <code class="cmd">/eeh:review</code>
+      <p data-i18n="fases.review">Reviews a PR with reviewers per lens and keeps only blocking items two reviewers confirm. Stops before posting.</p>
+      <code class="exemplo"><span class="sinal">›</span> /eeh:review 42</code>
+    </li>
+    <li class="fase">
+      <code class="cmd">/eeh:qa</code>
+      <p data-i18n="fases.qa">Validates a delivery in QA with the screen and the contract endpoints, and saves the evidence. Stops before moving the card.</p>
+      <code class="exemplo"><span class="sinal">›</span> /eeh:qa PROJ-8</code>
+    </li>
+    <li class="fase">
+      <code class="cmd">/eeh:upstream</code>
+      <p data-i18n="fases.upstream">Compares the parts with ECC, OMC and superpowers and merges what you accept. Stops before merging.</p>
+      <code class="exemplo"><span class="sinal">›</span> /eeh:upstream ecc</code>
+    </li>
+  </ol>
+</section>
+
+<section class="secao" id="catalogo">
+  <h2><span class="hash">##</span> <span data-i18n="catalogo.titulo">Everything it covers</span></h2>
+  <p class="lead" data-i18n="catalogo.texto">Every command, skill and agent in the plugin, generated from the repo.</p>
+  <div class="filtro" role="group" aria-label="Filter by type" hidden>
+    <button type="button" data-filtro="todos" aria-pressed="true" data-i18n="catalogo.todos">all</button>
+    <button type="button" data-filtro="command" aria-pressed="false">commands</button>
+    <button type="button" data-filtro="skill" aria-pressed="false">skills</button>
+    <button type="button" data-filtro="agent" aria-pressed="false">agents</button>
+  </div>
+<!-- catalogo-site:inicio -->
+<p class="contagem"><span><b>7</b> commands</span><span><b>24</b> skills</span><span><b>35</b> agents</span></p>
+<ul class="pecas">
+<li class="peca" data-tipo="command"><code>/eeh:adr</code><span class="tipo">command</span><span class="desc" data-pt="Escreve a ADR de uma entrega a partir do template de ADR do perfil, com contrato primeiro e revisão do revisor-adr.">Writes the ADR of a delivery from the profile's ADR template, contract first, reviewed by revisor-adr.</span></li>
+<li class="peca" data-tipo="command"><code>/eeh:adr-revisar</code><span class="tipo">command</span><span class="desc" data-pt="Trata os comentários abertos de uma ADR publicada, propondo a mudança no texto e a resposta de cada comentário.">Handles the open comments of a published ADR, proposing the text change and the reply to each one.</span></li>
+<li class="peca" data-tipo="command"><code>/eeh:implementar</code><span class="tipo">command</span><span class="desc" data-pt="Implementa um card de ponta a ponta num worktree próprio, com plano aprovado, TDD, review e verificação.">Implements a card end to end in its own worktree, with an approved plan, TDD, review and verification.</span></li>
+<li class="peca" data-tipo="command"><code>/eeh:qa</code><span class="tipo">command</span><span class="desc" data-pt="Valida uma entrega em QA depois do deploy numa develop, com tela, endpoints do contrato e evidência guardada.">Validates a delivery in QA after the deploy to a develop branch, with the screen, the contract endpoints and saved evidence.</span></li>
+<li class="peca" data-tipo="command"><code>/eeh:quebrar</code><span class="tipo">command</span><span class="desc" data-pt="Quebra uma ADR aprovada em cards do Jira, um por repo, com recorte da ADR, contrato, SQL manual e critério de aceite.">Splits an approved ADR into Jira cards, one per repo, with the ADR slice, contract, manual SQL and acceptance criteria.</span></li>
+<li class="peca" data-tipo="command"><code>/eeh:review</code><span class="tipo">command</span><span class="desc" data-pt="Revisa PR, branch ou diff com reviewers por lente e devolve só item bloqueante confirmado por dois reviewers.">Reviews a PR, branch or diff with one reviewer per lens and returns only blocking items confirmed by two independent reviewers.</span></li>
+<li class="peca" data-tipo="command"><code>/eeh:upstream</code><span class="tipo">command</span><span class="desc" data-pt="Compara as peças do EEH com ECC, OMC e superpowers, sugere a triagem dos itens novos e incorpora o que você aceitar.">Compares EEH pieces with ECC, OMC and superpowers, triages the new items and brings in what the author accepts.</span></li>
+<li class="peca" data-tipo="skill"><code>adr</code><span class="tipo">skill</span><span class="desc" data-pt="Escreve a ADR de uma entrega a partir do template do perfil, contrato primeiro, com revisão do revisor-adr.">Writes the ADR of a delivery from the profile's ADR template, contract first, reviewed by revisor-adr before publishing.</span></li>
+<li class="peca" data-tipo="skill"><code>adr-revisar</code><span class="tipo">skill</span><span class="desc" data-pt="Trata os comentários abertos de uma ADR publicada no Confluence: a mudança no texto e a resposta de cada um.">Handles the open comments of an ADR published on Confluence, proposing the ADR change and the reply for each one.</span></li>
+<li class="peca" data-tipo="skill"><code>api-design</code><span class="tipo">skill</span><span class="desc" data-pt="Convenções para desenhar ou revisar endpoints REST: recursos, métodos, status codes, erro, paginação e versionamento.">Conventions for designing or reviewing REST endpoints: resource names, methods, status codes, error format, pagination, filters, auth, rate limit and versioning.</span></li>
+<li class="peca" data-tipo="skill"><code>debugar</code><span class="tipo">skill</span><span class="desc" data-pt="Investiga bug, teste que falha, regressão ou erro de build até achar a causa raiz, antes de propor correção.">Investigates a bug, failing test, regression or build error down to the root cause before proposing a fix.</span></li>
+<li class="peca" data-tipo="skill"><code>deepinit</code><span class="tipo">skill</span><span class="desc" data-pt="Gera um AGENTS.md por pasta relevante de um repo, só com o que o código mostra e a fonte de cada afirmação.">Generates one AGENTS.md per relevant folder of a work repo, with only what the code shows and a source for every claim.</span></li>
+<li class="peca" data-tipo="skill"><code>entender</code><span class="tipo">skill</span><span class="desc" data-pt="Transforma pedido vago em escopo claro e critérios de aceite verificáveis, perguntando uma coisa por vez.">Turns a vague request into a clear scope and verifiable acceptance criteria, asking one thing at a time.</span></li>
+<li class="peca" data-tipo="skill"><code>entregas</code><span class="tipo">skill</span><span class="desc" data-pt="Retoma uma entrega pela chave do card ou mostra o panorama das entregas em andamento.">Resumes a delivery by its card key, or shows the overview of deliveries in progress.</span></li>
+<li class="peca" data-tipo="skill"><code>error-handling</code><span class="tipo">skill</span><span class="desc" data-pt="Padrões de erro em Go e TypeScript: erros tipados, wrapping, status code, retry com backoff e error boundary.">Error handling patterns in Go and TypeScript: typed errors, wrapping with context, status code mapping, retry with backoff and error boundaries.</span></li>
+<li class="peca" data-tipo="skill"><code>explorar</code><span class="tipo">skill</span><span class="desc" data-pt="Entende como uma parte do código funciona antes de mexer e procura solução existente antes de escrever código novo.">Understands how a part of the code works before changing it, and looks for an existing solution before writing new code.</span></li>
+<li class="peca" data-tipo="skill"><code>git</code><span class="tipo">skill</span><span class="desc" data-pt="Opera git com segurança: worktree por card, commits atômicos, Conventional Commits, rebase seguro e fim da branch.">Operates git safely: one worktree per card, atomic commits, Conventional Commits messages, safe rebase and closing the branch.</span></li>
+<li class="peca" data-tipo="skill"><code>inherit-legacy-style</code><span class="tipo">skill</span><span class="desc" data-pt="Levanta as convenções implícitas de um código legado e grava um .ai-style-rules.md aplicável.">Collects the implicit conventions of hand-written legacy code, settles conflicts with the author and writes an .ai-style-rules.md.</span></li>
+<li class="peca" data-tipo="skill"><code>limpar</code><span class="tipo">skill</span><span class="desc" data-pt="Limpa código que funciona mas ficou inchado, repetido ou com camadas inúteis, sem mudar comportamento.">Cleans code that works but is bloated, repeated or has useless layers, without changing behavior.</span></li>
+<li class="peca" data-tipo="skill"><code>manutencao-pacote</code><span class="tipo">skill</span><span class="desc" data-pt="Transforma um fluxo repetido em skill ou agent, ajusta peças existentes e lista peças sem uso ou sobrepostas.">Turns a flow that just happened into a new skill or agent, adjusts an existing piece, lists unused pieces and overlapping descriptions.</span></li>
+<li class="peca" data-tipo="skill"><code>planejar</code><span class="tipo">skill</span><span class="desc" data-pt="Transforma um escopo entendido em plano de tarefas pequenas e testáveis, com crítica separada antes da aprovação.">Turns an understood scope into an implementation plan of small testable tasks, with a separate critique before approval.</span></li>
+<li class="peca" data-tipo="skill"><code>postgres-patterns</code><span class="tipo">skill</span><span class="desc" data-pt="Referência rápida de PostgreSQL: índices, tipos, queries lentas, paginação, fila com SKIP LOCKED.">PostgreSQL quick reference for indexes, data types, slow queries, pagination, SKIP LOCKED queues and configuration.</span></li>
+<li class="peca" data-tipo="skill"><code>qa</code><span class="tipo">skill</span><span class="desc" data-pt="Valida uma entrega em QA depois do deploy numa develop, com tela, endpoints do contrato e evidência guardada.">Validates a delivery in QA after the deploy to a develop branch, with the screen, the contract endpoints and saved evidence.</span></li>
+<li class="peca" data-tipo="skill"><code>qa-pos-deploy</code><span class="tipo">skill</span><span class="desc" data-pt="Verifica uma URL depois do deploy com um MCP de browser: smoke test, interação, regressão visual e acessibilidade.">Checks a URL after a QA or production deploy with a browser automation MCP: smoke test, interaction, visual regression, accessibility and endpoints.</span></li>
+<li class="peca" data-tipo="skill"><code>quebrar</code><span class="tipo">skill</span><span class="desc" data-pt="Quebra uma ADR aprovada em cards do Jira, um por repo, com recorte, contrato, SQL manual e critério de aceite.">Splits an approved ADR into Jira cards, one per repo, each with the ADR slice, contract, manual SQL and acceptance criteria.</span></li>
+<li class="peca" data-tipo="skill"><code>redis-patterns</code><span class="tipo">skill</span><span class="desc" data-pt="Padrões de Redis para cache, lock distribuído, rate limit, sessão, pub/sub e streams, com chave e TTL.">Redis patterns for cache, distributed locks, rate limit, sessions, pub/sub and streams, with key design, TTL and eviction.</span></li>
+<li class="peca" data-tipo="skill"><code>review</code><span class="tipo">skill</span><span class="desc" data-pt="Revisa PR ou diff por item bloqueante, pede review independente e trata o feedback recebido com verificação.">Reviews a PR or diff for blocking items, asks an independent reviewer for review, and handles received feedback with verification.</span></li>
+<li class="peca" data-tipo="skill"><code>sql-manual</code><span class="tipo">skill</span><span class="desc" data-pt="Escreve ou revisa SQL rodado à mão na GMUD, com banco, ambiente, ordem, rollback e idempotência explícitos.">Writes or reviews a SQL script run by hand in a change window, with database, environment, order, rollback and idempotency spelled out.</span></li>
+<li class="peca" data-tipo="skill"><code>strategic-compact</code><span class="tipo">skill</span><span class="desc" data-pt="Decide quando rodar /compact numa sessão longa, na fronteira de fase, e o que salvar em arquivo antes.">Decides when to run /compact in a long session, at a phase boundary, and what to save to a file first.</span></li>
+<li class="peca" data-tipo="skill"><code>testar</code><span class="tipo">skill</span><span class="desc" data-pt="Escreve testes primeiro (TDD), define a estratégia, corrige teste flaky e confere se os testes da PR cobrem a mudança.">Writes tests first (TDD), defines the test strategy, fixes flaky tests and checks whether a PR's tests cover the changed behavior.</span></li>
+<li class="peca" data-tipo="skill"><code>verificar</code><span class="tipo">skill</span><span class="desc" data-pt="Confere com evidência nova que a mudança cumpre os critérios de aceite antes de dizer que está pronta.">Checks with fresh evidence that a change meets the acceptance criteria before saying it is done, and before commit, push or PR.</span></li>
+<li class="peca" data-tipo="agent"><code>analista-epico</code><span class="tipo">agent</span><span class="desc" data-pt="Lê um épico, o Figma recortado e os repos do perfil e devolve o impacto por repo.">Reads an epic, the trimmed Figma and the profile repos, and returns the impact per repo.</span></li>
+<li class="peca" data-tipo="agent"><code>architect</code><span class="tipo">agent</span><span class="desc" data-pt="Analisa arquitetura e trade-offs de uma mudança, só leitura.">Analyzes architecture and trade-offs of a change, read-only.</span></li>
+<li class="peca" data-tipo="agent"><code>build-fix-go</code><span class="tipo">agent</span><span class="desc" data-pt="Corrige build, go vet e lint quebrados em Go com a menor mudança possível.">Fixes broken Go build, go vet and lint with the smallest possible change.</span></li>
+<li class="peca" data-tipo="agent"><code>build-fix-react</code><span class="tipo">agent</span><span class="desc" data-pt="Corrige build, erro de TypeScript e lint quebrados em projeto React com Vite com a menor mudança possível.">Fixes broken build, TypeScript errors and lint in a React with Vite project with the smallest possible change.</span></li>
+<li class="peca" data-tipo="agent"><code>code-reviewer</code><span class="tipo">agent</span><span class="desc" data-pt="Faz review geral de diff ou PR seguindo o code-review.md do autor: só item bloqueante, só o que a PR introduziu.">Reviews a diff or PR and reports only blocking items the PR introduced.</span></li>
+<li class="peca" data-tipo="agent"><code>conferente</code><span class="tipo">agent</span><span class="desc" data-pt="Confere a ADR contra os recortes, o Figma e o código e devolve os conflitos, ou 'sem conflito'.">Checks the ADR against its slices, the Figma design and the code, and lists the conflicts or says &quot;no conflict&quot;.</span></li>
+<li class="peca" data-tipo="agent"><code>critic</code><span class="tipo">agent</span><span class="desc" data-pt="Critica um plano, spec ou ADR procurando furo antes da implementação, só leitura.">Looks for holes in a plan, spec or ADR before implementation, read-only.</span></li>
+<li class="peca" data-tipo="agent"><code>debugger</code><span class="tipo">agent</span><span class="desc" data-pt="Acha a causa raiz de um bug: reproduz, isola a regressão, lê stack trace e propõe a correção mínima.">Finds the root cause of a bug: reproduces it, isolates the regression and proposes the minimal fix.</span></li>
+<li class="peca" data-tipo="agent"><code>document-specialist</code><span class="tipo">agent</span><span class="desc" data-pt="Busca e resume documentação externa e do repo: API de SDK, framework, serviço de terceiro, README e ADR.">Finds and summarizes external and repo documentation: SDK APIs, frameworks, third-party services, READMEs and ADRs.</span></li>
+<li class="peca" data-tipo="agent"><code>explorar</code><span class="tipo">agent</span><span class="desc" data-pt="Busca no código e rastreia fluxo de execução, só leitura.">Searches the code and traces execution flow, read-only.</span></li>
+<li class="peca" data-tipo="agent"><code>extrator-contrato</code><span class="tipo">agent</span><span class="desc" data-pt="Extrai da ADR o contrato de um repo: rota, request, response e erros.">Extracts a repo's contract from the ADR: route, request, response and errors.</span></li>
+<li class="peca" data-tipo="agent"><code>extrator-sql</code><span class="tipo">agent</span><span class="desc" data-pt="Extrai da ADR o SQL manual de um repo e devolve o objeto sql do Recorte: script, banco, ambiente, ordem e rollback.">Extracts a repo's manual SQL from the ADR: script, database, environment, order and rollback.</span></li>
+<li class="peca" data-tipo="agent"><code>front-visual</code><span class="tipo">agent</span><span class="desc" data-pt="Constrói UI a partir do recorte do Figma e compara o resultado com a tela: layout, estados, copy e acessibilidade.">Builds UI from the Figma slice and compares the result with the screen: layout, states, copy and accessibility.</span></li>
+<li class="peca" data-tipo="agent"><code>git</code><span class="tipo">agent</span><span class="desc" data-pt="Executa operações de git: branch, status, diff, stage, histórico, rebase e worktree, seguindo rules/git.md.">Runs git operations: branch, status, diff, stage, history, rebase and worktree.</span></li>
+<li class="peca" data-tipo="agent"><code>implementador-go</code><span class="tipo">agent</span><span class="desc" data-pt="Implementa uma tarefa em Go (service, handler, repositório, migration, teste) seguindo o plano e o padrão do repo.">Implements a Go task following the plan and the repo pattern.</span></li>
+<li class="peca" data-tipo="agent"><code>implementador-react</code><span class="tipo">agent</span><span class="desc" data-pt="Implementa tarefa de front em React e TypeScript seguindo o plano e o padrão do repo.">Implements a React and TypeScript front task following the plan and the repo pattern.</span></li>
+<li class="peca" data-tipo="agent"><code>leitor-comentarios</code><span class="tipo">agent</span><span class="desc" data-pt="Lê os comentários abertos de uma ADR e, para cada um, propõe a mudança na ADR e a resposta ao comentário.">Reads the open comments on an ADR and proposes, for each one, the ADR change and the reply.</span></li>
+<li class="peca" data-tipo="agent"><code>opensource-sanitizer</code><span class="tipo">agent</span><span class="desc" data-pt="Audita um diff do EEH antes do commit e aponta dado do trabalho do autor que o regex do sanitizer não pega.">Audits an EEH diff before commit for author work data that the sanitizer regex misses.</span></li>
+<li class="peca" data-tipo="agent"><code>planner</code><span class="tipo">agent</span><span class="desc" data-pt="Transforma uma spec ou ADR aprovada em plano de implementação com tarefas pequenas, ordem, arquivos e como validar.">Turns an approved spec or ADR into an implementation plan with small tasks, order, files and how to validate.</span></li>
+<li class="peca" data-tipo="agent"><code>recortador-figma</code><span class="tipo">agent</span><span class="desc" data-pt="Recorta dos metadados do Figma as telas de um card de front e devolve o objeto figma do Recorte: link, estados e copy.">Slices the Figma metadata into the screens of a front card: link, states and copy.</span></li>
+<li class="peca" data-tipo="agent"><code>redator-aceite</code><span class="tipo">agent</span><span class="desc" data-pt="Escreve o critério de aceite de um card em passos testáveis, a partir da ADR e das regras de negócio citadas.">Writes a card's acceptance criteria as testable steps, from the ADR and the cited business rules.</span></li>
+<li class="peca" data-tipo="agent"><code>redator-adr</code><span class="tipo">agent</span><span class="desc" data-pt="Escreve o rascunho da ADR em markdown a partir da análise, do template e do checklist.">Writes the ADR draft in markdown from the analysis, the template and the checklist.</span></li>
+<li class="peca" data-tipo="agent"><code>redator-card</code><span class="tipo">agent</span><span class="desc" data-pt="Escreve o recorte.json de um card no formato Recorte, juntando as saídas dos extratores.">Writes a card's recorte.json by joining the outputs of the extractors.</span></li>
+<li class="peca" data-tipo="agent"><code>redator-ptbr</code><span class="tipo">agent</span><span class="desc" data-pt="Escreve em português do Brasil PR, GMUD, mensagem do Teams, solução técnica de card, ADR e comentário de review.">Writes Brazilian Portuguese text for other people to read: PR descriptions, Teams messages, card solutions and review comments.</span></li>
+<li class="peca" data-tipo="agent"><code>reviewer-database</code><span class="tipo">agent</span><span class="desc" data-pt="Revisa SQL, migrations e acesso a banco: índice, lock, transação, N+1, tabela compartilhada e rollback.">Reviews SQL, migrations and database access: index, lock, transaction, N+1, shared tables and rollback.</span></li>
+<li class="peca" data-tipo="agent"><code>reviewer-go</code><span class="tipo">agent</span><span class="desc" data-pt="Revisa mudanças em Go: concorrência, erro ignorado, vazamento de goroutine, SQL montado com input e race.">Reviews Go changes: concurrency, ignored errors, goroutine leaks, injected SQL and commands, races.</span></li>
+<li class="peca" data-tipo="agent"><code>reviewer-react</code><span class="tipo">agent</span><span class="desc" data-pt="Revisa mudanças em React: hooks, estado derivado, efeito sem limpeza, chave de lista, acessibilidade e render.">Reviews React changes: hooks, derived state, effects without cleanup, list keys, accessibility and render.</span></li>
+<li class="peca" data-tipo="agent"><code>reviewer-typescript</code><span class="tipo">agent</span><span class="desc" data-pt="Revisa mudanças em TypeScript: any, asserção que esconde erro, promise sem tratamento, null não checado.">Reviews TypeScript changes: any, type assertions that hide errors, unhandled promises, unchecked null and broken narrowing.</span></li>
+<li class="peca" data-tipo="agent"><code>revisor-adr</code><span class="tipo">agent</span><span class="desc" data-pt="Revisa o rascunho da ADR contra o template e o checklist e classifica cada item em Bloqueante, Alta ou Média.">Reviews the ADR draft against the template and the checklist and ranks each item as Blocking, High or Medium.</span></li>
+<li class="peca" data-tipo="agent"><code>security-reviewer</code><span class="tipo">agent</span><span class="desc" data-pt="Procura vulnerabilidade no diff: authn e authz, injeção, vazamento de dado, segredo no código e SSRF.">Looks for vulnerabilities in a diff: authn and authz, injection, data leaks, secrets in code, SSRF and unsafe dependencies.</span></li>
+<li class="peca" data-tipo="agent"><code>silent-failure-hunter</code><span class="tipo">agent</span><span class="desc" data-pt="Procura falha silenciosa: erro engolido, fallback que esconde defeito, catch vazio, log sem contexto e rollback ausente.">Looks for silent failures: swallowed errors, fallbacks that hide defects, empty catch, logs without context and missing rollback.</span></li>
+<li class="peca" data-tipo="agent"><code>test-engineer</code><span class="tipo">agent</span><span class="desc" data-pt="Desenha e escreve testes: estratégia, cobertura, lacunas de uma PR, testes flaky.">Designs and writes tests: strategy, coverage, PR gaps and flaky tests.</span></li>
+<li class="peca" data-tipo="agent"><code>tracer</code><span class="tipo">agent</span><span class="desc" data-pt="Investiga comportamento estranho com hipóteses concorrentes e diz qual teste decide entre elas.">Investigates odd behavior with competing hypotheses and says which test decides between them.</span></li>
+<li class="peca" data-tipo="agent"><code>type-design-analyzer</code><span class="tipo">agent</span><span class="desc" data-pt="Avalia tipos novos ou alterados: se impedem estado inválido e se o compilador impõe a invariante.">Evaluates the design of new or changed types: whether they prevent invalid states and let the compiler enforce the invariant.</span></li>
+<li class="peca" data-tipo="agent"><code>verifier</code><span class="tipo">agent</span><span class="desc" data-pt="Confere com evidência se o trabalho está pronto: roda a verificação e diz o que foi e o que não foi provado.">Checks with evidence that the work is done: runs the verification commands and says what was and was not proven.</span></li>
+</ul>
+<!-- catalogo-site:fim -->
+</section>
+
+<section class="secao" id="instalar">
+  <h2><span class="hash">##</span> <span data-i18n="instalar.titulo">Install</span></h2>
+  <ol class="passos">
+    <li>
+      <p data-i18n="instalar.clonar">Clone the repo:</p>
+      <pre><code>git clone https://github.com/adrianogl/everyday-engineering-harness ~/Code/everyday-engineering-harness</code></pre>
+    </li>
+    <li>
+      <p data-i18n="instalar.marketplace">Install it from the repo marketplace, inside Claude Code:</p>
+      <pre><code>/plugin marketplace add ~/Code/everyday-engineering-harness
+/plugin install eeh@everyday-engineering-harness</code></pre>
+      <p class="nota" data-i18n="instalar.sessao">Or run it from the clone, for one session:</p>
+      <pre><code>claude --plugin-dir ~/Code/everyday-engineering-harness</code></pre>
+    </li>
+    <li>
+      <p data-i18n="instalar.perfil">The profile lives outside the repo, in ~/.config/eeh/perfil.json. Start from the example:</p>
+      <pre><code>mkdir -p ~/.config/eeh
+cp perfil.example.json ~/.config/eeh/perfil.json</code></pre>
+      <p class="nota" data-i18n="instalar.semperfil">Without the file, the plugin warns that the profile is missing and keeps going.</p>
+    </li>
+  </ol>
+</section>
+</main>
+
+<footer class="rodape" id="creditos">
+  <h2><span class="hash">##</span> <span data-i18n="creditos.titulo">Credits</span></h2>
+  <p><span data-i18n="creditos.adapta">eeh adapts ideas and parts from</span> <a href="https://github.com/affaan-m/everything-claude-code">Everything Claude Code</a> (ECC), <a href="https://github.com/Yeachan-Heo/oh-my-claudecode">oh-my-claudecode</a> (OMC) <span data-i18n="creditos.e">and</span> <a href="https://github.com/obra/superpowers">superpowers</a>, <span data-i18n="creditos.mit">all MIT.</span> <span data-i18n="creditos.cores">The colors come from the</span> <a href="https://draculatheme.com">Dracula</a> <span data-i18n="creditos.paleta">palette (MIT, Zeno Rocha).</span></p>
+  <p class="fim"><span class="logo"><span class="e">e</span>eh</span> <span class="dim">MIT ·</span> <a href="https://github.com/adrianogl/everyday-engineering-harness">github.com/adrianogl/everyday-engineering-harness</a></p>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

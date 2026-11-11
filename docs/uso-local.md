@@ -76,3 +76,23 @@ node scripts/sanitize.mjs --staged
 ```
 
 O sanitizer compara cada termo da `denylist` como palavra inteira, sem diferenciar maiúscula de minúscula. Termo curto não casa dentro de palavra maior, mas casa dentro de composto com hífen.
+
+## Landing page
+
+A pasta `site/` é publicada no GitHub Pages por `.github/workflows/pages.yml`, a cada push na `main` e por disparo manual. O job `test` roda `node --test tests/*.test.mjs` (sem o `claude plugin validate`, que não existe no runner) e o `deploy` só começa se ele passar.
+
+Antes de publicar pela primeira vez, ative o Pages no repositório: Settings, Pages, Source "GitHub Actions".
+
+Para regenerar o catálogo e o hero depois de mudar uma skill, um command ou um agent:
+
+```bash
+node scripts/catalogo.mjs gerar
+```
+
+Para regenerar o ícone (`site/favicon.png`):
+
+```bash
+node scripts/icone.mjs
+```
+
+Depois rode `npm test`: os testes de `tests/site.test.mjs` conferem que o catálogo bate com as peças do repo.
