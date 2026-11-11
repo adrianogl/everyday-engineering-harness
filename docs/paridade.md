@@ -1,7 +1,6 @@
 # Paridade com OMC e superpowers
 
-Esta tabela diz o que do oh-my-claudecode (OMC) e do superpowers (SP) o EEH já cobre. A troca acontece quando nenhuma linha `plano-3` for de um item que o autor usa de fato. Linha `coberto` aponta para o arquivo do repo que faz o papel, `descartado` traz o motivo e `plano-3` espera `/eeh:upstream` e `manutencao-pacote`. O plano 2 (ADR, revisão de comentários, quebra, QA e histórico de review) está entregue em `commands/adr.md`, `commands/adr-revisar.md`, `commands/quebrar.md`, `commands/qa.md` e `scripts/reviews.mjs`, e não deixou linha pendente.
-
+Esta tabela diz o que do oh-my-claudecode (OMC) e do superpowers (SP) o EEH já cobre. A troca acontece quando nenhuma linha `plano-3` for de um item que o autor usa de fato. Linha `coberto` aponta para o arquivo do repo que faz o papel, `descartado` traz o motivo e `plano-3` espera `/eeh:upstream` e `manutencao-pacote`.
 O escopo é cada skill e agent de OMC e SP listado em `docs/triagem.tsv`. O ECC fica de fora porque não será desinstalado. O mapa vem de `upstream.json` e, onde ele não cobre, da tabela de fusões do design.
 
 | item atual | origem | equivalente no EEH | status |

@@ -75,6 +75,18 @@ test('ordem inválida lança', () => {
   assert.throws(() => montarCard(recorteBack({ sql: { script: 'x', banco: 'frete', ambiente: 'qa', ordem: 'durante' } })), /ordem/)
 })
 
+test('aceite com item vazio ou que não é string lança', () => {
+  for (const item of ['', '   ', 3, null, undefined]) {
+    assert.throws(() => montarCard(recorteBack({ aceite: ['ok', item] })), /aceite/, String(item))
+  }
+})
+
+test('adr.secao vazio lança junto com os demais campos', () => {
+  for (const secao of ['', '  ', undefined]) {
+    assert.throws(() => montarCard(recorteBack({ adr: { link: 'https://exemplo.dev/adr/0007', secao } })), /adr\.secao/)
+  }
+})
+
 test('aceite vazio lança', () => {
   assert.throws(() => montarCard(recorteBack({ aceite: [] })), /aceite/)
 })

@@ -14,7 +14,7 @@ Você lê a ADR, o template e a saída do checklist que o orquestrador passou. S
 1. Confira cada seção com a regra de preenchimento do template: obrigatoriedade, gate e "completo quando".
 2. Confira as regras de ADR: regra de negócio só por ID e link, uma informação num lugar só, afirmação sobre código com `repo:caminho:linha` ou "não verificado", diagrama como imagem ou link, "como hoje" como pendência `P-n`, decisão `D-n` com opções, escolha e consequência.
 3. Confira se o contrato tem rota, request, response e status code, e se cada script SQL tem rollback e ordem.
-4. Classifique pela severidade que o próprio template define. Seção obrigatória ausente ou gate descumprido é Bloqueante. Se o template não define a severidade de um caso, escolha a mais baixa que ainda descreva o efeito e diga isso no item.
+4. Classifique pela severidade que o próprio template define. Seção obrigatória ausente ou gate descumprido é Bloqueante. Se o template não define a severidade de um caso, escolha a mais baixa (Média) que ainda descreva o efeito e diga isso no item.
 
 ## O que devolver
 

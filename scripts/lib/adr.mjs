@@ -2,16 +2,20 @@ const TITULO = /^(#{2,3})\s+(.+?)\s*$/
 const NUMERADO = /^(\d+(?:\.\d+)*)\.?\s+(.+)$/
 const CAMPO = /^-\s+\*\*(Obrigatoriedade|Gate|Completo quando):\*\*\s*(.*?)\s*$/
 
+function semAcento(texto) {
+  return texto.normalize('NFD').replace(/[̀-ͯ]/g, '')
+}
+
 function identificar(texto) {
-  if (texto.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase() === 'cabecalho') return { id: 'cabecalho', titulo: texto }
+  if (semAcento(texto).toLowerCase() === 'cabecalho') return { id: 'cabecalho', titulo: texto }
   const m = NUMERADO.exec(texto)
   return m ? { id: m[1], titulo: m[2] } : null
 }
 
 function normalizarObrigatoriedade(texto) {
-  const semAcento = texto.normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase()
-  if (/^OBRIGATORIO\b/.test(semAcento)) return 'OBRIGATORIO'
-  if (/^CONDICIONAL\b/.test(semAcento)) return 'CONDICIONAL'
+  const normalizado = semAcento(texto).toUpperCase()
+  if (/^OBRIGATORIO\b/.test(normalizado)) return 'OBRIGATORIO'
+  if (/^CONDICIONAL\b/.test(normalizado)) return 'CONDICIONAL'
   return null
 }
 

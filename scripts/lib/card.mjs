@@ -8,8 +8,9 @@ function vazio(valor) {
 function validar(r) {
   const faltando = []
   if (typeof r.repo !== 'string' || !REPO.test(r.repo)) faltando.push('repo')
-  if (!Array.isArray(r.aceite) || r.aceite.length === 0) faltando.push('aceite')
+  if (!Array.isArray(r.aceite) || r.aceite.length === 0 || r.aceite.some(vazio)) faltando.push('aceite')
   if (vazio(r.adr?.link)) faltando.push('adr.link')
+  if (vazio(r.adr?.secao)) faltando.push('adr.secao')
   if (vazio(r.recorteAdr)) faltando.push('recorteAdr')
   if (r.sql) {
     if (vazio(r.sql.script)) faltando.push('sql.script')

@@ -18,10 +18,7 @@ const esperados = [
   'opensource-sanitizer',
 ]
 
-const proprios = [
-  'analista-epico', 'redator-adr', 'revisor-adr', 'leitor-comentarios', 'extrator-contrato',
-  'extrator-sql', 'redator-aceite', 'recortador-figma', 'conferente', 'redator-card',
-]
+const proprios = esperados.slice(esperados.indexOf('analista-epico'), esperados.indexOf('redator-card') + 1)
 
 const somenteLeitura = [
   'explorar', 'architect', 'critic', 'code-reviewer', 'reviewer-go', 'reviewer-react',
