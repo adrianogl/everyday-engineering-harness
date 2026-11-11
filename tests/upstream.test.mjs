@@ -165,5 +165,54 @@ test('CLI buscar segue quando uma fonte falha', () => {
   const saida = JSON.parse(r.stdout)
   assert.equal(saida.fontes.ecc.ok, false)
   assert.equal(saida.fontes.omc.ok, true)
-  assert.match(saida.fontes.omc.dir, new RegExp(`^${cache}`))
+  assert.ok(saida.fontes.omc.dir.startsWith(cache))
+})
+
+test('diffOrigens com commit hostil sai sem-base sem chamar o diff', () => {
+  const { dir, base } = fixture()
+  const chamadas = []
+  const espiao = (args, cwd) => {
+    chamadas.push(args)
+    return { status: 0, stdout: '', stderr: '' }
+  }
+  const [r] = diffOrigens({ manifesto: manifestoCom({ caminho: 'p.md', commit: '--output=/tmp/x' }), clones: { ecc: { dir, head: base } }, git: espiao })
+  assert.equal(r.status, 'sem-base')
+  assert.match(r.erro, /commit inválido/)
+  assert.ok(!chamadas.some((a) => a.includes('diff') || a.includes('--output=/tmp/x')))
+})
+
+test('diffOrigens com git diff falhando sai erro', () => {
+  const { dir, base } = fixture()
+  const git = (args) => (args[0] === 'diff' ? { status: 128, stdout: '', stderr: 'fatal: boom' } : { status: 0, stdout: '', stderr: '' })
+  const [r] = diffOrigens({ manifesto: manifestoCom({ caminho: 'skills/frete/SKILL.md', commit: base }), clones: { ecc: { dir, head: base } }, git })
+  assert.equal(r.status, 'erro')
+  assert.match(r.erro, /boom/)
+})
+
+test('diffOrigens guarda o erro do fetch do commit base', () => {
+  const { dir, base } = fixture()
+  const git = (args) => {
+    if (args[0] === 'cat-file' && args[2].includes('^{commit}')) return { status: 1, stdout: '', stderr: '' }
+    if (args[0] === 'fetch') return { status: 128, stdout: '', stderr: 'fatal: sem rede' }
+    return { status: 0, stdout: '', stderr: '' }
+  }
+  const [r] = diffOrigens({ manifesto: manifestoCom({ caminho: 'p.md', commit: SHA_A }), clones: { ecc: { dir, head: base } }, git })
+  assert.equal(r.status, 'sem-base')
+  assert.match(r.erro, /sem rede/)
+})
+
+test('atualizarClone rejeita fonte fora do padrão e separa repo com --', () => {
+  const cache = mkdtempSync(join(tmpdir(), 'eeh-cache-'))
+  let chamou = false
+  const r = atualizarClone({ fonte: '../../x', repo: 'x', cache, git: () => { chamou = true; return { status: 0, stdout: '', stderr: '' } } })
+  assert.equal(r.ok, false)
+  assert.equal(chamou, false)
+  const args = []
+  atualizarClone({ fonte: 'ecc', repo: '--upload-pack=x', cache, git: (a) => { args.push(a); return { status: 1, stdout: '', stderr: 'e' } } })
+  assert.deepEqual(args[0].slice(0, 5), ['clone', '--depth', '1', '--', '--upload-pack=x'])
+})
+
+test('validarManifesto rejeita nome de fonte fora do padrão', () => {
+  const erros = validarManifesto({ fontes: { '../x': { repo: 'r' } }, pecas: [] })
+  assert.match(erros.join('\n'), /nome de fonte inválido/)
 })

@@ -4,6 +4,7 @@ import { homedir } from 'node:os'
 import { join } from 'node:path'
 
 const SHA = /^[0-9a-f]{40}$/
+const NOME_FONTE = /^[a-z0-9_-]+$/
 const ORIGENS = { ECC: 'ecc', OMC: 'omc', SP: 'superpowers' }
 const PASTAS_SKILL = { ecc: ['skills'], omc: ['skills', 'skill-bodies'], superpowers: ['skills'] }
 
@@ -23,6 +24,7 @@ export function validarManifesto(m) {
   const fontes = m?.fontes && typeof m.fontes === 'object' ? m.fontes : {}
   if (!m?.fontes || typeof m.fontes !== 'object') erros.push('fontes ausente')
   for (const [nome, fonte] of Object.entries(fontes)) {
+    if (!NOME_FONTE.test(nome)) erros.push(`nome de fonte inválido ${nome}`)
     if (typeof fonte?.repo !== 'string' || fonte.repo === '') erros.push(`fonte ${nome} sem repo`)
   }
   if (!Array.isArray(m?.pecas)) {
@@ -48,11 +50,12 @@ export function validarManifesto(m) {
 }
 
 export function atualizarClone({ fonte, repo, cache, git = gitPadrao }) {
-  const dir = join(cache, fonte)
+  const dir = join(cache, String(fonte))
+  if (typeof fonte !== 'string' || !NOME_FONTE.test(fonte)) return { ok: false, dir, erro: `nome de fonte inválido: ${fonte}` }
   try {
     if (!existsSync(join(dir, '.git'))) {
       mkdirSync(cache, { recursive: true })
-      const r = git(['clone', '--depth', '1', repo, dir])
+      const r = git(['clone', '--depth', '1', '--', repo, dir])
       if (r.status !== 0) return { ok: false, dir, erro: r.stderr.trim() || 'clone falhou' }
     } else {
       const f = git(['fetch', '--depth', '1', 'origin', 'HEAD'], dir)
@@ -93,14 +96,24 @@ export function diffOrigens({ manifesto, clones, git = gitPadrao }) {
         mudancas.push({ ...base, base: null, head, status: 'sem-base', diff: atual.status === 0 ? atual.stdout : '' })
         continue
       }
+      if (!SHA.test(o.commit)) {
+        mudancas.push({ ...base, base: null, head, status: 'sem-base', diff: '', erro: `commit inválido: ${o.commit}` })
+        continue
+      }
+      let erroFetch
       if (git(['cat-file', '-e', `${o.commit}^{commit}`], dir).status !== 0) {
-        git(['fetch', '--depth', '1', 'origin', o.commit], dir)
+        const f = git(['fetch', '--depth', '1', 'origin', '--end-of-options', o.commit], dir)
+        if (f.status !== 0) erroFetch = f.stderr.trim() || 'fetch do commit base falhou'
       }
       if (git(['cat-file', '-e', `${o.commit}^{commit}`], dir).status !== 0) {
-        mudancas.push({ ...base, base: o.commit, head, status: 'sem-base', diff: '' })
+        mudancas.push({ ...base, base: o.commit, head, status: 'sem-base', diff: '', erro: erroFetch ?? 'commit base ausente no clone' })
         continue
       }
       const d = git(['diff', o.commit, head, '--', ...new Set([o.caminho, caminho])], dir)
+      if (d.status !== 0) {
+        mudancas.push({ ...base, base: o.commit, head, status: 'erro', diff: '', erro: d.stderr.trim() || 'git diff falhou' })
+        continue
+      }
       const status = !existeNoHead(git, dir, head, caminho) ? 'removido' : d.stdout.trim() === '' ? 'igual' : 'mudou'
       mudancas.push({ ...base, base: o.commit, head, status, diff: d.stdout })
     }
