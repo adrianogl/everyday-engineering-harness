@@ -13,6 +13,8 @@ Planejar não implementa. Quando o autor diz "faz X", leia como "planeja X". O p
 
 ## Antes de escrever
 
+Para decisão de arquitetura, o orquestrador chama o agent `architect` (só leitura) antes de escrever o plano.
+
 1. O escopo e os critérios de aceite estão fechados? Se não, volte para `entender`. Decisões que o autor já tomou estão nos registros da entrega e não se reabrem.
 2. Pergunta cuja resposta está no código não vai ao autor: use `explorar`. Só pergunte prioridade, prazo, escopo e tolerância a risco, uma pergunta por vez.
 3. Se o escopo cobre vários subsistemas independentes, proponha planos separados, um por subsistema, cada um entregando software que funciona e se testa sozinho.
@@ -122,7 +124,7 @@ Corrija o que achar e siga.
 
 ## Crítica separada
 
-Para decisão de arquitetura, o orquestrador chama o agent `architect` (só leitura) antes de escrever o plano. A crítica abaixo fica com o agent `critic`, que critica o plano antes da parada.
+A crítica abaixo fica com o agent `critic`, que critica o plano antes da parada.
 
 Quem escreveu o plano não o aprova. Para plano de mudança média ou grande, o orquestrador dispara um passe de crítica com contexto limpo (um subagent, que lê o plano e a spec, sem o seu raciocínio). A crítica procura, no plano, o que está faltando e não só o que está errado:
 

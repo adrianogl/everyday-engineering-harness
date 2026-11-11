@@ -61,7 +61,7 @@ Quando o sintoma admite explicações diferentes, não escolha a favorita cedo. 
 
 Nunca declare convergência só porque duas hipóteses usam palavras parecidas: converge quando o mecanismo causal é o mesmo ou evidências independentes apontam para a mesma explicação.
 
-O orquestrador chama o agent `debugger` para achar a causa raiz e o agent `tracer` quando há hipóteses concorrentes.
+O orquestrador chama o agent `debugger` para achar a causa raiz e o agent `tracer` quando há hipóteses concorrentes. Nesta rota os dois só diagnosticam: o orquestrador pede causa e correção recomendada, sem editar arquivo, e a correção espera o autor.
 
 Para vários caminhos independentes, o orquestrador pode abrir um subagent por hipótese, cada um responsável por uma só, devolvendo evidência a favor, contra, incógnita crítica e a melhor sonda. Subagent que esbarra em escolha que cabe ao autor, ou em conflito entre ADR, Figma e código, devolve o bloco DÚVIDA de `rules/orquestrador.md` em vez de decidir.
 
