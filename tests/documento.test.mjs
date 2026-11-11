@@ -4,10 +4,10 @@ import { readFileSync } from 'node:fs'
 import { spawnSync } from 'node:child_process'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { parseSecoes, checklist } from '../scripts/lib/adr.mjs'
+import { parseSecoes, checklist } from '../scripts/lib/documento.mjs'
 
 const raiz = join(dirname(fileURLToPath(import.meta.url)), '..')
-const fixture = readFileSync(join(raiz, 'tests', 'fixtures', 'adr-template.md'), 'utf8')
+const fixture = readFileSync(join(raiz, 'tests', 'fixtures', 'documento-template.md'), 'utf8')
 
 test('parseSecoes lê obrigatoriedade, gate e completo quando', () => {
   const secoes = parseSecoes(fixture)
@@ -44,7 +44,7 @@ test('checklist aceita campos null', () => {
 })
 
 test('template de exemplo tem regra em toda seção numerada', () => {
-  const exemplo = readFileSync(join(raiz, 'templates', 'adr-exemplo.md'), 'utf8')
+  const exemplo = readFileSync(join(raiz, 'templates', 'documento-exemplo.md'), 'utf8')
   const secoes = parseSecoes(exemplo)
   assert.ok(secoes.length >= 9)
   for (const s of secoes) {
@@ -55,16 +55,16 @@ test('template de exemplo tem regra em toda seção numerada', () => {
 })
 
 test('CLI com arquivo ausente sai com 1', () => {
-  const r = spawnSync('node', [join(raiz, 'scripts', 'adr.mjs'), 'secoes', '/nao/existe.md'], { encoding: 'utf8' })
+  const r = spawnSync('node', [join(raiz, 'scripts', 'documento.mjs'), 'secoes', '/nao/existe.md'], { encoding: 'utf8' })
   assert.equal(r.status, 1)
   assert.ok(r.stderr.length > 0)
 })
 
 test('CLI secoes e checklist imprimem a saída', () => {
-  const caminho = join(raiz, 'tests', 'fixtures', 'adr-template.md')
-  const secoes = spawnSync('node', [join(raiz, 'scripts', 'adr.mjs'), 'secoes', caminho], { encoding: 'utf8' })
+  const caminho = join(raiz, 'tests', 'fixtures', 'documento-template.md')
+  const secoes = spawnSync('node', [join(raiz, 'scripts', 'documento.mjs'), 'secoes', caminho], { encoding: 'utf8' })
   assert.equal(JSON.parse(secoes.stdout).length, 6)
-  const lista = spawnSync('node', [join(raiz, 'scripts', 'adr.mjs'), 'checklist', caminho], { encoding: 'utf8' })
+  const lista = spawnSync('node', [join(raiz, 'scripts', 'documento.mjs'), 'checklist', caminho], { encoding: 'utf8' })
   assert.equal(lista.status, 0)
   assert.equal(lista.stdout, `${checklist(parseSecoes(readFileSync(caminho, 'utf8')))}\n`)
   assert.equal(lista.stdout.split('\n').length, 5)

@@ -2,10 +2,10 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { atualizarClone, diffOrigens, gravarStatusBusca, itensNovos, lerManifesto, pastaCache, registrarCommit, separarFontes, validarManifesto } from './lib/upstream.mjs'
+import { atualizarClone, diffOrigens, gravarStatusBusca, itensNovos, lerManifesto, pastaCache, registrarCommit, separarFontes, validarManifesto } from './lib/fontes.mjs'
 
 const raiz = join(dirname(fileURLToPath(import.meta.url)), '..')
-const USO = 'uso: upstream.mjs buscar [--manifesto <arquivo>]\n     upstream.mjs diff [--manifesto <arquivo>]\n     upstream.mjs novos [--manifesto <arquivo>] [--triagem <arquivo>]\n     upstream.mjs registrar --peca <peca> --fonte <fonte> --caminho <caminho> --commit <sha> [--manifesto <arquivo>]'
+const USO = 'uso: fontes.mjs buscar [--manifesto <arquivo>]\n     fontes.mjs diff [--manifesto <arquivo>]\n     fontes.mjs novos [--manifesto <arquivo>] [--triagem <arquivo>]\n     fontes.mjs registrar --peca <peca> --fonte <fonte> --caminho <caminho> --commit <sha> [--manifesto <arquivo>]'
 
 function opcoes(args) {
   const o = {}
@@ -19,12 +19,12 @@ function opcoes(args) {
 function main(argv) {
   const [comando, ...args] = argv
   const o = opcoes(args)
-  const arquivo = o.manifesto ?? join(raiz, 'upstream.json')
+  const arquivo = o.manifesto ?? join(raiz, 'fontes.json')
   const manifesto = lerManifesto(arquivo)
   const cache = pastaCache()
   if (['buscar', 'diff', 'novos'].includes(comando)) {
     const erros = validarManifesto(manifesto)
-    if (erros.length > 0) throw new Error(`upstream.json inválido:\n${erros.join('\n')}`)
+    if (erros.length > 0) throw new Error(`fontes.json inválido:\n${erros.join('\n')}`)
   }
   if (comando === 'buscar') {
     const fontes = {}

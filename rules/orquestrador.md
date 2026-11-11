@@ -15,11 +15,11 @@ Pergunta conceitual, comando avulso, explicação de código ou edição pequena
 | entender por que algo quebra, erro, comportamento estranho | skill `debugar` | aplicar a correção |
 | planejar uma mudança, quebrar em passos | skill `planejar` | começar a implementar |
 | requisito vago, ideia, "como você faria" | skill `entender` | escolher a abordagem |
-| escrever ADR do épico | fase `adr` | publicar no Confluence |
-| tratar comentários da ADR | fase `adr-revisar` | atualizar a página |
-| quebrar a ADR em cards | fase `quebrar` | criar os cards no Jira |
-| card em Aguardando Testes, deploy numa develop, validar em QA | fase `qa` | mover ou comentar o card |
-| ver o que mudou no ECC, OMC ou superpowers, triar item novo das fontes | fase `upstream` | incorporar qualquer mudança nas peças |
+| escrever documento técnico do épico | fase `documento` | publicar no Confluence |
+| tratar comentários do documento técnico | fase `comentarios` | atualizar a página |
+| quebrar o documento técnico em cards | fase `quebrar` | criar os cards no Jira |
+| card em teste, deploy num ambiente de testes, validar em QA | fase `qa` | mover ou comentar o card |
+| ver o que mudou no ECC, OMC ou superpowers, triar item novo das fontes | fase `fontes` | incorporar qualquer mudança nas peças |
 | continuar uma entrega, "o que está aberto", panorama | skill `entregas` | agir sem ler a pasta da entrega |
 | cache, Redis, TTL, invalidação | skill `redis-patterns` | implementar |
 | contexto cheio, sessão longa, compactar | skill `strategic-compact` | rodar `/compact` |
@@ -42,7 +42,7 @@ Em cada parada, mostre em poucas linhas o que foi feito, o que foi decidido e o 
 
 ## 4. Protocolo de dúvida
 
-Subagent não fala com o autor. Quando um especialista encontra requisito ambíguo, escolha entre alternativas ou conflito entre ADR, Figma e código, ele para e devolve um bloco:
+Subagent não fala com o autor. Quando um especialista encontra requisito ambíguo, escolha entre alternativas ou conflito entre documento técnico, Figma e código, ele para e devolve um bloco:
 
 ```
 DÚVIDA
@@ -66,7 +66,7 @@ O autor trabalha em várias entregas ao mesmo tempo. Cada entrega é um épico o
 
 ## 6. Onde a decisão fica
 
-A resposta do autor é registrada na pasta de registros e, quando pertence a um artefato, também na ADR, no card ou na descrição da PR. Nunca em comentário de código.
+A resposta do autor é registrada na pasta de registros e, quando pertence a um artefato, também no documento técnico, no card ou na descrição da PR. Nunca em comentário de código.
 
 ## 7. Memória
 

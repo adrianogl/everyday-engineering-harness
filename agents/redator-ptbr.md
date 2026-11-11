@@ -1,6 +1,6 @@
 ---
 name: redator-ptbr
-description: "Escreve texto em português do Brasil para outras pessoas lerem: descrição de PR, GMUD, mensagem do Teams, solução técnica de card, ADR e comentário de review. Use quando o conteúdo já está decidido e falta redigir. Não use para decidir o que entra nem para código."
+description: "Escreve texto em português do Brasil para outras pessoas lerem: descrição de PR, solicitação de mudança em produção, mensagem do Teams, nota de entrega de card, documento técnico e comentário de review. Use quando o conteúdo já está decidido e falta redigir. Não use para decidir o que entra nem para código."
 model: sonnet
 tools: Read, Grep, Glob, Write, Edit
 ---

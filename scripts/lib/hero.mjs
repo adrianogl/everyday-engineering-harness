@@ -70,7 +70,7 @@ export function heroSvg(catalogo, roteiro = ROTEIRO, paradas = 0) {
   p.push('<text x="1520" y="84" font-size="20" fill="#6272a4" text-anchor="end">MIT</text>')
   p.push('<line x1="80" y1="128" x2="1520" y2="128" stroke="#44475a"/>')
 
-  const titulo = ['Turns a plain request', 'into ADRs, cards, code,', 'reviews and QA, and']
+  const titulo = ['Turns a plain request', 'into design docs, cards, code,', 'reviews and QA, and']
   titulo.forEach((t, i) => p.push(`<text x="80" y="${210 + i * 52}" font-size="40" font-weight="600" fill="#f8f8f2">${t}</text>`))
   p.push(`<text x="80" y="${210 + 3 * 52}" font-size="40" font-weight="600" fill="#50fa7b">stops for your approval.</text>`)
   p.push('<text x="80" y="420" font-size="20" fill="#6272a4">A Claude Code plugin for daily engineering work.</text>')

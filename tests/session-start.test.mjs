@@ -37,9 +37,9 @@ test('avisa perfil ausente sem lançar', () => {
 
 test('lista extensões do perfil', () => {
   const base = perfilResult()
-  base.perfil.extensoes = [{ skill: 'gmud', quando: 'fim:implementar' }]
+  base.perfil.extensoes = [{ skill: 'mudanca-producao', quando: 'fim:implementar' }]
   const contexto = buildContext({ perfilResult: base, rulesDir })
-  assert.match(contexto, /gmud/)
+  assert.match(contexto, /mudanca-producao/)
   assert.match(contexto, /fim:implementar/)
 })
 
@@ -77,17 +77,17 @@ test('lista enorme de entregas continua abaixo de 10.000 caracteres', () => {
   assert.match(contexto, /\+\d+\./)
 })
 
-test('resumo do perfil mostra o template de ADR configurado', () => {
+test('resumo do perfil mostra o template de documento técnico configurado', () => {
   const base = perfilResult()
-  base.perfil.confluence = { espaco: 'ENG', templateAdr: '12345' }
-  assert.match(buildContext({ perfilResult: base, rulesDir }), /ADR: template no Confluence \(pageId 12345\)/)
+  base.perfil.confluence = { espaco: 'ENG', templateDocumento: '12345' }
+  assert.match(buildContext({ perfilResult: base, rulesDir }), /Documento técnico: template no Confluence \(pageId 12345\)/)
 })
 
-test('resumo do perfil avisa quando não há template de ADR', () => {
+test('resumo do perfil avisa quando não há template de documento técnico', () => {
   const base = perfilResult()
-  assert.match(buildContext({ perfilResult: base, rulesDir }), /ADR: sem template configurado/)
-  base.perfil.confluence = { templateAdr: '  ' }
-  assert.match(buildContext({ perfilResult: base, rulesDir }), /ADR: sem template configurado/)
+  assert.match(buildContext({ perfilResult: base, rulesDir }), /Documento técnico: sem template configurado/)
+  base.perfil.confluence = { templateDocumento: '  ' }
+  assert.match(buildContext({ perfilResult: base, rulesDir }), /Documento técnico: sem template configurado/)
 })
 
 test('traz o resumo das quatro regras', () => {

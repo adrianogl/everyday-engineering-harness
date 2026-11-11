@@ -1,13 +1,13 @@
 ---
 name: sql-manual
-description: Escreve ou revisa script SQL que será executado à mão na GMUD, com banco, ambiente, ordem em relação ao deploy, rollback e idempotência explícitos. Use ao criar migration, backfill, índice ou correção de dado que alguém vai rodar manualmente em QA ou produção. Não use para migration que um pipeline aplica sozinho nem para otimizar query (ver postgres-patterns).
+description: Escreve ou revisa script SQL que será executado à mão na solicitação de mudança em produção, com banco, ambiente, ordem em relação ao deploy, rollback e idempotência explícitos. Use ao criar migration, backfill, índice ou correção de dado que alguém vai rodar manualmente em QA ou produção. Não use para migration que um pipeline aplica sozinho nem para otimizar query (ver postgres-patterns).
 metadata:
   origin: ecc
 ---
 
 # SQL executado manualmente
 
-Script que roda na GMUD não tem pipeline, nem `down` automático, nem segunda chance. Quem executa precisa saber, sem perguntar, o que o script faz, onde roda, quando roda e como desfazer.
+Script que roda na solicitação de mudança não tem pipeline, nem `down` automático, nem segunda chance. Quem executa precisa saber, sem perguntar, o que o script faz, onde roda, quando roda e como desfazer.
 
 ## Cabeçalho obrigatório
 
@@ -21,13 +21,13 @@ Todo script abre com um bloco que responde cinco perguntas. Este é o único cas
 -- rollback: <arquivo ou comando>
 ```
 
-Sem as cinco linhas preenchidas, o script não está pronto para a GMUD. O dado que depende do ambiente real (nome do banco, versão) vem do card ou do perfil local; não invente.
+Sem as cinco linhas preenchidas, o script não está pronto para a solicitação de mudança. O dado que depende do ambiente real (nome do banco, versão) vem do card ou do perfil local; não invente.
 
 ## Ordem em relação ao deploy
 
 - Mudança aditiva (coluna nullable, tabela nova, índice) roda antes do deploy: o código antigo ignora e o novo já encontra.
 - Mudança destrutiva (drop de coluna ou tabela, constraint nova que o código antigo viola) roda depois do deploy que parou de usar o objeto.
-- Renomear nunca é um passo só. Use expand-contract: adicionar a coluna nova, o app grava nas duas, backfill, o app lê da nova, drop da antiga em outra GMUD.
+- Renomear nunca é um passo só. Use expand-contract: adicionar a coluna nova, o app grava nas duas, backfill, o app lê da nova, drop da antiga em outra solicitação de mudança.
 - Se o script e o deploy precisam sair juntos para funcionar, a dependência é um item bloqueante no card. Diga qual vem primeiro e o que acontece se o outro atrasar.
 
 ## Idempotência
@@ -91,7 +91,7 @@ END $$;
 
 ## Rollback
 
-Rollback é um script escrito antes da GMUD, não improviso durante ela.
+Rollback é um script escrito antes da solicitação de mudança, não improviso durante ela.
 
 - Aditivo: o rollback é o `DROP` correspondente, e pode esperar, porque o código antigo ignora o objeto.
 - Backfill: o rollback é restaurar o valor anterior. Se o valor antigo se perde, salve-o antes numa tabela de backup (`<tabela>_bkp_<data>`) e liste a tabela no cabeçalho.
@@ -104,7 +104,7 @@ Rollback é um script escrito antes da GMUD, não improviso durante ela.
 - [ ] Idempotente, ou a consulta que prova que já rodou.
 - [ ] Contagem prévia e número esperado de linhas em script de dado.
 - [ ] Script de rollback ao lado, testado em QA.
-- [ ] Ordem em relação ao deploy escrita no card da GMUD.
+- [ ] Ordem em relação ao deploy escrita no card da solicitação de mudança.
 - [ ] Testado com volume parecido com o de produção.
 
 ## Anti-padrões
@@ -114,6 +114,6 @@ Rollback é um script escrito antes da GMUD, não improviso durante ela.
 | `NOT NULL` sem default em tabela grande | trava e reescreve a tabela | nullable, backfill, constraint depois |
 | `CREATE INDEX` sem `CONCURRENTLY` | bloqueia escrita | `CONCURRENTLY` fora de transação |
 | DDL e DML no mesmo script | transação longa, rollback confuso | scripts separados |
-| Drop de coluna antes do deploy | erro no código antigo | deploy primeiro, drop na GMUD seguinte |
+| Drop de coluna antes do deploy | erro no código antigo | deploy primeiro, drop na solicitação de mudança seguinte |
 | Editar script já executado | ambientes divergem | script novo |
 | `UPDATE` sem contagem prévia | ninguém sabe o que mudou | `SELECT count(*)` antes |

@@ -1,6 +1,6 @@
 ---
 name: postgres-patterns
-description: Referência rápida de PostgreSQL para índices, tipos de dados, queries lentas, paginação, fila com SKIP LOCKED e configuração. Use ao desenhar tabela, escolher índice ou investigar query lenta. Não use para escrever script de GMUD (ver sql-manual) nem para outros bancos.
+description: Referência rápida de PostgreSQL para índices, tipos de dados, queries lentas, paginação, fila com SKIP LOCKED e configuração. Use ao desenhar tabela, escolher índice ou investigar query lenta. Não use para escrever script de solicitação de mudança em produção (ver sql-manual) nem para outros bancos.
 metadata:
   origin: ecc
 ---

@@ -14,8 +14,8 @@ function recorteBack(extra = {}) {
     repo: 'frete-api',
     titulo: 'Cotação de frete por CEP',
     aceite: ['retorna 200 com o valor do frete', 'retorna 422 para CEP inválido'],
-    adr: { link: 'https://exemplo.dev/adr/0007', secao: 'Cotação por CEP' },
-    recorteAdr: 'O endpoint POST /cotacoes calcula o frete por CEP de origem e destino.',
+    documento: { link: 'https://exemplo.dev/documento/0007', secao: 'Cotação por CEP' },
+    recorteDocumento: 'O endpoint POST /cotacoes calcula o frete por CEP de origem e destino.',
     contrato: { resumo: 'POST /cotacoes recebe cepOrigem e cepDestino.', completo: '# Contrato\n\nPOST /cotacoes' },
     sql: {
       script: 'ALTER TABLE cotacao ADD COLUMN prazo_dias int;',
@@ -34,7 +34,7 @@ test('card de back com contrato e sql gera três anexos', () => {
   assert.equal(card.anexos[0].conteudo, 'ALTER TABLE cotacao ADD COLUMN prazo_dias int;')
   assert.equal(card.anexos[1].conteudo, 'ALTER TABLE cotacao DROP COLUMN prazo_dias;')
   assert.equal(card.anexos[2].conteudo, '# Contrato\n\nPOST /cotacoes')
-  assert.equal(card.comentario, 'Recorte da ADR (Cotação por CEP)\n\nO endpoint POST /cotacoes calcula o frete por CEP de origem e destino.')
+  assert.equal(card.comentario, 'Recorte do documento técnico (Cotação por CEP)\n\nO endpoint POST /cotacoes calcula o frete por CEP de origem e destino.')
   assert.match(card.descricao, /rollback: anexo frete-api-rollback\.sql/)
   assert.match(card.descricao, /frete-api\.sql/)
 })
@@ -44,8 +44,8 @@ test('card de front sem sql não gera anexo sql nem seção SQL', () => {
     repo: 'frete-web',
     titulo: 'Tela de cotação',
     aceite: ['mostra o valor do frete'],
-    adr: { link: 'https://exemplo.dev/adr/0007', secao: 'Tela' },
-    recorteAdr: 'A tela consome POST /cotacoes.',
+    documento: { link: 'https://exemplo.dev/documento/0007', secao: 'Tela' },
+    recorteDocumento: 'A tela consome POST /cotacoes.',
     figma: { link: 'https://exemplo.dev/figma/abc', estados: ['carregando', 'erro'], copy: ['Calcular frete'] },
   })
   assert.deepEqual(card.anexos, [])
@@ -63,11 +63,11 @@ test('sql sem banco lança com o nome do campo', () => {
 })
 
 test('lança listando todos os campos faltando numa mensagem só', () => {
-  const recorte = recorteBack({ aceite: [], recorteAdr: '' })
+  const recorte = recorteBack({ aceite: [], recorteDocumento: '' })
   delete recorte.sql.ambiente
   assert.throws(
     () => montarCard(recorte),
-    (e) => /aceite/.test(e.message) && /recorteAdr/.test(e.message) && /sql\.ambiente/.test(e.message),
+    (e) => /aceite/.test(e.message) && /recorteDocumento/.test(e.message) && /sql\.ambiente/.test(e.message),
   )
 })
 
@@ -81,9 +81,9 @@ test('aceite com item vazio ou que não é string lança', () => {
   }
 })
 
-test('adr.secao vazio lança junto com os demais campos', () => {
+test('documento.secao vazio lança junto com os demais campos', () => {
   for (const secao of ['', '  ', undefined]) {
-    assert.throws(() => montarCard(recorteBack({ adr: { link: 'https://exemplo.dev/adr/0007', secao } })), /adr\.secao/)
+    assert.throws(() => montarCard(recorteBack({ documento: { link: 'https://exemplo.dev/documento/0007', secao } })), /documento\.secao/)
   }
 })
 
@@ -98,7 +98,7 @@ test('repo que escapa da pasta de saída lança', () => {
 
 test('descrição segue a ordem das seções', () => {
   const card = montarCard(recorteBack({ figma: { link: 'https://exemplo.dev/figma/abc' } }))
-  const posicoes = ['## Contrato', '## SQL manual', '## Critério de aceite', '## Figma', '## ADR'].map((s) => card.descricao.indexOf(s))
+  const posicoes = ['## Contrato', '## SQL manual', '## Critério de aceite', '## Figma', '## Documento técnico'].map((s) => card.descricao.indexOf(s))
   assert.ok(posicoes.every((p) => p >= 0))
   assert.deepEqual([...posicoes].sort((a, b) => a - b), posicoes)
   assert.match(card.descricao, /1\. retorna 200 com o valor do frete\n2\. retorna 422/)
@@ -121,7 +121,7 @@ test('CLI grava os arquivos na pasta de saída', () => {
   assert.equal(r.status, 0, r.stderr)
   assert.deepEqual(readdirSync(saida).sort(), ['comentario.md', 'descricao.md', 'frete-api-contrato.md', 'frete-api-rollback.sql', 'frete-api.sql'])
   assert.match(readFileSync(join(saida, 'descricao.md'), 'utf8'), /## SQL manual/)
-  assert.match(readFileSync(join(saida, 'comentario.md'), 'utf8'), /^Recorte da ADR \(Cotação por CEP\)/)
+  assert.match(readFileSync(join(saida, 'comentario.md'), 'utf8'), /^Recorte do documento técnico \(Cotação por CEP\)/)
 })
 
 test('CLI com recorte inválido sai com 1 e escreve no stderr', () => {

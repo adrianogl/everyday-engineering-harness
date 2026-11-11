@@ -1,6 +1,6 @@
 export const ROTEIRO = [
-  { tipo: 'pedido', texto: 'quebra a ADR da cotação' },
-  { tipo: 'ok', texto: 'conferente: 1 conflito ADR × Figma' },
+  { tipo: 'pedido', texto: 'quebra o documento técnico da cotação' },
+  { tipo: 'ok', texto: 'conferente: 1 conflito documento × Figma' },
   { tipo: 'ok', texto: '2 cards: frete-api, frete-web' },
   { tipo: 'parada', texto: 'Parada 2: criar cards' },
 ]

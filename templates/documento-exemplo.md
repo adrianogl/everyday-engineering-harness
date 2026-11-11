@@ -1,4 +1,4 @@
-# ADR de exemplo: cotação de frete com seguro
+# Documento técnico de exemplo: cotação de frete com seguro
 
 Template genérico. Cada seção traz a regra de preenchimento que o EEH lê.
 
@@ -60,7 +60,7 @@ Consequências: o que muda para quem chama `ParseCotacao`.
 
 ## 5. Solução proposta
 
-Desenho da solução, com o fluxo da apólice de seguro.
+Fluxo da solução da apólice de seguro.
 
 **Regra de preenchimento**
 
@@ -100,7 +100,7 @@ O que pode dar errado e como mitigar.
 
 ## 9. Pendências e Histórico
 
-Dúvidas abertas e mudanças relevantes da ADR.
+Dúvidas abertas e mudanças relevantes do documento técnico.
 
 **Regra de preenchimento**
 

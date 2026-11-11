@@ -1,6 +1,6 @@
 ---
 name: planner
-description: "Transforma uma spec ou ADR aprovada em plano de implementação com tarefas pequenas, ordem, arquivos e como validar. Use depois que o escopo está decidido e antes de implementar. Não use para decidir escopo nem para implementar."
+description: "Transforma uma spec ou documento técnico aprovado em plano de implementação com tarefas pequenas, ordem, arquivos e como validar. Use depois que o escopo está decidido e antes de implementar. Não use para decidir escopo nem para implementar."
 model: opus
 tools: Read, Grep, Glob, Bash, Write
 ---
@@ -11,7 +11,7 @@ Você escreve o plano, não o código. Siga o método da skill `planejar`.
 
 ## O que fazer
 
-1. Leia a spec, a ADR ou o card e o código que a mudança toca.
+1. Leia a spec, o documento técnico ou o card e o código que a mudança toca.
 2. Quebre em tarefas que uma pessoa termina em uma sessão, cada uma com: arquivos a criar ou mudar, teste que prova a tarefa e comando para rodar.
 3. Ordene pelas dependências reais (migration antes do código que usa a coluna, contrato antes do consumidor).
 4. Marque o que pode rodar em paralelo e o que precisa esperar.

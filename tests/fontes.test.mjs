@@ -5,7 +5,7 @@ import { execFileSync, spawnSync } from 'node:child_process'
 import { tmpdir } from 'node:os'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { atualizarClone, diffOrigens, itensNovos, registrarCommit, validarManifesto } from '../scripts/lib/upstream.mjs'
+import { atualizarClone, diffOrigens, itensNovos, registrarCommit, validarManifesto } from '../scripts/lib/fontes.mjs'
 
 const raiz = join(dirname(fileURLToPath(import.meta.url)), '..')
 const SHA_A = 'a'.repeat(40)
@@ -39,8 +39,8 @@ function manifestoCom(origem) {
   }
 }
 
-test('validarManifesto aceita o upstream.json do repo', () => {
-  const m = JSON.parse(readFileSync(join(raiz, 'upstream.json'), 'utf8'))
+test('validarManifesto aceita o fontes.json do repo', () => {
+  const m = JSON.parse(readFileSync(join(raiz, 'fontes.json'), 'utf8'))
   assert.deepEqual(validarManifesto(m), [])
 })
 
@@ -152,14 +152,14 @@ test('registrarCommit troca versao por commit', () => {
 test('CLI buscar segue quando uma fonte falha', () => {
   const { dir } = fixture()
   const cache = mkdtempSync(join(tmpdir(), 'eeh-cache-'))
-  const manifesto = join(mkdtempSync(join(tmpdir(), 'eeh-man-')), 'upstream.json')
+  const manifesto = join(mkdtempSync(join(tmpdir(), 'eeh-man-')), 'fontes.json')
   writeFileSync(manifesto, JSON.stringify({
     fontes: { ecc: { repo: join(tmpdir(), 'nao-existe-eeh'), licenca: 'MIT' }, omc: { repo: `file://${dir}`, licenca: 'MIT' } },
     pecas: [],
   }))
-  const r = spawnSync('node', [join(raiz, 'scripts', 'upstream.mjs'), 'buscar', '--manifesto', manifesto], {
+  const r = spawnSync('node', [join(raiz, 'scripts', 'fontes.mjs'), 'buscar', '--manifesto', manifesto], {
     encoding: 'utf8',
-    env: { ...process.env, EEH_UPSTREAM_CACHE: cache },
+    env: { ...process.env, EEH_FONTES_CACHE: cache },
   })
   assert.equal(r.status, 0, r.stderr)
   const saida = JSON.parse(r.stdout)
@@ -233,12 +233,12 @@ test('validarManifesto e atualizarClone só aceitam https, file ou caminho absol
 
 test('CLI diff, novos e buscar abortam com manifesto inválido', () => {
   const cache = mkdtempSync(join(tmpdir(), 'eeh-cache-'))
-  const manifesto = join(mkdtempSync(join(tmpdir(), 'eeh-man-')), 'upstream.json')
+  const manifesto = join(mkdtempSync(join(tmpdir(), 'eeh-man-')), 'fontes.json')
   writeFileSync(manifesto, JSON.stringify({ fontes: { '../../x': { repo: 'ext::sh -c id' } }, pecas: [] }))
   for (const comando of ['buscar', 'diff', 'novos']) {
-    const r = spawnSync('node', [join(raiz, 'scripts', 'upstream.mjs'), comando, '--manifesto', manifesto], {
+    const r = spawnSync('node', [join(raiz, 'scripts', 'fontes.mjs'), comando, '--manifesto', manifesto], {
       encoding: 'utf8',
-      env: { ...process.env, EEH_UPSTREAM_CACHE: cache },
+      env: { ...process.env, EEH_FONTES_CACHE: cache },
     })
     assert.equal(r.status, 1, comando)
     assert.match(r.stderr, /nome de fonte inválido/, comando)
@@ -249,14 +249,14 @@ test('CLI diff, novos e buscar abortam com manifesto inválido', () => {
 test('fetch falha num clone existente e diff não usa o clone velho', () => {
   const { dir, base } = fixture()
   const cache = mkdtempSync(join(tmpdir(), 'eeh-cache-'))
-  const manifesto = join(mkdtempSync(join(tmpdir(), 'eeh-man-')), 'upstream.json')
+  const manifesto = join(mkdtempSync(join(tmpdir(), 'eeh-man-')), 'fontes.json')
   writeFileSync(manifesto, JSON.stringify({
     fontes: { omc: { repo: `file://${dir}`, licenca: 'MIT' } },
     pecas: [{ peca: 'skills/cotar', origens: [{ fonte: 'omc', caminho: 'skills/seguro.md', commit: base }] }],
   }))
-  const rodar = (comando) => spawnSync('node', [join(raiz, 'scripts', 'upstream.mjs'), comando, '--manifesto', manifesto], {
+  const rodar = (comando) => spawnSync('node', [join(raiz, 'scripts', 'fontes.mjs'), comando, '--manifesto', manifesto], {
     encoding: 'utf8',
-    env: { ...process.env, EEH_UPSTREAM_CACHE: cache },
+    env: { ...process.env, EEH_FONTES_CACHE: cache },
   })
   assert.equal(rodar('buscar').status, 0)
   writeFileSync(join(dir, 'skills', 'seguro.md'), 'apolice nova\n')
@@ -279,20 +279,20 @@ test('fetch falha num clone existente e diff não usa o clone velho', () => {
   assert.ok(diff[0].erro)
   const triagem = join(mkdtempSync(join(tmpdir(), 'eeh-tri-')), 'triagem.tsv')
   writeFileSync(triagem, '')
-  const novos = spawnSync('node', [join(raiz, 'scripts', 'upstream.mjs'), 'novos', '--manifesto', manifesto, '--triagem', triagem], {
+  const novos = spawnSync('node', [join(raiz, 'scripts', 'fontes.mjs'), 'novos', '--manifesto', manifesto, '--triagem', triagem], {
     encoding: 'utf8',
-    env: { ...process.env, EEH_UPSTREAM_CACHE: cache },
+    env: { ...process.env, EEH_FONTES_CACHE: cache },
   })
   assert.deepEqual(JSON.parse(novos.stdout).map((n) => n.status), ['desatualizado'])
 })
 
 test('diff e novos marcam fonte sem busca como desatualizada', () => {
   const cache = mkdtempSync(join(tmpdir(), 'eeh-cache-'))
-  const manifesto = join(mkdtempSync(join(tmpdir(), 'eeh-man-')), 'upstream.json')
+  const manifesto = join(mkdtempSync(join(tmpdir(), 'eeh-man-')), 'fontes.json')
   writeFileSync(manifesto, JSON.stringify({ fontes: { omc: { repo: 'file:///x', licenca: 'MIT' } }, pecas: [] }))
-  const r = spawnSync('node', [join(raiz, 'scripts', 'upstream.mjs'), 'diff', '--manifesto', manifesto], {
+  const r = spawnSync('node', [join(raiz, 'scripts', 'fontes.mjs'), 'diff', '--manifesto', manifesto], {
     encoding: 'utf8',
-    env: { ...process.env, EEH_UPSTREAM_CACHE: cache },
+    env: { ...process.env, EEH_FONTES_CACHE: cache },
   })
   assert.equal(r.status, 0, r.stderr)
   assert.deepEqual(JSON.parse(r.stdout).map((x) => [x.fonte, x.status]), [['omc', 'desatualizado']])

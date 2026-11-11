@@ -1,7 +1,7 @@
 # Paridade com OMC e superpowers
 
 Esta tabela diz o que do oh-my-claudecode (OMC) e do superpowers (SP) o EEH cobre. Linha `coberto` aponta para o arquivo do repo que faz o papel e `descartado` traz o motivo.
-O escopo é cada skill e agent de OMC e SP listado em `docs/triagem.tsv`. O ECC fica de fora porque não será desinstalado. O mapa vem de `upstream.json` e, onde ele não cobre, da tabela de fusões do design.
+O escopo é cada skill e agent de OMC e SP listado em `docs/triagem.tsv`. O ECC fica de fora porque não será desinstalado. O mapa vem de `fontes.json` e, onde ele não cobre, da tabela de fusões do design.
 
 | item atual | origem | equivalente no EEH | status |
 | --- | --- | --- | --- |

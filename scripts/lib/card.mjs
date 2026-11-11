@@ -9,9 +9,9 @@ function validar(r) {
   const faltando = []
   if (typeof r.repo !== 'string' || !REPO.test(r.repo)) faltando.push('repo')
   if (!Array.isArray(r.aceite) || r.aceite.length === 0 || r.aceite.some(vazio)) faltando.push('aceite')
-  if (vazio(r.adr?.link)) faltando.push('adr.link')
-  if (vazio(r.adr?.secao)) faltando.push('adr.secao')
-  if (vazio(r.recorteAdr)) faltando.push('recorteAdr')
+  if (vazio(r.documento?.link)) faltando.push('documento.link')
+  if (vazio(r.documento?.secao)) faltando.push('documento.secao')
+  if (vazio(r.recorteDocumento)) faltando.push('recorteDocumento')
   if (r.sql) {
     if (vazio(r.sql.script)) faltando.push('sql.script')
     if (vazio(r.sql.banco)) faltando.push('sql.banco')
@@ -53,8 +53,8 @@ function secaoFigma({ figma }) {
   return linhas.join('\n')
 }
 
-function secaoAdr({ adr }) {
-  return ['## ADR', '', adr.link, '', `Seção: ${adr.secao}`].join('\n')
+function secaoDocumento({ documento }) {
+  return ['## Documento técnico', '', documento.link, '', `Seção: ${documento.secao}`].join('\n')
 }
 
 function montarAnexos({ repo, sql, contrato }) {
@@ -67,11 +67,11 @@ function montarAnexos({ repo, sql, contrato }) {
 
 export function montarCard(recorte) {
   validar(recorte)
-  const secoes = [secaoContrato(recorte), secaoSql(recorte), secaoAceite(recorte), secaoFigma(recorte), secaoAdr(recorte)].filter(Boolean)
-  const titulo = `Recorte da ADR (${recorte.adr.secao})`
+  const secoes = [secaoContrato(recorte), secaoSql(recorte), secaoAceite(recorte), secaoFigma(recorte), secaoDocumento(recorte)].filter(Boolean)
+  const titulo = `Recorte do documento técnico (${recorte.documento.secao})`
   return {
     descricao: `${secoes.join('\n\n')}\n`,
     anexos: montarAnexos(recorte),
-    comentario: `${titulo}\n\n${recorte.recorteAdr.trim()}`,
+    comentario: `${titulo}\n\n${recorte.recorteDocumento.trim()}`,
   }
 }

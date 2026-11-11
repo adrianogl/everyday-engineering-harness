@@ -31,7 +31,7 @@ Não entram: nome, estilo, formatação, ordem de imports, refactor opcional, pr
 
 ### Em PR com vários arquivos
 
-Para um review amplo, o orquestrador pode dividir por perspectiva e juntar o resultado: lógica e segurança, contrato e consumidores, testes (veja a análise de testes de uma PR em `testar`), erros silenciosos. Cada perspectiva devolve só item com cenário. Quem junta remove duplicados e descarta o que não é bloqueante. Subagent não decide por conta própria o que é regra do autor: se encontra conflito entre ADR, Figma e código, devolve o bloco DÚVIDA de `rules/orquestrador.md`.
+Para um review amplo, o orquestrador pode dividir por perspectiva e juntar o resultado: lógica e segurança, contrato e consumidores, testes (veja a análise de testes de uma PR em `testar`), erros silenciosos. Cada perspectiva devolve só item com cenário. Quem junta remove duplicados e descarta o que não é bloqueante. Subagent não decide por conta própria o que é regra do autor: se encontra conflito entre documento técnico, Figma e código, devolve o bloco DÚVIDA de `rules/orquestrador.md`.
 
 ## Pedir review do que acabou de ser feito
 

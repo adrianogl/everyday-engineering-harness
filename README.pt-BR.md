@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Everyday Engineering Harness é um plugin do Claude Code para o trabalho diário de engenharia. Ele transforma um pedido em linguagem natural em ADR, cards do Jira, implementação, review e QA, e para para a sua aprovação antes de qualquer coisa sair da sua máquina.
+Everyday Engineering Harness é um plugin do Claude Code para o trabalho diário de engenharia. Ele transforma um pedido em linguagem natural em documento técnico, cards do Jira, implementação, review e QA, e para para a sua aprovação antes de qualquer coisa sair da sua máquina.
 
 ![eeh: o pedido entra, os commands, skills e agents fazem o trabalho e ele para pedindo aprovação](site/hero.svg)
 
@@ -14,13 +14,13 @@ A sessão principal lê o seu pedido e divide o trabalho entre agents especialis
 
 | Command | O que faz | Exemplo de pedido |
 | --- | --- | --- |
-| `/eeh:adr` | Escreve a ADR a partir do seu template, contrato primeiro. Para nas dúvidas e antes de publicar. | `/eeh:adr PROJ-7` |
-| `/eeh:adr-revisar` | Trata os comentários abertos de uma ADR publicada. Para antes de atualizar a página. | `/eeh:adr-revisar PROJ-7` |
-| `/eeh:quebrar` | Quebra uma ADR aprovada em um card do Jira por repo. Para nos conflitos e antes de criar os cards. | `/eeh:quebrar PROJ-7` |
+| `/eeh:documento` | Escreve o documento técnico a partir do seu template, contrato primeiro. Para nas dúvidas e antes de publicar. | `/eeh:documento PROJ-7` |
+| `/eeh:comentarios` | Trata os comentários abertos de um documento técnico publicado. Para antes de atualizar a página. | `/eeh:comentarios PROJ-7` |
+| `/eeh:quebrar` | Quebra um documento técnico aprovado em um card do Jira por repo. Para nos conflitos e antes de criar os cards. | `/eeh:quebrar PROJ-7` |
 | `/eeh:implementar` | Implementa um card num worktree próprio, com plano, TDD e review. Para no plano, no commit e na PR. | `/eeh:implementar PROJ-8` |
 | `/eeh:review` | Revisa uma PR com reviewers por lente e traz só item bloqueante confirmado por dois. Para antes de postar. | `/eeh:review 42` |
 | `/eeh:qa` | Valida a entrega em QA com a tela e os endpoints do contrato, e guarda a evidência. Para antes de mover o card. | `/eeh:qa PROJ-8` |
-| `/eeh:upstream` | Compara as peças com ECC, OMC e superpowers e incorpora o que você aceitar. Para antes de incorporar. | `/eeh:upstream ecc` |
+| `/eeh:fontes` | Compara as peças com ECC, OMC e superpowers e incorpora o que você aceitar. Para antes de incorporar. | `/eeh:fontes ecc` |
 
 ## Catálogo
 
@@ -30,23 +30,23 @@ A sessão principal lê o seu pedido e divide o trabalho entre agents especialis
 
 | Nome | O que faz |
 | --- | --- |
-| `/eeh:adr` | Escreve a ADR de uma entrega a partir do template de ADR do perfil, com contrato primeiro e revisão do revisor-adr. |
-| `/eeh:adr-revisar` | Trata os comentários abertos de uma ADR publicada, propondo a mudança no texto e a resposta de cada comentário. |
+| `/eeh:comentarios` | Trata os comentários abertos de um documento técnico publicado: a mudança no texto e a resposta de cada um. |
+| `/eeh:documento` | Escreve o documento técnico de uma entrega pelo template do perfil, contrato primeiro, revisado pelo revisor-documento. |
+| `/eeh:fontes` | Compara as peças do EEH com ECC, OMC e superpowers, sugere a triagem dos itens novos e incorpora o que você aceitar. |
 | `/eeh:implementar` | Implementa um card de ponta a ponta num worktree próprio, com plano aprovado, TDD, review e verificação. |
-| `/eeh:qa` | Valida uma entrega em QA depois do deploy numa develop, com tela, endpoints do contrato e evidência guardada. |
-| `/eeh:quebrar` | Quebra uma ADR aprovada em cards do Jira, um por repo, com recorte da ADR, contrato, SQL manual e critério de aceite. |
+| `/eeh:qa` | Valida uma entrega em QA depois do deploy num ambiente de testes, com tela, endpoints do contrato e evidência guardada. |
+| `/eeh:quebrar` | Quebra um documento técnico aprovado em cards do Jira, um por repo, com recorte, contrato, SQL manual e aceite. |
 | `/eeh:review` | Revisa PR, branch ou diff com reviewers por lente e devolve só item bloqueante confirmado por dois reviewers. |
-| `/eeh:upstream` | Compara as peças do EEH com ECC, OMC e superpowers, sugere a triagem dos itens novos e incorpora o que você aceitar. |
 
 ### Skills (24)
 
 | Nome | O que faz |
 | --- | --- |
-| `adr` | Escreve a ADR de uma entrega a partir do template do perfil, contrato primeiro, com revisão do revisor-adr. |
-| `adr-revisar` | Trata os comentários abertos de uma ADR publicada no Confluence: a mudança no texto e a resposta de cada um. |
 | `api-design` | Convenções para desenhar ou revisar endpoints REST: recursos, métodos, status codes, erro, paginação e versionamento. |
+| `comentarios` | Trata os comentários abertos de um documento técnico no Confluence: a mudança no texto e a resposta de cada um. |
 | `debugar` | Investiga bug, teste que falha, regressão ou erro de build até achar a causa raiz, antes de propor correção. |
 | `deepinit` | Gera um AGENTS.md por pasta relevante de um repo, só com o que o código mostra e a fonte de cada afirmação. |
+| `documento` | Escreve o documento técnico de uma entrega pelo template do perfil, contrato primeiro, revisado pelo revisor-documento. |
 | `entender` | Transforma pedido vago em escopo claro e critérios de aceite verificáveis, perguntando uma coisa por vez. |
 | `entregas` | Retoma uma entrega pela chave do card ou mostra o panorama das entregas em andamento. |
 | `error-handling` | Padrões de erro em Go e TypeScript: erros tipados, wrapping, status code, retry com backoff e error boundary. |
@@ -57,12 +57,12 @@ A sessão principal lê o seu pedido e divide o trabalho entre agents especialis
 | `manutencao-pacote` | Transforma um fluxo repetido em skill ou agent, ajusta peças existentes e lista peças sem uso ou sobrepostas. |
 | `planejar` | Transforma um escopo entendido em plano de tarefas pequenas e testáveis, com crítica separada antes da aprovação. |
 | `postgres-patterns` | Referência rápida de PostgreSQL: índices, tipos, queries lentas, paginação, fila com SKIP LOCKED. |
-| `qa` | Valida uma entrega em QA depois do deploy numa develop, com tela, endpoints do contrato e evidência guardada. |
+| `qa` | Valida uma entrega em QA depois do deploy num ambiente de testes, com tela, endpoints do contrato e evidência guardada. |
 | `qa-pos-deploy` | Verifica uma URL depois do deploy com um MCP de browser: smoke test, interação, regressão visual e acessibilidade. |
-| `quebrar` | Quebra uma ADR aprovada em cards do Jira, um por repo, com recorte, contrato, SQL manual e critério de aceite. |
+| `quebrar` | Quebra um documento técnico aprovado em cards do Jira, um por repo, com recorte, contrato, SQL manual e aceite. |
 | `redis-patterns` | Padrões de Redis para cache, lock distribuído, rate limit, sessão, pub/sub e streams, com chave e TTL. |
 | `review` | Revisa PR ou diff por item bloqueante, pede review independente e trata o feedback recebido com verificação. |
-| `sql-manual` | Escreve ou revisa SQL rodado à mão na GMUD, com banco, ambiente, ordem, rollback e idempotência explícitos. |
+| `sql-manual` | Escreve ou revisa SQL rodado à mão na mudança em produção, com banco, ambiente, ordem, rollback e idempotência. |
 | `strategic-compact` | Decide quando rodar /compact numa sessão longa, na fronteira de fase, e o que salvar em arquivo antes. |
 | `testar` | Escreve testes primeiro (TDD), define a estratégia, corrige teste flaky e confere se os testes da PR cobrem a mudança. |
 | `verificar` | Confere com evidência nova que a mudança cumpre os critérios de aceite antes de dizer que está pronta. |
@@ -76,30 +76,30 @@ A sessão principal lê o seu pedido e divide o trabalho entre agents especialis
 | `build-fix-go` | Corrige build, go vet e lint quebrados em Go com a menor mudança possível. |
 | `build-fix-react` | Corrige build, erro de TypeScript e lint quebrados em projeto React com Vite com a menor mudança possível. |
 | `code-reviewer` | Faz review geral de diff ou PR seguindo o code-review.md do autor: só item bloqueante, só o que a PR introduziu. |
-| `conferente` | Confere a ADR contra os recortes, o Figma e o código e devolve os conflitos, ou 'sem conflito'. |
-| `critic` | Critica um plano, spec ou ADR procurando furo antes da implementação, só leitura. |
+| `conferente` | Confere o documento técnico contra os recortes, o Figma e o código e devolve os conflitos, ou 'sem conflito'. |
+| `critic` | Critica um plano, spec ou documento técnico procurando furo antes da implementação, só leitura. |
 | `debugger` | Acha a causa raiz de um bug: reproduz, isola a regressão, lê stack trace e propõe a correção mínima. |
-| `document-specialist` | Busca e resume documentação externa e do repo: API de SDK, framework, serviço de terceiro, README e ADR. |
+| `document-specialist` | Busca e resume documentação externa e do repo: API de SDK, framework, serviço de terceiro, README e documento técnico. |
 | `explorar` | Busca no código e rastreia fluxo de execução, só leitura. |
-| `extrator-contrato` | Extrai da ADR o contrato de um repo: rota, request, response e erros. |
-| `extrator-sql` | Extrai da ADR o SQL manual de um repo e devolve o objeto sql do Recorte: script, banco, ambiente, ordem e rollback. |
+| `extrator-contrato` | Extrai do documento técnico o contrato de um repo: rota, request, response e erros. |
+| `extrator-sql` | Extrai do documento técnico o SQL manual de um repo: script, banco, ambiente, ordem e rollback. |
 | `front-visual` | Constrói UI a partir do recorte do Figma e compara o resultado com a tela: layout, estados, copy e acessibilidade. |
 | `git` | Executa operações de git: branch, status, diff, stage, histórico, rebase e worktree, seguindo rules/git.md. |
 | `implementador-go` | Implementa uma tarefa em Go (service, handler, repositório, migration, teste) seguindo o plano e o padrão do repo. |
 | `implementador-react` | Implementa tarefa de front em React e TypeScript seguindo o plano e o padrão do repo. |
-| `leitor-comentarios` | Lê os comentários abertos de uma ADR e, para cada um, propõe a mudança na ADR e a resposta ao comentário. |
+| `leitor-comentarios` | Lê os comentários abertos de um documento técnico e propõe, para cada um, a mudança no texto e a resposta. |
 | `opensource-sanitizer` | Audita um diff do EEH antes do commit e aponta dado do trabalho do autor que o regex do sanitizer não pega. |
-| `planner` | Transforma uma spec ou ADR aprovada em plano de implementação com tarefas pequenas, ordem, arquivos e como validar. |
+| `planner` | Transforma spec ou documento técnico aprovado em plano com tarefas pequenas, ordem, arquivos e como validar. |
 | `recortador-figma` | Recorta dos metadados do Figma as telas de um card de front e devolve o objeto figma do Recorte: link, estados e copy. |
-| `redator-aceite` | Escreve o critério de aceite de um card em passos testáveis, a partir da ADR e das regras de negócio citadas. |
-| `redator-adr` | Escreve o rascunho da ADR em markdown a partir da análise, do template e do checklist. |
+| `redator-aceite` | Escreve o critério de aceite de um card em passos testáveis, a partir do documento técnico e das regras citadas. |
 | `redator-card` | Escreve o recorte.json de um card no formato Recorte, juntando as saídas dos extratores. |
-| `redator-ptbr` | Escreve em português do Brasil PR, GMUD, mensagem do Teams, solução técnica de card, ADR e comentário de review. |
+| `redator-documento` | Escreve o rascunho do documento técnico em markdown a partir da análise, do template e do checklist. |
+| `redator-ptbr` | Escreve em PT-BR PR, solicitação de mudança, mensagem do Teams, nota de entrega, documento técnico e review. |
 | `reviewer-database` | Revisa SQL, migrations e acesso a banco: índice, lock, transação, N+1, tabela compartilhada e rollback. |
 | `reviewer-go` | Revisa mudanças em Go: concorrência, erro ignorado, vazamento de goroutine, SQL montado com input e race. |
 | `reviewer-react` | Revisa mudanças em React: hooks, estado derivado, efeito sem limpeza, chave de lista, acessibilidade e render. |
 | `reviewer-typescript` | Revisa mudanças em TypeScript: any, asserção que esconde erro, promise sem tratamento, null não checado. |
-| `revisor-adr` | Revisa o rascunho da ADR contra o template e o checklist e classifica cada item em Bloqueante, Alta ou Média. |
+| `revisor-documento` | Revisa o rascunho do documento técnico contra template e checklist e classifica cada item em Bloqueante, Alta ou Média. |
 | `security-reviewer` | Procura vulnerabilidade no diff: authn e authz, injeção, vazamento de dado, segredo no código e SSRF. |
 | `silent-failure-hunter` | Procura falha silenciosa: erro engolido, fallback que esconde defeito, catch vazio, log sem contexto e rollback ausente. |
 | `test-engineer` | Desenha e escreve testes: estratégia, cobertura, lacunas de uma PR, testes flaky. |
@@ -145,7 +145,7 @@ Rode `npm test` antes de commitar.
 
 ## Créditos
 
-O eeh adapta ideias e peças do [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) (ECC), do [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) (OMC) e do [superpowers](https://github.com/obra/superpowers) (obra/superpowers), todos MIT. `NOTICE.md` e `upstream.json` dizem de onde vem cada peça. As cores vêm da paleta [Dracula](https://draculatheme.com) (MIT, Zeno Rocha).
+O eeh adapta ideias e peças do [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) (ECC), do [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) (OMC) e do [superpowers](https://github.com/obra/superpowers) (obra/superpowers), todos MIT. `NOTICE.md` e `fontes.json` dizem de onde vem cada peça. As cores vêm da paleta [Dracula](https://draculatheme.com) (MIT, Zeno Rocha).
 
 ## Licença
 
