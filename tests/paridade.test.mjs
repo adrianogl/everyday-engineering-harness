@@ -69,3 +69,7 @@ test('plano-2 e plano-3 dizem o que falta', () => {
     assert.ok(l.equivalente.length >= 10, `${l.item}: sem descrição do que falta`)
   }
 })
+
+test('nenhuma linha com status plano-2', () => {
+  assert.deepEqual(linhas().filter((l) => l.status === 'plano-2').map((l) => l.item), [])
+})
