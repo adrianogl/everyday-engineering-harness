@@ -99,3 +99,17 @@ test('reviewsDoPrompt respeita 2 PRs e 4000 caracteres', () => {
   const longo = reviewsDoPrompt('frete-api#9', { base })
   assert.ok(longo.length <= 4000, `${longo.length}`)
 })
+
+test('registrarItem valida arquivo, linha, texto e tipo', () => {
+  const pasta = join(tmp(), 'r')
+  const base = { pasta, arquivo: 'internal/frete/parser.go', linha: 42, tipo: 'bloqueante', texto: 'ok' }
+  assert.throws(() => registrarItem({ ...base, arquivo: undefined }), /arquivo/)
+  assert.throws(() => registrarItem({ ...base, arquivo: '  ' }), /arquivo/)
+  for (const linha of ['abc', undefined, '', 0, -1, 1.5, '4.5']) assert.throws(() => registrarItem({ ...base, linha }), /linha/, String(linha))
+  assert.throws(() => registrarItem({ ...base, texto: undefined }), /texto/)
+  assert.throws(() => registrarItem({ ...base, texto: '   ' }), /texto/)
+  assert.throws(() => registrarItem({ ...base, tipo: 'grave' }), /tipo/)
+  assert.deepEqual(lerHistorico(pasta), { itens: [], rodadas: [] })
+  assert.equal(registrarItem({ ...base, linha: '42' }), 'C-1')
+  assert.equal(registrarItem(base), 'C-2')
+})

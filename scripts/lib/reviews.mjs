@@ -46,12 +46,16 @@ function parsearItem(linha) {
 
 export function registrarItem({ pasta, arquivo, linha, tipo, texto }) {
   if (!TIPOS.includes(tipo)) throw new Error(`tipo inválido: ${tipo} (use ${TIPOS.join(', ')})`)
+  if (typeof arquivo !== 'string' || arquivo.trim() === '') throw new Error('arquivo obrigatório')
+  const numeroLinha = typeof linha === 'string' && linha.trim() === '' ? NaN : Number(linha)
+  if (!Number.isInteger(numeroLinha) || numeroLinha <= 0) throw new Error(`linha inválida: ${linha}`)
+  const limpo = typeof texto === 'string' ? texto.replace(/\s+/g, ' ').trim() : ''
+  if (limpo === '') throw new Error('texto obrigatório')
   const caminho = join(pasta, 'comentarios.md')
   const ids = linhasDe(caminho).map(parsearItem).filter(Boolean).map((i) => Number(i.id.slice(2)))
   const id = `C-${Math.max(0, ...ids) + 1}`
   mkdirSync(pasta, { recursive: true })
-  const limpo = String(texto).replace(/\s+/g, ' ').trim()
-  appendFileSync(caminho, `${formatarItem({ id, tipo, status: 'aberto', arquivo, linha: Number(linha), texto: limpo })}\n`)
+  appendFileSync(caminho, `${formatarItem({ id, tipo, status: 'aberto', arquivo: arquivo.trim(), linha: numeroLinha, texto: limpo })}\n`)
   return id
 }
 
