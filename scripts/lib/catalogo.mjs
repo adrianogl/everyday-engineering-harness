@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { terminalSvg } from './terminal.mjs'
 
 const TIPOS = ['command', 'skill', 'agent']
 const INICIO = '<!-- catalogo:inicio -->'
@@ -116,6 +117,7 @@ const READMES = [
 export function saidas({ raiz }) {
   const catalogo = lerCatalogo(raiz)
   const lista = [{ arquivo: 'site/catalogo.json', conteudo: `${JSON.stringify(catalogo, null, 2)}\n`, obrigatoria: true }]
+  lista.push({ arquivo: 'site/terminal.svg', conteudo: terminalSvg() })
   for (const [arquivo, idioma] of READMES) {
     const caminho = join(raiz, arquivo)
     if (!existsSync(caminho)) continue
