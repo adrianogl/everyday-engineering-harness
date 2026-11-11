@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Everyday Engineering Harness: plugin do Claude Code que transforma um pedido em linguagem natural em ADR, cards do Jira, implementação, review e QA, e para para a sua aprovação antes de qualquer coisa sair da sua máquina.
+Everyday Engineering Harness é um plugin do Claude Code para o trabalho diário de engenharia. Ele transforma um pedido em linguagem natural em ADR, cards do Jira, implementação, review e QA, e para para a sua aprovação antes de qualquer coisa sair da sua máquina.
 
 ![Uma sessão no terminal: o pedido, duas conferências e a parada antes de criar os cards](site/terminal.svg)
 
@@ -111,7 +111,13 @@ A sessão principal lê o seu pedido e divide o trabalho entre agents especialis
 
 ## Instalação
 
-Rode o plugin de um clone local, só para uma sessão:
+Clone o repo:
+
+```bash
+git clone https://github.com/adrianogl/everyday-engineering-harness ~/Code/everyday-engineering-harness
+```
+
+Rode o plugin do clone, só para uma sessão:
 
 ```bash
 claude --plugin-dir ~/Code/everyday-engineering-harness
@@ -131,11 +137,15 @@ mkdir -p ~/.config/eeh
 cp perfil.example.json ~/.config/eeh/perfil.json
 ```
 
-Sem o arquivo, o plugin avisa que o perfil está ausente e segue sem ele. Os campos estão em `docs/uso-local.md`. Rode `npm test` antes de commitar.
+Sem o arquivo, o plugin avisa que o perfil está ausente e segue sem ele. Os campos estão em `docs/uso-local.md`.
+
+## Contribuindo
+
+Rode `npm test` antes de commitar.
 
 ## Créditos
 
-O eeh adapta ideias e peças do [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) (ECC), do [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) (OMC) e do [superpowers](https://github.com/obra/superpowers) (obra/superpowers), todos MIT. `NOTICE.md` e `upstream.json` dizem de onde vem cada peça. As cores vêm da paleta Dracula (MIT, Zeno Rocha).
+O eeh adapta ideias e peças do [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) (ECC), do [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) (OMC) e do [superpowers](https://github.com/obra/superpowers) (obra/superpowers), todos MIT. `NOTICE.md` e `upstream.json` dizem de onde vem cada peça. As cores vêm da paleta [Dracula](https://draculatheme.com) (MIT, Zeno Rocha).
 
 ## Licença
 

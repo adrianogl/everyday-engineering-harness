@@ -2,9 +2,9 @@
 
 [Português](README.pt-BR.md)
 
-Everyday Engineering Harness: a Claude Code plugin that turns a plain request into ADRs, Jira cards, implementation, reviews and QA, and stops for your approval before anything leaves your machine.
+Everyday Engineering Harness is a Claude Code plugin for daily engineering work. It turns a plain request into ADRs, Jira cards, implementation, reviews and QA, and stops for your approval before anything leaves your machine.
 
-![A session in the terminal: the request, two checks and the stop before creating cards](site/terminal.svg)
+![Sample session in Portuguese: the request, two checks and the stop before creating cards](site/terminal.svg)
 
 ## How it works
 
@@ -111,7 +111,13 @@ The main session reads your request in natural language and splits the work amon
 
 ## Install
 
-Run the plugin from a local clone, for one session:
+Clone the repo:
+
+```bash
+git clone https://github.com/adrianogl/everyday-engineering-harness ~/Code/everyday-engineering-harness
+```
+
+Run the plugin from the clone, for one session:
 
 ```bash
 claude --plugin-dir ~/Code/everyday-engineering-harness
@@ -131,11 +137,15 @@ mkdir -p ~/.config/eeh
 cp perfil.example.json ~/.config/eeh/perfil.json
 ```
 
-Without the file, the plugin warns that the profile is missing and keeps going. Fields are listed in `docs/uso-local.md`. Run `npm test` before committing.
+Without the file, the plugin warns that the profile is missing and keeps going. Fields are listed in `docs/uso-local.md`.
+
+## Contributing
+
+Run `npm test` before committing.
 
 ## Credits
 
-eeh adapts ideas and parts from [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) (ECC), [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) (OMC) and [superpowers](https://github.com/obra/superpowers) (obra/superpowers), all MIT. See `NOTICE.md` and `upstream.json` for the source of each part. The colors come from the Dracula palette (MIT, Zeno Rocha).
+eeh adapts ideas and parts from [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) (ECC), [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) (OMC) and [superpowers](https://github.com/obra/superpowers) (obra/superpowers), all MIT. See `NOTICE.md` and `upstream.json` for the source of each part. The colors come from the [Dracula](https://draculatheme.com) palette (MIT, Zeno Rocha).
 
 ## License
 
