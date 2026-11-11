@@ -86,7 +86,7 @@ test('pages.yml roda os testes antes do deploy e publica a pasta site', () => {
   assert.match(yml, /on:\s*\n\s+push:\s*\n\s+branches:\s*\[main\]\s*\n\s+workflow_dispatch:/)
   assert.match(yml, /^permissions:\s*\n\s+contents: read/m)
   const [, test, deploy] = yml.split(/^  (?=test:|deploy:)/m)
-  assert.match(test, /node-version: 20/)
+  assert.match(test, /node-version: 22/)
   assert.match(test, /run: node --test tests\/\*\.test\.mjs/)
   assert.doesNotMatch(test, /pages: write|id-token/)
   assert.match(deploy, /needs: test/)

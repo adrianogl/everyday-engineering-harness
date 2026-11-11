@@ -254,7 +254,7 @@
     {
       "tipo": "command",
       "nome": "upstream",
-      "pt": "Compara as peças do EEH com ECC, OMC e superpowers, triagem dos itens novos e incorpora o que o autor aceitar.",
+      "pt": "Compara as peças do EEH com ECC, OMC e superpowers, sugere a triagem dos itens novos e incorpora o que você aceitar.",
       "en": "Compares EEH pieces with ECC, OMC and superpowers, triages the new items and brings in what the author accepts."
     },
     {

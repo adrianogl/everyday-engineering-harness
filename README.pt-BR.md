@@ -36,7 +36,7 @@ A sessão principal lê o seu pedido e divide o trabalho entre agents especialis
 | `/eeh:qa` | Valida uma entrega em QA depois do deploy numa develop, com tela, endpoints do contrato e evidência guardada. |
 | `/eeh:quebrar` | Quebra uma ADR aprovada em cards do Jira, um por repo, com recorte da ADR, contrato, SQL manual e critério de aceite. |
 | `/eeh:review` | Revisa PR, branch ou diff com reviewers por lente e devolve só item bloqueante confirmado por dois reviewers. |
-| `/eeh:upstream` | Compara as peças do EEH com ECC, OMC e superpowers, triagem dos itens novos e incorpora o que o autor aceitar. |
+| `/eeh:upstream` | Compara as peças do EEH com ECC, OMC e superpowers, sugere a triagem dos itens novos e incorpora o que você aceitar. |
 
 ### Skills (24)
 

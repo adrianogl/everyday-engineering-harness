@@ -12,6 +12,7 @@
   "agent/type-design-analyzer": "Avalia tipos novos ou alterados: se impedem estado inválido e se o compilador impõe a invariante.",
   "agent/verifier": "Confere com evidência se o trabalho está pronto: roda a verificação e diz o que foi e o que não foi provado.",
   "command/review": "Revisa PR, branch ou diff com reviewers por lente e devolve só item bloqueante confirmado por dois reviewers.",
+  "command/upstream": "Compara as peças do EEH com ECC, OMC e superpowers, sugere a triagem dos itens novos e incorpora o que você aceitar.",
   "skill/adr": "Escreve a ADR de uma entrega a partir do template do perfil, contrato primeiro, com revisão do revisor-adr.",
   "skill/adr-revisar": "Trata os comentários abertos de uma ADR publicada no Confluence: a mudança no texto e a resposta de cada um.",
   "skill/api-design": "Convenções para desenhar ou revisar endpoints REST: recursos, métodos, status codes, erro, paginação e versionamento.",
