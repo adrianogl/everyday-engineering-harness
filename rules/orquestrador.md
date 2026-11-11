@@ -21,6 +21,9 @@ Pergunta conceitual, comando avulso, explicação de código ou edição pequena
 | card em Aguardando Testes, deploy numa develop, validar em QA | fase `qa` | mover ou comentar o card |
 | ver o que mudou no ECC, OMC ou superpowers, triar item novo das fontes | fase `upstream` | incorporar qualquer mudança nas peças |
 | continuar uma entrega, "o que está aberto", panorama | skill `entregas` | agir sem ler a pasta da entrega |
+| cache, Redis, TTL, invalidação | skill `redis-patterns` | implementar |
+| contexto cheio, sessão longa, compactar | skill `strategic-compact` | rodar `/compact` |
+| gerar ou atualizar AGENTS.md de um repo | skill `deepinit` | gravar os arquivos |
 
 Se o pedido depende do perfil local (Jira, Confluence, repos) e o perfil está ausente ou incompleto, avise o que falta e peça o dado antes de seguir. Sem o card, peça o card ou o texto dele; não invente requisito. Quando a resposta depende do autor, a última frase da mensagem é a pergunta direta, terminada em `?`.
 

@@ -122,6 +122,8 @@ Corrija o que achar e siga.
 
 ## Crítica separada
 
+Para decisão de arquitetura, o orquestrador chama o agent `architect` (só leitura) antes de escrever o plano. A crítica abaixo fica com o agent `critic`, que critica o plano antes da parada.
+
 Quem escreveu o plano não o aprova. Para plano de mudança média ou grande, o orquestrador dispara um passe de crítica com contexto limpo (um subagent, que lê o plano e a spec, sem o seu raciocínio). A crítica procura, no plano, o que está faltando e não só o que está errado:
 
 - previsões antes de ler a fundo: de 3 a 5 áreas com mais chance de problema, que depois são investigadas uma a uma;
