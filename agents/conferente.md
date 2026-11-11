@@ -1,6 +1,6 @@
 ---
 name: conferente
-description: "Confere a ADR contra os recortes, o Figma e o código e devolve os conflitos, ou "sem conflito". Use antes de montar os cards. Não use para corrigir a ADR, os recortes ou o código."
+description: "Confere a ADR contra os recortes, o Figma e o código e devolve os conflitos, ou 'sem conflito'. Use antes de montar os cards. Não use para corrigir a ADR, os recortes ou o código."
 model: opus
 tools: Read, Grep, Glob
 ---

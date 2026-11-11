@@ -173,3 +173,19 @@ test('nenhum agent manda invocar skill sempre nem carrega infra de upstream', ()
     assert.doesNotMatch(texto, /\.omc\/|session-data|oh-my-claudecode|state_write|notepad_/, arquivo)
   }
 })
+
+test('frontmatter com valor entre aspas duplas não tem aspa dupla interna sem escape', () => {
+  const arquivosFm = [
+    ...arquivos.map((f) => join(raiz, f)),
+    ...readdirSync('skills').map((s) => join('skills', s, 'SKILL.md')).filter(existsSync),
+  ]
+  for (const arquivo of arquivosFm) {
+    const m = readFileSync(arquivo, 'utf8').match(/^---\n([\s\S]*?)\n---\n/)
+    assert.ok(m, `${arquivo}: sem frontmatter`)
+    for (const linha of m[1].split('\n')) {
+      const campo = linha.match(/^\w+:\s*"(.*)"\s*$/)
+      if (!campo) continue
+      assert.doesNotMatch(campo[1].replace(/\\./g, ''), /"/, `${arquivo}: aspa dupla sem escape em "${linha.slice(0, 40)}"`)
+    }
+  }
+})
