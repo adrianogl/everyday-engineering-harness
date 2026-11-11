@@ -1,0 +1,405 @@
+{
+  "contagem": {
+    "command": 7,
+    "skill": 24,
+    "agent": 35
+  },
+  "pecas": [
+    {
+      "tipo": "agent",
+      "nome": "analista-epico",
+      "pt": "Lê um épico, o Figma recortado e os repos do perfil e devolve o impacto por repo.",
+      "en": "Reads an epic, the trimmed Figma and the profile repos, and returns the impact per repo."
+    },
+    {
+      "tipo": "agent",
+      "nome": "architect",
+      "pt": "Analisa arquitetura e trade-offs de uma mudança, só leitura.",
+      "en": "Analyzes architecture and trade-offs of a change, read-only."
+    },
+    {
+      "tipo": "agent",
+      "nome": "build-fix-go",
+      "pt": "Corrige build, go vet e lint quebrados em Go com a menor mudança possível.",
+      "en": "Fixes broken Go build, go vet and lint with the smallest possible change."
+    },
+    {
+      "tipo": "agent",
+      "nome": "build-fix-react",
+      "pt": "Corrige build, erro de TypeScript e lint quebrados em projeto React com Vite com a menor mudança possível.",
+      "en": "Fixes broken build, TypeScript errors and lint in a React with Vite project with the smallest possible change."
+    },
+    {
+      "tipo": "agent",
+      "nome": "code-reviewer",
+      "pt": "Faz review geral de diff ou PR seguindo o code-review.md do autor: só item bloqueante, só o que a PR introduziu.",
+      "en": "Reviews a diff or PR and reports only blocking items the PR introduced."
+    },
+    {
+      "tipo": "agent",
+      "nome": "conferente",
+      "pt": "Confere a ADR contra os recortes, o Figma e o código e devolve os conflitos, ou 'sem conflito'.",
+      "en": "Checks the ADR against the cuts, the Figma and the code, and returns the conflicts or \"no conflict\"."
+    },
+    {
+      "tipo": "agent",
+      "nome": "critic",
+      "pt": "Critica um plano, spec ou ADR procurando furo antes da implementação, só leitura.",
+      "en": "Looks for holes in a plan, spec or ADR before implementation, read-only."
+    },
+    {
+      "tipo": "agent",
+      "nome": "debugger",
+      "pt": "Acha a causa raiz de um bug: reproduz, isola a regressão, lê stack trace e propõe a correção mínima.",
+      "en": "Finds the root cause of a bug: reproduces it, isolates the regression and proposes the minimal fix."
+    },
+    {
+      "tipo": "agent",
+      "nome": "document-specialist",
+      "pt": "Busca e resume documentação externa e do repo: API de SDK, framework, serviço de terceiro, README e ADR.",
+      "en": "Finds and summarizes external and repo documentation: SDK APIs, frameworks, third-party services, READMEs and ADRs."
+    },
+    {
+      "tipo": "agent",
+      "nome": "explorar",
+      "pt": "Busca no código e rastreia fluxo de execução, só leitura.",
+      "en": "Searches the code and traces execution flow, read-only."
+    },
+    {
+      "tipo": "agent",
+      "nome": "extrator-contrato",
+      "pt": "Extrai da ADR o contrato de um repo: rota, request, response e erros.",
+      "en": "Extracts a repo's contract from the ADR: route, request, response and errors."
+    },
+    {
+      "tipo": "agent",
+      "nome": "extrator-sql",
+      "pt": "Extrai da ADR o SQL manual de um repo e devolve o objeto sql do Recorte: script, banco, ambiente, ordem e rollback.",
+      "en": "Extracts a repo's manual SQL from the ADR: script, database, environment, order and rollback."
+    },
+    {
+      "tipo": "agent",
+      "nome": "front-visual",
+      "pt": "Constrói UI a partir do recorte do Figma e compara o resultado com a tela: layout, estados, copy e acessibilidade.",
+      "en": "Builds UI from the Figma cut and compares the result with the screen: layout, states, copy and accessibility."
+    },
+    {
+      "tipo": "agent",
+      "nome": "git",
+      "pt": "Executa operações de git: branch, status, diff, stage, histórico, rebase e worktree, seguindo rules/git.md.",
+      "en": "Runs git operations: branch, status, diff, stage, history, rebase and worktree."
+    },
+    {
+      "tipo": "agent",
+      "nome": "implementador-go",
+      "pt": "Implementa uma tarefa em Go (service, handler, repositório, migration, teste) seguindo o plano e o padrão do repo.",
+      "en": "Implements a Go task following the plan and the repo pattern."
+    },
+    {
+      "tipo": "agent",
+      "nome": "implementador-react",
+      "pt": "Implementa uma tarefa de front em React e TypeScript (componente, hook, tela, teste) seguindo o plano e o padrão do repo.",
+      "en": "Implements a React and TypeScript front task following the plan and the repo pattern."
+    },
+    {
+      "tipo": "agent",
+      "nome": "leitor-comentarios",
+      "pt": "Lê os comentários abertos de uma ADR e, para cada um, propõe a mudança na ADR e a resposta ao comentário.",
+      "en": "Reads the open comments on an ADR and proposes, for each one, the ADR change and the reply."
+    },
+    {
+      "tipo": "agent",
+      "nome": "opensource-sanitizer",
+      "pt": "Audita um diff do próprio EEH antes do commit e aponta dado do trabalho do autor que o regex do sanitizer não pega: nome de cliente, projeto, pessoa, domínio, card, ambiente ou código copiado, com arquivo:linha.",
+      "en": "Audits an EEH diff before commit for author work data that the sanitizer regex misses."
+    },
+    {
+      "tipo": "agent",
+      "nome": "planner",
+      "pt": "Transforma uma spec ou ADR aprovada em plano de implementação com tarefas pequenas, ordem, arquivos e como validar.",
+      "en": "Turns an approved spec or ADR into an implementation plan with small tasks, order, files and how to validate."
+    },
+    {
+      "tipo": "agent",
+      "nome": "recortador-figma",
+      "pt": "Recorta dos metadados do Figma as telas de um card de front e devolve o objeto figma do Recorte: link, estados e copy.",
+      "en": "Cuts the screens of a front card out of the Figma metadata: link, states and copy."
+    },
+    {
+      "tipo": "agent",
+      "nome": "redator-aceite",
+      "pt": "Escreve o critério de aceite de um card em passos testáveis, a partir da ADR e das regras de negócio citadas.",
+      "en": "Writes a card's acceptance criteria as testable steps, from the ADR and the cited business rules."
+    },
+    {
+      "tipo": "agent",
+      "nome": "redator-adr",
+      "pt": "Escreve o rascunho da ADR em markdown a partir da análise, do template e do checklist.",
+      "en": "Writes the ADR draft in markdown from the analysis, the template and the checklist."
+    },
+    {
+      "tipo": "agent",
+      "nome": "redator-card",
+      "pt": "Escreve o recorte.json de um card no formato Recorte, juntando as saídas dos extratores.",
+      "en": "Writes a card's recorte.json by joining the outputs of the extractors."
+    },
+    {
+      "tipo": "agent",
+      "nome": "redator-ptbr",
+      "pt": "Escreve texto em português do Brasil para outras pessoas lerem: descrição de PR, GMUD, mensagem do Teams, solução técnica de card, ADR e comentário de review.",
+      "en": "Writes Brazilian Portuguese text for other people to read: PR descriptions, Teams messages, card solutions and review comments."
+    },
+    {
+      "tipo": "agent",
+      "nome": "reviewer-database",
+      "pt": "Revisa SQL, migrations e acesso a banco pela lente de dados: índice, lock, transação, N+1, tabela compartilhada entre serviços e rollback.",
+      "en": "Reviews SQL, migrations and database access: index, lock, transaction, N+1, shared tables and rollback."
+    },
+    {
+      "tipo": "agent",
+      "nome": "reviewer-go",
+      "pt": "Revisa mudanças em Go pela lente da linguagem: concorrência, erro ignorado ou sem contexto, vazamento de goroutine, SQL e comando montados com input, race.",
+      "en": "Reviews Go changes: concurrency, ignored errors, goroutine leaks, injected SQL and commands, races."
+    },
+    {
+      "tipo": "agent",
+      "nome": "reviewer-react",
+      "pt": "Revisa mudanças em React pela lente do framework: hooks, estado derivado, efeito sem limpeza, chave de lista, acessibilidade e render.",
+      "en": "Reviews React changes: hooks, derived state, effects without cleanup, list keys, accessibility and render."
+    },
+    {
+      "tipo": "agent",
+      "nome": "reviewer-typescript",
+      "pt": "Revisa mudanças em TypeScript pela lente da linguagem: any, asserção de tipo que esconde erro, promise sem tratamento, null não checado e narrowing furado.",
+      "en": "Reviews TypeScript changes: any, type assertions that hide errors, unhandled promises, unchecked null and broken narrowing."
+    },
+    {
+      "tipo": "agent",
+      "nome": "revisor-adr",
+      "pt": "Revisa o rascunho da ADR contra o template e o checklist e classifica cada item em Bloqueante, Alta ou Média, citando a seção.",
+      "en": "Reviews the ADR draft against the template and the checklist and ranks each item as Blocking, High or Medium."
+    },
+    {
+      "tipo": "agent",
+      "nome": "security-reviewer",
+      "pt": "Procura vulnerabilidade no diff: authn e authz, injeção, vazamento de dado, segredo no código, SSRF, desserialização e dependência insegura.",
+      "en": "Looks for vulnerabilities in a diff: authn and authz, injection, data leaks, secrets in code, SSRF and unsafe dependencies."
+    },
+    {
+      "tipo": "agent",
+      "nome": "silent-failure-hunter",
+      "pt": "Procura falha silenciosa: erro engolido, fallback que esconde defeito, catch vazio, log sem contexto e rollback ausente.",
+      "en": "Looks for silent failures: swallowed errors, fallbacks that hide defects, empty catch, logs without context and missing rollback."
+    },
+    {
+      "tipo": "agent",
+      "nome": "test-engineer",
+      "pt": "Desenha e escreve testes: estratégia, cobertura, lacunas de uma PR, testes flaky.",
+      "en": "Designs and writes tests: strategy, coverage, PR gaps and flaky tests."
+    },
+    {
+      "tipo": "agent",
+      "nome": "tracer",
+      "pt": "Investiga causa de comportamento estranho com hipóteses concorrentes: levanta explicações, junta evidência a favor e contra de cada uma e diz qual teste decide entre elas.",
+      "en": "Investigates odd behavior with competing hypotheses and says which test decides between them."
+    },
+    {
+      "tipo": "agent",
+      "nome": "type-design-analyzer",
+      "pt": "Avalia o design de tipos novos ou alterados: se o tipo impede estado inválido, se encapsula o que deve e se a invariante é imposta pelo compilador.",
+      "en": "Evaluates the design of new or changed types: whether they prevent invalid states and let the compiler enforce the invariant."
+    },
+    {
+      "tipo": "agent",
+      "nome": "verifier",
+      "pt": "Confere com evidência se o trabalho está pronto: roda os comandos de verificação, compara com os critérios de aceite e diz o que foi e o que não foi provado.",
+      "en": "Checks with evidence that the work is done: runs the verification commands and says what was and was not proven."
+    },
+    {
+      "tipo": "command",
+      "nome": "adr",
+      "pt": "Escreve a ADR de uma entrega a partir do template de ADR do perfil, com contrato primeiro e revisão do revisor-adr.",
+      "en": "Writes the ADR of a delivery from the profile's ADR template, contract first, reviewed by revisor-adr."
+    },
+    {
+      "tipo": "command",
+      "nome": "adr-revisar",
+      "pt": "Trata os comentários abertos de uma ADR publicada, propondo a mudança no texto e a resposta de cada comentário.",
+      "en": "Handles the open comments of a published ADR, proposing the text change and the reply to each one."
+    },
+    {
+      "tipo": "command",
+      "nome": "implementar",
+      "pt": "Implementa um card de ponta a ponta num worktree próprio, com plano aprovado, TDD, review e verificação.",
+      "en": "Implements a card end to end in its own worktree, with an approved plan, TDD, review and verification."
+    },
+    {
+      "tipo": "command",
+      "nome": "qa",
+      "pt": "Valida uma entrega em QA depois do deploy numa develop, com tela, endpoints do contrato e evidência guardada.",
+      "en": "Validates a delivery in QA after the deploy to a develop branch, with the screen, the contract endpoints and saved evidence."
+    },
+    {
+      "tipo": "command",
+      "nome": "quebrar",
+      "pt": "Quebra uma ADR aprovada em cards do Jira, um por repo, com recorte da ADR, contrato, SQL manual e critério de aceite.",
+      "en": "Splits an approved ADR into Jira cards, one per repo, with the ADR cut, contract, manual SQL and acceptance criteria."
+    },
+    {
+      "tipo": "command",
+      "nome": "review",
+      "pt": "Revisa uma PR, branch ou diff com reviewers por lente e devolve só item bloqueante confirmado por dois reviewers independentes.",
+      "en": "Reviews a PR, branch or diff with one reviewer per lens and returns only blocking items confirmed by two independent reviewers."
+    },
+    {
+      "tipo": "command",
+      "nome": "upstream",
+      "pt": "Compara as peças do EEH com ECC, OMC e superpowers, triagem dos itens novos e incorpora o que o autor aceitar.",
+      "en": "Compares EEH pieces with ECC, OMC and superpowers, triages the new items and brings in what the author accepts."
+    },
+    {
+      "tipo": "skill",
+      "nome": "adr",
+      "pt": "Escreve a ADR de uma entrega a partir do template de ADR do perfil, com contrato primeiro, regras do template aplicadas e revisão do revisor-adr antes de publicar.",
+      "en": "Writes the ADR of a delivery from the profile's ADR template, contract first, reviewed by revisor-adr before publishing."
+    },
+    {
+      "tipo": "skill",
+      "nome": "adr-revisar",
+      "pt": "Trata os comentários abertos de uma ADR publicada no Confluence, propondo para cada um a mudança na ADR e a resposta ao comentário.",
+      "en": "Handles the open comments of an ADR published on Confluence, proposing the ADR change and the reply for each one."
+    },
+    {
+      "tipo": "skill",
+      "nome": "api-design",
+      "pt": "Convenções para desenhar ou revisar endpoints REST: nomes de recurso, métodos, status codes, formato de erro, paginação, filtros, autenticação, rate limit e versionamento.",
+      "en": "Conventions for designing or reviewing REST endpoints: resource names, methods, status codes, error format, pagination, filters, auth, rate limit and versioning."
+    },
+    {
+      "tipo": "skill",
+      "nome": "debugar",
+      "pt": "Investiga bug, teste que falha, comportamento inesperado, regressão ou erro de build até achar a causa raiz, antes de propor correção; em causa ambígua, compara hipóteses concorrentes com evidência a favor e contra.",
+      "en": "Investigates a bug, failing test, regression or build error down to the root cause before proposing a fix."
+    },
+    {
+      "tipo": "skill",
+      "nome": "deepinit",
+      "pt": "Gera um AGENTS.md por pasta relevante de um repo de trabalho, só com o que o código mostra, cada afirmação com repo:caminho:linha ou marcada como não verificado, em PT-BR quando o autor pedir.",
+      "en": "Generates one AGENTS.md per relevant folder of a work repo, with only what the code shows and a source for every claim."
+    },
+    {
+      "tipo": "skill",
+      "nome": "entender",
+      "pt": "Transforma requisito vago, ideia ou pedido ambíguo em escopo claro e critérios de aceite verificáveis, perguntando uma coisa por vez e lendo o código antes de perguntar o que ele já responde.",
+      "en": "Turns a vague request into a clear scope and verifiable acceptance criteria, asking one thing at a time."
+    },
+    {
+      "tipo": "skill",
+      "nome": "entregas",
+      "pt": "Retoma uma entrega pela chave do card (lê a pasta de registros e descobre a fase no Jira, Confluence e git) ou mostra o panorama das entregas em andamento.",
+      "en": "Resumes a delivery by its card key, or shows the overview of deliveries in progress."
+    },
+    {
+      "tipo": "skill",
+      "nome": "error-handling",
+      "pt": "Padrões de tratamento de erro em Go e TypeScript: erros tipados, wrapping com contexto, mapeamento para status code, retry com backoff, mensagem ao usuário e error boundary no React.",
+      "en": "Error handling patterns in Go and TypeScript: typed errors, wrapping with context, status code mapping, retry with backoff and error boundaries."
+    },
+    {
+      "tipo": "skill",
+      "nome": "explorar",
+      "pt": "Entende como uma parte do código funciona antes de mexer (onde fica X, como Y se liga a Z, fluxo de execução, camadas, dependências, padrões a seguir) e procura solução existente no repo, em dependência ou no ecossistema antes de escrever código novo.",
+      "en": "Understands how a part of the code works before changing it, and looks for an existing solution before writing new code."
+    },
+    {
+      "tipo": "skill",
+      "nome": "git",
+      "pt": "Opera git com segurança: worktree isolado por card, commits atômicos divididos por assunto, mensagem de commit em Conventional Commits que segue o histórico do repo, rebase seguro e fechamento da branch (merge local, PR ou manter).",
+      "en": "Operates git safely: one worktree per card, atomic commits, Conventional Commits messages, safe rebase and closing the branch."
+    },
+    {
+      "tipo": "skill",
+      "nome": "inherit-legacy-style",
+      "pt": "Levanta as convenções implícitas de um código legado escrito à mão, resolve os conflitos com o autor um de cada vez e grava um .ai-style-rules.md aplicável (arquivos de referência, regras de nome, o que não fazer).",
+      "en": "Collects the implicit conventions of hand-written legacy code, settles conflicts with the author and writes an .ai-style-rules.md."
+    },
+    {
+      "tipo": "skill",
+      "nome": "limpar",
+      "pt": "Limpa código que funciona mas ficou inchado, repetido, com camadas inúteis ou pouco testado (cleanup de código gerado, simplificação do que foi mexido na sessão), sem mudar comportamento.",
+      "en": "Cleans code that works but is bloated, repeated or has useless layers, without changing behavior."
+    },
+    {
+      "tipo": "skill",
+      "nome": "manutencao-pacote",
+      "pt": "Transforma um fluxo que acabou de acontecer em skill ou agent novo, ajusta uma peça existente, lista peças sem uso e descrições sobrepostas, e decide o que vale lembrar na memória.",
+      "en": "Turns a flow that just happened into a new skill or agent, adjusts an existing piece, lists unused pieces and overlapping descriptions."
+    },
+    {
+      "tipo": "skill",
+      "nome": "planejar",
+      "pt": "Transforma um escopo já entendido em plano de implementação por tarefas pequenas e testáveis, com opções e trade-offs, arquivos, interfaces e comandos de verificação, e submete o plano a uma crítica separada antes de o autor aprovar.",
+      "en": "Turns an understood scope into an implementation plan of small testable tasks, with a separate critique before approval."
+    },
+    {
+      "tipo": "skill",
+      "nome": "postgres-patterns",
+      "pt": "Referência rápida de PostgreSQL para índices, tipos de dados, queries lentas, paginação, fila com SKIP LOCKED e configuração.",
+      "en": "PostgreSQL quick reference for indexes, data types, slow queries, pagination, SKIP LOCKED queues and configuration."
+    },
+    {
+      "tipo": "skill",
+      "nome": "qa",
+      "pt": "Valida uma entrega em QA depois do deploy numa develop, com a tela, os endpoints do contrato e a evidência guardada, e prepara o rascunho da solução técnica quando o perfil tem a extensão fim:qa.",
+      "en": "Validates a delivery in QA after the deploy to a develop branch, with the screen, the contract endpoints and saved evidence."
+    },
+    {
+      "tipo": "skill",
+      "nome": "qa-pos-deploy",
+      "pt": "Verifica uma URL depois do deploy em QA ou produção com um MCP de automação de browser: smoke test (erros de console, requests com falha, Core Web Vitals), interação (navegação, formulário, login), regressão visual em três larguras, acessibilidade e checagem de endpoints e assets, terminando num veredito.",
+      "en": "Checks a URL after a QA or production deploy with a browser automation MCP: smoke test, interaction, visual regression, accessibility and endpoints."
+    },
+    {
+      "tipo": "skill",
+      "nome": "quebrar",
+      "pt": "Quebra uma ADR aprovada em cards do Jira, um por repo, cada um com o recorte da ADR, o contrato, o SQL manual e o critério de aceite.",
+      "en": "Splits an approved ADR into Jira cards, one per repo, each with the ADR cut, contract, manual SQL and acceptance criteria."
+    },
+    {
+      "tipo": "skill",
+      "nome": "redis-patterns",
+      "pt": "Padrões de Redis para cache, lock distribuído, rate limit, sessão, pub/sub e streams, com desenho de chave, TTL, pool de conexão e política de eviction.",
+      "en": "Redis patterns for cache, distributed locks, rate limit, sessions, pub/sub and streams, with key design, TTL and eviction."
+    },
+    {
+      "tipo": "skill",
+      "nome": "review",
+      "pt": "Revisa uma PR ou diff por item bloqueante (quebra em runtime, dado errado, segurança, contrato), pede review de um trabalho pronto a um revisor independente, trata o feedback recebido com verificação, e faz revisão dupla independente para o que vai para produção sem olho humano.",
+      "en": "Reviews a PR or diff for blocking items, asks an independent reviewer for review, and handles received feedback with verification."
+    },
+    {
+      "tipo": "skill",
+      "nome": "sql-manual",
+      "pt": "Escreve ou revisa script SQL que será executado à mão na GMUD, com banco, ambiente, ordem em relação ao deploy, rollback e idempotência explícitos.",
+      "en": "Writes or reviews a SQL script run by hand in a change window, with database, environment, order, rollback and idempotency spelled out."
+    },
+    {
+      "tipo": "skill",
+      "nome": "strategic-compact",
+      "pt": "Decide quando rodar /compact numa sessão longa, em fronteira de fase e não no meio da tarefa, e o que salvar em arquivo antes.",
+      "en": "Decides when to run /compact in a long session, at a phase boundary, and what to save to a file first."
+    },
+    {
+      "tipo": "skill",
+      "nome": "testar",
+      "pt": "Escreve testes primeiro (TDD), define a estratégia de testes, corrige teste flaky e analisa se os testes de uma PR cobrem o comportamento que mudou, com padrões para Go (table-driven, httptest, fakes por interface) e React (Testing Library, MSW).",
+      "en": "Writes tests first (TDD), defines the test strategy, fixes flaky tests and checks whether a PR's tests cover the changed behavior."
+    },
+    {
+      "tipo": "skill",
+      "nome": "verificar",
+      "pt": "Confere com evidência nova (testes, tipos, build, comportamento) que uma mudança cumpre os critérios de aceite antes de dizer que está pronta, corrigida ou passando, e antes de commit, push ou PR.",
+      "en": "Checks with fresh evidence that a change meets the acceptance criteria before saying it is done, and before commit, push or PR."
+    }
+  ]
+}
