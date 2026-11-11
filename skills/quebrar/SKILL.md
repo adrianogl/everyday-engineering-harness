@@ -1,21 +1,21 @@
 ---
 name: quebrar
-description: Quebra uma ADR aprovada em cards do Jira, um por repo, cada um com o recorte da ADR, o contrato, o SQL manual e o critério de aceite. Use quando o autor pedir "quebra a ADR em cards", "cria os cards da entrega" ou "monta os cards por repo". Não use enquanto a ADR tiver comentário aberto (ver adr-revisar) nem para escrever a ADR (ver adr).
+description: Quebra um documento técnico aprovado em cards do Jira, um por repo, cada um com o recorte do documento técnico, o contrato, o SQL manual e o critério de aceite. Use quando o autor pedir "quebra o documento técnico em cards", "cria os cards da entrega" ou "monta os cards por repo". Não use enquanto o documento técnico tiver comentário aberto (ver comentarios) nem para escrever o documento técnico (ver documento).
 ---
 
-# Quebrar a ADR em cards
+# Quebrar o documento técnico em cards
 
-O card é o que o time de cada repo executa. Ele precisa bastar sozinho: contrato, dado, aceite e link da ADR.
+O card é o que o time de cada repo executa. Ele precisa bastar sozinho: contrato, dado, aceite e link do documento técnico.
 
 ## Pré-condição
 
-A ADR não pode ter comentário aberto, inline ou de rodapé. Se tem, pare e mande o autor para `adr-revisar`.
+O documento técnico não pode ter comentário aberto, inline ou de rodapé. Se tem, pare e mande o autor para `comentarios`.
 
 ## Divisão
 
 1. Um card por repo que muda. Se o card tem partes que vão em PRs separadas (por exemplo migration e código, ou backend e job), abra subtarefas, uma por PR.
-2. Para cada card, os extratores trabalham sobre os arquivos da ADR gravados na pasta da entrega: o `extrator-contrato` devolve as rotas e payloads do repo, o `extrator-sql` devolve scripts, banco, ambiente, ordem e rollback (regras de `sql-manual`), o `redator-aceite` escreve o critério de aceite, uma string por item do array `aceite`, e o `recortador-figma` devolve estados e copy quando há tela.
-3. O `conferente` roda antes de montar. Ele compara o que cada extrator devolveu com a ADR e aponta o que sumiu, o que foi inventado e o que ficou ambíguo. Item do `conferente` volta ao extrator ou vira DÚVIDA.
+2. Para cada card, os extratores trabalham sobre os arquivos do documento técnico gravados na pasta da entrega: o `extrator-contrato` devolve as rotas e payloads do repo, o `extrator-sql` devolve scripts, banco, ambiente, ordem e rollback (regras de `sql-manual`), o `redator-aceite` escreve o critério de aceite, uma string por item do array `aceite`, e o `recortador-figma` devolve estados e copy quando há tela.
+3. O `conferente` roda antes de montar. Ele compara o que cada extrator devolveu com o documento técnico e aponta o que sumiu, o que foi inventado e o que ficou ambíguo. Item do `conferente` volta ao extrator ou vira DÚVIDA.
 
 Parada 1: conflitos. Mostre o resultado do `conferente`. Nada é montado até o autor decidir cada conflito.
 
@@ -23,7 +23,7 @@ Parada 1: conflitos. Mostre o resultado do `conferente`. Nada é montado até o 
 
 Para cada card, grave o recorte em JSON e rode o comando abaixo. Campos:
 
-- `repo`, `titulo`, `aceite[]` (lista de critérios), `adr.{link,secao}` e `recorteAdr`, sempre;
+- `repo`, `titulo`, `aceite[]` (lista de critérios), `documento.{link,secao}` e `recorteDocumento`, sempre;
 - `contrato.{resumo,completo?}`, quando há rota;
 - `sql.{script,banco,ambiente,ordem,rollback?}`, quando há SQL manual; `ordem` é `antes` ou `depois` do deploy;
 - `figma.{link,estados?,copy?}`, quando há tela;

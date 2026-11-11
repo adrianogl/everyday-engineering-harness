@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 mkdir -p frete-api/internal/frete frete-web/src
-cat > adr.md <<'MD'
-# ADR PROJ-7: cotação de frete com seguro
+cat > documento.md <<'MD'
+# Documento técnico PROJ-7: cotação de frete com seguro
 
 Status: aprovada. Sem comentário aberto.
 
@@ -35,7 +35,7 @@ Status code: 400 para payload inválido, 422 para CEP desconhecido.
 
 Tabela `cotacao`, coluna nova `seguro_contratado boolean not null default false`.
 Rollback: `alter table cotacao drop column seguro_contratado;`
-Ordem: antes do deploy do `frete-api`. Banco: `frete`. Ambiente: develop.
+Ordem: antes do deploy do `frete-api`. Banco: `frete`. Ambiente: testes.
 
 ## 8. Escopo por repo
 

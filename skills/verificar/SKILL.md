@@ -37,7 +37,7 @@ Pular um passo é chutar, não verificar.
 
 ## Fluxo
 
-1. Defina o que prova que funciona: os critérios de aceite originais (do card, da ADR, do plano), os casos de borda que importam e o que pode regredir.
+1. Defina o que prova que funciona: os critérios de aceite originais (do card, do documento técnico, do plano), os casos de borda que importam e o que pode regredir.
 2. Rode, em paralelo quando der: a suíte de testes, o typecheck e o build. Procure e rode também os testes relacionados que devem continuar passando.
 3. Ordem de preferência: testes que já existem, typecheck e build, comandos diretos e estreitos, validação manual ou interativa descrita passo a passo, com observação concreta.
 4. Análise de lacunas, para cada critério:

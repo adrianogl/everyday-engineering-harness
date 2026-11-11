@@ -31,7 +31,7 @@ Use só para chave que o pedido não citou. Imprime `decisoes.md`, `abordagens.m
 2. Os registros das chaves citadas no pedido já estão no contexto (seção "Registros das entregas citadas no pedido"). Só para uma chave que o pedido não citou, use o comando de "Ler os registros", sem Read nem Glob (a pasta fica fora do projeto). O que está em `decisoes.md` já foi decidido: não reabra.
 3. Descubra a fase nas fontes, nesta ordem:
    - Jira: status do card, cards filhos e comentários recentes;
-   - Confluence: se existe a ADR da entrega e se há comentários sem resposta;
+   - Confluence: se existe o documento técnico da entrega e se há comentários sem resposta;
    - git: branches e worktrees com a chave, commits ainda sem push, PR aberta e estado do CI.
 4. Diga em poucas linhas a fase, o que as decisões já fecham e a próxima ação. Se a próxima ação passa por um ponto de parada, pare e peça aprovação.
 5. Cada nova decisão do autor vira `registrar ... decisao`; alternativa descartada vira `abordagem`.

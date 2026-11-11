@@ -13,7 +13,7 @@ function perfilValido(sobrescrever = {}) {
   return {
     versao: 1,
     atlassian: { mcp: 'atlassian', site: 'exemplo', cloudId: 'cloud-1', projeto: 'ABC', accountId: 'acc-1', transicaoConcluido: '' },
-    confluence: { espaco: '', templateAdr: '' },
+    confluence: { espaco: '', templateDocumento: '' },
     figma: { mcp: 'figma' },
     repos: [],
     extensoes: [],

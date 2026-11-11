@@ -19,7 +19,7 @@ Termina em escopo e critérios de aceite aprovados. Não escolhe a abordagem té
 
 ## Antes de perguntar, leia
 
-Pergunta cuja resposta está no repo, no card, na ADR ou no Figma não se faz ao autor. Antes, leia o código e os documentos ligados (veja `explorar`). Quando a pergunta ainda for necessária, cite a evidência que a motivou: "achei middleware JWT em `src/auth/` (passport e JWT): essa feature deve estender esse caminho ou divergir dele?".
+Pergunta cuja resposta está no repo, no card, no documento técnico ou no Figma não se faz ao autor. Antes, leia o código e os documentos ligados (veja `explorar`). Quando a pergunta ainda for necessária, cite a evidência que a motivou: "achei middleware JWT em `src/auth/` (passport e JWT): essa feature deve estender esse caminho ou divergir dele?".
 
 O repo mostra como o sistema se comporta hoje, não o que o negócio exige. Regra de negócio, obrigação legal, SLA contratual, preço, retenção de dado, prioridade e público-alvo não se deduzem de código nem de nome de variável. Trate como desconhecido até o autor ou um documento de produto (PRD, contrato, política) dizer, e liste como suposição a confirmar, nunca como fato descoberto.
 
@@ -60,7 +60,7 @@ Item específico, não vago: "o erro de `createUser()` com e-mail já existente 
 | --- | --- | --- |
 | tarefa pequena e clara | o próprio pedido | fazer |
 | mudança pequena | descrição no chat | construir pelo fluxo normal |
-| projeto ou mudança de risco | critérios de aceite escritos (ou ADR) | `planejar` |
+| projeto ou mudança de risco | critérios de aceite escritos (ou documento técnico) | `planejar` |
 
 Cresceu no meio: pare, diga, suba um tamanho. Se são vários projetos independentes, combine a ordem e trate um de cada vez.
 
@@ -98,7 +98,7 @@ Nada é construído antes de o autor aprovar a descrição completa: no chat par
 
 Exige confirmação explícita antes de seguir só quando uma decisão em aberto pode causar exposição de segurança, perda de dado, migration irreversível, quebra de contrato com outro serviço, custo relevante ou ação destrutiva externa. No resto, registre as suposições e prossiga.
 
-Documento escrito vai para onde o autor ou o repo mandarem (card, ADR, `docs/`), nunca para um lugar que você inventou.
+Documento escrito vai para onde o autor ou o repo mandarem (card, documento técnico, `docs/`), nunca para um lugar que você inventou.
 
 ## Registrar
 

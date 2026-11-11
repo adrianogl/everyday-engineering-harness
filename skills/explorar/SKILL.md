@@ -71,4 +71,4 @@ Impacto: escopo (um arquivo, vários, entre módulos), risco (baixo, médio, alt
 Recomendação: a próxima ação concreta, não "considere"
 ```
 
-Caminhos sempre absolutos. Se o resultado depende de uma decisão que é do autor (duas implementações conflitantes, ADR que diverge do código), devolva o bloco DÚVIDA de `rules/orquestrador.md` em vez de escolher.
+Caminhos sempre absolutos. Se o resultado depende de uma decisão que é do autor (duas implementações conflitantes, documento técnico que diverge do código), devolva o bloco DÚVIDA de `rules/orquestrador.md` em vez de escolher.

@@ -16,7 +16,7 @@ ECC	skill	android-clean-architecture	nao	Clean Architecture patterns for Android
 ECC	skill	angular-developer	nao	Generates Angular code and provides architectural guidance. Trigger when creating projects, components, or services, or for best practices on reactivity (signals, linkedS
 ECC	skill	api-connector-builder	nao	Build a new API connector or provider by matching the target repo's existing integration pattern exactly. Use when adding one more integration without inventing a second 
 ECC	skill	api-design	talvez	REST API design patterns including resource naming, status codes, pagination, filtering, error responses, versioning, and rate limiting for production APIs. Use when desi
-ECC	skill	architecture-decision-records	ideia	Capture architectural decisions as numbered ADR markdown files in docs/adr/ with context, alternatives considered, consequences, and an index README. Use when the user sa
+ECC	skill	architecture-decision-records	ideia	Capture architectural decisions as numbered decision record markdown files in docs/decisions/ with context, alternatives considered, consequences, and an index README. Use when the user sa
 ECC	skill	article-writing	nao	Write articles, guides, blog posts, tutorials, newsletter issues, and other long-form content in a distinctive voice derived from supplied examples or brand guidance. Use
 ECC	skill	automation-audit-ops	nao	Evidence-first automation inventory and overlap audit workflow for ECC. Use when the user wants to know which jobs, hooks, connectors, MCP servers, or wrappers are live, 
 ECC	skill	autonomous-agent-harness	nao	Transform Claude Code into a fully autonomous agent system with persistent memory, scheduled operations, computer use, and task queuing. Replaces standalone agent framewo
@@ -90,7 +90,7 @@ ECC	skill	django-tdd	nao	Django testing strategies with pytest-django, TDD metho
 ECC	skill	django-verification	nao	Run the full Django verification loop — environment check, mypy/ruff/black linting, migration safety, pytest with coverage targets, pip-audit and bandit security scans,
 ECC	skill	dmux-workflows	nao	Multi-agent orchestration using dmux (tmux pane manager for AI agents). Patterns for parallel agent workflows across Claude Code, Codex, OpenCode, and other harnesses. Us
 ECC	skill	docker-patterns	nao	Docker and Docker Compose patterns for local development, hardened CLI installer harnesses, container security, networking, volumes, and multi-service orchestration. Use 
-ECC	skill	docs-governance	nao	Route broad documentation-governance requests to existing ECC skills and run an opt-in, read-only audit of mapped documentation roles, links, ADR indexes, and evidence re
+ECC	skill	docs-governance	nao	Route broad documentation-governance requests to existing ECC skills and run an opt-in, read-only audit of mapped documentation roles, links, decision record indexes, and evidence re
 ECC	skill	documentation-lookup	nao	Use up-to-date library and framework docs via Context7 MCP instead of training data. Activates for setup questions, API references, code examples, or when the user names 
 ECC	skill	dotnet-patterns	nao	Idiomatic C# and .NET patterns, conventions, dependency injection, async/await, and best practices for building robust, maintainable .NET applications. Use when writing o
 ECC	skill	dynamic-workflow-mode	nao	Design task-local harnesses, eval gates, and reusable skill extraction for Claude dynamic workflow mode and other adaptive agent harnesses. Use when building a task-local

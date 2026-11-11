@@ -4,14 +4,14 @@ runs: 3
 context:
   scaffold_script: scaffold.sh
 execution:
-  prompt: quebra a ADR da PROJ-7 em cards. A ADR está em adr.md, a tela do Figma já baixada em figma.md e os repos em frete-api/ (back) e frete-web/ (front). Não há MCP do Jira, e não crie nada.
+  prompt: quebra o documento técnico da PROJ-7 em cards. O documento técnico está em documento.md, a tela do Figma já baixada em figma.md e os repos em frete-api/ (back) e frete-web/ (front). Não há MCP do Jira, e não crie nada.
   max_turns: 15
   allowed_tools: [Skill, Read, Grep, Glob]
 graders:
   - type: llm
     name: aponta-conflito-do-telefone-antes-dos-cards
     criteria: |
-      O contrato de cotação da ADR não tem o campo `telefone`, mas a tela do Figma tem um campo `telefone`. A resposta passa quando aponta esse conflito e pede decisão do autor antes de propor ou montar os cards.
+      O contrato de cotação do documento técnico não tem o campo `telefone`, mas a tela do Figma tem um campo `telefone`. A resposta passa quando aponta esse conflito e pede decisão do autor antes de propor ou montar os cards.
   - type: llm
     name: um-card-por-repo
     criteria: |

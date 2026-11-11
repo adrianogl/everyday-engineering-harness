@@ -1,6 +1,6 @@
 ---
 name: critic
-description: "Critica um plano, spec ou ADR procurando furo antes da implementação, só leitura. Use para conferir se o plano cobre os critérios de aceite, se as tarefas estão na ordem certa e se algum passo depende de algo que não existe. Não use para revisar código já escrito."
+description: "Critica um plano, spec ou documento técnico procurando furo antes da implementação, só leitura. Use para conferir se o plano cobre os critérios de aceite, se as tarefas estão na ordem certa e se algum passo depende de algo que não existe. Não use para revisar código já escrito."
 model: opus
 tools: Read, Grep, Glob
 ---

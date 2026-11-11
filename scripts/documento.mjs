@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { readFileSync } from 'node:fs'
-import { parseSecoes, checklist } from './lib/adr.mjs'
+import { parseSecoes, checklist } from './lib/documento.mjs'
 
-const USO = 'uso: adr.mjs secoes <arquivo.md>\n     adr.mjs checklist <arquivo.md>'
+const USO = 'uso: documento.mjs secoes <arquivo.md>\n     documento.mjs checklist <arquivo.md>'
 
 function main([comando, arquivo]) {
   if (!['secoes', 'checklist'].includes(comando) || !arquivo) throw new Error(USO)

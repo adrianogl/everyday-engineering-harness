@@ -22,10 +22,10 @@ A pasta começa sem login. Na primeira vez, rode `/login` dentro da sessão. Mod
 
 Na sessão isolada, com o perfil real e o login feito:
 
-1. `/eeh:adr` com o template real de ADR. Confira se as seções saem na ordem do template.
-2. `/eeh:quebrar` numa ADR já aprovada, parando antes de criar os cards. Confira os cards propostos e a divisão por repo.
+1. `/eeh:documento` com o template real de documento técnico. Confira se as seções saem na ordem do template.
+2. `/eeh:quebrar` num documento técnico já aprovado, parando antes de criar os cards. Confira os cards propostos e a divisão por repo.
 3. `/eeh:review` duas vezes na mesma PR. Na segunda rodada, o review deve ler o histórico da primeira e só trazer o que é novo.
-4. `/eeh:upstream` numa rodada real, parando na `Parada 1: incorporar`.
+4. `/eeh:fontes` numa rodada real, parando na `Parada 1: incorporar`.
 
 Se os quatro passarem, a troca pode seguir a tabela de `docs/paridade.md`.
 
@@ -61,7 +61,7 @@ Sem o arquivo, o hook de `SessionStart` avisa que o perfil está ausente e o plu
 | `atlassian.accountId` | seu accountId no site (obrigatório) |
 | `atlassian.transicaoConcluido` | id da transição para Concluído; vazio se não souber |
 | `confluence.espaco` | chave do espaço do Confluence |
-| `confluence.templateAdr` | id da página que serve de template de ADR |
+| `confluence.templateDocumento` | id da página que serve de template de documento técnico |
 | `figma.mcp` | nome do servidor MCP do Figma |
 | `repos` | lista de `nome`, `caminho` e `stack` (`go` ou `react`) |
 | `extensoes` | skills próprias, cada uma com `skill` e `quando` (`atalho` ou `fim:<fase>`) |

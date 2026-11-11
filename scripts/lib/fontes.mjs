@@ -29,9 +29,9 @@ export function gitPadrao(args, cwd) {
 }
 
 export function pastaCache({ env = process.env } = {}) {
-  const configurada = env.EEH_UPSTREAM_CACHE
+  const configurada = env.EEH_FONTES_CACHE
   if (typeof configurada === 'string' && configurada.trim() !== '') return configurada.trim()
-  return join(homedir(), '.cache', 'eeh', 'upstream')
+  return join(homedir(), '.cache', 'eeh', 'fontes')
 }
 
 export function validarManifesto(m) {

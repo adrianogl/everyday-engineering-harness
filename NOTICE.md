@@ -9,4 +9,4 @@ Este plugin reaproveita ideias e trechos adaptados dos projetos abaixo, todos so
 | superpowers | https://github.com/obra/superpowers | MIT | Copyright (c) 2025 Jesse Vincent |
 | Dracula Theme (paleta de cores, de Zeno Rocha) | https://draculatheme.com | MIT | — |
 
-A skill `postgres-patterns` parte das práticas publicadas pela equipe do Supabase, distribuídas dentro do ECC sob MIT. As peças derivadas e os arquivos de origem de cada uma estão em `upstream.json`.
+A skill `postgres-patterns` parte das práticas publicadas pela equipe do Supabase, distribuídas dentro do ECC sob MIT. As peças derivadas e os arquivos de origem de cada uma estão em `fontes.json`.

@@ -38,14 +38,14 @@
     {
       "tipo": "agent",
       "nome": "conferente",
-      "pt": "Confere a ADR contra os recortes, o Figma e o código e devolve os conflitos, ou 'sem conflito'.",
-      "en": "Checks the ADR against its slices, the Figma design and the code, and lists the conflicts or says \"no conflict\"."
+      "pt": "Confere o documento técnico contra os recortes, o Figma e o código e devolve os conflitos, ou 'sem conflito'.",
+      "en": "Checks the design doc against its slices, the Figma design and the code, and lists the conflicts or says \"no conflict\"."
     },
     {
       "tipo": "agent",
       "nome": "critic",
-      "pt": "Critica um plano, spec ou ADR procurando furo antes da implementação, só leitura.",
-      "en": "Looks for holes in a plan, spec or ADR before implementation, read-only."
+      "pt": "Critica um plano, spec ou documento técnico procurando furo antes da implementação, só leitura.",
+      "en": "Looks for holes in a plan, spec or design doc before implementation, read-only."
     },
     {
       "tipo": "agent",
@@ -56,8 +56,8 @@
     {
       "tipo": "agent",
       "nome": "document-specialist",
-      "pt": "Busca e resume documentação externa e do repo: API de SDK, framework, serviço de terceiro, README e ADR.",
-      "en": "Finds and summarizes external and repo documentation: SDK APIs, frameworks, third-party services, READMEs and ADRs."
+      "pt": "Busca e resume documentação externa e do repo: API de SDK, framework, serviço de terceiro, README e documento técnico.",
+      "en": "Finds and summarizes external and repo documentation: SDK APIs, frameworks, third-party services, READMEs and design docs."
     },
     {
       "tipo": "agent",
@@ -68,14 +68,14 @@
     {
       "tipo": "agent",
       "nome": "extrator-contrato",
-      "pt": "Extrai da ADR o contrato de um repo: rota, request, response e erros.",
-      "en": "Extracts a repo's contract from the ADR: route, request, response and errors."
+      "pt": "Extrai do documento técnico o contrato de um repo: rota, request, response e erros.",
+      "en": "Extracts a repo's contract from the design doc: route, request, response and errors."
     },
     {
       "tipo": "agent",
       "nome": "extrator-sql",
-      "pt": "Extrai da ADR o SQL manual de um repo e devolve o objeto sql do Recorte: script, banco, ambiente, ordem e rollback.",
-      "en": "Extracts a repo's manual SQL from the ADR: script, database, environment, order and rollback."
+      "pt": "Extrai do documento técnico o SQL manual de um repo: script, banco, ambiente, ordem e rollback.",
+      "en": "Extracts a repo's manual SQL from the design doc: script, database, environment, order and rollback."
     },
     {
       "tipo": "agent",
@@ -104,8 +104,8 @@
     {
       "tipo": "agent",
       "nome": "leitor-comentarios",
-      "pt": "Lê os comentários abertos de uma ADR e, para cada um, propõe a mudança na ADR e a resposta ao comentário.",
-      "en": "Reads the open comments on an ADR and proposes, for each one, the ADR change and the reply."
+      "pt": "Lê os comentários abertos de um documento técnico e propõe, para cada um, a mudança no texto e a resposta.",
+      "en": "Reads the open comments on a design doc and proposes, for each one, the design doc change and the reply."
     },
     {
       "tipo": "agent",
@@ -116,8 +116,8 @@
     {
       "tipo": "agent",
       "nome": "planner",
-      "pt": "Transforma uma spec ou ADR aprovada em plano de implementação com tarefas pequenas, ordem, arquivos e como validar.",
-      "en": "Turns an approved spec or ADR into an implementation plan with small tasks, order, files and how to validate."
+      "pt": "Transforma spec ou documento técnico aprovado em plano com tarefas pequenas, ordem, arquivos e como validar.",
+      "en": "Turns an approved spec or design doc into an implementation plan with small tasks, order, files and how to validate."
     },
     {
       "tipo": "agent",
@@ -128,14 +128,8 @@
     {
       "tipo": "agent",
       "nome": "redator-aceite",
-      "pt": "Escreve o critério de aceite de um card em passos testáveis, a partir da ADR e das regras de negócio citadas.",
-      "en": "Writes a card's acceptance criteria as testable steps, from the ADR and the cited business rules."
-    },
-    {
-      "tipo": "agent",
-      "nome": "redator-adr",
-      "pt": "Escreve o rascunho da ADR em markdown a partir da análise, do template e do checklist.",
-      "en": "Writes the ADR draft in markdown from the analysis, the template and the checklist."
+      "pt": "Escreve o critério de aceite de um card em passos testáveis, a partir do documento técnico e das regras citadas.",
+      "en": "Writes a card's acceptance criteria as testable steps, from the design doc and the cited business rules."
     },
     {
       "tipo": "agent",
@@ -145,8 +139,14 @@
     },
     {
       "tipo": "agent",
+      "nome": "redator-documento",
+      "pt": "Escreve o rascunho do documento técnico em markdown a partir da análise, do template e do checklist.",
+      "en": "Writes the design doc draft in markdown from the analysis, the template and the checklist."
+    },
+    {
+      "tipo": "agent",
       "nome": "redator-ptbr",
-      "pt": "Escreve em português do Brasil PR, GMUD, mensagem do Teams, solução técnica de card, ADR e comentário de review.",
+      "pt": "Escreve em PT-BR PR, solicitação de mudança, mensagem do Teams, nota de entrega, documento técnico e review.",
       "en": "Writes Brazilian Portuguese text for other people to read: PR descriptions, Teams messages, card solutions and review comments."
     },
     {
@@ -175,9 +175,9 @@
     },
     {
       "tipo": "agent",
-      "nome": "revisor-adr",
-      "pt": "Revisa o rascunho da ADR contra o template e o checklist e classifica cada item em Bloqueante, Alta ou Média.",
-      "en": "Reviews the ADR draft against the template and the checklist and ranks each item as Blocking, High or Medium."
+      "nome": "revisor-documento",
+      "pt": "Revisa o rascunho do documento técnico contra template e checklist e classifica cada item em Bloqueante, Alta ou Média.",
+      "en": "Reviews the design doc draft against the template and the checklist and ranks each item as Blocking, High or Medium."
     },
     {
       "tipo": "agent",
@@ -217,15 +217,21 @@
     },
     {
       "tipo": "command",
-      "nome": "adr",
-      "pt": "Escreve a ADR de uma entrega a partir do template de ADR do perfil, com contrato primeiro e revisão do revisor-adr.",
-      "en": "Writes the ADR of a delivery from the profile's ADR template, contract first, reviewed by revisor-adr."
+      "nome": "comentarios",
+      "pt": "Trata os comentários abertos de um documento técnico publicado: a mudança no texto e a resposta de cada um.",
+      "en": "Handles the open comments of a published design doc, proposing the text change and the reply to each one."
     },
     {
       "tipo": "command",
-      "nome": "adr-revisar",
-      "pt": "Trata os comentários abertos de uma ADR publicada, propondo a mudança no texto e a resposta de cada comentário.",
-      "en": "Handles the open comments of a published ADR, proposing the text change and the reply to each one."
+      "nome": "documento",
+      "pt": "Escreve o documento técnico de uma entrega pelo template do perfil, contrato primeiro, revisado pelo revisor-documento.",
+      "en": "Writes the design doc of a delivery from the profile's design doc template, contract first, reviewed by revisor-documento."
+    },
+    {
+      "tipo": "command",
+      "nome": "fontes",
+      "pt": "Compara as peças do EEH com ECC, OMC e superpowers, sugere a triagem dos itens novos e incorpora o que você aceitar.",
+      "en": "Compares EEH pieces with ECC, OMC and superpowers, triages the new items and brings in what the author accepts."
     },
     {
       "tipo": "command",
@@ -236,14 +242,14 @@
     {
       "tipo": "command",
       "nome": "qa",
-      "pt": "Valida uma entrega em QA depois do deploy numa develop, com tela, endpoints do contrato e evidência guardada.",
-      "en": "Validates a delivery in QA after the deploy to a develop branch, with the screen, the contract endpoints and saved evidence."
+      "pt": "Valida uma entrega em QA depois do deploy num ambiente de testes, com tela, endpoints do contrato e evidência guardada.",
+      "en": "Validates a delivery in QA after the deploy to a test environment, with the screen, the contract endpoints and saved evidence."
     },
     {
       "tipo": "command",
       "nome": "quebrar",
-      "pt": "Quebra uma ADR aprovada em cards do Jira, um por repo, com recorte da ADR, contrato, SQL manual e critério de aceite.",
-      "en": "Splits an approved ADR into Jira cards, one per repo, with the ADR slice, contract, manual SQL and acceptance criteria."
+      "pt": "Quebra um documento técnico aprovado em cards do Jira, um por repo, com recorte, contrato, SQL manual e aceite.",
+      "en": "Splits an approved design doc into Jira cards, one per repo, with the design doc slice, contract, manual SQL and acceptance criteria."
     },
     {
       "tipo": "command",
@@ -252,28 +258,16 @@
       "en": "Reviews a PR, branch or diff with one reviewer per lens and returns only blocking items confirmed by two independent reviewers."
     },
     {
-      "tipo": "command",
-      "nome": "upstream",
-      "pt": "Compara as peças do EEH com ECC, OMC e superpowers, sugere a triagem dos itens novos e incorpora o que você aceitar.",
-      "en": "Compares EEH pieces with ECC, OMC and superpowers, triages the new items and brings in what the author accepts."
-    },
-    {
-      "tipo": "skill",
-      "nome": "adr",
-      "pt": "Escreve a ADR de uma entrega a partir do template do perfil, contrato primeiro, com revisão do revisor-adr.",
-      "en": "Writes the ADR of a delivery from the profile's ADR template, contract first, reviewed by revisor-adr before publishing."
-    },
-    {
-      "tipo": "skill",
-      "nome": "adr-revisar",
-      "pt": "Trata os comentários abertos de uma ADR publicada no Confluence: a mudança no texto e a resposta de cada um.",
-      "en": "Handles the open comments of an ADR published on Confluence, proposing the ADR change and the reply for each one."
-    },
-    {
       "tipo": "skill",
       "nome": "api-design",
       "pt": "Convenções para desenhar ou revisar endpoints REST: recursos, métodos, status codes, erro, paginação e versionamento.",
       "en": "Conventions for designing or reviewing REST endpoints: resource names, methods, status codes, error format, pagination, filters, auth, rate limit and versioning."
+    },
+    {
+      "tipo": "skill",
+      "nome": "comentarios",
+      "pt": "Trata os comentários abertos de um documento técnico no Confluence: a mudança no texto e a resposta de cada um.",
+      "en": "Handles the open comments of a design doc published on Confluence, proposing the design doc change and the reply for each one."
     },
     {
       "tipo": "skill",
@@ -286,6 +280,12 @@
       "nome": "deepinit",
       "pt": "Gera um AGENTS.md por pasta relevante de um repo, só com o que o código mostra e a fonte de cada afirmação.",
       "en": "Generates one AGENTS.md per relevant folder of a work repo, with only what the code shows and a source for every claim."
+    },
+    {
+      "tipo": "skill",
+      "nome": "documento",
+      "pt": "Escreve o documento técnico de uma entrega pelo template do perfil, contrato primeiro, revisado pelo revisor-documento.",
+      "en": "Writes the design doc of a delivery from the profile's design doc template, contract first, reviewed by revisor-documento before publishing."
     },
     {
       "tipo": "skill",
@@ -350,8 +350,8 @@
     {
       "tipo": "skill",
       "nome": "qa",
-      "pt": "Valida uma entrega em QA depois do deploy numa develop, com tela, endpoints do contrato e evidência guardada.",
-      "en": "Validates a delivery in QA after the deploy to a develop branch, with the screen, the contract endpoints and saved evidence."
+      "pt": "Valida uma entrega em QA depois do deploy num ambiente de testes, com tela, endpoints do contrato e evidência guardada.",
+      "en": "Validates a delivery in QA after the deploy to a test environment, with the screen, the contract endpoints and saved evidence."
     },
     {
       "tipo": "skill",
@@ -362,8 +362,8 @@
     {
       "tipo": "skill",
       "nome": "quebrar",
-      "pt": "Quebra uma ADR aprovada em cards do Jira, um por repo, com recorte, contrato, SQL manual e critério de aceite.",
-      "en": "Splits an approved ADR into Jira cards, one per repo, each with the ADR slice, contract, manual SQL and acceptance criteria."
+      "pt": "Quebra um documento técnico aprovado em cards do Jira, um por repo, com recorte, contrato, SQL manual e aceite.",
+      "en": "Splits an approved design doc into Jira cards, one per repo, each with the design doc slice, contract, manual SQL and acceptance criteria."
     },
     {
       "tipo": "skill",
@@ -380,8 +380,8 @@
     {
       "tipo": "skill",
       "nome": "sql-manual",
-      "pt": "Escreve ou revisa SQL rodado à mão na GMUD, com banco, ambiente, ordem, rollback e idempotência explícitos.",
-      "en": "Writes or reviews a SQL script run by hand in a change window, with database, environment, order, rollback and idempotency spelled out."
+      "pt": "Escreve ou revisa SQL rodado à mão na mudança em produção, com banco, ambiente, ordem, rollback e idempotência.",
+      "en": "Writes or reviews a SQL script run by hand in a production change request, with database, environment, order, rollback and idempotency spelled out."
     },
     {
       "tipo": "skill",

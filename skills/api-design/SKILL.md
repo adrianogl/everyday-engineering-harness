@@ -7,7 +7,7 @@ metadata:
 
 # Design de API REST
 
-Antes de definir uma rota nova, procure no serviço como as rotas existentes nomeiam recurso, pagam erro e paginam. A convenção do repo vale mais que a deste texto. Rota nova entra consistente com as vizinhas; só diverge com motivo escrito no card ou na ADR.
+Antes de definir uma rota nova, procure no serviço como as rotas existentes nomeiam recurso, pagam erro e paginam. A convenção do repo vale mais que a deste texto. Rota nova entra consistente com as vizinhas; só diverge com motivo escrito no card ou no documento técnico.
 
 Mudança de contrato (campo removido ou renomeado, tipo alterado, status code diferente) quebra quem consome. Descubra os callers antes de alterar.
 

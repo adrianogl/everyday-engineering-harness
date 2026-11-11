@@ -5,7 +5,7 @@ import { join } from 'node:path'
 
 const raiz = 'agents'
 const arquivos = existsSync(raiz) ? readdirSync(raiz).filter((f) => f.endsWith('.md')) : []
-const upstream = JSON.parse(readFileSync('upstream.json', 'utf8'))
+const manifesto = JSON.parse(readFileSync('fontes.json', 'utf8'))
 
 const esperados = [
   'explorar', 'architect', 'planner', 'critic', 'implementador-go', 'implementador-react',
@@ -13,7 +13,7 @@ const esperados = [
   'reviewer-database', 'silent-failure-hunter', 'type-design-analyzer', 'security-reviewer',
   'verifier', 'debugger', 'tracer', 'build-fix-go', 'build-fix-react', 'document-specialist',
   'redator-ptbr', 'git', 'front-visual',
-  'analista-epico', 'redator-adr', 'revisor-adr', 'leitor-comentarios', 'extrator-contrato',
+  'analista-epico', 'redator-documento', 'revisor-documento', 'leitor-comentarios', 'extrator-contrato',
   'extrator-sql', 'redator-aceite', 'recortador-figma', 'conferente', 'redator-card',
   'opensource-sanitizer',
 ]
@@ -24,14 +24,14 @@ const somenteLeitura = [
   'explorar', 'architect', 'critic', 'code-reviewer', 'reviewer-go', 'reviewer-react',
   'reviewer-typescript', 'reviewer-database', 'silent-failure-hunter', 'type-design-analyzer',
   'security-reviewer', 'verifier',
-  'analista-epico', 'revisor-adr', 'leitor-comentarios', 'extrator-contrato', 'extrator-sql',
+  'analista-epico', 'revisor-documento', 'leitor-comentarios', 'extrator-contrato', 'extrator-sql',
   'redator-aceite', 'recortador-figma', 'conferente', 'opensource-sanitizer',
 ]
 
 const modelos = {
   haiku: ['explorar', 'document-specialist', 'extrator-contrato', 'extrator-sql', 'recortador-figma'],
-  sonnet: ['implementador-go', 'implementador-react', 'test-engineer', 'build-fix-go', 'build-fix-react', 'redator-ptbr', 'git', 'front-visual', 'redator-adr', 'leitor-comentarios', 'redator-aceite', 'redator-card', 'opensource-sanitizer'],
-  opus: ['architect', 'planner', 'critic', 'code-reviewer', 'reviewer-go', 'reviewer-react', 'reviewer-typescript', 'reviewer-database', 'silent-failure-hunter', 'type-design-analyzer', 'security-reviewer', 'verifier', 'debugger', 'tracer', 'analista-epico', 'revisor-adr', 'conferente'],
+  sonnet: ['implementador-go', 'implementador-react', 'test-engineer', 'build-fix-go', 'build-fix-react', 'redator-ptbr', 'git', 'front-visual', 'redator-documento', 'leitor-comentarios', 'redator-aceite', 'redator-card', 'opensource-sanitizer'],
+  opus: ['architect', 'planner', 'critic', 'code-reviewer', 'reviewer-go', 'reviewer-react', 'reviewer-typescript', 'reviewer-database', 'silent-failure-hunter', 'type-design-analyzer', 'security-reviewer', 'verifier', 'debugger', 'tracer', 'analista-epico', 'revisor-documento', 'conferente'],
 }
 
 const bloco = 'DÚVIDA\nPergunta: <uma frase>\nContexto: <o que foi visto>\nOpções: <a) ... b) ...>\nRecomendação: <opção e motivo>'
@@ -132,9 +132,9 @@ test('todo agent referencia a regra de conteúdo externo', () => {
 
 test('agents de escrita de documento têm Write e os de leitura não', () => {
   const lista = (nome) => frontmatter(ler(`${nome}.md`)).tools.split(',').map((t) => t.trim())
-  assert.deepEqual(lista('redator-adr'), ['Read', 'Write', 'Edit'])
+  assert.deepEqual(lista('redator-documento'), ['Read', 'Write', 'Edit'])
   assert.deepEqual(lista('redator-card'), ['Read', 'Write'])
-  for (const nome of proprios.filter((n) => !['redator-adr', 'redator-card'].includes(n))) {
+  for (const nome of proprios.filter((n) => !['redator-documento', 'redator-card'].includes(n))) {
     assert.deepEqual(lista(nome), ['Read', 'Grep', 'Glob'], nome)
   }
 })
@@ -146,11 +146,11 @@ test('agents que escrevem código têm Edit e Write', () => {
   }
 })
 
-test('derivados estão no upstream.json', () => {
-  const pecas = new Map(upstream.pecas.map((p) => [p.peca, p]))
+test('derivados estão no fontes.json', () => {
+  const pecas = new Map(manifesto.pecas.map((p) => [p.peca, p]))
   for (const arquivo of arquivos.filter((a) => !proprios.includes(a.replace(/\.md$/, '')))) {
     const peca = `agents/${arquivo.replace(/\.md$/, '')}`
-    assert.ok(pecas.has(peca), `${peca}: sem entrada em upstream.json`)
+    assert.ok(pecas.has(peca), `${peca}: sem entrada em fontes.json`)
     assert.ok(pecas.get(peca).origens.length > 0, `${peca}: sem origens`)
   }
   for (const peca of pecas.keys()) {
@@ -180,7 +180,7 @@ test('agents citam skills que existem', () => {
   }
 })
 
-test('nenhum agent manda invocar skill sempre nem carrega infra de upstream', () => {
+test('nenhum agent manda invocar skill sempre nem carrega infra das fontes', () => {
   for (const arquivo of arquivos) {
     const texto = ler(arquivo)
     assert.doesNotMatch(texto, /MUST (use|invoke)|ABSOLUTELY MUST|1% chance/i, arquivo)

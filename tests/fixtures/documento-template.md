@@ -1,4 +1,4 @@
-# ADR de frete
+# Documento técnico de frete
 
 Texto livre antes da primeira seção.
 
@@ -18,7 +18,7 @@ Links da cotação e do contrato com a transportadora.
 
 **Regra de preenchimento**
 
-- **Obrigatoriedade:** OBRIGATÓRIO em toda ADR
+- **Obrigatoriedade:** OBRIGATÓRIO em todo documento técnico
 - **Gate:** Nenhum
 - **Completo quando:** Todo link aponta para um documento acessível
 

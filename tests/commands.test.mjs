@@ -22,7 +22,7 @@ function frontmatter(texto) {
 }
 
 test('commands têm description e argument-hint', () => {
-  assert.deepEqual(arquivos.sort(), ['adr-revisar.md', 'adr.md', 'implementar.md', 'qa.md', 'quebrar.md', 'review.md', 'upstream.md'])
+  assert.deepEqual(arquivos.sort(), ['comentarios.md', 'documento.md', 'fontes.md', 'implementar.md', 'qa.md', 'quebrar.md', 'review.md'])
   for (const arquivo of arquivos) {
     const campos = frontmatter(ler(arquivo.replace(/\.md$/, '')))
     assert.ok(campos.description && campos.description.length > 20, `${arquivo} sem description`)
@@ -69,8 +69,8 @@ test('review exige dois reviewers, entrega o diff e para antes de postar', () =>
 
 test('commands novos trazem as paradas com rótulo exato', () => {
   const paradas = {
-    adr: ['Parada 1: dúvidas', 'Parada 2: publicar'],
-    'adr-revisar': ['Parada 1: atualizar a página'],
+    documento: ['Parada 1: dúvidas', 'Parada 2: publicar'],
+    'comentarios': ['Parada 1: atualizar a página'],
     quebrar: ['Parada 1: conflitos', 'Parada 2: criar cards'],
     qa: ['Parada 1: mover ou comentar o card'],
   }
@@ -98,17 +98,17 @@ test('orquestrador não tem rota em breve e tem a fase qa', () => {
   assert.match(texto, /fase `qa`/)
 })
 
-test('upstream para antes de incorporar e usa o CLI inteiro', () => {
-  const texto = ler('upstream')
+test('fontes para antes de incorporar e usa o CLI inteiro', () => {
+  const texto = ler('fontes')
   assert.ok(texto.includes('Parada 1: incorporar'))
-  for (const trecho of ['upstream.mjs buscar', 'upstream.mjs diff', 'upstream.mjs novos', 'upstream.mjs registrar', 'manutencao-pacote', 'docs/triagem.tsv']) {
-    assert.ok(texto.includes(trecho), `upstream sem ${trecho}`)
+  for (const trecho of ['fontes.mjs buscar', 'fontes.mjs diff', 'fontes.mjs novos', 'fontes.mjs registrar', 'manutencao-pacote', 'docs/triagem.tsv']) {
+    assert.ok(texto.includes(trecho), `fontes sem ${trecho}`)
   }
   assert.match(texto, /não sobrescreva|não copie/i)
   assert.ok(texto.includes('erro'))
 })
 
-test('orquestrador tem a rota upstream', () => {
+test('orquestrador tem a rota fontes', () => {
   const texto = readFileSync(join('rules', 'orquestrador.md'), 'utf8')
-  assert.match(texto, /fase `upstream`/)
+  assert.match(texto, /fase `fontes`/)
 })

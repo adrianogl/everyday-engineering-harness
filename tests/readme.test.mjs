@@ -55,7 +55,7 @@ test('README.md e README.pt-BR.md têm o bloco do catálogo em dia, o link um pa
   for (const texto of [en, pt]) {
     assert.match(texto, /<!-- catalogo:inicio -->/)
     assert.match(texto, /site\/hero\.svg/)
-    for (const c of ['adr', 'adr-revisar', 'quebrar', 'implementar', 'review', 'qa', 'upstream']) {
+    for (const c of ['documento', 'comentarios', 'quebrar', 'implementar', 'review', 'qa', 'fontes']) {
       assert.match(texto, new RegExp(`^\\| \`/eeh:${c}[ \`][^|]*\\|[^|]+\\|[^|]+\\|$`, 'm'))
     }
     for (const nome of ['everything-claude-code', 'oh-my-claudecode', 'obra/superpowers', 'Dracula']) {

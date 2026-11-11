@@ -1,16 +1,16 @@
 ---
 name: qa
-description: Valida uma entrega em QA depois do deploy numa develop, com a tela, os endpoints do contrato e a evidência guardada, e prepara o rascunho da solução técnica quando o perfil tem a extensão fim:qa. Use quando o card estiver em Aguardando Testes, o autor disser "valida em QA", "testa a PROJ-7 na develop" ou "junta a evidência". Não use antes do deploy nem para testar em produção (ver qa-pos-deploy para a checagem de tela).
+description: Valida uma entrega em QA depois do deploy num ambiente de testes, com a tela, os endpoints do contrato e a evidência guardada, e prepara o rascunho da nota de entrega quando o perfil tem a extensão fim:qa. Use quando o card estiver em teste, o autor disser "valida em QA", "testa a PROJ-7 no ambiente de testes" ou "junta a evidência". Não use antes do deploy nem para testar em produção (ver qa-pos-deploy para a checagem de tela).
 ---
 
 # QA da entrega
 
-QA confirma que o que a ADR prometeu funciona no ambiente. A evidência fica guardada na pasta da entrega.
+QA confirma que o que o documento técnico prometeu funciona no ambiente. A evidência fica guardada na pasta da entrega.
 
 ## Pré-condição
 
-1. O card está em Aguardando Testes e o deploy numa develop terminou. Confirme pelo Jira e pelo git (branch ou PR com merge na develop). Sem isso, pare.
-2. Descubra o ambiente e a URL pelo perfil e pelo card. Se há mais de uma develop, pergunte qual tem a mudança. Não chute URL.
+1. O card está em teste e o deploy num ambiente de testes terminou. Confirme pelo Jira e pelo git (branch ou PR com merge no ambiente de testes). Sem isso, pare.
+2. Descubra o ambiente e a URL pelo perfil e pelo card. Se há mais de um ambiente de testes, pergunte qual tem a mudança. Não chute URL.
 
 ## Roteiro
 
@@ -28,8 +28,8 @@ curl -s -X POST "$BASE_URL/cotacoes" -H "Authorization: Bearer $TOKEN" -H "Conte
 
 Guarde na pasta da entrega: screenshots, e request e response de cada endpoint. Remova token, cookie e dado pessoal antes de gravar. Nome de arquivo com a chave e o item de aceite.
 
-## Solução técnica
+## Nota de entrega
 
-Se o perfil tem uma extensão `extensoes[]` com `quando: fim:qa`, rode-a agora para preparar o rascunho da solução técnica (texto para produto, o que muda para quem usa). Sem a extensão, pule este passo.
+Se o perfil tem uma extensão `extensoes[]` com `quando: fim:qa`, rode-a agora para preparar o rascunho da nota de entrega (texto para produto, o que muda para quem usa). Sem a extensão, pule este passo.
 
-Parada 1: mover ou comentar o card. Mostre o resultado por item de aceite, os arquivos de evidência e o rascunho da solução técnica. Só comente, anexe ou mude o status do card com aprovação explícita. Falha encontrada volta ao autor como item, sem mover o card.
+Parada 1: mover ou comentar o card. Mostre o resultado por item de aceite, os arquivos de evidência e o rascunho da nota de entrega. Só comente, anexe ou mude o status do card com aprovação explícita. Falha encontrada volta ao autor como item, sem mover o card.
