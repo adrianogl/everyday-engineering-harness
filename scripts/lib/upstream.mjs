@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process'
-import { existsSync, mkdirSync, readdirSync, readFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { isAbsolute, join } from 'node:path'
 
@@ -86,6 +86,50 @@ export function atualizarClone({ fonte, repo, cache, git = gitPadrao }) {
   } catch (erro) {
     return { ok: false, dir, erro: erro.message }
   }
+}
+
+export function gravarStatusBusca({ fonte, cache, resultado, agora = () => new Date().toISOString() }) {
+  mkdirSync(cache, { recursive: true })
+  const status = { ok: resultado.ok === true, head: resultado.head ?? null, erro: resultado.erro ?? null, data: agora() }
+  writeFileSync(join(cache, `${fonte}.status.json`), `${JSON.stringify(status, null, 2)}\n`)
+  return status
+}
+
+export function lerStatusBusca({ fonte, cache }) {
+  try {
+    return JSON.parse(readFileSync(join(cache, `${fonte}.status.json`), 'utf8'))
+  } catch {
+    return null
+  }
+}
+
+export function separarFontes({ manifesto, cache, git = gitPadrao }) {
+  const clones = {}
+  const desatualizadas = []
+  for (const fonte of Object.keys(manifesto.fontes ?? {})) {
+    if (!nomeFonteValido(fonte)) continue
+    const status = lerStatusBusca({ fonte, cache })
+    if (!status) {
+      desatualizadas.push({ fonte, status: 'desatualizado', erro: 'buscar ainda não rodou para esta fonte' })
+      continue
+    }
+    if (status.ok !== true) {
+      desatualizadas.push({ fonte, status: 'desatualizado', erro: status.erro || 'última busca falhou' })
+      continue
+    }
+    const dir = join(cache, fonte)
+    if (!existsSync(join(dir, '.git'))) {
+      desatualizadas.push({ fonte, status: 'desatualizado', erro: 'clone ausente no cache' })
+      continue
+    }
+    const h = git(['rev-parse', 'HEAD'], dir)
+    if (h.status !== 0) {
+      desatualizadas.push({ fonte, status: 'desatualizado', erro: h.stderr.trim() || 'rev-parse falhou' })
+      continue
+    }
+    clones[fonte] = { dir, head: h.stdout.trim() }
+  }
+  return { clones, desatualizadas }
 }
 
 function caminhosAlternativos(fonte, caminho) {

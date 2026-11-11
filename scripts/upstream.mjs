@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { atualizarClone, diffOrigens, gitPadrao, itensNovos, lerManifesto, nomeFonteValido, pastaCache, registrarCommit, validarManifesto } from './lib/upstream.mjs'
+import { atualizarClone, diffOrigens, gravarStatusBusca, itensNovos, lerManifesto, pastaCache, registrarCommit, separarFontes, validarManifesto } from './lib/upstream.mjs'
 
 const raiz = join(dirname(fileURLToPath(import.meta.url)), '..')
 const USO = 'uso: upstream.mjs buscar [--manifesto <arquivo>]\n     upstream.mjs diff [--manifesto <arquivo>]\n     upstream.mjs novos [--manifesto <arquivo>] [--triagem <arquivo>]\n     upstream.mjs registrar --peca <peca> --fonte <fonte> --caminho <caminho> --commit <sha> [--manifesto <arquivo>]'
@@ -14,18 +14,6 @@ function opcoes(args) {
     o[args[i].slice(2)] = args[i + 1]
   }
   return o
-}
-
-function clonesDoCache(manifesto, cache) {
-  const clones = {}
-  for (const fonte of Object.keys(manifesto.fontes)) {
-    if (!nomeFonteValido(fonte)) continue
-    const dir = join(cache, fonte)
-    if (!existsSync(join(dir, '.git'))) continue
-    const h = gitPadrao(['rev-parse', 'HEAD'], dir)
-    if (h.status === 0) clones[fonte] = { dir, head: h.stdout.trim() }
-  }
-  return clones
 }
 
 function main(argv) {
@@ -42,13 +30,18 @@ function main(argv) {
     const fontes = {}
     for (const [fonte, { repo }] of Object.entries(manifesto.fontes ?? {})) {
       fontes[fonte] = atualizarClone({ fonte, repo, cache })
+      gravarStatusBusca({ fonte, cache, resultado: fontes[fonte] })
     }
     return { cache, fontes }
   }
-  if (comando === 'diff') return diffOrigens({ manifesto, clones: clonesDoCache(manifesto, cache) })
+  if (comando === 'diff') {
+    const { clones, desatualizadas } = separarFontes({ manifesto, cache })
+    return [...diffOrigens({ manifesto, clones }), ...desatualizadas]
+  }
   if (comando === 'novos') {
     const triagem = readFileSync(o.triagem ?? join(raiz, 'docs', 'triagem.tsv'), 'utf8')
-    return itensNovos({ clones: clonesDoCache(manifesto, cache), triagem })
+    const { clones, desatualizadas } = separarFontes({ manifesto, cache })
+    return [...itensNovos({ clones, triagem }), ...desatualizadas]
   }
   if (comando === 'registrar' && o.peca && o.fonte && o.caminho && o.commit) {
     const novo = registrarCommit(manifesto, { peca: o.peca, fonte: o.fonte, caminho: o.caminho, commit: o.commit })

@@ -85,6 +85,8 @@ O estoque lista peças que nada referencia:
 node "${CLAUDE_PLUGIN_ROOT}/scripts/estoque.mjs"
 ```
 
+Para outro repo, passe `--raiz <pasta>`.
+
 A saída tem as peças sem uso e, por peça, o número de referências em `commands/`, `skills/`, `agents/` e `rules/` (nome como palavra inteira, entre crases ou não, fora o próprio arquivo). Zero referência não prova que a peça é inútil: uma skill pode ser disparada só pela description. Trate a lista como candidata a revisão.
 
 Para cada candidata, leia a peça e decida:

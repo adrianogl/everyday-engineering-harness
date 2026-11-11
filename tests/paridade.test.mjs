@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync, existsSync } from 'node:fs'
 
-const STATUS = ['coberto', 'descartado', 'plano-2', 'plano-3']
+const STATUS = ['coberto', 'descartado']
 
 function esperados() {
   return readFileSync('docs/triagem.tsv', 'utf8')
@@ -64,18 +64,8 @@ test('descartado traz o motivo', () => {
   }
 })
 
-test('plano-2 e plano-3 dizem o que falta', () => {
-  for (const l of linhas().filter((x) => x.status.startsWith('plano-'))) {
-    assert.ok(l.equivalente.length >= 10, `${l.item}: sem descrição do que falta`)
-  }
-})
-
-test('nenhuma linha com status plano-2', () => {
-  assert.deepEqual(linhas().filter((l) => l.status === 'plano-2').map((l) => l.item), [])
-})
-
-test('nenhuma linha com status plano-3', () => {
-  assert.deepEqual(linhas().filter((l) => l.status === 'plano-3').map((l) => l.item), [])
+test('nenhuma linha plano-*', () => {
+  assert.deepEqual(linhas().filter((l) => l.status.startsWith('plano-')).map((l) => l.item), [])
 })
 
 test('triagem.tsv é UTF-8 válido', () => {

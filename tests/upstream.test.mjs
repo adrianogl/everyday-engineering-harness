@@ -245,3 +245,55 @@ test('CLI diff, novos e buscar abortam com manifesto inválido', () => {
     assert.match(r.stderr, /protocolo não permitido/, comando)
   }
 })
+
+test('fetch falha num clone existente e diff não usa o clone velho', () => {
+  const { dir, base } = fixture()
+  const cache = mkdtempSync(join(tmpdir(), 'eeh-cache-'))
+  const manifesto = join(mkdtempSync(join(tmpdir(), 'eeh-man-')), 'upstream.json')
+  writeFileSync(manifesto, JSON.stringify({
+    fontes: { omc: { repo: `file://${dir}`, licenca: 'MIT' } },
+    pecas: [{ peca: 'skills/cotar', origens: [{ fonte: 'omc', caminho: 'skills/seguro.md', commit: base }] }],
+  }))
+  const rodar = (comando) => spawnSync('node', [join(raiz, 'scripts', 'upstream.mjs'), comando, '--manifesto', manifesto], {
+    encoding: 'utf8',
+    env: { ...process.env, EEH_UPSTREAM_CACHE: cache },
+  })
+  assert.equal(rodar('buscar').status, 0)
+  writeFileSync(join(dir, 'skills', 'seguro.md'), 'apolice nova\n')
+  commitar(dir, 'dois')
+  const antes = JSON.parse(rodar('diff').stdout)
+  assert.equal(antes[0].status, 'igual')
+
+  rmSync(dir, { recursive: true, force: true })
+  const busca = rodar('buscar')
+  assert.equal(busca.status, 0, busca.stderr)
+  assert.equal(JSON.parse(busca.stdout).fontes.omc.ok, false)
+  const status = JSON.parse(readFileSync(join(cache, 'omc.status.json'), 'utf8'))
+  assert.equal(status.ok, false)
+  assert.ok(status.erro)
+
+  const diff = JSON.parse(rodar('diff').stdout)
+  assert.equal(diff.length, 1)
+  assert.equal(diff[0].fonte, 'omc')
+  assert.equal(diff[0].status, 'desatualizado')
+  assert.ok(diff[0].erro)
+  const triagem = join(mkdtempSync(join(tmpdir(), 'eeh-tri-')), 'triagem.tsv')
+  writeFileSync(triagem, '')
+  const novos = spawnSync('node', [join(raiz, 'scripts', 'upstream.mjs'), 'novos', '--manifesto', manifesto, '--triagem', triagem], {
+    encoding: 'utf8',
+    env: { ...process.env, EEH_UPSTREAM_CACHE: cache },
+  })
+  assert.deepEqual(JSON.parse(novos.stdout).map((n) => n.status), ['desatualizado'])
+})
+
+test('diff e novos marcam fonte sem busca como desatualizada', () => {
+  const cache = mkdtempSync(join(tmpdir(), 'eeh-cache-'))
+  const manifesto = join(mkdtempSync(join(tmpdir(), 'eeh-man-')), 'upstream.json')
+  writeFileSync(manifesto, JSON.stringify({ fontes: { omc: { repo: 'file:///x', licenca: 'MIT' } }, pecas: [] }))
+  const r = spawnSync('node', [join(raiz, 'scripts', 'upstream.mjs'), 'diff', '--manifesto', manifesto], {
+    encoding: 'utf8',
+    env: { ...process.env, EEH_UPSTREAM_CACHE: cache },
+  })
+  assert.equal(r.status, 0, r.stderr)
+  assert.deepEqual(JSON.parse(r.stdout).map((x) => [x.fonte, x.status]), [['omc', 'desatualizado']])
+})
