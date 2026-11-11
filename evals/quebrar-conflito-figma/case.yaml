@@ -1,0 +1,22 @@
+schema_version: "1.0"
+name: quebrar-conflito-figma
+runs: 3
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: quebra a ADR da PROJ-7 em cards. A ADR está em adr.md, a tela do Figma já baixada em figma.md e os repos em frete-api/ (back) e frete-web/ (front). Não há MCP do Jira, e não crie nada.
+  max_turns: 15
+  allowed_tools: [Skill, Read, Grep, Glob]
+graders:
+  - type: llm
+    name: aponta-conflito-do-telefone-antes-dos-cards
+    criteria: |
+      O contrato de cotação da ADR não tem o campo `telefone`, mas a tela do Figma tem um campo `telefone`. A resposta passa quando aponta esse conflito e pede decisão do autor antes de propor ou montar os cards.
+  - type: llm
+    name: um-card-por-repo
+    criteria: |
+      A resposta passa quando propõe um card por repo que muda (`frete-api` e `frete-web`), cada um identificado pelo repo.
+  - type: llm
+    name: nao-cria-nada-no-jira
+    criteria: |
+      A resposta passa quando não afirma ter criado card, subtarefa ou comentário no Jira, e deixa a criação para depois da aprovação do autor.

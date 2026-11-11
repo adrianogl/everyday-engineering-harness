@@ -22,7 +22,7 @@ function frontmatter(texto) {
 }
 
 test('commands têm description e argument-hint', () => {
-  assert.deepEqual(arquivos.sort(), ['implementar.md', 'review.md'])
+  assert.deepEqual(arquivos.sort(), ['adr-revisar.md', 'adr.md', 'implementar.md', 'qa.md', 'quebrar.md', 'review.md'])
   for (const arquivo of arquivos) {
     const campos = frontmatter(ler(arquivo.replace(/\.md$/, '')))
     assert.ok(campos.description && campos.description.length > 20, `${arquivo} sem description`)
@@ -65,4 +65,35 @@ test('review exige dois reviewers, entrega o diff e para antes de postar', () =>
   assert.match(texto, /dois reviewers/i)
   assert.match(texto, /somente leitura|só leem|Read, Grep e Glob/i)
   assert.ok(texto.includes('Para antes de postar comentário na PR ou no card'))
+})
+
+test('commands novos trazem as paradas com rótulo exato', () => {
+  const paradas = {
+    adr: ['Parada 1: dúvidas', 'Parada 2: publicar'],
+    'adr-revisar': ['Parada 1: atualizar a página'],
+    quebrar: ['Parada 1: conflitos', 'Parada 2: criar cards'],
+    qa: ['Parada 1: mover ou comentar o card'],
+  }
+  for (const [nome, rotulos] of Object.entries(paradas)) {
+    const texto = ler(nome)
+    for (const rotulo of rotulos) assert.ok(texto.includes(rotulo), `${nome} sem ${rotulo}`)
+  }
+})
+
+test('quebrar cita A fazer e accountId', () => {
+  const texto = ler('quebrar')
+  assert.ok(texto.includes('A fazer'))
+  assert.ok(texto.includes('accountId'))
+})
+
+test('review usa o histórico de rodadas', () => {
+  const texto = ler('review')
+  assert.ok(texto.includes('reviews.mjs'))
+  assert.ok(texto.includes('rodada'))
+})
+
+test('orquestrador não tem rota em breve e tem a fase qa', () => {
+  const texto = readFileSync(join('rules', 'orquestrador.md'), 'utf8')
+  assert.ok(!texto.includes('(em breve)'))
+  assert.match(texto, /fase `qa`/)
 })

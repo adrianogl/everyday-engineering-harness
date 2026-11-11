@@ -15,12 +15,11 @@ Pergunta conceitual, comando avulso, explicação de código ou edição pequena
 | entender por que algo quebra, erro, comportamento estranho | skill `debugar` | aplicar a correção |
 | planejar uma mudança, quebrar em passos | skill `planejar` | começar a implementar |
 | requisito vago, ideia, "como você faria" | skill `entender` | escolher a abordagem |
-| escrever ADR do épico | fase `adr` (em breve) | publicar no Confluence |
-| tratar comentários da ADR | fase `adr-revisar` (em breve) | atualizar a página |
-| quebrar a ADR em cards | fase `quebrar` (em breve) | criar os cards no Jira |
+| escrever ADR do épico | fase `adr` | publicar no Confluence |
+| tratar comentários da ADR | fase `adr-revisar` | atualizar a página |
+| quebrar a ADR em cards | fase `quebrar` | criar os cards no Jira |
+| card em Aguardando Testes, deploy numa develop, validar em QA | fase `qa` | mover ou comentar o card |
 | continuar uma entrega, "o que está aberto", panorama | skill `entregas` | agir sem ler a pasta da entrega |
-
-Rota marcada "em breve" ainda não existe: diga isso ao autor e ofereça fazer a parte possível na conversa.
 
 Se o pedido depende do perfil local (Jira, Confluence, repos) e o perfil está ausente ou incompleto, avise o que falta e peça o dado antes de seguir. Sem o card, peça o card ou o texto dele; não invente requisito. Quando a resposta depende do autor, a última frase da mensagem é a pergunta direta, terminada em `?`.
 

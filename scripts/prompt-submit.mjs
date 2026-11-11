@@ -16,7 +16,8 @@ async function main() {
   const { pastaRegistros, registrosDoPrompt } = await import('./lib/registros.mjs')
   const cwd = typeof entrada.cwd === 'string' && entrada.cwd ? entrada.cwd : process.env.CLAUDE_PROJECT_DIR || process.cwd()
   const base = pastaRegistros({ perfil: loadPerfil().perfil, cwd })
-  const contexto = registrosDoPrompt({ prompt: entrada.prompt, base })
+  const { reviewsDoPrompt } = await import('./lib/reviews.mjs')
+  const contexto = [registrosDoPrompt({ prompt: entrada.prompt, base }), reviewsDoPrompt(entrada.prompt, { base })].filter(Boolean).join('\n\n')
   if (!contexto) return
   process.stdout.write(JSON.stringify({ hookSpecificOutput: { hookEventName: 'UserPromptSubmit', additionalContext: contexto } }))
 }

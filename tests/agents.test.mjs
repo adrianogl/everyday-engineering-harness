@@ -13,18 +13,27 @@ const esperados = [
   'reviewer-database', 'silent-failure-hunter', 'type-design-analyzer', 'security-reviewer',
   'verifier', 'debugger', 'tracer', 'build-fix-go', 'build-fix-react', 'document-specialist',
   'redator-ptbr', 'git', 'front-visual',
+  'analista-epico', 'redator-adr', 'revisor-adr', 'leitor-comentarios', 'extrator-contrato',
+  'extrator-sql', 'redator-aceite', 'recortador-figma', 'conferente', 'redator-card',
+]
+
+const proprios = [
+  'analista-epico', 'redator-adr', 'revisor-adr', 'leitor-comentarios', 'extrator-contrato',
+  'extrator-sql', 'redator-aceite', 'recortador-figma', 'conferente', 'redator-card',
 ]
 
 const somenteLeitura = [
   'explorar', 'architect', 'critic', 'code-reviewer', 'reviewer-go', 'reviewer-react',
   'reviewer-typescript', 'reviewer-database', 'silent-failure-hunter', 'type-design-analyzer',
   'security-reviewer', 'verifier',
+  'analista-epico', 'revisor-adr', 'leitor-comentarios', 'extrator-contrato', 'extrator-sql',
+  'redator-aceite', 'recortador-figma', 'conferente',
 ]
 
 const modelos = {
-  haiku: ['explorar', 'document-specialist'],
-  sonnet: ['implementador-go', 'implementador-react', 'test-engineer', 'build-fix-go', 'build-fix-react', 'redator-ptbr', 'git', 'front-visual'],
-  opus: ['architect', 'planner', 'critic', 'code-reviewer', 'reviewer-go', 'reviewer-react', 'reviewer-typescript', 'reviewer-database', 'silent-failure-hunter', 'type-design-analyzer', 'security-reviewer', 'verifier', 'debugger', 'tracer'],
+  haiku: ['explorar', 'document-specialist', 'extrator-contrato', 'extrator-sql', 'recortador-figma'],
+  sonnet: ['implementador-go', 'implementador-react', 'test-engineer', 'build-fix-go', 'build-fix-react', 'redator-ptbr', 'git', 'front-visual', 'redator-adr', 'leitor-comentarios', 'redator-aceite', 'redator-card'],
+  opus: ['architect', 'planner', 'critic', 'code-reviewer', 'reviewer-go', 'reviewer-react', 'reviewer-typescript', 'reviewer-database', 'silent-failure-hunter', 'type-design-analyzer', 'security-reviewer', 'verifier', 'debugger', 'tracer', 'analista-epico', 'revisor-adr', 'conferente'],
 }
 
 const bloco = 'DÚVIDA\nPergunta: <uma frase>\nContexto: <o que foi visto>\nOpções: <a) ... b) ...>\nRecomendação: <opção e motivo>'
@@ -44,7 +53,7 @@ function frontmatter(texto) {
   return campos
 }
 
-test('existem os 24 agents esperados', () => {
+test('existem os 34 agents esperados', () => {
   assert.deepEqual(arquivos.map((f) => f.replace(/\.md$/, '')).sort(), [...esperados].sort())
 })
 
@@ -107,6 +116,15 @@ test('todo agent referencia a regra de conteúdo externo', () => {
   }
 })
 
+test('agents de escrita de documento têm Write e os de leitura não', () => {
+  const lista = (nome) => frontmatter(ler(`${nome}.md`)).tools.split(',').map((t) => t.trim())
+  assert.deepEqual(lista('redator-adr'), ['Read', 'Write', 'Edit'])
+  assert.deepEqual(lista('redator-card'), ['Read', 'Write'])
+  for (const nome of proprios.filter((n) => !['redator-adr', 'redator-card'].includes(n))) {
+    assert.deepEqual(lista(nome), ['Read', 'Grep', 'Glob'], nome)
+  }
+})
+
 test('agents que escrevem código têm Edit e Write', () => {
   for (const nome of ['implementador-go', 'implementador-react', 'build-fix-go', 'build-fix-react']) {
     const lista = frontmatter(ler(`${nome}.md`)).tools.split(',').map((t) => t.trim())
@@ -116,7 +134,7 @@ test('agents que escrevem código têm Edit e Write', () => {
 
 test('derivados estão no upstream.json', () => {
   const pecas = new Map(upstream.pecas.map((p) => [p.peca, p]))
-  for (const arquivo of arquivos) {
+  for (const arquivo of arquivos.filter((a) => !proprios.includes(a.replace(/\.md$/, '')))) {
     const peca = `agents/${arquivo.replace(/\.md$/, '')}`
     assert.ok(pecas.has(peca), `${peca}: sem entrada em upstream.json`)
     assert.ok(pecas.get(peca).origens.length > 0, `${peca}: sem origens`)
@@ -153,5 +171,21 @@ test('nenhum agent manda invocar skill sempre nem carrega infra de upstream', ()
     const texto = ler(arquivo)
     assert.doesNotMatch(texto, /MUST (use|invoke)|ABSOLUTELY MUST|1% chance/i, arquivo)
     assert.doesNotMatch(texto, /\.omc\/|session-data|oh-my-claudecode|state_write|notepad_/, arquivo)
+  }
+})
+
+test('frontmatter com valor entre aspas duplas não tem aspa dupla interna sem escape', () => {
+  const arquivosFm = [
+    ...arquivos.map((f) => join(raiz, f)),
+    ...readdirSync('skills').map((s) => join('skills', s, 'SKILL.md')).filter(existsSync),
+  ]
+  for (const arquivo of arquivosFm) {
+    const m = readFileSync(arquivo, 'utf8').match(/^---\n([\s\S]*?)\n---\n/)
+    assert.ok(m, `${arquivo}: sem frontmatter`)
+    for (const linha of m[1].split('\n')) {
+      const campo = linha.match(/^\w+:\s*"(.*)"\s*$/)
+      if (!campo) continue
+      assert.doesNotMatch(campo[1].replace(/\\./g, ''), /"/, `${arquivo}: aspa dupla sem escape em "${linha.slice(0, 40)}"`)
+    }
   }
 })

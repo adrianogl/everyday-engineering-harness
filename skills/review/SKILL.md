@@ -82,3 +82,17 @@ Rode antes os checks determinísticos (build, lint, testes, ver `verificar`) e s
 ## Explicar a mudança antes do merge
 
 Quando o autor pedir, depois do trabalho feito e da verificação, escreva em cinco blocos curtos o que ele precisa saber para explicar a mudança: por que existe, o que mudou, trade-offs (o que foi escolhido, adiado ou descartado), riscos considerados e o que o time precisa saber para manter. Se o autor quiser testar o entendimento, faça até cinco perguntas de múltipla escolha, uma por vez, sobre o porquê e o efeito da mudança, nunca sobre nome de função ou número de linha. Passar nessa checagem não aprova o merge nem substitui teste e review.
+
+## Histórico de rodadas de uma PR
+
+O histórico de uma PR fica na pasta de registros da entrega. Use `scripts/reviews.mjs` com `--repo`, `--numero` e, quando houver, `--chave`.
+
+1. Ao abrir uma PR para revisar, leia o histórico:
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/scripts/reviews.mjs" ler --repo frete-api --numero 12 --chave PROJ-7
+```
+
+2. Da segunda rodada em diante, confira cada item aberto contra o código atual e marque `resolvido` ou mantenha `aberto`, com `reviews.mjs atualizar --repo frete-api --numero 12 --chave PROJ-7 --id C-1 --status resolvido`. Em código que já passou por review, não levante item novo: só o diff desde a última rodada entra.
+3. Grave itens novos (`reviews.mjs item --repo frete-api --numero 12 --chave PROJ-7 --arquivo internal/frete/parser.go --linha 42 --tipo bloqueante --texto "<texto>"`) e a rodada (`reviews.mjs rodada --repo frete-api --numero 12 --chave PROJ-7 --commit <sha> --resultado "PEDIR MUDANÇAS"` ou `APROVAR`) só depois de o autor aprovar o texto dos itens.
+

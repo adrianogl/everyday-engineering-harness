@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { registrar, extrairChaves } from '../scripts/lib/registros.mjs'
+import { pastaReview, registrarItem } from '../scripts/lib/reviews.mjs'
 
 const hook = join(dirname(fileURLToPath(import.meta.url)), '..', 'scripts/prompt-submit.mjs')
 
@@ -65,4 +66,16 @@ test('registros enormes são truncados em 10.000 caracteres', () => {
 
 test('extrai no máximo 3 chaves sem repetir', () => {
   assert.deepEqual(extrairChaves('PROJ-1 PROJ-1 AB-2 CD-3 EF-4'), ['PROJ-1', 'AB-2', 'CD-3'])
+})
+
+test('prompt com repo#numero injeta histórico junto dos registros da entrega', () => {
+  const { dir, base, env } = ambiente()
+  registrar({ base, chave: 'FRT-7', tipo: 'decisao', texto: 'usar cache de 5 minutos', data: '2026-11-10' })
+  registrarItem({ pasta: pastaReview({ base, repo: 'frete-api', numero: 42, chave: 'FRT-7' }), arquivo: 'internal/frete/parser.go', linha: 42, tipo: 'bloqueante', texto: 'parser ignora erro' })
+  const r = rodar({ prompt: 'continua a FRT-7 e revisa frete-api#42', cwd: dir }, env)
+  assert.equal(r.status, 0)
+  const contexto = JSON.parse(r.stdout).hookSpecificOutput.additionalContext
+  assert.match(contexto, /usar cache de 5 minutos/)
+  assert.match(contexto, /C-1/)
+  assert.match(contexto, /parser ignora erro/)
 })

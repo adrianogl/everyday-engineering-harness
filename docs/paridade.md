@@ -1,6 +1,6 @@
 # Paridade com OMC e superpowers
 
-Esta tabela diz o que do oh-my-claudecode (OMC) e do superpowers (SP) o EEH já cobre. A troca acontece quando nenhuma linha `plano-2` ou `plano-3` for de um item que o autor usa de fato. Linha `coberto` aponta para o arquivo do repo que faz o papel, `descartado` traz o motivo, `plano-2` espera ADR, revisão de comentários, quebra ou QA, e `plano-3` espera `/eeh:upstream` e `manutencao-pacote`.
+Esta tabela diz o que do oh-my-claudecode (OMC) e do superpowers (SP) o EEH já cobre. A troca acontece quando nenhuma linha `plano-3` for de um item que o autor usa de fato. Linha `coberto` aponta para o arquivo do repo que faz o papel, `descartado` traz o motivo e `plano-3` espera `/eeh:upstream` e `manutencao-pacote`. O plano 2 (ADR, revisão de comentários, quebra, QA e histórico de review) está entregue em `commands/adr.md`, `commands/adr-revisar.md`, `commands/quebrar.md`, `commands/qa.md` e `scripts/reviews.mjs`, e não deixou linha pendente.
 
 O escopo é cada skill e agent de OMC e SP listado em `docs/triagem.tsv`. O ECC fica de fora porque não será desinstalado. O mapa vem de `upstream.json` e, onde ele não cobre, da tabela de fusões do design.
 
@@ -22,7 +22,7 @@ O escopo é cada skill e agent de OMC e SP listado em `docs/triagem.tsv`. O ECC 
 | `learner` | OMC | vira manutencao-pacote (transformar um fluxo recente em skill), ainda não construída | plano-3 |
 | `local-build-reminder` | OMC | lembrete específico do repo do OMC | descartado |
 | `mcp-setup` | OMC | infra do OMC, configuração de MCP é nativa do Claude Code | descartado |
-| `merge-readiness` | OMC | `skills/review/SKILL.md` | coberto |
+| `merge-readiness` | OMC | `skills/review/SKILL.md`, `scripts/reviews.mjs` | coberto |
 | `omc-doctor` | OMC | infra do OMC, o pacote usa claude plugin validate | descartado |
 | `omc-reference` | OMC | catálogo do OMC, o equivalente é rules/orquestrador.md | descartado |
 | `omc-setup` | OMC | infra do OMC, o pacote usa perfil.json e SessionStart | descartado |
@@ -71,8 +71,8 @@ O escopo é cada skill e agent de OMC e SP listado em `docs/triagem.tsv`. O ECC 
 | `dispatching-parallel-agents` | SP | `rules/orquestrador.md` | coberto |
 | `executing-plans` | SP | sai de propósito, o fluxo de execução é commands/implementar.md | descartado |
 | `finishing-a-development-branch` | SP | `skills/git/SKILL.md` | coberto |
-| `receiving-code-review` | SP | `skills/review/SKILL.md` | coberto |
-| `requesting-code-review` | SP | `skills/review/SKILL.md` | coberto |
+| `receiving-code-review` | SP | `skills/review/SKILL.md`, `scripts/reviews.mjs` | coberto |
+| `requesting-code-review` | SP | `skills/review/SKILL.md`, `scripts/reviews.mjs` | coberto |
 | `subagent-driven-development` | SP | `rules/orquestrador.md`, `commands/implementar.md` | coberto |
 | `systematic-debugging` | SP | `skills/debugar/SKILL.md` | coberto |
 | `test-driven-development` | SP | `skills/testar/SKILL.md` | coberto |

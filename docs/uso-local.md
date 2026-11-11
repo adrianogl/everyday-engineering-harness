@@ -18,6 +18,16 @@ CLAUDE_CONFIG_DIR=~/.claude-eeh-teste claude --plugin-dir ~/Code/everyday-engine
 
 A pasta começa sem login. Na primeira vez, rode `/login` dentro da sessão. Modo headless sem login falha com "Not logged in".
 
+## Conferir antes de desinstalar OMC e superpowers
+
+Na sessão isolada, com o perfil real e o login feito:
+
+1. `/eeh:adr` com o template real de ADR. Confira se as seções saem na ordem do template.
+2. `/eeh:quebrar` numa ADR já aprovada, parando antes de criar os cards. Confira os cards propostos e a divisão por repo.
+3. `/eeh:review` duas vezes na mesma PR. Na segunda rodada, o review deve ler o histórico da primeira e só trazer o que é novo.
+
+Se os três passarem, a troca pode seguir a tabela de `docs/paridade.md`.
+
 ## Instalar pelo marketplace do repo
 
 Dentro de uma sessão do Claude Code:

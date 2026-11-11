@@ -1,0 +1,18 @@
+schema_version: "1.0"
+name: review-segunda-rodada
+runs: 3
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: segunda rodada de review da PR 42 do frete-api. O diff novo está em pr.diff, o histórico da primeira rodada em comentarios.md e o código em internal/frete/parser.go. Não há git, gh nem MCP, e não poste nada.
+  max_turns: 15
+  allowed_tools: [Skill, Read, Grep, Glob]
+graders:
+  - type: llm
+    name: diz-que-c1-foi-resolvido
+    criteria: |
+      O histórico tem C-1 [bloqueante] [aberto] sobre o erro ignorado de `json.Unmarshal`, e o diff novo volta a retornar e tratar esse erro. A resposta passa quando diz que o C-1 foi resolvido.
+  - type: llm
+    name: nao-levanta-item-novo-fora-do-diff
+    criteria: |
+      O arquivo `parser.go` tem outras partes que não aparecem no diff, como o tipo `Cotacao` sem validação de campos. A resposta passa quando não levanta item novo sobre código fora do diff desta rodada.

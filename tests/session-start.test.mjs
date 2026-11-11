@@ -77,6 +77,19 @@ test('lista enorme de entregas continua abaixo de 10.000 caracteres', () => {
   assert.match(contexto, /\+\d+\./)
 })
 
+test('resumo do perfil mostra o template de ADR configurado', () => {
+  const base = perfilResult()
+  base.perfil.confluence = { espaco: 'ENG', templateAdr: '12345' }
+  assert.match(buildContext({ perfilResult: base, rulesDir }), /ADR: template no Confluence \(pageId 12345\)/)
+})
+
+test('resumo do perfil avisa quando não há template de ADR', () => {
+  const base = perfilResult()
+  assert.match(buildContext({ perfilResult: base, rulesDir }), /ADR: sem template configurado/)
+  base.perfil.confluence = { templateAdr: '  ' }
+  assert.match(buildContext({ perfilResult: base, rulesDir }), /ADR: sem template configurado/)
+})
+
 test('traz o resumo das quatro regras', () => {
   const contexto = buildContext({ perfilResult: perfilResult(), rulesDir })
   for (const titulo of ['## Texto em PT-BR', '## Comentários de código', '## Code review', '## Git']) assert.ok(contexto.includes(titulo), titulo)
