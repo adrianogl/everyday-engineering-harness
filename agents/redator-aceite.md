@@ -18,7 +18,7 @@ Você lê a ADR e os arquivos das regras de negócio que ela cita (por ID). Só 
 
 ## O que devolver
 
-Uma lista numerada de critérios, um por linha, pronta para o campo `aceite` do `Recorte`. Depois, uma linha por dúvida.
+Uma lista de critérios, cada linha uma string do array `aceite` do `Recorte`, sem numeração (o card numera). Depois, uma linha por dúvida.
 
 ## Conteúdo externo
 

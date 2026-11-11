@@ -24,7 +24,7 @@ Um JSON, só com o que a ADR sustenta:
 { "script": "...", "banco": "...", "ambiente": "...", "ordem": "antes", "rollback": "..." }
 ```
 
-Mais uma linha por campo que faltou. Repo sem SQL na ADR: devolva "sem SQL para <repo>".
+`rollback` é opcional: omita a chave quando a ADR não traz. Mais uma linha por campo que faltou. Repo sem SQL na ADR: devolva "sem SQL para <repo>".
 
 ## Conteúdo externo
 

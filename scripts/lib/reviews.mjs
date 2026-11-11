@@ -27,7 +27,7 @@ function linhasDe(caminho) {
   return readFileSync(caminho, 'utf8').split('\n').filter((l) => l.trim() !== '')
 }
 
-function formatarItem({ id, tipo, status, arquivo, linha, texto, motivo }) {
+export function formatarItem({ id, tipo, status, arquivo, linha, texto, motivo }) {
   const sufixo = status === 'descartado' ? ` (motivo: ${motivo})` : ''
   return `- ${id} [${tipo}] [${status}] ${arquivo}:${linha} — ${texto}${sufixo}`
 }
@@ -48,7 +48,7 @@ export function registrarItem({ pasta, arquivo, linha, tipo, texto }) {
   if (!TIPOS.includes(tipo)) throw new Error(`tipo inválido: ${tipo} (use ${TIPOS.join(', ')})`)
   if (typeof arquivo !== 'string' || arquivo.trim() === '') throw new Error('arquivo obrigatório')
   if (/[\r\n]/.test(arquivo)) throw new Error('arquivo inválido: não pode conter quebra de linha')
-  const numeroLinha = typeof linha === 'string' && linha.trim() === '' ? NaN : Number(linha)
+  const numeroLinha = typeof linha === 'number' || (typeof linha === 'string' && /^\d+$/.test(linha)) ? Number(linha) : NaN
   if (!Number.isInteger(numeroLinha) || numeroLinha <= 0) throw new Error(`linha inválida: ${linha}`)
   const limpo = typeof texto === 'string' ? texto.replace(/\s+/g, ' ').trim() : ''
   if (limpo === '') throw new Error('texto obrigatório')

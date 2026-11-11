@@ -588,6 +588,66 @@
           "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
         }
       ]
+    },
+    {
+      "peca": "skills/manutencao-pacote",
+      "origens": [
+        {
+          "fonte": "superpowers",
+          "caminho": "skills/writing-skills/SKILL.md",
+          "versao": "7.0.0"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "skill-bodies/skillify/SKILL.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "skill-bodies/learner/SKILL.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "skill-bodies/remember/SKILL.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "omc",
+          "caminho": "skill-bodies/skill/SKILL.md",
+          "versao": "4.15.6"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "skills/skill-comply/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        },
+        {
+          "fonte": "ecc",
+          "caminho": "skills/skill-stocktake/SKILL.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
+    },
+    {
+      "peca": "skills/deepinit",
+      "origens": [
+        {
+          "fonte": "omc",
+          "caminho": "skill-bodies/deepinit/SKILL.md",
+          "versao": "4.15.6"
+        }
+      ]
+    },
+    {
+      "peca": "agents/opensource-sanitizer",
+      "origens": [
+        {
+          "fonte": "ecc",
+          "caminho": "agents/opensource-sanitizer.md",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b"
+        }
+      ]
     }
   ]
 }

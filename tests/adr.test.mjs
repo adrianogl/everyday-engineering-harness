@@ -35,6 +35,14 @@ test('checklist pula seção sem regra', () => {
   assert.ok(!linhas.some((l) => l.includes('Notas soltas')))
 })
 
+test('checklist aceita campos null', () => {
+  const secoes = [
+    { id: '1', titulo: 'Referências', obrigatoriedade: null, gate: 'Nenhum', completoQuando: null },
+    { id: '2', titulo: 'Cenário', obrigatoriedade: 'CONDICIONAL', gate: null, completoQuando: null },
+  ]
+  assert.equal(checklist(secoes), '- [ ] 1 Referências (sem obrigatoriedade):\n- [ ] 2 Cenário (CONDICIONAL):')
+})
+
 test('template de exemplo tem regra em toda seção numerada', () => {
   const exemplo = readFileSync(join(raiz, 'templates', 'adr-exemplo.md'), 'utf8')
   const secoes = parseSecoes(exemplo)
@@ -57,5 +65,7 @@ test('CLI secoes e checklist imprimem a saída', () => {
   const secoes = spawnSync('node', [join(raiz, 'scripts', 'adr.mjs'), 'secoes', caminho], { encoding: 'utf8' })
   assert.equal(JSON.parse(secoes.stdout).length, 6)
   const lista = spawnSync('node', [join(raiz, 'scripts', 'adr.mjs'), 'checklist', caminho], { encoding: 'utf8' })
-  assert.match(lista.stdout, /^- \[ \] cabecalho/)
+  assert.equal(lista.status, 0)
+  assert.equal(lista.stdout, `${checklist(parseSecoes(readFileSync(caminho, 'utf8')))}\n`)
+  assert.equal(lista.stdout.split('\n').length, 5)
 })

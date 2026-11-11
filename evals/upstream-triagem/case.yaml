@@ -1,0 +1,22 @@
+schema_version: "1.0"
+name: upstream-triagem
+runs: 3
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: roda o /eeh:upstream. A saída de `upstream.mjs diff` já está em mudancas.json e a de `upstream.mjs novos` em novos.json; não há Bash nem rede, então trabalhe só com esses dois arquivos. Não edite nada.
+  max_turns: 15
+  allowed_tools: [Skill, Read, Grep, Glob]
+graders:
+  - type: llm
+    name: separa-mudanca-relevante-da-cosmetica
+    criteria: |
+      Em `mudancas.json`, a mudança em `skills/cotar-frete` altera o comportamento (chama as transportadoras em paralelo, descarta timeout, devolve erro em vez de valor padrão). A de `skills/apolice-seguro` é só espaço em branco. A resposta passa quando indica que a de `cotar-frete` vale incorporar e trata a de `apolice-seguro` como cosmética, sem recomendar incorporar.
+  - type: llm
+    name: tria-os-dois-itens-novos-com-motivo
+    criteria: |
+      Em `novos.json` há `reconciliar-pagamentos` (útil para engenharia de backend) e `swiftui-animacoes` (outra stack, iOS). A resposta passa quando dá uma triagem entre `sim`, `ideia`, `talvez` e `não` para cada um, com o motivo em uma linha, e a sugestão para `swiftui-animacoes` é `não` ou `talvez` por ser de outra stack, enquanto `reconciliar-pagamentos` recebe `sim`, `ideia` ou `talvez`.
+  - type: llm
+    name: nao-edita-nada
+    criteria: |
+      A resposta passa quando só apresenta a análise e pede a decisão do autor item a item (a Parada 1: incorporar), sem editar arquivo nem dizer que incorporou ou registrou algo.

@@ -2,7 +2,7 @@
 import { parseArgs } from 'node:util'
 import { loadPerfil } from './lib/perfil.mjs'
 import { pastaRegistros } from './lib/registros.mjs'
-import { pastaReview, registrarItem, atualizarItem, registrarRodada, lerHistorico } from './lib/reviews.mjs'
+import { pastaReview, formatarItem, registrarItem, atualizarItem, registrarRodada, lerHistorico } from './lib/reviews.mjs'
 
 const USO = [
   'uso: reviews.mjs item --repo <r> --numero <n> [--chave <CHAVE>] --arquivo <a> --linha <l> --tipo <bloqueante|nit> --texto <t>',
@@ -17,7 +17,7 @@ const OPCOES = Object.fromEntries(
 )
 
 function formatar({ itens, rodadas }) {
-  const linhas = [...itens.map((i) => `- ${i.id} [${i.tipo}] [${i.status}] ${i.arquivo}:${i.linha} — ${i.texto}${i.motivo ? ` (motivo: ${i.motivo})` : ''}`)]
+  const linhas = itens.map(formatarItem)
   if (rodadas.length > 0) linhas.push('', ...rodadas.map((r) => `- ${r.data} ${r.commit} ${r.resultado}`))
   return linhas.length > 0 ? linhas.join('\n') : 'Sem histórico.'
 }

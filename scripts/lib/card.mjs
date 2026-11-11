@@ -8,8 +8,9 @@ function vazio(valor) {
 function validar(r) {
   const faltando = []
   if (typeof r.repo !== 'string' || !REPO.test(r.repo)) faltando.push('repo')
-  if (!Array.isArray(r.aceite) || r.aceite.length === 0) faltando.push('aceite')
+  if (!Array.isArray(r.aceite) || r.aceite.length === 0 || r.aceite.some(vazio)) faltando.push('aceite')
   if (vazio(r.adr?.link)) faltando.push('adr.link')
+  if (vazio(r.adr?.secao)) faltando.push('adr.secao')
   if (vazio(r.recorteAdr)) faltando.push('recorteAdr')
   if (r.sql) {
     if (vazio(r.sql.script)) faltando.push('sql.script')
@@ -53,9 +54,7 @@ function secaoFigma({ figma }) {
 }
 
 function secaoAdr({ adr }) {
-  const linhas = ['## ADR', '', adr.link]
-  if (!vazio(adr.secao)) linhas.push('', `Seção: ${adr.secao}`)
-  return linhas.join('\n')
+  return ['## ADR', '', adr.link, '', `Seção: ${adr.secao}`].join('\n')
 }
 
 function montarAnexos({ repo, sql, contrato }) {
@@ -69,7 +68,7 @@ function montarAnexos({ repo, sql, contrato }) {
 export function montarCard(recorte) {
   validar(recorte)
   const secoes = [secaoContrato(recorte), secaoSql(recorte), secaoAceite(recorte), secaoFigma(recorte), secaoAdr(recorte)].filter(Boolean)
-  const titulo = vazio(recorte.adr.secao) ? 'Recorte da ADR' : `Recorte da ADR (${recorte.adr.secao})`
+  const titulo = `Recorte da ADR (${recorte.adr.secao})`
   return {
     descricao: `${secoes.join('\n\n')}\n`,
     anexos: montarAnexos(recorte),

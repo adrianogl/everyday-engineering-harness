@@ -100,12 +100,18 @@ test('reviewsDoPrompt respeita 2 PRs e 4000 caracteres', () => {
   assert.ok(longo.length <= 4000, `${longo.length}`)
 })
 
+test('registrarRodada grava a linha literal de rodadas.md', () => {
+  const pasta = join(tmp(), 'r')
+  registrarRodada({ pasta, commit: 'abc1234', resultado: 'APROVAR', data: '2026-11-11' })
+  assert.equal(readFileSync(join(pasta, 'rodadas.md'), 'utf8'), '- 2026-11-11 abc1234 APROVAR\n')
+})
+
 test('registrarItem valida arquivo, linha, texto e tipo', () => {
   const pasta = join(tmp(), 'r')
   const base = { pasta, arquivo: 'internal/frete/parser.go', linha: 42, tipo: 'bloqueante', texto: 'ok' }
   assert.throws(() => registrarItem({ ...base, arquivo: undefined }), /arquivo/)
   assert.throws(() => registrarItem({ ...base, arquivo: '  ' }), /arquivo/)
-  for (const linha of ['abc', undefined, '', 0, -1, 1.5, '4.5']) assert.throws(() => registrarItem({ ...base, linha }), /linha/, String(linha))
+  for (const linha of ['abc', undefined, '', 0, -1, 1.5, '4.5', true, null, ' 4', '4 ']) assert.throws(() => registrarItem({ ...base, linha }), /linha/, String(linha))
   assert.throws(() => registrarItem({ ...base, texto: undefined }), /texto/)
   assert.throws(() => registrarItem({ ...base, texto: '   ' }), /texto/)
   assert.throws(() => registrarItem({ ...base, tipo: 'grave' }), /tipo/)

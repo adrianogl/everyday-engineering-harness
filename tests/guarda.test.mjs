@@ -100,3 +100,54 @@ test('CLI não quebra com stdin inválido', () => {
     assert.equal(r.stdout, '')
   }
 })
+
+test('avaliar pede confirmação para rm -rf / dentro de $(...), crase, bash -c, eval e heredoc', () => {
+  const casos = [
+    'echo "$(rm -rf /)"',
+    'x="$(echo "$(rm -rf /)")"',
+    'echo "`rm -rf /`"',
+    "bash -c 'rm -rf /'",
+    'sh -c "rm -rf /"',
+    'zsh -c "git reset --hard"',
+    'eval "rm -rf /"',
+    'eval rm -rf /',
+    'bash <<EOF\nrm -rf /\nEOF',
+    "sh <<'EOF'\nrm -rf /\nEOF",
+    'bash <<-EOF\n\trm -rf /\n\tEOF',
+  ]
+  for (const comando of casos) {
+    assert.equal(avaliar(comando).decisao, 'ask', comando)
+  }
+})
+
+test('avaliar continua liberando echo "$(date)"', () => {
+  for (const comando of ['echo "$(date)"', 'echo `date`', 'cat <<EOF > notas.txt\nfrete e seguro\nEOF', "cat <<'EOF' > a.sh\nrm -rf /\nEOF", 'grep -r "DROP TABLE" .']) {
+    assert.deepEqual(avaliar(comando), { decisao: 'allow' }, comando)
+  }
+})
+
+test('avaliar pede confirmação para heredoc, string e here-string enviados para shell', () => {
+  const casos = [
+    'cat <<EOF | bash\nrm -rf /\nEOF',
+    "cat <<'EOF' | sudo sh\nrm -rf ~\nEOF",
+    'bash -c -- "rm -rf /"',
+    'echo "rm -rf /" | sh',
+    "printf 'git reset --hard' | bash",
+    'bash <<< "rm -rf /"',
+    'timeout 5 rm -rf /',
+    'timeout -s KILL 5 rm -rf /',
+    'nice -n 10 rm -rf /',
+    'nohup rm -rf ~',
+    'find . -name x | xargs rm -rf',
+    'ls | xargs -n 1 rm -r',
+  ]
+  for (const comando of casos) {
+    assert.equal(avaliar(comando).decisao, 'ask', comando)
+  }
+})
+
+test('avaliar libera xargs e pipe sem rm recursivo nem shell', () => {
+  for (const comando of ['ls | xargs rm', 'find . | xargs grep x', 'echo "rm -rf /" | cat', 'timeout 5 npm test']) {
+    assert.deepEqual(avaliar(comando), { decisao: 'allow' }, comando)
+  }
+})

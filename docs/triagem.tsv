@@ -188,7 +188,7 @@ ECC	skill	mle-workflow	nao	Production machine-learning engineering workflow for 
 ECC	skill	module-governance	nao	Establish or maintain a business module's local agent instructions, domain-context links, and interface ownership when implementing a new module or changing its responsib
 ECC	skill	module-regression	nao	Govern cross-module regression in large repositories with a REGRESSION.md ledger that records each module's downstream consumers and executable acceptance command. After 
 ECC	skill	motion-advanced	nao	Advanced motion patterns for React / Next.js — drag & drop, gestures, text animations, SVG path drawing, custom hooks, imperative sequences (useAnimate), loaders, and t
-ECC	skill	motion-foundations	nao	Motion tokens, spring presets, performance rules, device adaptation, accessibility enforcement, and SSR safety for React / Next.js using motion/react. Foundation layer �
+ECC	skill	motion-foundations	nao	Motion tokens, spring presets, performance rules, device adaptation, accessibility enforcement, and SSR safety for React / Next.js using motion/react. Foundation layer
 ECC	skill	motion-patterns	nao	Production-ready animation patterns for React / Next.js — button, modal, toast, stagger, page transitions, exit animations, scroll, and layout — built on motion-found
 ECC	skill	mybatis-patterns	nao	MyBatis and MyBatis-Spring patterns for mapper design, XML and annotation SQL, result mapping, dynamic SQL safety, transactions, batching, pagination, and query performan
 ECC	skill	mysql-patterns	nao	MySQL and MariaDB schema, query, indexing, transaction, replication, and connection-pool patterns for production backends. Use when designing MySQL or MariaDB schemas and

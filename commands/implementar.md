@@ -22,6 +22,8 @@ Card: $ARGUMENTS
 7. **Review interno.** Rode `/eeh:review` sobre o diff do worktree. Corrija os bloqueantes confirmados com o implementador e repita até não sobrar nenhum. Falha de build ou de lint vai para `build-fix-go` ou `build-fix-react`.
 8. **Verifique.** O agent `verifier` confere critério de aceite, testes, lint, vet ou tsc e build (skill `verificar`). Os agents somente leitura recebem as saídas dos comandos em arquivo, porque não rodam nada. Sem evidência de teste passando, o trabalho não está pronto.
 
+   Quando o repo alvo é o próprio EEH, chame o agent `opensource-sanitizer` com o diff e a denylist do perfil antes desta parada e corrija o que ele apontar.
+
    **Parada 2: commit.** Para antes de qualquer commit. Mostre `git status`, o diff e a mensagem proposta (Conventional Commits em PT-BR, sem rodapé de atribuição) e espere confirmação.
 9. **Commit e push** só depois da confirmação, pela skill `git`, em commits atômicos por assunto. Push só com pedido do autor.
 

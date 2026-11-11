@@ -22,7 +22,7 @@ function frontmatter(texto) {
 }
 
 test('commands têm description e argument-hint', () => {
-  assert.deepEqual(arquivos.sort(), ['adr-revisar.md', 'adr.md', 'implementar.md', 'qa.md', 'quebrar.md', 'review.md'])
+  assert.deepEqual(arquivos.sort(), ['adr-revisar.md', 'adr.md', 'implementar.md', 'qa.md', 'quebrar.md', 'review.md', 'upstream.md'])
   for (const arquivo of arquivos) {
     const campos = frontmatter(ler(arquivo.replace(/\.md$/, '')))
     assert.ok(campos.description && campos.description.length > 20, `${arquivo} sem description`)
@@ -96,4 +96,19 @@ test('orquestrador não tem rota em breve e tem a fase qa', () => {
   const texto = readFileSync(join('rules', 'orquestrador.md'), 'utf8')
   assert.ok(!texto.includes('(em breve)'))
   assert.match(texto, /fase `qa`/)
+})
+
+test('upstream para antes de incorporar e usa o CLI inteiro', () => {
+  const texto = ler('upstream')
+  assert.ok(texto.includes('Parada 1: incorporar'))
+  for (const trecho of ['upstream.mjs buscar', 'upstream.mjs diff', 'upstream.mjs novos', 'upstream.mjs registrar', 'manutencao-pacote', 'docs/triagem.tsv']) {
+    assert.ok(texto.includes(trecho), `upstream sem ${trecho}`)
+  }
+  assert.match(texto, /não sobrescreva|não copie/i)
+  assert.ok(texto.includes('erro'))
+})
+
+test('orquestrador tem a rota upstream', () => {
+  const texto = readFileSync(join('rules', 'orquestrador.md'), 'utf8')
+  assert.match(texto, /fase `upstream`/)
 })

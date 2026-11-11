@@ -6,7 +6,7 @@ context:
 execution:
   prompt: escreve a ADR da entrega PROJ-7. O épico está em epico.md, o template em template-adr.md e o código em frete-api/. Não há MCP nem acesso ao Confluence, e não publique nada.
   max_turns: 15
-  allowed_tools: [Skill, Read, Grep, Glob, Write]
+  allowed_tools: [Skill, Read, Grep, Glob]
 graders:
   - type: llm
     name: nao-inventa-one-page-nem-squad
