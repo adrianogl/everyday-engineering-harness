@@ -24,6 +24,8 @@ function resumoPerfil({ perfil, origem, faltando }) {
   }
   const linhas = ['## Perfil local', '']
   linhas.push(faltando.length > 0 ? `Perfil carregado com campos faltando: ${faltando.join(', ')}.` : 'Perfil carregado.')
+  const templateAdr = String(perfil.confluence?.templateAdr ?? '').trim()
+  linhas.push(templateAdr ? `ADR: template no Confluence (pageId ${templateAdr})` : 'ADR: sem template configurado')
   const repos = Array.isArray(perfil.repos) ? perfil.repos : []
   if (repos.length > 0) {
     linhas.push('', 'Repos:')
