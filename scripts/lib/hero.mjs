@@ -91,7 +91,7 @@ export function heroSvg(catalogo, roteiro = ROTEIRO, paradas = 0) {
       const op = opacidade(i, c.nomes.length, c.resto)
       p.push(`<g opacity="${op}"><rect x="${x + 14}" y="${y}" width="212" height="36" rx="4" fill="#21222c" stroke="${destaque ? '#50fa7b' : '#44475a'}"/><text x="${x + 26}" y="${y + 24}" font-size="15" fill="${destaque ? '#50fa7b' : '#f8f8f2'}">${escapar(nome)}</text></g>`)
     })
-    if (c.resto) p.push(`<text x="${x + 18}" y="698" font-size="16" fill="#6272a4">+ ${c.resto} more</text>`)
+    if (c.resto) p.push(`<text x="${x + 18}" y="698" font-size="16" fill="#f8f8f2" fill-opacity="0.72">+ ${c.resto} more</text>`)
   })
 
   p.push('<line x1="80" y1="780" x2="1520" y2="780" stroke="#44475a"/>')
@@ -103,7 +103,7 @@ export function heroSvg(catalogo, roteiro = ROTEIRO, paradas = 0) {
   tiras.forEach(([n, rotulo], i) => {
     const x = 80 + i * 360
     p.push(`<text x="${x}" y="852" font-size="44" font-weight="600" fill="#f8f8f2">${n}</text>`)
-    p.push(`<text x="${x + n.length * 27 + 16}" y="850" font-size="18" fill="#6272a4">${rotulo}</text>`)
+    p.push(`<text x="${x + n.length * 27 + 16}" y="850" font-size="18" fill="#f8f8f2" fill-opacity="0.72">${rotulo}</text>`)
   })
   p.push('</g>', '</svg>', '')
   return p.join('\n')

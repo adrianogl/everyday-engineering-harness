@@ -50,7 +50,9 @@ test('estilo.css usa só as cores da paleta', () => {
   const cores = [...css.matchAll(/#[0-9a-fA-F]{3,8}\b/g)].map((m) => m[0].toLowerCase())
   assert.ok(cores.length > 0)
   for (const c of cores) assert.ok(PALETA.includes(c), `cor fora da paleta: ${c}`)
-  assert.doesNotMatch(css, /rgba?\(|hsla?\(|gradient/)
+  const rgba = [...css.matchAll(/rgba?\([^)]*\)/g)].map((m) => m[0])
+  assert.deepEqual([...new Set(rgba)], ['rgba(248, 248, 242, 0.72)'])
+  assert.doesNotMatch(css, /hsla?\(|gradient/)
 })
 
 test('estilo.css não tem largura fixa acima de 360px fora de media query', () => {
