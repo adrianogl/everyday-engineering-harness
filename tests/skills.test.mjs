@@ -106,3 +106,44 @@ test('arquivos de upstream existem como skills', () => {
     assert.ok(existsSync(join(raiz, pasta, 'SKILL.md')))
   }
 })
+
+test('skills das fases de entrega existem', () => {
+  for (const pasta of ['adr', 'adr-revisar', 'quebrar', 'qa']) {
+    assert.ok(pastas.includes(pasta), `${pasta}: skill ausente`)
+    const { description } = frontmatter(ler(pasta))
+    assert.match(description, /Use /, `${pasta}: description sem "Use"`)
+    assert.match(description, /Não use/, `${pasta}: description sem "Não use"`)
+  }
+})
+
+test('adr cita Sem template de ADR configurado ou acessível', () => {
+  assert.match(ler('adr'), /Sem template de ADR configurado ou acessível/)
+})
+
+test('adr-revisar cita inline, rodapé e conteudo-externo', () => {
+  const texto = ler('adr-revisar')
+  assert.match(texto, /inline/)
+  assert.match(texto, /rodapé/)
+  assert.match(texto, /conteudo-externo/)
+})
+
+test('quebrar cita conferente, card.mjs e um card por repo', () => {
+  const texto = ler('quebrar')
+  assert.match(texto, /conferente/)
+  assert.match(texto, /card\.mjs/)
+  assert.match(texto, /um card por repo/i)
+})
+
+test('qa cita qa-pos-deploy e fim:qa', () => {
+  const texto = ler('qa')
+  assert.match(texto, /qa-pos-deploy/)
+  assert.match(texto, /fim:qa/)
+})
+
+test('review mantém as regras e cita reviews.mjs', () => {
+  const texto = ler('review')
+  assert.match(texto, /só o que a PR introduziu/)
+  assert.match(texto, /dois revisores/)
+  assert.match(texto, /rules\/code-review\.md/)
+  assert.match(texto, /reviews\.mjs/)
+})
