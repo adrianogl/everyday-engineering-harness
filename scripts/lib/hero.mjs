@@ -109,15 +109,38 @@ export function heroSvg(catalogo, roteiro = ROTEIRO, paradas = 0) {
   return p.join('\n')
 }
 
+export const LIMITES_SITE = { celular: 4, tablet: LINHAS_VISIVEIS, largo: 14 }
+
+function classesDaLinha(i, n, total) {
+  const classes = []
+  if (i >= LIMITES_SITE.celular) classes.push('fora-celular')
+  if (i >= LIMITES_SITE.tablet) classes.push('fora-tablet')
+  for (const [faixa, limite] of Object.entries(LIMITES_SITE)) {
+    const visiveis = Math.min(limite, n)
+    if (total <= visiveis) continue
+    if (i === visiveis - 2) classes.push(`esmaece-1-${faixa}`)
+    if (i === visiveis - 1) classes.push(`esmaece-2-${faixa}`)
+  }
+  return classes
+}
+
 export function blocoSiteHero(catalogo, paradas) {
   const l = ['<!-- hero-site:inicio -->', '<div class="colunas">']
-  for (const c of colunas(catalogo)) {
-    l.push(`<section class="coluna" data-tipo="${c.tipo}"${c.resto ? ' data-resto' : ''}>`)
-    l.push(`<h2 class="coluna-topo"><span>${c.titulo}</span><b>${c.total}</b></h2>`)
+  for (const [tipo, titulo] of TIPOS) {
+    const pecas = catalogo.pecas.filter((p) => p.tipo === tipo)
+    const linhas = pecas.slice(0, LIMITES_SITE.largo)
+    l.push(`<section class="coluna" data-tipo="${tipo}">`)
+    l.push(`<h2 class="coluna-topo"><span>${titulo}</span><b>${pecas.length}</b></h2>`)
     l.push('<ul>')
-    for (const nome of c.nomes) l.push(`<li>${escapar(nome)}</li>`)
+    linhas.forEach((p, i) => {
+      const classes = classesDaLinha(i, linhas.length, pecas.length)
+      l.push(`<li${classes.length ? ` class="${classes.join(' ')}"` : ''}>${escapar(nomeExibido(p))}</li>`)
+    })
     l.push('</ul>')
-    if (c.resto) l.push(`<p class="mais">+ ${c.resto} <span data-i18n="hero.mais">more</span></p>`)
+    for (const [faixa, limite] of Object.entries(LIMITES_SITE)) {
+      const resto = pecas.length - Math.min(limite, pecas.length)
+      if (resto > 0) l.push(`<p class="mais mais-${faixa}">+ ${resto} <span data-i18n="hero.mais">more</span></p>`)
+    }
     l.push('</section>')
   }
   l.push('</div>')
