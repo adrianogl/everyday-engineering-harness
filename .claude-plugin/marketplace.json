@@ -1,12 +1,14 @@
 {
   "name": "eeh",
-  "description": "Marketplace do plugin eeh, harness de engenharia para Claude Code.",
-  "owner": { "name": "Adriano Gonçalves" },
+  "description": "Marketplace for the eeh plugin, an everyday engineering harness for Claude Code.",
+  "owner": {
+    "name": "Adriano Gonçalves"
+  },
   "plugins": [
     {
       "name": "eeh",
       "source": "./",
-      "description": "Harness de engenharia do dia a dia para Claude Code, em português do Brasil."
+      "description": "Everyday engineering harness for Claude Code, with Brazilian Portuguese output."
     }
   ]
 }
