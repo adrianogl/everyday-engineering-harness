@@ -12,10 +12,11 @@ function validar(r) {
   if (vazio(r.adr?.link)) faltando.push('adr.link')
   if (vazio(r.recorteAdr)) faltando.push('recorteAdr')
   if (r.sql) {
+    if (vazio(r.sql.script)) faltando.push('sql.script')
     if (vazio(r.sql.banco)) faltando.push('sql.banco')
     if (vazio(r.sql.ambiente)) faltando.push('sql.ambiente')
     if (vazio(r.sql.ordem)) faltando.push('sql.ordem')
-    else if (!(r.sql.ordem in ORDENS)) faltando.push(`sql.ordem (use ${Object.keys(ORDENS).join(' ou ')})`)
+    else if (!Object.hasOwn(ORDENS, r.sql.ordem)) faltando.push(`sql.ordem (use ${Object.keys(ORDENS).join(' ou ')})`)
   }
   if (faltando.length > 0) throw new Error(`recorte inválido, campos faltando ou inválidos: ${faltando.join(', ')}`)
 }

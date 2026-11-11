@@ -120,3 +120,15 @@ test('CLI com recorte inválido sai com 1 e escreve no stderr', () => {
   assert.equal(r.status, 1)
   assert.match(r.stderr, /aceite/)
 })
+
+test('sql sem script lança com o nome do campo', () => {
+  const recorte = recorteBack()
+  delete recorte.sql.script
+  assert.throws(() => montarCard(recorte), /sql\.script/)
+  recorte.sql.script = '  '
+  assert.throws(() => montarCard(recorte), /sql\.script/)
+})
+
+test('ordem com chave de prototype lança', () => {
+  assert.throws(() => montarCard(recorteBack({ sql: { script: 'x', banco: 'frete', ambiente: 'qa', ordem: 'toString' } })), /ordem/)
+})

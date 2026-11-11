@@ -47,6 +47,7 @@ function parsearItem(linha) {
 export function registrarItem({ pasta, arquivo, linha, tipo, texto }) {
   if (!TIPOS.includes(tipo)) throw new Error(`tipo inválido: ${tipo} (use ${TIPOS.join(', ')})`)
   if (typeof arquivo !== 'string' || arquivo.trim() === '') throw new Error('arquivo obrigatório')
+  if (/[\r\n]/.test(arquivo)) throw new Error('arquivo inválido: não pode conter quebra de linha')
   const numeroLinha = typeof linha === 'string' && linha.trim() === '' ? NaN : Number(linha)
   if (!Number.isInteger(numeroLinha) || numeroLinha <= 0) throw new Error(`linha inválida: ${linha}`)
   const limpo = typeof texto === 'string' ? texto.replace(/\s+/g, ' ').trim() : ''
@@ -62,18 +63,20 @@ export function registrarItem({ pasta, arquivo, linha, tipo, texto }) {
 export function atualizarItem({ pasta, id, status, motivo }) {
   if (!STATUS.includes(status)) throw new Error(`status inválido: ${status} (use ${STATUS.join(', ')})`)
   if (status === 'descartado' && (typeof motivo !== 'string' || motivo.trim() === '')) throw new Error('descartado exige motivo')
+  const motivoLimpo = typeof motivo === 'string' ? motivo.replace(/\s+/g, ' ').trim() : undefined
   const caminho = join(pasta, 'comentarios.md')
   const linhas = linhasDe(caminho)
   const indice = linhas.findIndex((l) => parsearItem(l)?.id === id)
   if (indice === -1) throw new Error(`item inexistente: ${id}`)
   const item = parsearItem(linhas[indice])
-  linhas[indice] = formatarItem({ ...item, status, motivo: status === 'descartado' ? motivo.trim() : undefined })
+  linhas[indice] = formatarItem({ ...item, status, motivo: status === 'descartado' ? motivoLimpo : undefined })
   writeFileSync(caminho, `${linhas.join('\n')}\n`)
 }
 
 export function registrarRodada({ pasta, commit, resultado, data }) {
   if (!RESULTADOS.includes(resultado)) throw new Error(`resultado inválido: ${resultado} (use ${RESULTADOS.join(', ')})`)
   if (typeof commit !== 'string' || commit.trim() === '') throw new Error('commit obrigatório')
+  if (/\s/.test(commit.trim())) throw new Error('commit inválido: não pode conter espaço em branco')
   mkdirSync(pasta, { recursive: true })
   const dia = data ?? new Date().toISOString().slice(0, 10)
   appendFileSync(join(pasta, 'rodadas.md'), `- ${dia} ${commit.trim()} ${resultado}\n`)

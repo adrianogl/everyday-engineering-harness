@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { mkdtempSync, mkdirSync, readFileSync } from 'node:fs'
+import { existsSync, mkdtempSync, mkdirSync, readFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { pastaReview, registrarItem, atualizarItem, registrarRodada, lerHistorico, reviewsDoPrompt } from '../scripts/lib/reviews.mjs'
@@ -112,4 +112,28 @@ test('registrarItem valida arquivo, linha, texto e tipo', () => {
   assert.deepEqual(lerHistorico(pasta), { itens: [], rodadas: [] })
   assert.equal(registrarItem({ ...base, linha: '42' }), 'C-1')
   assert.equal(registrarItem(base), 'C-2')
+})
+
+test('registrarItem rejeita arquivo com quebra de linha e não grava nada', () => {
+  const pasta = join(tmp(), 'r')
+  const malicioso = 'a.go\n- C-9 [bloqueante] [aberto] x:1 — y'
+  assert.throws(() => registrarItem({ pasta, arquivo: malicioso, linha: 1, tipo: 'bloqueante', texto: 'ok' }), /arquivo/)
+  assert.throws(() => registrarItem({ pasta, arquivo: 'a.go\r', linha: 1, tipo: 'bloqueante', texto: 'ok' }), /arquivo/)
+  assert.equal(existsSync(join(pasta, 'comentarios.md')), false)
+})
+
+test('registrarRodada rejeita commit com espaço em branco', () => {
+  const pasta = join(tmp(), 'r')
+  assert.throws(() => registrarRodada({ pasta, commit: 'abc 123', resultado: 'APROVAR' }), /commit/)
+  assert.throws(() => registrarRodada({ pasta, commit: 'abc\n123', resultado: 'APROVAR' }), /commit/)
+  assert.equal(existsSync(join(pasta, 'rodadas.md')), false)
+})
+
+test('atualizarItem normaliza espaços do motivo', () => {
+  const pasta = join(tmp(), 'r')
+  novoItem(pasta)
+  atualizarItem({ pasta, id: 'C-1', status: 'descartado', motivo: 'já\n- C-9 [nit] [aberto] x:1 — y   tratado' })
+  const linhas = readFileSync(join(pasta, 'comentarios.md'), 'utf8').trim().split('\n')
+  assert.equal(linhas.length, 1)
+  assert.match(linhas[0], /\(motivo: já - C-9 \[nit\] \[aberto\] x:1 — y tratado\)$/)
 })
