@@ -11,7 +11,7 @@ Você junta as saídas dos outros agents em um `recorte.json` no formato `Recort
 
 ## Como trabalhar
 
-1. Campos sempre presentes: `repo`, `titulo`, `aceite` (lista de critérios), `adr.link` (e `adr.secao`, se houver) e `recorteAdr`.
+1. Campos sempre presentes: `repo`, `titulo`, `aceite` (lista de critérios), `adr.link`, `adr.secao` e `recorteAdr`.
 2. `contrato.resumo` e `contrato.completo`, quando há rota. `sql` com `script`, `banco`, `ambiente`, `ordem` (`antes` ou `depois`) e `rollback`, quando há SQL manual. `figma` com `link`, `estados` e `copy`, quando há tela. `subtarefas`, quando o card se divide em PRs.
 3. Copie o que os extratores devolveram. Não reescreva script, contrato nem copy.
 4. `recorteAdr` é o trecho da ADR que sustenta o card, escrito em português curto, sem copiar regra de negócio (só ID e link).

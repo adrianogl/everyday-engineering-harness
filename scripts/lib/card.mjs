@@ -54,9 +54,7 @@ function secaoFigma({ figma }) {
 }
 
 function secaoAdr({ adr }) {
-  const linhas = ['## ADR', '', adr.link]
-  if (!vazio(adr.secao)) linhas.push('', `Seção: ${adr.secao}`)
-  return linhas.join('\n')
+  return ['## ADR', '', adr.link, '', `Seção: ${adr.secao}`].join('\n')
 }
 
 function montarAnexos({ repo, sql, contrato }) {
@@ -70,7 +68,7 @@ function montarAnexos({ repo, sql, contrato }) {
 export function montarCard(recorte) {
   validar(recorte)
   const secoes = [secaoContrato(recorte), secaoSql(recorte), secaoAceite(recorte), secaoFigma(recorte), secaoAdr(recorte)].filter(Boolean)
-  const titulo = vazio(recorte.adr.secao) ? 'Recorte da ADR' : `Recorte da ADR (${recorte.adr.secao})`
+  const titulo = `Recorte da ADR (${recorte.adr.secao})`
   return {
     descricao: `${secoes.join('\n\n')}\n`,
     anexos: montarAnexos(recorte),
