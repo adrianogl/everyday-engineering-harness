@@ -1,15 +1,30 @@
 import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readdirSync, readFileSync } from 'node:fs'
 import { homedir } from 'node:os'
-import { join } from 'node:path'
+import { isAbsolute, join } from 'node:path'
 
 const SHA = /^[0-9a-f]{40}$/
 const NOME_FONTE = /^[a-z0-9_-]+$/
+const PROTOCOLOS_GIT = 'https:file'
+
+export function nomeFonteValido(nome) {
+  return typeof nome === 'string' && NOME_FONTE.test(nome)
+}
+
+export function repoValido(repo) {
+  if (typeof repo !== 'string') return false
+  return repo.startsWith('https://') || repo.startsWith('file://') || isAbsolute(repo)
+}
 const ORIGENS = { ECC: 'ecc', OMC: 'omc', SP: 'superpowers' }
 const PASTAS_SKILL = { ecc: ['skills'], omc: ['skills', 'skill-bodies'], superpowers: ['skills'] }
 
 export function gitPadrao(args, cwd) {
-  const r = spawnSync('git', args, { cwd, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })
+  const r = spawnSync('git', ['-c', 'protocol.ext.allow=never', ...args], {
+    cwd,
+    encoding: 'utf8',
+    maxBuffer: 64 * 1024 * 1024,
+    env: { ...process.env, GIT_ALLOW_PROTOCOL: PROTOCOLOS_GIT },
+  })
   return { status: r.status ?? 1, stdout: r.stdout ?? '', stderr: r.stderr ?? (r.error ? String(r.error.message) : '') }
 }
 
@@ -26,6 +41,7 @@ export function validarManifesto(m) {
   for (const [nome, fonte] of Object.entries(fontes)) {
     if (!NOME_FONTE.test(nome)) erros.push(`nome de fonte inválido ${nome}`)
     if (typeof fonte?.repo !== 'string' || fonte.repo === '') erros.push(`fonte ${nome} sem repo`)
+    else if (!repoValido(fonte.repo)) erros.push(`fonte ${nome}: repo com protocolo não permitido ${fonte.repo}`)
   }
   if (!Array.isArray(m?.pecas)) {
     erros.push('pecas ausente')
@@ -51,7 +67,8 @@ export function validarManifesto(m) {
 
 export function atualizarClone({ fonte, repo, cache, git = gitPadrao }) {
   const dir = join(cache, String(fonte))
-  if (typeof fonte !== 'string' || !NOME_FONTE.test(fonte)) return { ok: false, dir, erro: `nome de fonte inválido: ${fonte}` }
+  if (!nomeFonteValido(fonte)) return { ok: false, dir, erro: `nome de fonte inválido: ${fonte}` }
+  if (!repoValido(repo)) return { ok: false, dir, erro: `repo com protocolo não permitido: ${repo}` }
   try {
     if (!existsSync(join(dir, '.git'))) {
       mkdirSync(cache, { recursive: true })

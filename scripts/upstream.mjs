@@ -2,7 +2,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { atualizarClone, diffOrigens, gitPadrao, itensNovos, lerManifesto, pastaCache, registrarCommit, validarManifesto } from './lib/upstream.mjs'
+import { atualizarClone, diffOrigens, gitPadrao, itensNovos, lerManifesto, nomeFonteValido, pastaCache, registrarCommit, validarManifesto } from './lib/upstream.mjs'
 
 const raiz = join(dirname(fileURLToPath(import.meta.url)), '..')
 const USO = 'uso: upstream.mjs buscar [--manifesto <arquivo>]\n     upstream.mjs diff [--manifesto <arquivo>]\n     upstream.mjs novos [--manifesto <arquivo>] [--triagem <arquivo>]\n     upstream.mjs registrar --peca <peca> --fonte <fonte> --caminho <caminho> --commit <sha> [--manifesto <arquivo>]'
@@ -19,6 +19,7 @@ function opcoes(args) {
 function clonesDoCache(manifesto, cache) {
   const clones = {}
   for (const fonte of Object.keys(manifesto.fontes)) {
+    if (!nomeFonteValido(fonte)) continue
     const dir = join(cache, fonte)
     if (!existsSync(join(dir, '.git'))) continue
     const h = gitPadrao(['rev-parse', 'HEAD'], dir)
@@ -33,13 +34,16 @@ function main(argv) {
   const arquivo = o.manifesto ?? join(raiz, 'upstream.json')
   const manifesto = lerManifesto(arquivo)
   const cache = pastaCache()
-  if (comando === 'buscar') {
+  if (['buscar', 'diff', 'novos'].includes(comando)) {
     const erros = validarManifesto(manifesto)
+    if (erros.length > 0) throw new Error(`upstream.json inválido:\n${erros.join('\n')}`)
+  }
+  if (comando === 'buscar') {
     const fontes = {}
     for (const [fonte, { repo }] of Object.entries(manifesto.fontes ?? {})) {
       fontes[fonte] = atualizarClone({ fonte, repo, cache })
     }
-    return { cache, erros, fontes }
+    return { cache, fontes }
   }
   if (comando === 'diff') return diffOrigens({ manifesto, clones: clonesDoCache(manifesto, cache) })
   if (comando === 'novos') {

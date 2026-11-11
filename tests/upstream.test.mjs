@@ -112,7 +112,7 @@ test('diffOrigens busca o commit base quando o clone raso não o tem', () => {
 
 test('atualizarClone com git falhando devolve ok false e o erro', () => {
   const cache = mkdtempSync(join(tmpdir(), 'eeh-cache-'))
-  const r = atualizarClone({ fonte: 'ecc', repo: 'x', cache, git: () => ({ status: 128, stdout: '', stderr: 'fatal: sem rede' }) })
+  const r = atualizarClone({ fonte: 'ecc', repo: 'file:///tmp/x', cache, git: () => ({ status: 128, stdout: '', stderr: 'fatal: sem rede' }) })
   assert.equal(r.ok, false)
   assert.match(r.erro, /sem rede/)
   assert.equal(r.dir, join(cache, 'ecc'))
@@ -208,11 +208,40 @@ test('atualizarClone rejeita fonte fora do padrão e separa repo com --', () => 
   assert.equal(r.ok, false)
   assert.equal(chamou, false)
   const args = []
-  atualizarClone({ fonte: 'ecc', repo: '--upload-pack=x', cache, git: (a) => { args.push(a); return { status: 1, stdout: '', stderr: 'e' } } })
-  assert.deepEqual(args[0].slice(0, 5), ['clone', '--depth', '1', '--', '--upload-pack=x'])
+  atualizarClone({ fonte: 'ecc', repo: '/tmp/--upload-pack=x', cache, git: (a) => { args.push(a); return { status: 1, stdout: '', stderr: 'e' } } })
+  assert.deepEqual(args[0].slice(0, 5), ['clone', '--depth', '1', '--', '/tmp/--upload-pack=x'])
 })
 
 test('validarManifesto rejeita nome de fonte fora do padrão', () => {
   const erros = validarManifesto({ fontes: { '../x': { repo: 'r' } }, pecas: [] })
   assert.match(erros.join('\n'), /nome de fonte inválido/)
+})
+
+test('validarManifesto e atualizarClone só aceitam https, file ou caminho absoluto', () => {
+  for (const repo of ['ext::sh -c id', '--upload-pack=x', 'http://x/y', 'git@host:a/b', 'relativo/repo']) {
+    assert.match(validarManifesto({ fontes: { ecc: { repo } }, pecas: [] }).join('\n'), /protocolo não permitido/, repo)
+    const cache = mkdtempSync(join(tmpdir(), 'eeh-cache-'))
+    let chamou = false
+    const r = atualizarClone({ fonte: 'ecc', repo, cache, git: () => { chamou = true; return { status: 0, stdout: '', stderr: '' } } })
+    assert.equal(r.ok, false, repo)
+    assert.equal(chamou, false, repo)
+  }
+  for (const repo of ['https://exemplo.test/a.git', 'file:///tmp/x', '/tmp/x']) {
+    assert.deepEqual(validarManifesto({ fontes: { ecc: { repo } }, pecas: [] }), [], repo)
+  }
+})
+
+test('CLI diff, novos e buscar abortam com manifesto inválido', () => {
+  const cache = mkdtempSync(join(tmpdir(), 'eeh-cache-'))
+  const manifesto = join(mkdtempSync(join(tmpdir(), 'eeh-man-')), 'upstream.json')
+  writeFileSync(manifesto, JSON.stringify({ fontes: { '../../x': { repo: 'ext::sh -c id' } }, pecas: [] }))
+  for (const comando of ['buscar', 'diff', 'novos']) {
+    const r = spawnSync('node', [join(raiz, 'scripts', 'upstream.mjs'), comando, '--manifesto', manifesto], {
+      encoding: 'utf8',
+      env: { ...process.env, EEH_UPSTREAM_CACHE: cache },
+    })
+    assert.equal(r.status, 1, comando)
+    assert.match(r.stderr, /nome de fonte inválido/, comando)
+    assert.match(r.stderr, /protocolo não permitido/, comando)
+  }
 })
