@@ -21,6 +21,8 @@ function listar(pasta) {
   return existsSync(pasta) ? readdirSync(pasta, { withFileTypes: true }) : []
 }
 
+export const LIMITE_LINHA = 120
+
 export function lerPecas({ raiz }) {
   const pecas = []
   for (const e of listar(join(raiz, 'commands'))) {
@@ -42,7 +44,7 @@ export function lerPecas({ raiz }) {
 }
 
 export function linhaCurta(descricao) {
-  const fim = descricao.search(/\.(\s|$)/)
+  const fim = descricao.search(/(?<!\b(?:e\.g|i\.e|ex))\.(\s|$)/)
   let frase = fim === -1 ? descricao : descricao.slice(0, fim + 1)
   const uso = frase.indexOf(' Use ')
   if (uso !== -1) frase = frase.slice(0, uso)
@@ -50,11 +52,13 @@ export function linhaCurta(descricao) {
   return /\.$/.test(frase) || /[;:]$/.test(frase) ? frase : `${frase}.`
 }
 
-export function montarCatalogo({ raiz, en }) {
+export function montarCatalogo({ raiz, en, pt = {} }) {
   const pecas = lerPecas({ raiz })
   const chaves = new Set(pecas.map((p) => `${p.tipo}/${p.nome}`))
   const semTraducao = [...chaves].filter((c) => !(c in en))
   const semPeca = Object.keys(en).filter((c) => !chaves.has(c))
+  const ptSemPeca = Object.keys(pt).filter((c) => !chaves.has(c))
+  if (ptSemPeca.length) throw new Error(`entradas de pt sem peça: ${ptSemPeca.join(', ')}`)
   if (semTraducao.length || semPeca.length) {
     const partes = []
     if (semTraducao.length) partes.push(`peças sem entrada em en: ${semTraducao.join(', ')}`)
@@ -65,7 +69,7 @@ export function montarCatalogo({ raiz, en }) {
   for (const p of pecas) contagem[p.tipo] += 1
   return {
     contagem,
-    pecas: pecas.map((p) => ({ tipo: p.tipo, nome: p.nome, pt: linhaCurta(p.descricao), en: en[`${p.tipo}/${p.nome}`] })),
+    pecas: pecas.map((p) => ({ tipo: p.tipo, nome: p.nome, pt: pt[`${p.tipo}/${p.nome}`] ?? linhaCurta(p.descricao), en: en[`${p.tipo}/${p.nome}`] })),
   }
 }
 
@@ -99,7 +103,9 @@ function substituirBloco(texto, bloco) {
 
 function lerCatalogo(raiz) {
   const en = JSON.parse(readFileSync(join(raiz, 'site', 'catalogo.en.json'), 'utf8'))
-  return montarCatalogo({ raiz, en })
+  const caminhoPt = join(raiz, 'site', 'catalogo.pt.json')
+  const pt = existsSync(caminhoPt) ? JSON.parse(readFileSync(caminhoPt, 'utf8')) : {}
+  return montarCatalogo({ raiz, en, pt })
 }
 
 const READMES = [

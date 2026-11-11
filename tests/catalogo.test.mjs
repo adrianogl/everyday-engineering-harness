@@ -3,7 +3,8 @@ import assert from 'node:assert/strict'
 import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { lerPecas, linhaCurta, montarCatalogo, blocoReadme, conferir } from '../scripts/lib/catalogo.mjs'
+import { readFileSync } from 'node:fs'
+import { lerPecas, linhaCurta, montarCatalogo, blocoReadme, conferir, LIMITE_LINHA } from '../scripts/lib/catalogo.mjs'
 
 function repoFalso() {
   const raiz = mkdtempSync(join(tmpdir(), 'eeh-catalogo-'))
@@ -37,6 +38,13 @@ test('linhaCurta corta antes de Use', () => {
   assert.equal(linhaCurta('Faz zeta; Use com cuidado.'), 'Faz zeta;')
   assert.equal(linhaCurta('Sem ponto final'), 'Sem ponto final.')
   assert.equal(linhaCurta('Uma frase.'), 'Uma frase.')
+  assert.equal(linhaCurta('Faz X Use quando Y.'), 'Faz X.')
+})
+
+test('linhaCurta não trata e.g., i.e. e ex. como fim de frase', () => {
+  assert.equal(linhaCurta('Faz X (e.g. Y) e Z. Outra.'), 'Faz X (e.g. Y) e Z.')
+  assert.equal(linhaCurta('Faz X, i.e. Y, e Z. Outra.'), 'Faz X, i.e. Y, e Z.')
+  assert.equal(linhaCurta('Faz X, ex. Y, e Z. Outra.'), 'Faz X, ex. Y, e Z.')
 })
 
 test('montarCatalogo lança com peça sem tradução', () => {
@@ -70,6 +78,26 @@ test('blocoReadme tem os marcadores e uma linha por peça', () => {
   }
   assert.match(blocoReadme(catalogo, 'en'), /\| `\/eeh:ola` \| B\. \|/)
   assert.match(blocoReadme(catalogo, 'pt'), /\| `bia` \| Faz a coisa\. \|/)
+})
+
+test('montarCatalogo usa a linha em pt quando existe e rejeita pt sem peça', () => {
+  const raiz = repoFalso()
+  const en = { 'agent/bia': 'A.', 'command/ola': 'B.', 'skill/zeta': 'C.' }
+  const catalogo = montarCatalogo({ raiz, en, pt: { 'agent/bia': 'Curta.' } })
+  assert.equal(catalogo.pecas[0].pt, 'Curta.')
+  assert.throws(() => montarCatalogo({ raiz, en, pt: { 'agent/nada': 'x' } }), /agent\/nada/)
+})
+
+test('linha pt acima de 120 caracteres exige override em catalogo.pt.json', () => {
+  const pt = JSON.parse(readFileSync('site/catalogo.pt.json', 'utf8'))
+  const chaves = new Set(lerPecas({ raiz: '.' }).map((p) => `${p.tipo}/${p.nome}`))
+  for (const [chave, linha] of Object.entries(pt)) {
+    assert.ok(chaves.has(chave), `override sem peça: ${chave}`)
+    assert.ok(linha.length <= LIMITE_LINHA, `override longo (${linha.length}): ${chave}`)
+  }
+  const en = JSON.parse(readFileSync('site/catalogo.en.json', 'utf8'))
+  const longas = montarCatalogo({ raiz: '.', en, pt }).pecas.filter((p) => p.pt.length > LIMITE_LINHA)
+  assert.deepEqual(longas.map((p) => `${p.tipo}/${p.nome}`), [])
 })
 
 test('site/catalogo.json está em dia', () => {
