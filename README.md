@@ -4,7 +4,7 @@
 
 Everyday Engineering Harness is a Claude Code plugin for daily engineering work. It turns a plain request into ADRs, Jira cards, implementation, reviews and QA, and stops for your approval before anything leaves your machine.
 
-![Sample session in Portuguese: the request, two checks and the stop before creating cards](site/terminal.svg)
+![eeh: a plain request goes in, the 7 commands, 24 skills and 35 agents do the work, and it stops for approval. The sample session is in Portuguese.](site/hero.svg)
 
 ## How it works
 

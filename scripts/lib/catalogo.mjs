@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { ROTEIRO, terminalSvg } from './terminal.mjs'
+import { ROTEIRO } from './terminal.mjs'
+import { blocoSiteHero, contarParadas, heroSvg } from './hero.mjs'
 
 const TIPOS = ['command', 'skill', 'agent']
 const INICIO = '<!-- catalogo:inicio -->'
@@ -158,7 +159,8 @@ const READMES = [
 export function saidas({ raiz }) {
   const catalogo = lerCatalogo(raiz)
   const lista = [{ arquivo: 'site/catalogo.json', conteudo: `${JSON.stringify(catalogo, null, 2)}\n`, obrigatoria: true }]
-  lista.push({ arquivo: 'site/terminal.svg', conteudo: terminalSvg() })
+  const paradas = contarParadas({ raiz })
+  lista.push({ arquivo: 'site/hero.svg', conteudo: heroSvg(catalogo, ROTEIRO, paradas) })
   for (const [arquivo, idioma] of READMES) {
     const caminho = join(raiz, arquivo)
     if (!existsSync(caminho)) continue
@@ -170,6 +172,7 @@ export function saidas({ raiz }) {
     let texto = readFileSync(pagina, 'utf8')
     texto = substituirBloco(texto, blocoSiteCatalogo(catalogo), ...SITE_CATALOGO) ?? texto
     texto = substituirBloco(texto, blocoSiteTerminal(), ...SITE_TERMINAL) ?? texto
+    texto = substituirBloco(texto, blocoSiteHero(catalogo, paradas), '<!-- hero-site:inicio -->', '<!-- hero-site:fim -->') ?? texto
     lista.push({ arquivo: 'site/index.html', conteudo: texto })
   }
   return lista

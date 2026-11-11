@@ -15,6 +15,7 @@
 <body>
 <header class="barra">
   <a class="marca" href="#topo" aria-label="eeh"><span class="logo"><span class="e">e</span>eh</span></a>
+  <a class="repo" href="https://github.com/adrianogl/everyday-engineering-harness">adrianogl/everyday-engineering-harness</a>
   <nav class="menu" aria-label="Sections">
     <a href="#como" data-i18n="nav.como">how it works</a>
     <a href="#fases" data-i18n="nav.fases">phases</a>
@@ -29,14 +30,8 @@
 <main>
 <section class="topo" id="topo">
   <div class="topo-texto">
-    <h1 class="logo grande"><span class="e">e</span>eh</h1>
-    <p class="nome" data-i18n="topo.nome">everyday engineering harness</p>
-    <p class="frase" data-i18n="topo.frase">A Claude Code plugin for daily engineering work. It turns a plain request into ADRs, Jira cards, implementation, reviews and QA, and stops for your approval before anything leaves your machine.</p>
-    <p class="acoes">
-      <a class="acao principal" href="#instalar" data-i18n="topo.instalar">install the plugin</a>
-      <a class="acao" href="https://github.com/adrianogl/everyday-engineering-harness" data-i18n="topo.repo">source on GitHub</a>
-    </p>
-  </div>
+    <h1 class="titulo"><span data-i18n="topo.titulo">Turns a plain request into ADRs, cards, code, reviews and QA, and</span> <em data-i18n="topo.destaque">stops for your approval.</em></h1>
+    <p class="nome" data-i18n="topo.sub">A Claude Code plugin for daily engineering work.</p>
   <figure class="terminal" aria-labelledby="legenda-terminal">
     <div class="terminal-barra"><span data-i18n="terminal.titulo">claude · frete-api</span></div>
     <div class="terminal-corpo" id="roteiro">
@@ -49,6 +44,64 @@
     </div>
     <figcaption id="legenda-terminal" data-i18n="terminal.legenda">Sample session in Portuguese: the request, two checks and the stop before creating cards.</figcaption>
   </figure>
+  <p class="acoes">
+    <a class="acao principal" href="#instalar" data-i18n="topo.instalar">install the plugin</a>
+    <a class="acao" href="#catalogo" data-i18n="topo.catalogo">see the full catalog</a>
+  </p>
+  </div>
+  <div class="topo-catalogo">
+<!-- hero-site:inicio -->
+<div class="colunas">
+<section class="coluna" data-tipo="command">
+<h2 class="coluna-topo"><span>Commands</span><b>7</b></h2>
+<ul>
+<li>/eeh:adr</li>
+<li>/eeh:adr-revisar</li>
+<li>/eeh:implementar</li>
+<li>/eeh:qa</li>
+<li>/eeh:quebrar</li>
+<li>/eeh:review</li>
+<li>/eeh:upstream</li>
+</ul>
+</section>
+<section class="coluna" data-tipo="skill" data-resto>
+<h2 class="coluna-topo"><span>Skills</span><b>24</b></h2>
+<ul>
+<li>adr</li>
+<li>adr-revisar</li>
+<li>api-design</li>
+<li>debugar</li>
+<li>deepinit</li>
+<li>entender</li>
+<li>entregas</li>
+<li>error-handling</li>
+<li>explorar</li>
+</ul>
+<p class="mais">+ 15 <span data-i18n="hero.mais">more</span></p>
+</section>
+<section class="coluna" data-tipo="agent" data-resto>
+<h2 class="coluna-topo"><span>Agents</span><b>35</b></h2>
+<ul>
+<li>analista-epico</li>
+<li>architect</li>
+<li>build-fix-go</li>
+<li>build-fix-react</li>
+<li>code-reviewer</li>
+<li>conferente</li>
+<li>critic</li>
+<li>debugger</li>
+<li>document-specialist</li>
+</ul>
+<p class="mais">+ 26 <span data-i18n="hero.mais">more</span></p>
+</section>
+</div>
+<dl class="tira">
+<div><dt>66</dt><dd data-i18n="hero.pecas">pieces</dd></div>
+<div><dt>10</dt><dd data-i18n="hero.paradas">approval stops</dd></div>
+<div><dt>MIT</dt><dd data-i18n="hero.licenca">license</dd></div>
+</dl>
+<!-- hero-site:fim -->
+  </div>
 </section>
 
 <section class="secao" id="como">

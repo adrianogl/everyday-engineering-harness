@@ -4,10 +4,7 @@
     "nav.fases": "phases",
     "nav.catalogo": "catalog",
     "nav.instalar": "install",
-    "topo.nome": "everyday engineering harness",
-    "topo.frase": "A Claude Code plugin for daily engineering work. It turns a plain request into ADRs, Jira cards, implementation, reviews and QA, and stops for your approval before anything leaves your machine.",
     "topo.instalar": "install the plugin",
-    "topo.repo": "source on GitHub",
     "terminal.titulo": "claude · frete-api",
     "terminal.legenda": "Sample session in Portuguese: the request, two checks and the stop before creating cards.",
     "como.titulo": "How it works",
@@ -48,17 +45,22 @@
     "creditos.e": "and",
     "creditos.mit": "all MIT.",
     "creditos.cores": "The colors come from the",
-    "creditos.paleta": "palette (MIT, Zeno Rocha)."
+    "creditos.paleta": "palette (MIT, Zeno Rocha).",
+    "topo.titulo": "Turns a plain request into ADRs, cards, code, reviews and QA, and",
+    "topo.destaque": "stops for your approval.",
+    "topo.sub": "A Claude Code plugin for daily engineering work.",
+    "topo.catalogo": "see the full catalog",
+    "hero.mais": "more",
+    "hero.pecas": "pieces",
+    "hero.paradas": "approval stops",
+    "hero.licenca": "license"
   },
   "pt": {
     "nav.como": "como funciona",
     "nav.fases": "fases",
     "nav.catalogo": "catálogo",
     "nav.instalar": "instalação",
-    "topo.nome": "everyday engineering harness",
-    "topo.frase": "Um plugin do Claude Code para o trabalho de engenharia do dia a dia. Transforma um pedido simples em ADR, cards do Jira, implementação, review e QA, e para pedindo a sua aprovação antes de qualquer coisa sair da sua máquina.",
     "topo.instalar": "instalar o plugin",
-    "topo.repo": "código no GitHub",
     "terminal.titulo": "claude · frete-api",
     "terminal.legenda": "Exemplo de sessão: o pedido, duas conferências e a parada antes de criar os cards.",
     "como.titulo": "Como funciona",
@@ -99,6 +101,14 @@
     "creditos.e": "e do",
     "creditos.mit": "todos MIT.",
     "creditos.cores": "As cores vêm da paleta",
-    "creditos.paleta": "(MIT, Zeno Rocha)."
+    "creditos.paleta": "(MIT, Zeno Rocha).",
+    "topo.titulo": "Transforma um pedido simples em ADR, cards, código, review e QA, e",
+    "topo.destaque": "para pedindo a sua aprovação.",
+    "topo.sub": "Um plugin do Claude Code para o trabalho de engenharia do dia a dia.",
+    "topo.catalogo": "ver o catálogo inteiro",
+    "hero.mais": "a mais",
+    "hero.pecas": "peças",
+    "hero.paradas": "paradas de aprovação",
+    "hero.licenca": "licença"
   }
 }
