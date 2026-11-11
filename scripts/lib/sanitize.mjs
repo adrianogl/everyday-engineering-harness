@@ -15,6 +15,27 @@ function dominioPermitido(dominio) {
   return DOMINIOS_PERMITIDOS.some((p) => d === p || d.endsWith(`.${p}`))
 }
 
+const LETRA_OU_DIGITO = /[\p{L}\p{N}]/u
+const MAIUSCULA = /\p{Lu}/u
+const MINUSCULA_OU_DIGITO = /[\p{Ll}\p{N}]/u
+
+function limiteInicio(linha, i) {
+  if (i === 0) return true
+  const antes = linha[i - 1]
+  if (!LETRA_OU_DIGITO.test(antes)) return true
+  return MINUSCULA_OU_DIGITO.test(antes) && MAIUSCULA.test(linha[i])
+}
+
+function limiteFim(linha, i) {
+  if (i >= linha.length) return true
+  const depois = linha[i]
+  if (!LETRA_OU_DIGITO.test(depois)) return true
+  if (!MAIUSCULA.test(depois)) return false
+  const ultimo = linha[i - 1]
+  if (MINUSCULA_OU_DIGITO.test(ultimo)) return true
+  return MAIUSCULA.test(ultimo) && i + 1 < linha.length && /\p{Ll}/u.test(linha[i + 1])
+}
+
 function achadosDaLinha(linha, denylist) {
   const achados = []
   const ocupados = []
@@ -34,9 +55,11 @@ function achadosDaLinha(linha, denylist) {
   }
   for (const termo of denylist) {
     if (typeof termo !== 'string' || termo.trim() === '') continue
-    const re = new RegExp(`(?<![\\p{L}\\p{N}_])${escapar(termo.trim())}(?![\\p{L}\\p{N}_])`, 'giu')
+    const re = new RegExp(escapar(termo.trim()), 'giu')
     for (const m of linha.matchAll(re)) {
-      achados.push({ regra: 'denylist', trecho: m[0] })
+      if (limiteInicio(linha, m.index) && limiteFim(linha, m.index + m[0].length)) {
+        achados.push({ regra: 'denylist', trecho: m[0] })
+      }
     }
   }
   return achados

@@ -15,6 +15,7 @@ const esperados = [
   'redator-ptbr', 'git', 'front-visual',
   'analista-epico', 'redator-adr', 'revisor-adr', 'leitor-comentarios', 'extrator-contrato',
   'extrator-sql', 'redator-aceite', 'recortador-figma', 'conferente', 'redator-card',
+  'opensource-sanitizer',
 ]
 
 const proprios = [
@@ -27,12 +28,12 @@ const somenteLeitura = [
   'reviewer-typescript', 'reviewer-database', 'silent-failure-hunter', 'type-design-analyzer',
   'security-reviewer', 'verifier',
   'analista-epico', 'revisor-adr', 'leitor-comentarios', 'extrator-contrato', 'extrator-sql',
-  'redator-aceite', 'recortador-figma', 'conferente',
+  'redator-aceite', 'recortador-figma', 'conferente', 'opensource-sanitizer',
 ]
 
 const modelos = {
   haiku: ['explorar', 'document-specialist', 'extrator-contrato', 'extrator-sql', 'recortador-figma'],
-  sonnet: ['implementador-go', 'implementador-react', 'test-engineer', 'build-fix-go', 'build-fix-react', 'redator-ptbr', 'git', 'front-visual', 'redator-adr', 'leitor-comentarios', 'redator-aceite', 'redator-card'],
+  sonnet: ['implementador-go', 'implementador-react', 'test-engineer', 'build-fix-go', 'build-fix-react', 'redator-ptbr', 'git', 'front-visual', 'redator-adr', 'leitor-comentarios', 'redator-aceite', 'redator-card', 'opensource-sanitizer'],
   opus: ['architect', 'planner', 'critic', 'code-reviewer', 'reviewer-go', 'reviewer-react', 'reviewer-typescript', 'reviewer-database', 'silent-failure-hunter', 'type-design-analyzer', 'security-reviewer', 'verifier', 'debugger', 'tracer', 'analista-epico', 'revisor-adr', 'conferente'],
 }
 
@@ -53,7 +54,7 @@ function frontmatter(texto) {
   return campos
 }
 
-test('existem os 34 agents esperados', () => {
+test('existem os 35 agents esperados', () => {
   assert.deepEqual(arquivos.map((f) => f.replace(/\.md$/, '')).sort(), [...esperados].sort())
 })
 
@@ -106,6 +107,22 @@ test('verifier tem Bash sem Edit nem Write e proíbe operação de escrita', () 
   assert.ok(!lista.includes('Edit') && !lista.includes('Write'))
   for (const termo of ['git commit', 'git push', 'git merge', 'git rebase', 'gh', 'arquivo por shell']) {
     assert.ok(texto.includes(termo), `verifier: proibição sem "${termo}"`)
+  }
+})
+
+test('opensource-sanitizer roda em sonnet só com tools de leitura', () => {
+  const fm = frontmatter(ler('opensource-sanitizer.md'))
+  assert.equal(fm.model, 'sonnet')
+  assert.deepEqual(fm.tools.split(',').map((t) => t.trim()), ['Read', 'Grep', 'Glob'])
+})
+
+test('tracer, git e planner proíbem commit e push', () => {
+  for (const nome of ['tracer', 'git', 'planner']) {
+    const texto = ler(`${nome}.md`)
+    assert.match(texto, /^## Uso do Bash$/m, nome)
+    for (const termo of ['git commit', 'git push', 'git merge', 'git rebase', 'git reset', 'gh', 'arquivo por shell']) {
+      assert.ok(texto.includes(termo), `${nome}: proibição sem "${termo}"`)
+    }
   }
 })
 

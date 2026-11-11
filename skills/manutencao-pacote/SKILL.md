@@ -73,6 +73,8 @@ Parada 1: criar ou alterar a peça. Sem aprovação explícita do autor, nada é
 8. Em peça derivada, registre a origem em `upstream.json` e confira com `validarManifesto` (o teste de skills já faz isso).
 9. Em ajuste de skill que impõe disciplina, teste a mudança com um cenário de pressão: rode o pedido num subagent sem a skill, anote onde ele erra, e rode de novo com a skill. Se o erro continua, o texto está ambíguo ou falta a exceção que ele usou como brecha.
 
+Quando o repo alvo é o próprio EEH, chame o agent `opensource-sanitizer` com o diff e a denylist do perfil antes de propor o commit.
+
 Commit e push seguem as regras de git do autor: só com pedido explícito.
 
 ## Estoque

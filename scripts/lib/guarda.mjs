@@ -112,6 +112,7 @@ function avaliarSegmento(tokens) {
     if (i !== -1 && args[i + 1]) return avaliarTexto(args[i + 1])
     return null
   }
+  if (comando === 'eval') return avaliarTexto(args.join(' '))
   if (comando === 'rm') return avaliarRm(args)
   if (comando === 'git') return avaliarGit(args)
   const indiceSql = limpos.findIndex((t) => CLIENTES_SQL.has(nomeBase(t)))
@@ -121,8 +122,71 @@ function avaliarSegmento(tokens) {
   return null
 }
 
+const HEREDOC = /<<(-?)[ \t]*(['"]?)([A-Za-z_][A-Za-z0-9_]*)\2[^\n]*\n([\s\S]*?)(?:\n[ \t]*\3[ \t]*(?=\n|$)|$)/g
+
+function fimDaSubstituicao(texto, inicio) {
+  let profundidade = 1
+  let aspas = null
+  for (let i = inicio; i < texto.length; i++) {
+    const c = texto[i]
+    if (aspas) {
+      if (c === aspas) aspas = null
+      else if (c === '\\' && aspas === '"') i++
+      continue
+    }
+    if (c === "'" || c === '"') aspas = c
+    else if (c === '\\') i++
+    else if (c === '(') profundidade++
+    else if (c === ')' && --profundidade === 0) return i
+  }
+  return texto.length
+}
+
+function substituicoes(texto) {
+  const internos = []
+  let simples = false
+  for (let i = 0; i < texto.length; i++) {
+    const c = texto[i]
+    if (simples) {
+      if (c === "'") simples = false
+      continue
+    }
+    if (c === "'") simples = true
+    else if (c === '\\') i++
+    else if (c === '$' && texto[i + 1] === '(') {
+      const fim = fimDaSubstituicao(texto, i + 2)
+      internos.push(texto.slice(i + 2, fim))
+      i = fim
+    } else if (c === '`') {
+      const fim = texto.indexOf('`', i + 1)
+      const ate = fim === -1 ? texto.length : fim
+      internos.push(texto.slice(i + 1, ate))
+      i = ate
+    }
+  }
+  return internos
+}
+
+function separarHeredocs(texto) {
+  const corpos = []
+  const resto = texto.replace(HEREDOC, (trecho, _traco, _aspas, _marca, corpo, deslocamento) => {
+    const inicioLinha = texto.lastIndexOf('\n', deslocamento) + 1
+    const linha = texto.slice(inicioLinha, deslocamento)
+    const segmentos = dividir(linha)
+    const ultimo = segmentos.length ? removerPrefixos(segmentos[segmentos.length - 1]) : []
+    if (ultimo.length && SHELLS.has(nomeBase(ultimo[0]))) corpos.push(corpo)
+    return trecho.slice(0, trecho.indexOf('\n'))
+  })
+  return { resto, corpos }
+}
+
 function avaliarTexto(comando) {
-  for (const segmento of dividir(comando)) {
+  const { resto, corpos } = separarHeredocs(comando)
+  for (const interno of [...corpos, ...substituicoes(resto)]) {
+    const motivo = avaliarTexto(interno)
+    if (motivo) return motivo
+  }
+  for (const segmento of dividir(resto)) {
     const motivo = avaliarSegmento(segmento)
     if (motivo) return motivo
   }

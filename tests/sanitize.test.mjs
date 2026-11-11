@@ -56,3 +56,15 @@ test('ignora o próprio arquivo de testes', () => {
   const achados = scan(arq('fulano@acmecorp.com.br', 'tests/sanitize.test.mjs'), ['acmecorp'])
   assert.equal(achados.length, 0)
 })
+
+test('scan pega termo em camelCase, snake, kebab e domínio', () => {
+  for (const texto of ['AcmeService', 'ACME_TOKEN', 'acme-api', 'acme.dev', 'getAcmeToken', 'ACMEService', 'src/acme/x.go']) {
+    assert.equal(scan(arq(texto), ['acme']).length, 1, texto)
+  }
+})
+
+test('scan não pega termo dentro de palavra comum', () => {
+  for (const texto of ['acmeologia', 'pacmeiro', 'Acmeologia', 'PrecoPacmeSeguro']) {
+    assert.equal(scan(arq(texto), ['acme']).length, 0, texto)
+  }
+})
