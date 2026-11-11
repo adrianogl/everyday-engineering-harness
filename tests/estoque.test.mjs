@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { spawnSync } from 'node:child_process'
 import { referencias, semUso } from '../scripts/lib/estoque.mjs'
 
@@ -75,4 +76,9 @@ test('CLI imprime semUso e contagem por peça', () => {
   assert.match(r.stdout, /sem uso/i)
   assert.match(r.stdout, /orfa/)
   assert.match(r.stdout, /usada\s+1/)
+})
+
+test('todas as peças do repo real são citadas por alguma rota', () => {
+  const raiz = join(dirname(fileURLToPath(import.meta.url)), '..')
+  assert.deepEqual(semUso({ raiz }), [])
 })
