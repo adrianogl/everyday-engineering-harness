@@ -93,6 +93,6 @@ O histórico de uma PR fica na pasta de registros da entrega. Use `scripts/revie
 node "${CLAUDE_PLUGIN_ROOT}/scripts/reviews.mjs" ler --repo frete-api --numero 12 --chave PROJ-7
 ```
 
-2. Da segunda rodada em diante, confira cada item aberto contra o código atual e marque `resolvido` ou mantenha `aberto`, com `reviews.mjs atualizar --id C-1 --status resolvido`. Em código que já passou por review, não levante item novo: só o diff desde a última rodada entra.
-3. Grave itens novos (`reviews.mjs item`) e a rodada (`reviews.mjs rodada --commit <sha> --resultado "PEDIR MUDANÇAS"` ou `APROVAR`) só depois de o autor aprovar o texto dos itens.
+2. Da segunda rodada em diante, confira cada item aberto contra o código atual e marque `resolvido` ou mantenha `aberto`, com `reviews.mjs atualizar --repo frete-api --numero 12 --chave PROJ-7 --id C-1 --status resolvido`. Em código que já passou por review, não levante item novo: só o diff desde a última rodada entra.
+3. Grave itens novos (`reviews.mjs item --repo frete-api --numero 12 --chave PROJ-7 --arquivo internal/frete/parser.go --linha 42 --tipo bloqueante --texto "<texto>"`) e a rodada (`reviews.mjs rodada --repo frete-api --numero 12 --chave PROJ-7 --commit <sha> --resultado "PEDIR MUDANÇAS"` ou `APROVAR`) só depois de o autor aprovar o texto dos itens.
 

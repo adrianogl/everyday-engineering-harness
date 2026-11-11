@@ -31,4 +31,4 @@ Comentário que pede algo fora do escopo ou que conflita com uma decisão `D-n` 
 
 Se a mudança altera a ADR de forma que o `revisor-adr` deva olhar, rode-o de novo antes de publicar.
 
-Parada 1: atualizar a ADR e responder os comentários. Mostre a lista de itens com a mudança e a resposta de cada um. Só atualize a página e responda no Confluence com aprovação explícita do autor, item a item ou em bloco. Registre as decisões tomadas (`registros.mjs registrar <CHAVE> decisao "<texto>"`).
+Parada 1: atualizar a página. Mostre a lista de itens com a mudança e a resposta de cada um. Só atualize a página e responda no Confluence com aprovação explícita do autor, item a item ou em bloco. Registre as decisões tomadas (`registros.mjs registrar <CHAVE> decisao "<texto>"`).

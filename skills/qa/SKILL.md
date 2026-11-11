@@ -32,4 +32,4 @@ Guarde na pasta da entrega: screenshots, e request e response de cada endpoint. 
 
 Se o perfil tem uma extensão `extensoes[]` com `quando: fim:qa`, rode-a agora para preparar o rascunho da solução técnica (texto para produto, o que muda para quem usa). Sem a extensão, pule este passo.
 
-Parada 1: mover o card e comentar no Jira. Mostre o resultado por item de aceite, os arquivos de evidência e o rascunho da solução técnica. Só comente, anexe ou mude o status do card com aprovação explícita. Falha encontrada volta ao autor como item, sem mover o card.
+Parada 1: mover ou comentar o card. Mostre o resultado por item de aceite, os arquivos de evidência e o rascunho da solução técnica. Só comente, anexe ou mude o status do card com aprovação explícita. Falha encontrada volta ao autor como item, sem mover o card.

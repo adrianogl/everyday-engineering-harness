@@ -147,3 +147,15 @@ test('review mantém as regras e cita reviews.mjs', () => {
   assert.match(texto, /rules\/code-review\.md/)
   assert.match(texto, /reviews\.mjs/)
 })
+
+test('skills das fases têm as paradas com rótulo exato', () => {
+  const esperado = {
+    adr: ['Parada 1: dúvidas', 'Parada 2: publicar'],
+    'adr-revisar': ['Parada 1: atualizar a página'],
+    quebrar: ['Parada 1: conflitos', 'Parada 2: criar cards'],
+    qa: ['Parada 1: mover ou comentar o card'],
+  }
+  for (const [pasta, rotulos] of Object.entries(esperado)) {
+    for (const rotulo of rotulos) assert.ok(ler(pasta).includes(rotulo), `${pasta}: sem "${rotulo}"`)
+  }
+})
