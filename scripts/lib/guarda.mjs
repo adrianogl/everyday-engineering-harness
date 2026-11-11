@@ -1,5 +1,12 @@
 const CLIENTES_SQL = new Set(['psql', 'mysql', 'mariadb', 'sqlite3', 'sqlcmd', 'usql', 'pgcli', 'mycli'])
-const PREFIXOS = new Set(['sudo', 'env', 'command', 'time', 'nohup', 'nice', 'exec', 'xargs', 'doas'])
+const PREFIXOS = new Set(['sudo', 'env', 'command', 'time', 'nohup', 'nice', 'exec', 'xargs', 'doas', 'timeout'])
+const OPCOES_COM_VALOR = {
+  sudo: ['-u', '-g'],
+  nice: ['-n'],
+  timeout: ['-s', '-k', '--signal', '--kill-after'],
+  xargs: ['-n', '-I', '-L', '-P', '-d', '-s', '-E', '-a'],
+}
+const GERADORES_DE_TEXTO = new Set(['echo', 'printf'])
 const SHELLS = new Set(['bash', 'sh', 'zsh', 'dash'])
 const ALVOS_PERIGOSOS = new Set(['/', '/*', '~', '~/', '~/*', '$HOME', '${HOME}', '$HOME/', '$HOME/*', '${HOME}/*', '*', '.', '..', './*', '../*', '.*'])
 const SQL_DESTRUTIVO = /\b(drop\s+(table|database|schema)|truncate)\b/i
@@ -51,19 +58,22 @@ function nomeBase(token) {
   return token.split('/').pop()
 }
 
-function removerPrefixos(tokens) {
+function removerPrefixos(tokens, usados = []) {
   let i = 0
   while (i < tokens.length) {
     const t = tokens[i]
     if (/^[A-Za-z_][A-Za-z0-9_]*=/.test(t)) i++
     else if (PREFIXOS.has(nomeBase(t))) {
       const prefixo = nomeBase(t)
+      usados.push(prefixo)
       i++
-      while (i < tokens.length && tokens[i].startsWith('-')) {
+      while (i < tokens.length && tokens[i].startsWith('-') && tokens[i] !== '--') {
         const opcao = tokens[i]
         i++
-        if (prefixo === 'sudo' && (opcao === '-u' || opcao === '-g') && i < tokens.length) i++
+        if ((OPCOES_COM_VALOR[prefixo] ?? []).includes(opcao) && i < tokens.length) i++
       }
+      if (tokens[i] === '--') i++
+      if (prefixo === 'timeout' && i < tokens.length) i++
     } else break
   }
   return tokens.slice(i)
@@ -102,17 +112,37 @@ function avaliarGit(args) {
   return null
 }
 
-function avaliarSegmento(tokens) {
+function textoDoShell(args) {
+  const c = args.findIndex((a) => /^-[A-Za-z]*c$/.test(a))
+  if (c !== -1) {
+    const resto = args.slice(c + 1)
+    return resto[0] === '--' ? resto[1] : resto[0]
+  }
+  const h = args.findIndex((a) => a.startsWith('<<<'))
+  if (h !== -1) return args[h].length > 3 ? args[h].slice(3) : args[h + 1]
+  return null
+}
+
+function ehShellLendoStdin(tokens) {
   const limpos = removerPrefixos(tokens)
+  if (!limpos.length || !SHELLS.has(nomeBase(limpos[0]))) return false
+  return !limpos.slice(1).some((a) => !a.startsWith('-'))
+}
+
+function avaliarSegmento(tokens) {
+  const usados = []
+  const limpos = removerPrefixos(tokens, usados)
   if (!limpos.length) return null
   const comando = nomeBase(limpos[0])
   const args = limpos.slice(1)
   if (SHELLS.has(comando)) {
-    const i = args.findIndex((a) => /^-[A-Za-z]*c$/.test(a))
-    if (i !== -1 && args[i + 1]) return avaliarTexto(args[i + 1])
-    return null
+    const texto = textoDoShell(args)
+    return texto ? avaliarTexto(texto) : null
   }
   if (comando === 'eval') return avaliarTexto(args.join(' '))
+  if (comando === 'rm' && usados.includes('xargs') && (args.includes('--recursive') || args.includes('--force') || temFlagCurta(args, 'rRf'))) {
+    return 'xargs com rm recursivo ou forçado apaga uma lista que não aparece no comando'
+  }
   if (comando === 'rm') return avaliarRm(args)
   if (comando === 'git') return avaliarGit(args)
   const indiceSql = limpos.findIndex((t) => CLIENTES_SQL.has(nomeBase(t)))
@@ -171,10 +201,12 @@ function separarHeredocs(texto) {
   const corpos = []
   const resto = texto.replace(HEREDOC, (trecho, _traco, _aspas, _marca, corpo, deslocamento) => {
     const inicioLinha = texto.lastIndexOf('\n', deslocamento) + 1
-    const linha = texto.slice(inicioLinha, deslocamento)
-    const segmentos = dividir(linha)
-    const ultimo = segmentos.length ? removerPrefixos(segmentos[segmentos.length - 1]) : []
-    if (ultimo.length && SHELLS.has(nomeBase(ultimo[0]))) corpos.push(corpo)
+    const linha = texto.slice(inicioLinha, deslocamento + trecho.indexOf('\n'))
+    const alimentaShell = dividir(linha).some((segmento) => {
+      const limpos = removerPrefixos(segmento)
+      return limpos.length && SHELLS.has(nomeBase(limpos[0]))
+    })
+    if (alimentaShell) corpos.push(corpo)
     return trecho.slice(0, trecho.indexOf('\n'))
   })
   return { resto, corpos }
@@ -186,9 +218,15 @@ function avaliarTexto(comando) {
     const motivo = avaliarTexto(interno)
     if (motivo) return motivo
   }
-  for (const segmento of dividir(resto)) {
-    const motivo = avaliarSegmento(segmento)
+  const segmentos = dividir(resto)
+  for (let i = 0; i < segmentos.length; i++) {
+    const motivo = avaliarSegmento(segmentos[i])
     if (motivo) return motivo
+    const anterior = i > 0 ? removerPrefixos(segmentos[i - 1]) : []
+    if (anterior.length && GERADORES_DE_TEXTO.has(nomeBase(anterior[0])) && ehShellLendoStdin(segmentos[i])) {
+      const motivoTexto = avaliarTexto(anterior.slice(1).filter((a) => !a.startsWith('-')).join(' '))
+      if (motivoTexto) return motivoTexto
+    }
   }
   return null
 }
