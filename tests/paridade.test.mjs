@@ -74,6 +74,10 @@ test('nenhuma linha com status plano-2', () => {
   assert.deepEqual(linhas().filter((l) => l.status === 'plano-2').map((l) => l.item), [])
 })
 
+test('nenhuma linha com status plano-3', () => {
+  assert.deepEqual(linhas().filter((l) => l.status === 'plano-3').map((l) => l.item), [])
+})
+
 test('triagem.tsv é UTF-8 válido', () => {
   const bytes = readFileSync('docs/triagem.tsv')
   assert.doesNotThrow(() => new TextDecoder('utf-8', { fatal: true }).decode(bytes))

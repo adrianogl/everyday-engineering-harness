@@ -1,6 +1,6 @@
 # Paridade com OMC e superpowers
 
-Esta tabela diz o que do oh-my-claudecode (OMC) e do superpowers (SP) o EEH já cobre. A troca acontece quando nenhuma linha `plano-3` for de um item que o autor usa de fato. Linha `coberto` aponta para o arquivo do repo que faz o papel, `descartado` traz o motivo e `plano-3` espera `/eeh:upstream` e `manutencao-pacote`.
+Esta tabela diz o que do oh-my-claudecode (OMC) e do superpowers (SP) o EEH cobre. Linha `coberto` aponta para o arquivo do repo que faz o papel e `descartado` traz o motivo.
 O escopo é cada skill e agent de OMC e SP listado em `docs/triagem.tsv`. O ECC fica de fora porque não será desinstalado. O mapa vem de `upstream.json` e, onde ele não cobre, da tabela de fusões do design.
 
 | item atual | origem | equivalente no EEH | status |
@@ -15,10 +15,10 @@ O escopo é cada skill e agent de OMC e SP listado em `docs/triagem.tsv`. O ECC 
 | `debug` | OMC | `skills/debugar/SKILL.md` | coberto |
 | `deep-dive` | OMC | pipeline trace mais interview em modo autônomo; o equivalente manual é debugar seguido de entender | descartado |
 | `deep-interview` | OMC | `skills/entender/SKILL.md` | coberto |
-| `deepinit` | OMC | gerar AGENTS.md hierárquico por repo, ainda sem skill; hoje o /init nativo e a edição manual resolvem | plano-3 |
+| `deepinit` | OMC | `skills/deepinit/SKILL.md` | coberto |
 | `external-context` | OMC | `agents/document-specialist.md` | coberto |
 | `hud` | OMC | infra do OMC, status line fica com a configuração do Claude Code | descartado |
-| `learner` | OMC | vira manutencao-pacote (transformar um fluxo recente em skill), ainda não construída | plano-3 |
+| `learner` | OMC | `skills/manutencao-pacote/SKILL.md` | coberto |
 | `local-build-reminder` | OMC | lembrete específico do repo do OMC | descartado |
 | `mcp-setup` | OMC | infra do OMC, configuração de MCP é nativa do Claude Code | descartado |
 | `merge-readiness` | OMC | `skills/review/SKILL.md`, `scripts/reviews.mjs` | coberto |
@@ -31,12 +31,12 @@ O escopo é cada skill e agent de OMC e SP listado em `docs/triagem.tsv`. O ECC 
 | `ralph` | OMC | modo autônomo, sai de propósito | descartado |
 | `ralplan` | OMC | `skills/planejar/SKILL.md` | coberto |
 | `release` | OMC | release do próprio OMC, sem uso fora dele | descartado |
-| `remember` | OMC | vira manutencao-pacote ou memória nativa, ainda não construída | plano-3 |
+| `remember` | OMC | `skills/manutencao-pacote/SKILL.md` | coberto |
 | `sciomc` | OMC | modo autônomo de pesquisa, sai de propósito | descartado |
 | `self-improve` | OMC | modo autônomo, sai de propósito | descartado |
 | `setup` | OMC | infra do OMC, sem equivalente necessário | descartado |
-| `skill` | OMC | gestão de skills locais, entra na manutencao-pacote, ainda não construída | plano-3 |
-| `skillify` | OMC | vira manutencao-pacote (transformar fluxo em skill), ainda não construída | plano-3 |
+| `skill` | OMC | `skills/manutencao-pacote/SKILL.md` | coberto |
+| `skillify` | OMC | `skills/manutencao-pacote/SKILL.md` | coberto |
 | `team` | OMC | modo team do OMC, sai de propósito | descartado |
 | `trace` | OMC | `skills/debugar/SKILL.md` | coberto |
 | `ultragoal` | OMC | modo autônomo, sai de propósito | descartado |
@@ -79,4 +79,4 @@ O escopo é cada skill e agent de OMC e SP listado em `docs/triagem.tsv`. O ECC 
 | `using-superpowers` | SP | sai de propósito, o roteamento é rules/orquestrador.md | descartado |
 | `verification-before-completion` | SP | `skills/verificar/SKILL.md` | coberto |
 | `writing-plans` | SP | `skills/planejar/SKILL.md` | coberto |
-| `writing-skills` | SP | vira manutencao-pacote, ainda não construída | plano-3 |
+| `writing-skills` | SP | `skills/manutencao-pacote/SKILL.md` | coberto |
