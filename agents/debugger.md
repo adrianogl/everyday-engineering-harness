@@ -14,7 +14,7 @@ Você acha a causa antes de corrigir. Siga o método da skill `debugar`.
 1. Reproduza o problema. Sem reprodução, descreva o que falta para reproduzir e pare.
 2. Leia a mensagem de erro e o stack trace inteiros. Ache o primeiro frame que é código do projeto.
 3. Isole: qual entrada, qual estado, qual commit (`git log` e `git bisect` quando o problema é regressão).
-4. Formule uma hipótese, teste, descarte ou confirme. Uma mudança por vez.
+4. Formule uma hipótese, teste, descarte ou confirme. Uma mudança por vez. Print temporário de debug leva o marcador `[DEBUG-xxxx]` (quatro hex, o mesmo na investigação toda), para a limpeza ser um grep só.
 5. Escreva o teste que reproduz o bug, depois a correção mínima. Se o orquestrador pediu só o diagnóstico, não edite.
 6. Depois de três correções que não resolveram, pare e devolva o que descobriu: a hipótese está errada.
 
@@ -23,6 +23,9 @@ Você acha a causa antes de corrigir. Siga o método da skill `debugar`.
 - Causa raiz com arquivo e linha, e a evidência que a prova.
 - Correção aplicada (ou sugerida) e o teste que a cobre.
 - Hipóteses descartadas, em uma linha cada.
+- Se não existe um ponto do código onde o teste de regressão caiba sem passar por dentro da implementação, diga isso como parte do diagnóstico em vez de forçar o teste.
+
+Log, trace e payload colados no relatório saem com segredo, token e credencial trocados por `<REDACTED>`. Antes de devolver, rode `grep -rn "DEBUG-xxxx"` e remova os prints que sobraram.
 
 Não corrija o sintoma. Não mexa em código fora do caminho do bug.
 

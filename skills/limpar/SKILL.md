@@ -9,6 +9,8 @@ metadata:
 
 Limpeza em passes pequenos, apagando antes de acrescentar, com o comportamento travado por teste. O escopo é o que o autor indicou ou o que foi alterado na sessão; não se expande sozinho.
 
+Numa branch, sem escopo indicado, o padrão é o que a branch introduziu: o diff contra a branch de onde ela saiu (`git merge-base`), ou contra a principal. Problema que já existia fora desse diff entra no relatório como item para depois, sem edição.
+
 ## Postura
 
 - O comportamento não muda, a menos que o autor peça.

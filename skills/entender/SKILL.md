@@ -25,8 +25,11 @@ O repo mostra como o sistema se comporta hoje, não o que o negócio exige. Regr
 
 ## A conversa
 
-1. A primeira mensagem é uma pergunta aberta que faz o autor descrever, ancorada num caso real: "em que momento você sente falta disso?", "me conta a última vez que isso deu problema".
-2. Uma pergunta por mensagem, em uma frase, sem lista de exemplos pendurada. Linguagem simples, no vocabulário do autor.
+1. A primeira mensagem, em umas 200 palavras, devolve o pedido com as suas palavras (o que ele quer, para quem e por quê, até onde ele disse), junta o que a leitura achou (como a parte envolvida funciona hoje e o que a mudança toca) e aponta o que ele pode não ter considerado e mudaria o pedido: uma restrição, um conflito, um caminho mais barato. Termina convidando a corrigir e com uma pergunta:
+   - se ele não disse por que quer isso, mesmo que dê para adivinhar, pergunte o porquê, aberta e ancorada num caso real ("em que momento você sente falta disso?", "me conta a última vez que isso deu problema");
+   - se disse, pergunte a lacuna que mais muda o que vai ser construído;
+   - se nada muda o resultado, proponha o escopo e os critérios e peça aprovação.
+2. Só pergunte o que muda o que vai ser construído e que nem o pedido nem o repo respondem. O resto vira proposta sua, com o motivo, que o autor pode corrigir. Uma pergunta por mensagem, em uma frase, sem lista de exemplos pendurada. Linguagem simples, no vocabulário do autor.
 3. Mire o ponto mais fraco: o que ainda impede de escrever um critério testável. Diga em uma frase por que a próxima pergunta é essa.
 4. Perguntas que expõem suposição valem mais que perguntas que coletam lista de features:
    - "o que acontece exatamente quando...?";

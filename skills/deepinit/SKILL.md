@@ -24,7 +24,7 @@ Proibido: descrição genérica ("camada responsável por ..."), arquivo descrit
    - só contém subpastas: arquivo mínimo, só com a lista delas;
    - vazia, ou só com arquivo gerado: pula.
 4. Gere do nível mais raso para o mais fundo, para a referência ao pai existir. Para cada pasta, abra os arquivos antes de descrever.
-5. Se já existe `AGENTS.md`, leia primeiro. Mantenha tudo abaixo da linha `<!-- MANUAL -->`, atualize só o que o código contradiz ou deixou de cobrir e liste a diferença.
+5. Se já existe `AGENTS.md`, leia primeiro. Mantenha a seção `## Notas manuais` e tudo abaixo dela, atualize só o que o código contradiz ou deixou de cobrir e liste a diferença.
 6. Valide: toda referência ao pai resolve, nenhum `AGENTS.md` ficou órfão, nenhuma pasta escolhida ficou sem arquivo e cada citação `repo:caminho:linha` aponta para uma linha que existe.
 7. Mostre ao autor o conteúdo de cada arquivo (ou o diff, nos existentes), a lista de pastas puladas com o motivo e as marcas `não verificado`.
 
@@ -35,7 +35,7 @@ Parada 1: gravar os AGENTS.md. Sem aprovação explícita do autor, nenhum arqui
 ## Modelo de arquivo
 
 ```markdown
-<!-- Parent: ../AGENTS.md -->
+**Pasta pai:** `../AGENTS.md`
 
 # <pasta>
 
@@ -57,10 +57,17 @@ Parada 1: gravar os AGENTS.md. Sem aprovação explícita do autor, nenhum arqui
 - padrão que o código repete e vale seguir (com a citação)
 - dependências internas e externas que importam
 
-<!-- MANUAL -->
+## Notas manuais
+Escritas à mão e preservadas quando o arquivo é gerado de novo.
 ```
 
-O arquivo da raiz não leva a linha `Parent`. Seções sem conteúdo verificável saem em vez de ficarem com texto genérico.
+O arquivo da raiz não leva a linha `Pasta pai`. Seções sem conteúdo verificável saem em vez de ficarem com texto genérico.
+
+Nada que o agente precisa ler vai em comentário HTML (`<!-- ... -->`): o Claude Code remove esses comentários antes de o arquivo chegar ao modelo.
+
+## Como o AGENTS.md é carregado
+
+O Claude Code carrega `CLAUDE.md` aninhado pelo nome do arquivo, mas não carrega `AGENTS.md` aninhado, e um `@AGENTS.md` na raiz não alcança as subpastas. Para o `AGENTS.md` da raiz valer, o repo precisa de um `CLAUDE.md` com `@AGENTS.md` ou de um symlink `CLAUDE.md` → `AGENTS.md`; confira e, se faltar, proponha ao autor junto da parada 1. Os arquivos das subpastas só são lidos quando um agente os abre: o `AGENTS.md` da raiz lista as subpastas que têm o seu.
 
 ## Limites
 
