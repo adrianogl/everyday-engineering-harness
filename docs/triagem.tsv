@@ -556,3 +556,60 @@ SP	skill	using-superpowers	nao	Use when starting any conversation - establishes 
 SP	skill	verification-before-completion	sim	Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before makin
 SP	skill	writing-plans	sim	Use when you have a spec or requirements for a multi-step task, before touching code
 SP	skill	writing-skills	sim	Use when creating new skills, editing existing skills, or verifying skills work before deployment
+OMC	skill	agent-doc-discipline	nao	Writing-time discipline for documents agents consume (the five surfaces, specs, tickets, .omc/skills/) — every rule checkable and carrying a why, steps before reference, one meanin
+OMC	skill	architecture-survey	nao	Periodic architecture survey — walks the module graph and reports ranked deepening candidates (shallow modules, hypothetical seams, logic behind the wrong seam). Survey, not rescue
+OMC	skill	arena	nao	Run N parallel candidates at one brief and synthesize: rubric-first framing, isolated fan-out, a cross-judge on a different model, criterion-by-criterion pick, hand grafting. When 
+OMC	skill	ask-navigator	nao	Shipyard's navigator — chart a foggy effort (destination unclear, questions not yet stateable) into a map of decision tickets on the repo's issue tracker, then work the frontier on
+OMC	skill	babysit	nao	Drive an open PR to merge-ready on the watch-pr verdict policy — watch checks and review state, fix CI, address comments; never merges, rebases, or force-pushes. For 'get this gree
+OMC	skill	benchmark-checklist	nao	Vet a measured number before reporting or acting on it: name the limiter, measure the claimed work, repeat with variance, rule out the observer, label every claim. For any speedup,
+OMC	skill	blast-radius	ideia	Map what a change could break beyond the diff — dependents found by search and AST, classified certain/likely/unlikely — and prove the certain and likely ones by running their chec
+OMC	skill	bro	nao	Restate the last technical message in plain human language — no jargon, no shorthand, every fact and number kept. For 'say it plainly' or when a reply was too dense.
+OMC	skill	correct	nao	Find the mistakes agents keep repeating in this repo and make each impossible at the highest enforcing level — lint rule, type guard, runtime check, script, then text — with every 
+OMC	skill	create-formal-verification-skill	nao	Verify the project's riskiest invariant with TLA+, Lean, or Kani — chosen by property shape — and leave a project-local skill the next agent reruns; assumptions are part of the del
+OMC	skill	create-verification-skill	talvez	Generate the project's own verify skill: build/test/lint commands discovered by running them, a feature map of what each covers, manual checks, and an earned first verdict. Run onc
+OMC	skill	diagram	nao	Use the smallest visual when prose must carry structure—control flow, call depth, module ownership, or change shape: pseudocode, call tree, component/file tree, Mermaid diagram, or
+OMC	skill	drydock	nao	Lay the keel of the shipyard harness in any repo — the 4-pillar shared environment (Context, Rules, Tools, Standards), seeded as two faces on day one (CLAUDE.md + GLOSSARY.md) with
+OMC	skill	execute	nao	Carry an approved task through to working, verified code
+OMC	skill	figure-it-out	nao	Design a rigorous bespoke playbook for a task no bundled skill fits — steps that each end in a check, verification commands, failure branches — stored where the checker validates a
+OMC	skill	fix-ci	ideia	Find the failing checks on the current PR, read their logs, classify the failure (real / flaky / environmental), fix the real ones with focused changes, and rerun to green with evi
+OMC	skill	fix-merge-conflicts	talvez	Resolve merge conflicts non-interactively: start the integration, read both sides' intent from their commits, preserve both intents, validate on the resolved tree. Never force-push
+OMC	skill	get-pr-comments	talvez	Fetch and triage review threads on a PR: threads deduped with resolution state, each with a fix/dismiss/ask recommendation, bot findings read skeptically. Before addressing review 
+OMC	skill	graph	nao	Deterministic orchestration graph runtime - declarative DAG pipelines with journal-based crash recovery
+OMC	skill	harbor	nao	Harbor intake for external work — the captain only handles unresolved decisions. Sweeps incoming issues and PRs, verifies every claim before disposition, reuses every decision alre
+OMC	skill	hillclimb	nao	Sustained single-metric improvement loop — hypothesis, before/after measurement against a fixed baseline, decision log, one accepted commit per verified win. For targets climbed ov
+OMC	skill	how	nao	Walk through how a subsystem works — a fast explorer maps the territory, an explainer writes the layered walkthrough. Use for "how does X work", onboarding on unfamiliar code, or b
+OMC	skill	in-your-own-words	nao	Play back the goal, the problem, and the success check in your own words when a brief is genuinely ambiguous — vague, contested, or leaving real forks open — so misunderstanding is
+OMC	skill	intent	nao	Shipyard's internal requirements intake for non-engineer contributors (support/ops) — turn a pasted chat log or verbal problem report into a five-section intent.md through numbered
+OMC	skill	interrogate	nao	Adversarial pass over a diff or design: three reviewers on different models each try to break it — correctness, security, edge cases — findings merged by severity into a blocking v
+OMC	skill	ketchup	nao	Catch up on everything since your last message: a 1-3 sentence executive summary, one status line per action item with evidence links, and open questions. For 'catch me up' after s
+OMC	skill	ketchup-video	nao	Catch the user up like /ketchup, with a short subtitled video of slides for what happened and the waiting calls as text under it. Use for /ketchup-video.
+OMC	skill	launch	nao	Shipyard's governed delivery pipeline — converge the mission, synthesize a durable spec, decompose vertical-slice tickets with blocking edges, run the frontier in parallel via team
+OMC	skill	loft	nao	Loft the shape before cutting steel — answer a design question that prose cannot settle by building a throwaway artifact: a pure logic module in a clickable shell, or structurally 
+OMC	skill	maintain-formal-verification-skill	nao	Re-sync an existing formal verification skill after the covered code changed: re-check every assumption, update cited lines, rerun the tool; formally-verified only after a green re
+OMC	skill	maintain-verification-skill	talvez	Re-sync the project's verification skill when its commands drift — re-run each recorded command, update expectations and the feature map to what is true now, record the verdict act
+OMC	skill	map	nao	The yard's skill map — which skill owns which job, in delivery-loop order. Use when something needs doing but not which of the shipped skills owns it; the map routes, it never exec
+OMC	skill	minimal-code-discipline	talvez	YAGNI-ladder coding discipline for writing changes — existence-first, reuse before writing, dependency ladder, shortest correct diff, with non-negotiables that must never be minimi
+OMC	skill	minimal-prose-discipline	nao	Writing-time discipline for the prose an agent speaks to a human (replies, reports, pointers): a protected core never rewritten (code, commands, paths, errors, negators, numbers), 
+OMC	skill	models	nao	Interactive setup for role-based model routing: edit team.roleRouting (provider, tier, per-provider reasoning effort; orchestrator model-only), check panel diversity, warn on missi
+OMC	skill	personal-mode	nao	Draft a user-level behavior profile from recent transcripts — cross-project preferences, habits, and standing calls stored under the user skills dir so every project's agents work 
+OMC	skill	pr	nao	Draft a PR body from OMC's paper trail — the smallest visual that proves the change, evidence consumed from the verify protocol (never re-collected)
+OMC	skill	principles	nao	Twenty-four engineering principles in five groups, mapped to the lane carrying each — premise testing, root causes, honest verification, domain modeling, convergence, context disci
+OMC	skill	recall	nao	Reconstruct working context from artifacts in trust order — state files, notepad, verification ledger, decision trail, transcript tail — then report where work stands and the next 
+OMC	skill	refit	nao	Cross-session environment retrospective driven by OMC's own instrumentation — trace timelines, friction reports, logs, and plan notepads. Every finding lands on the surface that ow
+OMC	skill	reflect	nao	After a long task, a three-reviewer panel audits the session transcript — tooling, judgment, missed alternatives — and proposes concrete skill edits. Findings feed skillify. For ba
+OMC	skill	research	nao	Investigate an open question and return grounded, sourced findings
+OMC	skill	review	nao	Evaluate finished work for defects, risk, and simplification before it ships
+OMC	skill	sdd	nao	Spec-Driven Development. Interview → spec with acceptance criteria → plan → test-first execution. `/sdd full` runs the 6-phase pipeline instead.
+OMC	skill	session-flow	nao	Reorient in the current Claude Code session with an evidence-backed map of its goal, pivots, outcomes, current step, and open decisions.
+OMC	skill	sharpen	nao	Aim a vague task at its real target without overspecifying: name the consumer, the observable change, the done-check, and the non-goals; at most one question when a real fork remai
+OMC	skill	show-me-your-work	nao	Append-only decision trail for long or autonomous work: one TSV row per non-obvious decision — what was chosen, what was rejected and why, the deciding evidence. For work a human w
+OMC	skill	stacked-delivery	talvez	Deliver a queue of changes as one linear stacked PR chain — each PR lands on the last, verdicts record patch-ids, rebases trigger re-verification, and landing goes bottom-up only. 
+OMC	skill	statechart	nao	Check a TLA+ model of a system that moves between states, such as a product flow or a protocol, and draw it as a Mermaid statechart. The report gives the shortest path to each stat
+OMC	skill	tdd	nao	Test-first at pre-agreed seams — one test, one implementation, tracer-bullet red/green; independent expected values; substitutions only at the seam's boundary class; launch Phase 4
+OMC	skill	teach	nao	Explain a subsystem to a learner by composing how and why — the walkthrough cited to code, the decisions that shaped it, paced with a prediction check. For onboarding and knowledge
+OMC	skill	technical-writing	nao	One layered standard for shipping prose — docs, RFCs, readmes, PR descriptions, commit messages: outcome first, one meaning one home, checkable statements, no filler. Composes with
+OMC	skill	typescript-best-practices	ideia	TypeScript grounding for type-system discipline: discriminated unions over flags, satisfies, parse-don't-validate at boundaries, branded primitives, no non-null assertions on exter
+OMC	skill	what-did-i-get-done	ideia	Summarize authored commits over a period, grouped by theme with commit-range evidence, mechanical churn separated, and unfinished branches named. For standups and 'what did I get d
+OMC	skill	why	ideia	Investigate why code is the way it is from evidence — human rulings verbatim, git archaeology, linked issues, incident records — every claim labeled evidence, inference, or guess. 
+OMC	command	compact	nao	Prepare OMC context for a manual Claude Code /compact handoff.
+OMC	command	psm	nao	
